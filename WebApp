@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!Side bar buttons>
+<div class="w3-sidebar w3-bar-block w3-light-grey w3-bar-block" style="width:15%">
+  <h5 class="w3-bar-item">Menu</h5>
+  <button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'Home')" >Home </button>
+  <button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'BlockChain')" >BlockChain </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'AddBlock')" >Add Block </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'SearchBlock')" >Search Block </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'BlockStats')" >Block Stats </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'FAQ')" >FAQ </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'About')" >About </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'Help')" >Help </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'Guide')" >Guide </button>
+	<button class="w3-bar-item w3-button tablink" onclick ="openTab(event, 'ReportBug')" >Report Bug </button>
+</div>
+
+<!Each Page>
+<div style="margin-left:15%">
+	
+	<div id ="Home" class="w3-container tab">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Welcome</h1>
+		</div>
+		<p>[Info about block chains]</p>
+		<p>[Steps to add a block]</p>
+	</div>
+
+	<div id ="BlockChain" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>BlockChain</h1>
+		</div>
+		<p>[Info about block chains]</p>
+	</div>
+	
+	<div id ="AddBlock" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Add Block</h1>
+		</div>
+		<p>[Button to add block]</p>
+	</div>
+	
+	<div id ="SearchBlock" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Search Block</h1>
+		</div>
+		<p>[Search block function]</p>
+	</div>
+	
+	<div id ="BlockStats" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Block Stats</h1>
+		</div>
+		<p></p>
+	</div>
+	
+	<div id ="FAQ" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>FAQ</h1>
+		</div>
+		<p>[Questions and answers]</p>
+	</div>
+	
+	<div id ="About" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>About</h1>
+		</div>
+		<p>[about web app]</p>
+	</div>
+	
+	<div id ="Help" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Help</h1>
+		</div>
+		<p>[How to use web app]</p>
+	</div>
+
+	<div id ="Guide" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Guide</h1>
+		</div>
+		<p>[How to use web app]</p>
+	</div>
+	
+	<div id ="ReportBug" class="w3-container tab" style="display:none">
+		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
+			<h1>Report Bug</h1>
+		</div>
+		<p>[Report form]</p>
+	</div>
+
+</div>
+
+<!Function to change page when button is pressed>
+<script>
+function openTab(evt, tab){
+	
+	var i, x, tablinks;
+	x = document.getElementsByClassName("tab");
+	for (i = 0; i < x.length; i++) {
+     		x[i].style.display = "none";
+  	}
+  	tablinks = document.getElementsByClassName("tablink");
+  	for (i = 0; i < x.length; i++) {
+      		tablinks[i].className = tablinks[i].className.replace(" w3-red", ""); 
+  	}
+  	document.getElementById(tab).style.display = "block";
+  	evt.currentTarget.className += " w3-red";
+	
+}
+</script>
+
+</body>
+</html>
