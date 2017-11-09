@@ -3,6 +3,44 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+		
+	input[type=text], select {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+		
+	input[type=data], select {
+		width: 50%;
+		height: 150px;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;	
+	}
+
+	input[type=submit] {
+		width: 50%;
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+		background-color: #45a049;
+	}
+		
+</style>
 <body>
 
 <!Side bar buttons>
@@ -42,7 +80,26 @@
 		<div class="w3-container w3-teal" style= "margin-left:-1.5%">
 			<h1>Add Block</h1>
 		</div>
-		<p>[Button to add block]</p>
+		<div>
+			<form action="/action_page.php">
+				<label for="Block#"></label>
+				<input type="text" id="Block#" name="Block#" placeholder="Block #">
+
+				<label for="Nonce"></label>
+				<input type="text" id="Nonce" name="Nonce" placeholder="Nonce">
+
+				<label for="Data"></label>
+				<input type="data" id="Data" name="Data" placeholder="Data">
+		  
+				<label for="PreviousHash"></label>
+				<input type="text" id="PreviousHash" name="PreviousHash" placeholder="PreviousHash">
+				
+				<label for="PreviousHash"></label>
+				<input type="text" id="CurrentHash" name="CurrentHash" placeholder="CurrentHash">
+				
+				<input type="Submit" value="Mine">
+			</form>
+		</div>
 	</div>
 	
 	<div id ="SearchBlock" class="w3-container tab" style="display:none">
