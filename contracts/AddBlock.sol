@@ -14,4 +14,8 @@ contract AddBlock {
     age = uage;
     name = uname;
   }
+
+  function getID() returns unit {
+    return ID;
+  }
 }
