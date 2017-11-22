@@ -1,4 +1,4 @@
-var MyContract = artifacts.require("AddBlock");
+var MyContract = artifacts.require("./addBlock.sol");
 
 module.exports = function(deployer) {
   // deployment steps
