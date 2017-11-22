@@ -1,6 +1,6 @@
 //version pragma - used to reject being compiled with future compiler versions that might introduce incompatible changes
 //confirms that code will always compile as intended and avoids problems with future versions
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.4;
 
 //import files using import "filename"
 
@@ -27,48 +27,47 @@ pragma solidity ^0.4.13;
     //revert() --> abort execution and revert state changes
 
 /** @title Add a Block*/
-contract SolidityContract {
+contract SaveData {
 
-    //mapping
-    //declares a state variable that stores a newBlock struct for each possible address
-    //do we need this?
-    mapping (address => uint) public blocks;
-
-    NewBlock[] public blockchain; // block to add to the blockchain
-
-    //new block structure
+    //new block structure, stores name age and ID
     struct NewBlock {
-         uint blocknumber; // current block number
-         string data; // data to be stored in the block
-         bytes32 prevHash; // hash of previous block
-         bytes32 curHash; // hash of current block
+        uint8 age;
+        uint id;
+        bytes32 name;
     }
+    //id for the address of struct mapping
+    uint blockid;
+    
+    //mapping allows you to use a key to map a hash table of structs in this case
+    mapping(uint256 => NewBlock) public blockchain;
+
 
     // function to add a block of data to the blockchain
-    function addBlock (string data) public payable returns (bool success) {
-        // is this right?
-    NewBlock memory n = NewBlock(block.number, data,  block.blockhash(block.number - 1), block.blockhash(block.number));
+    function addBlock (bytes32 data, uint8 uage, uint uid) public returns (uint256) {
 
-        blockchain.length++;
-        blockchain[blockchain.length-1] = n; // adds the block to the chain?
-        return true; // indicates successful adding of block
+        //iterates key to indicate new struct
+        blockid++;
+        //"pointer" to new data struct, makes it easier on us
+        var n = blockchain[blockid];
+
+        //sets the data
+        n.age = uage;
+        n.id = uid;
+        n.name = data;
+
+        //returns the key to the data you just stored
+        return blockid;
     }
 
-    /*function getBlock(uint blocknumber) returns (NewBlock, bool success) {
-        uint length = blockchain.length; // length of the blockchain
-
-        //finds the block by block number for the viewing functionality
-        for (uint i = 0; i < length; i++) {
-            if (blockchain[i].blockNumber == blocknumber) {
-                return blockchain[i];
-            }
-        }
-    }*/
-
-
-
-
-
-
-
+    //getters using key pased in from function
+    function getID(uint256 key) public view returns (uint) {
+        return blockchain[key].id;
+    }
+    
+    function getAge(uint256 key) public view returns (uint) {
+        return blockchain[key].age;
+    }
+    function getName(uint256 key) public view returns (bytes32) {
+        return blockchain[key].name;
+    }
 }
