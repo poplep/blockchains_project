@@ -16,7 +16,7 @@ pragma solidity ^0.4.4;
     I hope this helps in you understanding what is happening in this contract!
 
 */
-contract SaveData {
+contract addBlock {
 
     //new block structure, stores name age and ID
     struct NewBlock {
