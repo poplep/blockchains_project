@@ -16,7 +16,7 @@ pragma solidity ^0.4.4;
     I hope this helps in you understanding what is happening in this contract!
 
 */
-contract SaveData {
+contract addBlock {
 
     //new block structure, stores name age and ID
     struct NewBlock {
@@ -33,7 +33,7 @@ contract SaveData {
 
 
     // function to add a block of data to the blockchain
-    function addBlock (bytes32 data, uint8 uage, uint uid) public {
+    function addData (bytes32 data, uint8 uage, uint uid) public {
 
         //iterates key to indicate new struct
         blockid++;
