@@ -6,7 +6,7 @@ pragma solidity ^0.4.4;
     Quick writeup here:
     blockid is the key to the mapping, in order to access previously stored data we need to pass it the key.
     This is needed because of how we are storing the data, think of mappings like arrays, but it's a hash table instead
-    This is why we need a key. 
+    This is why we need a key.
     As for the struct, they work pretty much like you would expect, you can create mappings of them, and you can call elements with foo[key].bar
     The function addBlock is transactional, meaning it modifies storage on the contract.
     Storage is physically stored within the blockchain, unlike memory, which is temporary.
@@ -26,7 +26,7 @@ contract addBlock {
     }
     //id for the address of struct mapping
     uint blockid;
-    
+
     //mapping allows you to use a key to map a hash table of structs in this case
     //uint256 is the key type, and NewBlock is what data type is being mapped.
     mapping(uint256 => NewBlock) public blockchain;
@@ -45,17 +45,19 @@ contract addBlock {
         n.id = uid;
         n.name = data;
     }
-    
-    
+
+
     //getters using key pased in from function
     function getID(uint256 key) public view returns (uint) {
         return blockchain[key].id;
     }
-    
+
     function getAge(uint256 key) public view returns (uint) {
         return blockchain[key].age;
     }
     function getName(uint256 key) public view returns (bytes32) {
-        return blockchain[key].name;
+        return blockchain[key].name;    
     }
+    
+
 }
