@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI - Add a Block</title>
+<head>
+	<title>Blockchain UI - Add a Block</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
-
+<script src="/dist/web3.min.js"></script>
+</head>
 <!-- Style for the tile buttons -->
 <style>
 	div.gallery {
@@ -121,25 +123,32 @@
 			<h1 style="color: white">Add Block</h1>
 		</div>
 		<div>
-			<form action="/action_page.php">
+
 				<label for="Block#"></label>
 				<!--<script>[get the block number]</script>-->
 
 				<label for="Nonce"></label>
 				<!--<script>[get the nonce]</script>-->
-
-				<label for="Data"></label>
-				<input type="data" id="Data" name="Data" placeholder="Data">
-				<!-- send data to the blockchain to be mined --> 
 				
 				<label for="PreviousHash"></label>
 				<!--<script>[get the previous hash]</script>-->
 				
 				<label for="PreviousHash"></label>
 				<!--<script>[get the current hash]</script>-->
-				
-				<input type="Submit" value="Mine">
-			</form>
+				<p>Enter your data as name, age, id number</p>
+				<input id="name" type="text">
+				<input id="id" type="text">
+				<input id="age" type="text">
+				<button id="button2"> Mine  </button>
+
+				<p>Once you add the block, it will be displayed below:</p>
+				<pre id="output">
+
+				</pre>
+				<pre id="output2">
+					
+									</pre>
+
 		</div>
 
 
@@ -164,5 +173,47 @@ function button(evt, tab){
 }
 </script>
 
+	<script>
+		var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); //provider for web3
+		web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
+		
+		//contract abi, pass json representation of contract to instance
+		var addBlockContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getdata","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getID","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"data","type":"bytes32"},{"name":"ublock_no","type":"uint8"},{"name":"uid","type":"uint256"}],"name":"addData","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getblock_no","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"blockchain","outputs":[{"name":"block_no","type":"uint8"},{"name":"id","type":"uint256"},{"name":"data","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"}]);
+		
+		var addingBlock = addBlockContract.at('0xcd09404926caf1ae13dbae49f4d853930b95a192'); // contract instance to work with
+
+		//grabbing elements by element id and storing into variables
+		var name = document.getElementById('name');
+		var id = document.getElementById('id');
+		var age = document.getElementById('age');
+		var button = document.getElementById('button2');
+		var output = document.getElementById('output');
+		var output2 = document.getElementById('output2');
+
+		//click handler for button
+		button.addEventListener('click', function() {
+			//take value in the input and send it via contract
+			addingBlock.addData(String(name.value), age.value, id.value); // pass user data to contract
+			var number = web3.eth.blockNumber;
+
+			for (const [key, value] of Object.entries(web3.eth.getBlock(number))) {
+				output.innerHTML = `${key} ${value}`; // "a 5", "b 7", "c 9"
+				output.innerHTML = "<br>";
+				}
+
+
+				function register(){
+					// caution: drop the "new Array" part or it won't work!
+					var printThis = "";
+					for(const [key, value] of Object.entries(web3.eth.getBlock(number))){
+						printThis += "<br>"+`${key} ${value}`;
+					}
+					return printThis; // <-- to be printed to the div
+				}
+			output.innerHTML = register();
+
+			console.log(Object.values(web3.eth.getBlock(number)));
+		});
+	</script>
 </body>
 </html>
