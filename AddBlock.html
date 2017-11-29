@@ -8,6 +8,7 @@
 <!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 <script src="/dist/web3.min.js"></script>
+<script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
 </head>
 <!-- Style for the tile buttons -->
 <style>
@@ -174,13 +175,117 @@ function button(evt, tab){
 </script>
 
 	<script>
-		var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); //provider for web3
-		web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
+		var web3 =  new Web3(web3.currentProvider); //provider for web3
+		//web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
 		
 		//contract abi, pass json representation of contract to instance
-		var addBlockContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getdata","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getID","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"data","type":"bytes32"},{"name":"ublock_no","type":"uint8"},{"name":"uid","type":"uint256"}],"name":"addData","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getblock_no","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"blockchain","outputs":[{"name":"block_no","type":"uint8"},{"name":"id","type":"uint256"},{"name":"data","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"}]);
-		
-		var addingBlock = addBlockContract.at('0xcd09404926caf1ae13dbae49f4d853930b95a192'); // contract instance to work with
+		var addBlockContract = web3.eth.contract([{
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "key",
+				"type": "uint256"
+			  }
+			],
+			"name": "getID",
+			"outputs": [
+			  {
+				"name": "",
+				"type": "uint256"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  },
+		  {
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "key",
+				"type": "uint256"
+			  }
+			],
+			"name": "getAge",
+			"outputs": [
+			  {
+				"name": "",
+				"type": "uint256"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  },
+		  {
+			"constant": false,
+			"inputs": [
+			  {
+				"name": "data",
+				"type": "bytes32"
+			  },
+			  {
+				"name": "uage",
+				"type": "uint8"
+			  },
+			  {
+				"name": "uid",
+				"type": "uint256"
+			  }
+			],
+			"name": "addData",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		  },
+		  {
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "key",
+				"type": "uint256"
+			  }
+			],
+			"name": "getName",
+			"outputs": [
+			  {
+				"name": "",
+				"type": "bytes32"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  },
+		  {
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "",
+				"type": "uint256"
+			  }
+			],
+			"name": "blockchain",
+			"outputs": [
+			  {
+				"name": "age",
+				"type": "uint8"
+			  },
+			  {
+				"name": "id",
+				"type": "uint256"
+			  },
+			  {
+				"name": "name",
+				"type": "bytes32"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  }]);
+		var addingBlock = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
 
 		//grabbing elements by element id and storing into variables
 		var name = document.getElementById('name');
@@ -189,30 +294,124 @@ function button(evt, tab){
 		var button = document.getElementById('button2');
 		var output = document.getElementById('output');
 		var output2 = document.getElementById('output2');
-
+		var hash;
+		var trans;
+		var block;
 		//click handler for button
 		button.addEventListener('click', function() {
 			//take value in the input and send it via contract
-			addingBlock.addData(String(name.value), age.value, id.value); // pass user data to contract
-			var number = web3.eth.blockNumber;
 
-			for (const [key, value] of Object.entries(web3.eth.getBlock(number))) {
-				output.innerHTML = `${key} ${value}`; // "a 5", "b 7", "c 9"
-				output.innerHTML = "<br>";
+				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){
+					if(!worked){
+						hash = result;
+						console.log(hash);
+						console.log(worked);
+						viewingBlock();
+					}else
+						console.error(worked);
+				})
+				
+
+				var number = web3.eth.getBlockNumber(function(error, result){
+					if(!error)
+						console.log(result)
+					else
+						console.error(error);
+				})
+
+			function viewingBlock() {	
+				var transValue = 0;			
+				//while(transValue != 1){
+					web3.eth.getTransaction(hash, function(error, result){
+						if(!error){
+							trans = result;
+							console.log(trans.blockHash);
+							transValue = getTransaction();
+							if(transValue == 1){
+								return;
+							}
+							else {
+								viewingBlock();
+							}
+						}
+						else{}
+							//console.error(error);
+					})
+				//}
+				function getTransaction(){
+				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
+									if(!error){
+										for(const [key, value] of Object.entries(result)) {
+											output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+										}
+					 					
+										console.log(result)
+								}	else{
+										console.error(error);
+									}
+							});
+							return 1;
+				} else {
+					return 0;
 				}
+				}
+			}
+				
 
 
-				function register(){
-					// caution: drop the "new Array" part or it won't work!
+					//var filter = web3.eth.filter('latest', function(error, result){
+						//if(!error){
+							//var block = web3.eth.getBlock(result, function(error, result){
+							//		if(!error)
+						//				console.log(result)
+							//		else
+							//			console.error(error);
+							//});
+							//if(block.transactions.length > 0){
+								var printThis = "";
+									for(const [key, value] of Object.entries(block)) {
+										output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+									}
+							//}
+							//else
+							//console.log("Nothing here")
+						//}
+					//else
+						//console.error(error);
+					//});
+					
+						
+					
+				
+				
+				function register(blockSaved) {
 					var printThis = "";
-					for(const [key, value] of Object.entries(web3.eth.getBlock(number))){
-						printThis += "<br>"+`${key} ${value}`;
+					for(const [key, value] of Object.entries(blockSaved)) {
+						printThis += "<br>" + `${key} ${value}`;
 					}
-					return printThis; // <-- to be printed to the div
 				}
-			output.innerHTML = register();
 
-			console.log(Object.values(web3.eth.getBlock(number)));
+				var num = addingBlock.getID(1, function(worked, result){
+					if(!worked){
+						//hash = result;
+						//console.log(hash);
+						console.log(result);
+						//viewingBlock();
+					}else
+						console.error(worked);
+				})
+				console.log(num);
+				var AGE = addingBlock.getAge(1, function(worked, result){
+					if(!worked){
+						//hash = result;
+						//console.log(hash);
+						console.log(result);
+						//viewingBlock();
+					}else
+						console.error(worked);
+				})
+				console.log(AGE);
 		});
 	</script>
 </body>

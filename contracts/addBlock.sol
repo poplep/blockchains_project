@@ -33,7 +33,7 @@ contract addBlock {
 
 
     // function to add a block of data to the blockchain
-    function addData (bytes32 data, uint8 uage, uint uid) public {
+    function addData (bytes32 data, uint8 uage, uint uid) public payable {
 
         //iterates key to indicate new struct
         blockid++;

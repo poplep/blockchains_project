@@ -1,4 +1,4 @@
-var MyContract = artifacts.require("SaveData");
+var MyContract = artifacts.require("addBlock");
 
 module.exports = function(deployer) {
   // deployment steps
