@@ -1,4 +1,4 @@
-//version pragma - used to reject being compiled with future compiler versions that might introduce incompatible changes
+[{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getdata","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getID","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"data","type":"bytes32"},{"name":"ublock_no","type":"uint8"},{"name":"uid","type":"uint256"}],"name":"addData","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"getblock_no","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"blockchain","outputs":[{"name":"block_no","type":"uint8"},{"name":"id","type":"uint256"},{"name":"data","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"}]//version pragma - used to reject being compiled with future compiler versions that might introduce incompatible changes
 //confirms that code will always compile as intended and avoids problems with future versions
 pragma solidity ^0.4.4;
 
@@ -6,7 +6,7 @@ pragma solidity ^0.4.4;
     Quick writeup here:
     blockid is the key to the mapping, in order to access previously stored data we need to pass it the key.
     This is needed because of how we are storing the data, think of mappings like arrays, but it's a hash table instead
-    This is why we need a key.
+    This is why we need a key. 
     As for the struct, they work pretty much like you would expect, you can create mappings of them, and you can call elements with foo[key].bar
     The function addBlock is transactional, meaning it modifies storage on the contract.
     Storage is physically stored within the blockchain, unlike memory, which is temporary.
@@ -26,14 +26,14 @@ contract addBlock {
     }
     //id for the address of struct mapping
     uint blockid;
-
+    
     //mapping allows you to use a key to map a hash table of structs in this case
     //uint256 is the key type, and NewBlock is what data type is being mapped.
     mapping(uint256 => NewBlock) public blockchain;
 
 
     // function to add a block of data to the blockchain
-    function addData (bytes32 data, uint8 uage, uint uid) public payable {
+    function addData (bytes32 data, uint8 uage, uint uid) public {
 
         //iterates key to indicate new struct
         blockid++;
@@ -45,19 +45,17 @@ contract addBlock {
         n.id = uid;
         n.name = data;
     }
-
-
+    
+    
     //getters using key pased in from function
     function getID(uint256 key) public view returns (uint) {
         return blockchain[key].id;
     }
-
+    
     function getAge(uint256 key) public view returns (uint) {
         return blockchain[key].age;
     }
     function getName(uint256 key) public view returns (bytes32) {
-        return blockchain[key].name;    
+        return blockchain[key].name;
     }
-    
-
 }
