@@ -176,7 +176,6 @@ function button(evt, tab){
 
 	<script>
 		var web3 =  new Web3(web3.currentProvider); //provider for web3
-		//web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
 		
 		//contract abi, pass json representation of contract to instance
 		var addBlockContract = web3.eth.contract([{
@@ -306,42 +305,48 @@ function button(evt, tab){
 						hash = result;
 						console.log(hash);
 						console.log(worked);
+
+						//calls next part of code only when it's ready to
 						viewingBlock();
 					}else
 						console.error(worked);
 				})
 				
 
-				var number = web3.eth.getBlockNumber(function(error, result){
-					if(!error)
-						console.log(result)
-					else
-						console.error(error);
-				})
-
+				//Function to view the block you just added
 			function viewingBlock() {	
 				var transValue = 0;			
-				//while(transValue != 1){
 					web3.eth.getTransaction(hash, function(error, result){
 						if(!error){
+
 							trans = result;
 							console.log(trans.blockHash);
+
 							transValue = getTransaction();
+							
+							//base case
 							if(transValue == 1){
 								return;
 							}
+
+							//otherwise recurse
 							else {
 								viewingBlock();
 							}
 						}
+
 						else{}
-							//console.error(error);
+							console.error(error);
 					})
-				//}
+
+					//function to find block based on transactionID
 				function getTransaction(){
+					//if hash exists
 				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
 					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
 									if(!error){
+
+										//prints out stuff
 										for(const [key, value] of Object.entries(result)) {
 											output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
 										}
@@ -351,68 +356,18 @@ function button(evt, tab){
 										console.error(error);
 									}
 							});
+
+							//returns 1 if successful
 							return 1;
 				} else {
 					return 0;
 				}
 				}
 			}
-				
 
-
-					//var filter = web3.eth.filter('latest', function(error, result){
-						//if(!error){
-							//var block = web3.eth.getBlock(result, function(error, result){
-							//		if(!error)
-						//				console.log(result)
-							//		else
-							//			console.error(error);
-							//});
-							//if(block.transactions.length > 0){
-								var printThis = "";
-									for(const [key, value] of Object.entries(block)) {
-										output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
-									}
-							//}
-							//else
-							//console.log("Nothing here")
-						//}
-					//else
-						//console.error(error);
-					//});
-					
-						
-					
 				
-				
-				function register(blockSaved) {
-					var printThis = "";
-					for(const [key, value] of Object.entries(blockSaved)) {
-						printThis += "<br>" + `${key} ${value}`;
-					}
-				}
-
-				var num = addingBlock.getID(1, function(worked, result){
-					if(!worked){
-						//hash = result;
-						//console.log(hash);
-						console.log(result);
-						//viewingBlock();
-					}else
-						console.error(worked);
-				})
-				console.log(num);
-				var AGE = addingBlock.getAge(1, function(worked, result){
-					if(!worked){
-						//hash = result;
-						//console.log(hash);
-						console.log(result);
-						//viewingBlock();
-					}else
-						console.error(worked);
-				})
-				console.log(AGE);
 		});
+		
 	</script>
 </body>
 </html>
