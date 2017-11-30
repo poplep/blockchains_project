@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!--Title, imports for CSS, Google Fonts, Web3, and Promisejs -->
 	<title>Blockchain UI - Add a Block</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<!-- Importing Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 <script src="/dist/web3.min.js"></script>
 <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
 </head>
@@ -36,8 +35,8 @@
 
 <!-- Overall Page Styling -->
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Oxygen', sans-serif;}
-
+	p,h1,h2,h3,h4,h5,body {font-family: 'Quicksand', sans-serif;}
+	p,a, h5, pre {font-size: 23px; font-family: 'Quicksand', sans-serif;};
 	.under { text-decoration: underline rgb(0, 0, 0);}
 	input[type=text], select {
 		width: 50%;
@@ -92,13 +91,17 @@
     .w3-sidebar {
         background-color:rgb(49, 57, 77);
     }
+
+		pre {
+			word-wrap: break-word;
+		}
 </style>
 
 <body>
 
 <!-- Sidebar/menu -->
 <div position = "absolute">
-<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 250px" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 258px" id="mySidebar"><br>
 	<div>
 	  <h5 class="w3-bar-block" style="color: white">Main Menu</h5>
 	</div>
@@ -116,7 +119,9 @@
 		<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a><br><br>
 	</div>
   </nav>
-  </div>
+	</div>
+	
+	<!-- Main Page Div-->
 <div style="margin-left:12%" style="width:100vw" position ="fixed" >
 	
 
@@ -124,37 +129,22 @@
 			<h1 style="color: white">Add Block</h1>
 		</div>
 		<div>
-
-				<label for="Block#"></label>
-				<!--<script>[get the block number]</script>-->
-
-				<label for="Nonce"></label>
-				<!--<script>[get the nonce]</script>-->
-				
-				<label for="PreviousHash"></label>
-				<!--<script>[get the previous hash]</script>-->
-				
-				<label for="PreviousHash"></label>
-				<!--<script>[get the current hash]</script>-->
+				<!-- Ask user for the data -->
 				<p>Enter your data as name, age, id number</p>
 				<p>Name: </p><input id="name" type="text">
 				<p>Age: </p><input id="id" type="text">
 				<p>ID: </p><input id="age" type="text">
 				<button id="button2"> Mine  </button>
 
+				<!-- Display the block that was mined to the user-->
 				<p>Once you add the block, it will be displayed below:</p>
-				<pre id="output">
-
-				</pre>
-				<pre id="output2">
-					
-									</pre>
+				<pre id="output"></pre>
+				<pre id="output2"></pre>
 
 		</div>
 
 
 </div>
-
 
 <!Function to change page when button is pressed on home tab>
 <script>
@@ -311,7 +301,7 @@ function button(evt, tab){
 						console.error(worked);
 				})
 				
-
+				// get the block number and store it into a variable called number
 				var number = web3.eth.getBlockNumber(function(error, result){
 					if(!error)
 						console.log(result)
@@ -319,6 +309,9 @@ function button(evt, tab){
 						console.error(error);
 				})
 
+
+			// function for viewing the block
+			// this function is called after we add the block
 			function viewingBlock() {	
 				var transValue = 0;			
 				//while(transValue != 1){
@@ -338,6 +331,8 @@ function button(evt, tab){
 							//console.error(error);
 					})
 				//}
+
+				//this function gets the transaction hash of the block that was mined by the user
 				function getTransaction(){
 				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
 					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
@@ -384,7 +379,7 @@ function button(evt, tab){
 						
 					
 				
-				
+				//this function prints the block that was mined to the user
 				function register(blockSaved) {
 					var printThis = "";
 					for(const [key, value] of Object.entries(blockSaved)) {
@@ -392,6 +387,7 @@ function button(evt, tab){
 					}
 				}
 
+				//this function gets the ID of the block that was mined
 				var num = addingBlock.getID(1, function(worked, result){
 					if(!worked){
 						//hash = result;
@@ -402,6 +398,7 @@ function button(evt, tab){
 						console.error(worked);
 				})
 				console.log(num);
+				//this function gets the age of the block that was mined
 				var AGE = addingBlock.getAge(1, function(worked, result){
 					if(!worked){
 						//hash = result;
