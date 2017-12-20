@@ -216,9 +216,10 @@ $(document).keydown(function(event){
 													output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
 												}
 												
-												console.log(result)
+												console.log(result);
 											}	
 										else{
+                                                alert("We couldn't get the block. Please try again.");
 												console.error(error);
 											}
 									});
