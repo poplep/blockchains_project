@@ -137,36 +137,38 @@
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 		//click handler for button
-		button2.addEventListener('click', function() {
-			web3.eth.getTransaction(search.value, function(error, result){
-						if(!error){
-							trans = result;
-							console.log(trans.blockHash);
-							transValue = getTransaction();
-						}
-						else{}
-							//console.error(error);
-					})
-					function getTransaction(){
-						if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
-							block = web3.eth.getBlock(trans.blockHash, function(error, result){
-											if(!error){
-												for(const [key, value] of Object.entries(result)) {
-													output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+			button2.addEventListener('click', function() {
+				web3.eth.getTransaction(search.value, function(error, result){
+							if(!error){
+								trans = result;
+								console.log(trans.blockHash);
+								transValue = getTransaction();
+							}
+							else{alert("We couldn't find the block. Please try again.");}
+								//console.error(error);
+						})
+						function getTransaction(){
+							if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+								block = web3.eth.getBlock(trans.blockHash, function(error, result){
+												if(!error){
+													for(const [key, value] of Object.entries(result)) {
+														output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+													}
+													
+													console.log(result);
+												}	
+											else{
+													alert("We couldn't find the block. Please try again.");
+													console.error(error);
 												}
-												
-												console.log(result)
-											}	
-										else{
-												console.error(error);
-											}
-									});
-									return 1;
-						} else {
-							return 0;
+										});
+										return 1;
+							} else {
+								alert("We couldn't find the block. Please try again.");
+								return 0;
+							}
 						}
-					}
-		})
+			})
 </script>
 
 <!Function to change page when button is pressed on home tab>
