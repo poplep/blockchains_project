@@ -125,7 +125,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <form id='form-prompt'>
 <input type='text' id='textTest'>
-    <input type="submit" />
+    <input type="submit" id="button2"/>
 </form>
 <div id='res'></div>
     <p>Once you search for the block, it will be displayed below:</p>
@@ -190,6 +190,44 @@ $(document).keydown(function(event){
 
 	}
 });
+</script>
+
+
+<!-- Search Functionality (from view block)-->
+
+<script>
+	var web3 =  new Web3(web3.currentProvider); //provider for web3
+		//click handler for button
+		button2.addEventListener('click', function() {
+			web3.eth.getTransaction(search.value, function(error, result){
+						if(!error){
+							trans = result;
+							console.log(trans.blockHash);
+							transValue = getTransaction();
+						}
+						else{}
+							//console.error(error);
+					})
+					function getTransaction(){
+						if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+							block = web3.eth.getBlock(trans.blockHash, function(error, result){
+											if(!error){
+												for(const [key, value] of Object.entries(result)) {
+													output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+												}
+												
+												console.log(result)
+											}	
+										else{
+												console.error(error);
+											}
+									});
+									return 1;
+						} else {
+							return 0;
+						}
+					}
+		})
 </script>
 
 </body>
