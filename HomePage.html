@@ -5,6 +5,13 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Tutorial Modal Styling -->
+
 
 <!-- Style for the tile buttons -->
 <style>
@@ -164,12 +171,38 @@
 			}else{
 				alertornot()
 			}
-
-		
 </script>
 
 </head>
 <body>
+<!-- Welcome Tutorial Window -->
+<div class="container">
+  
+	<!-- Modal Window -->
+	<div class="modal fade" id="Tutorial" role="dialog">
+	  <div class="modal-dialog">
+	  
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Welcome to the Blockchain UI!</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
+				statistics about the blockchain. </p>
+
+			<p>First, click the "Add Block" page to add your first block to the blockchain.</p>
+		  </div>
+		  <div class="modal-footer">
+			<a href ="AddBlock.html"><button class="btn btn-default">Continue</button></a>
+		  </div>
+		</div>
+		
+	  </div>
+	</div>
+	
+  </div>
 
 <!-- Sidebar/menu -->
 <div position = "absolute">
@@ -249,6 +282,12 @@ function button(evt, tab){
   	document.getElementById(tab).style.display = "block";
   	
 }
+</script>
+
+<script>
+	
+	$("#Tutorial").modal(); // start tutorial
+
 </script>
 
 </body>
