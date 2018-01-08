@@ -92,7 +92,83 @@
 			background-color:rgb(49, 57, 77);
 		}
 </style>
+<head>
+<!-- Check browser - if its not firefox or chrome, then let the user know -->
+<script>
+		
 
+			// original source: http://www.javascriptkit.com/script/script2/alertmsg.shtml
+			// modified
+			var once_per_session = 1;
+			
+			function get_cookie(Name) {
+				var search = Name + "="
+				var returnvalue = "";
+
+				if (document.cookie.length > 0) {
+					offset = document.cookie.indexOf(search)
+					if (offset != -1) { // if cookie exists
+						offset += search.length
+						// set index of beginning of value
+						end = document.cookie.indexOf(";", offset);
+						// set index of end of cookie value
+						if (end == -1)
+							end = document.cookie.length;
+						returnvalue=unescape(document.cookie.substring(offset, end))
+					}
+				}
+				return returnvalue;
+			}
+
+			function alertornot(){
+				if (get_cookie('alerted')==''){
+					loadalert()
+					document.cookie="alerted=yes"
+				}
+			}
+
+			function loadalert(){
+				// Opera 8.0+
+				var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+		
+				// Firefox 1.0+
+				var isFirefox = typeof InstallTrigger !== 'undefined';
+			
+				// Safari 3.0+ "[object HTMLElementConstructor]" 
+				var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+			
+				// Internet Explorer 6-11
+				var isIE = /*@cc_on!@*/false || !!document.documentMode;
+			
+				// Edge 20+
+				var isEdge = !isIE && !!window.StyleMedia;
+			
+				// Chrome 1+
+				var isChrome = !!window.chrome && !!window.chrome.webstore;
+			
+				// Blink engine detection
+				var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+				if(isFirefox == false || isChrome == false) {
+					alert("You are not using a compatible browser. Please switch to Mozilla Firefox or Google Chrome.");
+				}
+
+				if(typeof web3 == "undefined") {
+					alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser.");
+				}
+	
+			}
+
+			if (once_per_session==0){
+				loadalert()
+			}else{
+				alertornot()
+			}
+
+		
+</script>
+
+</head>
 <body>
 
 <!-- Sidebar/menu -->
@@ -173,40 +249,6 @@ function button(evt, tab){
   	document.getElementById(tab).style.display = "block";
   	
 }
-</script>
-<!-- Check browser - if its not firefox or chrome, then let the user know -->
-<script>
-    // Opera 8.0+
-    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-	
-		// Firefox 1.0+
-		var isFirefox = typeof InstallTrigger !== 'undefined';
-	
-		// Safari 3.0+ "[object HTMLElementConstructor]" 
-		var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
-	
-		// Internet Explorer 6-11
-		var isIE = /*@cc_on!@*/false || !!document.documentMode;
-	
-		// Edge 20+
-		var isEdge = !isIE && !!window.StyleMedia;
-	
-		// Chrome 1+
-		var isChrome = !!window.chrome && !!window.chrome.webstore;
-	
-		// Blink engine detection
-		var isBlink = (isChrome || isOpera) && !!window.CSS;
-
-		if(isFirefox == false || isChrome == false) {
-			alert("You are not using a compatible browser. Please switch to Mozilla Firefox or Google Chrome.");
-		}
-
-</script>
-
-<script>
-	if(typeof web3 == "undefined") {
-		alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser.");
-	}
 </script>
 
 </body>
