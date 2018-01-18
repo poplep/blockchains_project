@@ -155,12 +155,12 @@
 				// Blink engine detection
 				var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-				if(isFirefox == false || isChrome == false) {
-					alert("You are not using a compatible browser. Please switch to Mozilla Firefox or Google Chrome.");
+				if(isFirefox == false || isChrome == false || isOpera == false) {
+					alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
 				}
 
 				if(typeof web3 == "undefined") {
-					alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser.");
+					alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser. Install Metamask here: https://metamask.io");
 				}
 	
 			}
