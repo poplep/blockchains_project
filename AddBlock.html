@@ -138,11 +138,16 @@
 			<h1 style="color: white">Add Block</h1>
 		</div>
 		<div>
+
+	
 				<!-- Ask user for the data -->
 				<p>Enter your data as name, age, id number</p>
-				<p>Name: </p><input id="name" type="text">
-				<p>Age: </p><input id="id" type="text">
-				<p>ID: </p><input id="age" type="text">
+				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">Name:</a><br>
+				<input id="name" type="text"><br>
+				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Age of a student, employee, yourself." style="font-size:18px" style="color: black">Age:</a><br>
+				<input id="id" type="text"><br>
+				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: ID number of a student, employee, yourself." style="font-size:18px" style="color: black">ID:</a><br>
+				<input id="age" type="text">
 				<button id="button2"> Mine  </button>
 
 				<!-- Display the block that was mined to the user-->
@@ -154,7 +159,11 @@
 
 
 </div>
-
+<script>
+		$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();   
+		});
+		</script>
 <!Function to change page when button is pressed on home tab>
 <script>
 function button(evt, tab){

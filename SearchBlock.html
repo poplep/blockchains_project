@@ -136,7 +136,8 @@
 		<div class="w3-container" style= "margin-left:-1.5%" color= "rgb(49, 57, 77)">
 			<h1 style="color: white">Search for a Block</h1>
 		</div>
-		<p>Enter Hash: </p>
+		<br>
+		<a href="#" data-toggle="tooltip" data-placement="right" title="The transaction hash of the block that you just added." style="font-size:18px" style="color: black">Enter Hash:</a><br>
 		<form id='form-prompt'>
             <input type='text' id='textTest'>
                 <input type="submit" id="button2"/>
@@ -146,6 +147,12 @@
 		<pre id="output"></pre>
 		<pre id="output2"></pre>
 </div>
+
+<script>
+		$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();   
+		});
+		</script>
 <!-- Search History -->
 <script>
     var store = {
