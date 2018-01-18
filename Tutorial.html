@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<title>Blockchain UI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Importing Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!-- Style for the tile buttons -->
+<style>
+	div.gallery {
+		margin: 5px;
+		border: 1px solid #ccc;
+		float: left;
+		width: 1000px;
+	}
+	
+	div.gallery:hover {
+		border: 1px solid #777;
+	}
+	
+	div.gallery img {
+		width: 100%;
+		height: 500px;
+	}
+	
+	div.desc {
+		padding: 15px;
+		text-align: center;
+		background-color: rgb(49, 57, 77);
+		color: white;
+
+	}
+	</style>
+
+<!-- Overall Page Styling -->
+<style>
+	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
+	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif;};
+	a {font-size: 15px; font-family: 'Lato', sans-serif;};
+		.under { text-decoration: underline rgb(0, 0, 0);}
+		input[type=text], select {
+			width: 50%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+			
+		input[type=data], select {
+			width: 50%;
+			height: 150px;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;	
+		}
+	
+		input[type=submit] {
+			width: 50%;
+			background-color: rgb(49, 57, 77);
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	
+		input[type=submit]:hover {
+			background-color: rgb(49, 57, 77);
+		}
+		.button {
+			background-color: rgb(49, 57, 77); 
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		.button1 {font-size: 24px;}
+			
+		.w3-container {
+			background-color:rgb(49, 57, 77);
+		}
+		.w3-sidebar {
+			background-color:rgb(49, 57, 77);
+		}
+
+        body {
+            position: absolute; /*position: fixed;*/
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .displaypage {
+            position: absolute; /*position: fixed;*/
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+</style>
+<head>
+
+</head>
+<body>
+
+    <div id="displaypage"></div>
+<!-- Welcome Tutorial Window -->
+<div class="container">
+  
+	<!-- Modal Window -->
+	<div class="modal fade" id="Welcome" role="dialog">
+	  <div class="modal-dialog">
+	  
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Welcome to the Blockchain UI!</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
+				statistics about the blockchain. </p>
+
+		  </div>
+		  <div class="modal-footer">
+			<button class="btn btn-default" id="nextAdd" data-dismiss="modal">Continue</button>
+		  </div>
+		</div>
+		
+	  </div>
+	</div>
+	
+  </div>
+
+  <!-- AddBlock Tutorial Window -->
+<div class="container">
+  
+        <!-- Modal Window -->
+        <div class="modal fade" id="AddBlock" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Adding a Block</h4>
+              </div>
+              <div class="modal-body">
+                <p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
+                    statistics about the blockchain. </p>
+    
+                <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" id="nextSearch" data-dismiss="modal">Continue</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+
+  <!-- AddBlock Tutorial Window -->
+  <div class="container">
+  
+        <!-- Modal Window -->
+        <div class="modal fade" id="SearchBlock" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Searching for a Block</h4>
+              </div>
+              <div class="modal-body">
+                <p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
+                    statistics about the blockchain. </p>
+    
+                <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
+              </div>
+              <div class="modal-footer">
+               </a><button class="btn btn-default" id="nextView" data-dismiss="modal">Continue</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      <!-- Welcome Tutorial Window -->
+<div class="container">
+  
+        <!-- Modal Window -->
+        <div class="modal fade" id="ViewBlock" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Viewing the Blockchain</h4>
+              </div>
+              <div class="modal-body">
+                <p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
+                    statistics about the blockchain. </p>
+    
+                <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" id="nextStats" data-dismiss="modal">Continue</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+<!-- Welcome Tutorial Window -->
+<div class="container">
+  
+        <!-- Modal Window -->
+        <div class="modal fade" id="BlockStats" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Viewing Blockchain Statistics</h4>
+              </div>
+              <div class="modal-body">
+                <p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
+                    statistics about the blockchain. </p>
+    
+                <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
+              </div>
+              <div class="modal-footer">
+               <button class="btn btn-default" data-dismiss="modal">Exit</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+
+<div id="displaypage"></div>
+
+<!Function to change page when button is pressed on home tab>
+<script>
+function button(evt, tab){
+	
+	var i, x, tablinks;
+	x = document.getElementsByClassName("tab");
+	for (i = 0; i < x.length; i++) {
+     		x[i].style.display = "none";
+  	}
+  	tablinks = document.getElementsByClassName("tablink");
+  	for (i = 0; i < x.length; i++) {
+      		tablinks[i].className = tablinks[i].className.replace("", ""); 
+  	}
+  	document.getElementById(tab).style.display = "block";
+  	
+}
+</script>
+
+<script>
+    //load home page
+     $("#displaypage").load("HomePage.html");
+ 
+    //display welcome modal and when user clicks continue, go to add block page  
+    setTimeout(function(){  
+        $("#Welcome").modal("show").on("click", function () {
+                $("#displaypage").load("addBlock.html");
+
+                    $("#AddBlock").modal("show").on("click", function () {
+                        $("#AddBlock").modal("hide");
+                        $("#displaypage").load("SearchBlock.html");
+
+                        $("#SearchBlock").modal("show").on("click", function () {
+                            $("#SearchBlock").modal("hide");
+                            $("#displaypage").load("Viewblock.html");
+
+                            $("#ViewBlock").modal("show").on("click", function () {
+                                $("#ViewBlock").modal("hide");
+                                $("#displaypage").load("BlockStats.html");
+
+                                
+                            $("#BlockStats").modal("show").on("click", function () {
+                                $("#BlockStats").modal("hide");
+                                window.location.replace("HomePage.html");
+                            });
+                         });
+                    });
+                 });
+
+
+        });
+    }, 1000);
+
+</script>
+</body>
+</html>
