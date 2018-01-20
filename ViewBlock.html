@@ -3,7 +3,14 @@
 <title>Blockchain UI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+<!-- Importing Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 
 <!-- Style for the tile buttons -->
 <style>
@@ -31,8 +38,9 @@
 
 <!-- Overall Page Styling -->
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Quicksand', sans-serif;}
-	p,a, h5, pre {font-size: 23px; font-family: 'Quicksand', sans-serif;};
+	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
+	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif;};
+	a {font-size: 15px; font-family: 'Lato', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
 			width: 50%;
@@ -87,35 +95,40 @@
 		.w3-sidebar {
 			background-color:rgb(49, 57, 77);
 		}
-
 		pre {
 			word-wrap: break-word;
 		}
 </style>
-
+<head></head>
 <body>
 
 <!-- Sidebar/menu -->
 <div position = "absolute">
-	<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
-		<div>
-		  <h5 class="w3-bar-block" style="color: white">Main Menu</h5>
-		</div>
-		<div class="w3-bar-block">
-			<a href="HomePage.html" style="color: white"><button class="w3-bar-item w3-button tablink">Home</button></a>
-			<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
-			<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
-			<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
-			<a href="ViewBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain</button></a>
-			<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
-			<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
-			<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
-			<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
-			<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
-			<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a><br><br>
-		</div>
-	  </nav>
-	  </div>
+		<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
+			<div><h5 class="w3-bar-block" style="color: white">Main Menu</h5></div>
+			<div class="w3-bar-block">
+				<a href="HomePage.html" style="color: white"><button class="w3-bar-item w3-button tablink">Home</button></a>
+	
+				<div><h5 class="w3-bar-block" style="color: white">About Blockchains</h5></div>
+				<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
+				<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
+				<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
+				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
+	
+				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
+				<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
+				<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
+				<a href="ViewBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain</button></a>
+				<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
+	
+		
+				<div><h5 class="w3-bar-block" style="color: white">Help Section</h5></div>
+				<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
+				<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
+				<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
+			</div>
+		  </nav>
+		  </div>
 
 <!Each Page>
 <div style="margin-left:13%" style="width:100vw" position ="fixed" >
@@ -123,50 +136,44 @@
 		<div class="w3-container" style= "margin-left:-1.5%" color= "rgb(49, 57, 77)">
 			<h1 style="color: white">View your Blockchain</h1>
 		</div>
-		<p>Enter Hash: </p><input id="search" type="text">
-		<button id="button2"> Find Block  </button>
-		<p>Once you add the block, it will be displayed below:</p>
-		<pre id="output">
-
-		</pre>
-		<pre id="output2">
-			
-							</pre>
+	<p>Under construction</p>
 </div>
 
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 		//click handler for button
-		button2.addEventListener('click', function() {
-			web3.eth.getTransaction(search.value, function(error, result){
-						if(!error){
-							trans = result;
-							console.log(trans.blockHash);
-							transValue = getTransaction();
-						}
-						else{}
-							//console.error(error);
-					})
-					function getTransaction(){
-						if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
-							block = web3.eth.getBlock(trans.blockHash, function(error, result){
-											if(!error){
-												for(const [key, value] of Object.entries(result)) {
-													output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+			button2.addEventListener('click', function() {
+				web3.eth.getTransaction(search.value, function(error, result){
+							if(!error){
+								trans = result;
+								console.log(trans.blockHash);
+								transValue = getTransaction();
+							}
+							else{alert("We couldn't find the block. Please try again.");}
+								//console.error(error);
+						})
+						function getTransaction(){
+							if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+								block = web3.eth.getBlock(trans.blockHash, function(error, result){
+												if(!error){
+													for(const [key, value] of Object.entries(result)) {
+														output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+													}
+													
+													console.log(result);
+												}	
+											else{
+													alert("We couldn't find the block. Please try again.");
+													console.error(error);
 												}
-												
-												console.log(result)
-											}	
-										else{
-												console.error(error);
-											}
-									});
-									return 1;
-						} else {
-							return 0;
+										});
+										return 1;
+							} else {
+								alert("We couldn't find the block. Please try again.");
+								return 0;
+							}
 						}
-					}
-		})
+			})
 </script>
 
 <!Function to change page when button is pressed on home tab>
@@ -188,7 +195,6 @@ function button(evt, tab){
   	
 }
 </script>
-
 
 
 
