@@ -114,6 +114,12 @@
 			word-wrap: break-word;
 			width: 95%;
 		}
+		.block {
+			margin: 5px;
+			border: 1px solid #ccc;
+			float: left;
+			width: 525px;
+		}
 </style>
 <head></head>
 <body onload="testBlock()">
@@ -153,7 +159,8 @@
 			<h1 style="color: white">View your Blockchain</h1>
 		</div>
 		
-		<div class="block">	
+
+		<div class="block"  id="duplicater0">	
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: white">Difficulty:</a><br>
 			<pre id="difficulty"></pre><br>
 
@@ -214,9 +221,7 @@
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: white">uncles:</a><br>
 			<pre id="uncles" type="text"></pre><br>
 			</div>
-		
-		
-		
+
 		
 </div>
 <!-- Tooltip script-->
@@ -325,18 +330,43 @@ function button(evt, tab){
 		$('#totalDifficulty').text(totalDifficulty); 
 		$('#transactions').text(transactions); 
 		$('#transactionsRoot').text(transactionsRoot); 
-		$('#uncles').text(uncles); 
+		$('#uncles').text(uncles); 		
 	}
 
+
+
+
+	var i = 0;
+	function duplicate() {
+		var original = document.getElementById('duplicater' + i);
+		var clone = original.cloneNode(true); // "deep" clone
+		clone.id = "duplicater" + ++i; // there can only be one element with an ID
+		clone.onclick = duplicate; // event handlers are not cloned
+		original.parentNode.appendChild(clone);
+	}
 	function testBlock() {
 		//sample block (pulled from previous blockchain)
 		//change this to be pulled from blockchain (manually set for testing)
+		var blockchain_count = 5;
+		while(blockchain_count > 0) {
+			duplicate();
+			blockchain_count--;
+		}
 		newBlock(584472,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+
+		newBlock(1,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+
+		newBlock(2,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+
+		newBlock(3,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+
 	}
 
 	
 
 
 </script>
+
+
 </body>
 </html>
