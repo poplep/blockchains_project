@@ -152,13 +152,24 @@
 				// Chrome 1+
 				var isChrome = !!window.chrome && !!window.chrome.webstore;
 			
+				// Chromium (checks if there are any chromium plugins present that wouldnt be in chrome)
+				var isChromium = function isChromium(){ 
+
+						for (var i = 0, u="Chromium", l =u.length; i < navigator.plugins.length; i++)
+						{
+							if (navigator.plugins[i].name != null && navigator.plugins[i].name.substr(0, l) === u)
+								return true;
+						}
+
+						return false;
+					}
 				// Blink engine detection
 				var isBlink = (isChrome || isOpera) && !!window.CSS;
-
+				// if the user isnt using firefox, chrome, or opera
 				if(isFirefox == false || isChrome == false || isOpera == false) {
 					alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
 				}
-
+				//if metamask isnt installed
 				if(typeof web3 == "undefined") {
 					alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser. Install Metamask here: https://metamask.io");
 				}
