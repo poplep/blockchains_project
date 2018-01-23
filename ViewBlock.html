@@ -36,6 +36,8 @@
 	}
 	</style>
 
+<!-- Styling for blocks -->
+
 <!-- Overall Page Styling -->
 <style>
 	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
@@ -217,6 +219,30 @@ function setup (block, chain) {
 		
 }
 </script>
+<!-- gets all details about the block-->
+<script>
+//this function gets the transaction hash of the block that was mined by the user
+function getTransaction(){
+	if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+		block = web3.eth.getBlock(trans.blockHash, function(error, result){
+						if(!error){
+							for(const [key, value] of Object.entries(result)) {
+								//instead of printing this line by line, restructure so it is displayed in the blocks
+								output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+							}
+							
+							console.log(result);
+					}	else{
+							alert("We could not retrieve the transaction hash successfully. Please try again.");
+							console.error(error);
+						}
+				});
+				return 1;
+	} else {
+		return 0;
+			}
+	}
 
+</script>
 </body>
 </html>
