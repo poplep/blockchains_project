@@ -38,22 +38,27 @@
 
 <!-- Styling for blocks -->
 <style>
-	.blockchain_block {
-		width: 150px;
-		height: 75px;
+	.block {
+		width: 400px;
+		height: 500px;
 		margin: 10px;
-		border: 3px solid black; 
+		border: 2px solid rgb(49, 57, 77);
+		border-radius: 10px;
+		background-color:rgb(49, 57, 77);
+		font-family: 'Lato', sans-serif;
+		overflow: scroll;
+		color: black;
 	}
 
 </style>
 <!-- Overall Page Styling -->
 <style>
 	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
-	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif;};
+	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif; color: black};
 	a {font-size: 15px; font-family: 'Lato', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
-			width: 50%;
+			width: 95%;
 			padding: 12px 20px;
 			margin: 8px 0;
 			display: inline-block;
@@ -63,7 +68,7 @@
 		}
 			
 		input[type=data], select {
-			width: 50%;
+			width: 95%;
 			height: 150px;
 			padding: 12px 20px;
 			margin: 8px 0;
@@ -110,7 +115,7 @@
 		}
 </style>
 <head></head>
-<body>
+<body onload="testBlock()">
 
 <!-- Sidebar/menu -->
 <div position = "absolute">
@@ -146,9 +151,79 @@
 		<div class="w3-container" style= "margin-left:-1.5%" color= "rgb(49, 57, 77)">
 			<h1 style="color: white">View your Blockchain</h1>
 		</div>
-	<p>Under construction</p>
-</div>
+		<div id="block" class="block">
+				
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">Difficulty:</a><br>
+				<pre id="difficulty"></pre><br>
 
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">extraData:</a><br>
+				<pre id="extraData"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">gasLimit:</a><br>
+				<pre id="gasLimit" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">gasUsed:</a><br>
+				<pre id="gasUsed" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">hash:</a><br>
+				<pre id="hash" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">logsBloom:</a><br>
+				<pre id="logsBloom" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">miner:</a><br>
+				<pre id="miner" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">mixHash:</a><br>
+				<pre id="mixHash" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">nonce:</a><br>
+				<pre id="nonce" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">number:</a><br>
+				<pre id="number" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">parentHash:</a><br>
+				<pre id="parentHash" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">receiptsRoot:</a><br>
+				<pre id="receiptsRoot" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">sha3Uncles:</a><br>
+				<pre id="sha3Uncles" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">size:</a><br>
+				<pre id="size" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">stateRoot:</a><br>
+				<pre id="stateRoot" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">timestamp:</a><br>
+				<pre id="timestamp" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">totalDifficulty:</a><br>
+				<pre id="totalDifficulty" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">transactions:</a><br>
+				<pre id="transactions" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">transactionsRoot:</a><br>
+				<pre id="transactionsRoot" type="text"></pre><br>
+
+				<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">uncles:</a><br>
+				<pre id="uncles" type="text"></pre><br>
+
+			
+		</div>
+		
+		
+</div>
+<!-- Tooltip script-->
+<script>
+		$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();   
+		});
+		</script>
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 		//click handler for button
@@ -206,50 +281,85 @@ function button(evt, tab){
 }
 </script>
 
-<!-- Script to generate blocks from the blockchain -->
+<!-- Javascript Block Creation for Viewing Blocks on Chain -->
 <script>
-//get the first 5 blocks in the chain
-function() {
-	setup(1,1);
-	setup(2,1);
-	setup(3,1);
-	setup(4,1);
-	setup(5,1);
-}
-
-//get the values for each block
-function getValues(block, chain) {
-	//use getters from solidity to get the values
-}
-
-//setup function
-function setup (block, chain) {
-		
-}
-</script>
-<!-- gets all details about the block-->
-<script>
-//this function gets the transaction hash of the block that was mined by the user
-function getTransaction(){
-	if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
-		block = web3.eth.getBlock(trans.blockHash, function(error, result){
-						if(!error){
-							for(const [key, value] of Object.entries(result)) {
-								//instead of printing this line by line, restructure so it is displayed in the blocks
-								output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
-							}
-							
-							console.log(result);
-					}	else{
-							alert("We could not retrieve the transaction hash successfully. Please try again.");
-							console.error(error);
-						}
-				});
-				return 1;
-	} else {
-		return 0;
-			}
+	var block = document.getElementById('block');
+	var difficulty = document.getElementById('block').getElementById('difficulty');
+	var extraData  = document.getElementById('block').getElementById('extraData');
+	var gasLimit = document.getElementById('block').getElementById("gasLimit");
+	var gasUsed = document.getElementById('block').getElementById('gasUsed');
+	var hash = document.getElementById('block').getElementById('hash');
+	var logsBloom = document.getElementById('block').getElementById('logsBloom');
+	var miner = document.getElementById('block').getElementById('miner');
+	var mixHash = document.getElementById('block').getElementById('mixHash');
+	var nonce = document.getElementById('block').getElementById('nonce');
+	var number = document.getElementById('block').getElementById('number');
+	var parentHash = document.getElementById('block').getElementById('parentHash');
+	var receiptsRoot = document.getElementById('block').getElementById('receiptsRoot');
+	var sha3Uncles = document.getElementById('block').getElementById('sha3Uncles');
+	var size = document.getElementById('block').getElementById('size');
+	var stateRoot = document.getElementById('block').getElementById('stateRoot');
+	var timestamp = document.getElementById('block').getElementById('timestamp');
+	var totalDifficulty = document.getElementById('block').getElementById('totalDifficulty');
+	var transactions = document.getElementById('block').getElementById('transactions');
+	var transactionsRoot = document.getElementById('block').getElementById('transactionsRoot');
+	var uncles = document.getElementById('block').getElementById('uncles');
+	//function to create a new block object to be displayed on page
+	function newBlock(difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+		this.difficulty = difficulty;
+		this.extraData = extraData;
+		this.gasLimit = gasLimit;
+		this.gasUsed = gasUsed;
+		this.hash = hash;
+		this.logsBloom = logsBloom;
+		this.miner = miner;
+		this.mixHash = mixHash;
+		this.nonce = nonce;
+		this.number = number;
+		this.parentHash = parentHash;
+		this.receiptsRoot = receiptsRoot;
+		this.sha3Uncles = sha3Uncles;
+		this.size = size;
+		this.stateRoot = stateRoot;
+		this.timestamp = timestamp;
+		this.totalDifficulty = totalDifficulty;
+		this.transactions = transactions;
+		this.transactionsRoot = transactionsRoot;
+		this.uncles = uncles;
 	}
+
+	function displayBlock(newBlock) {
+		difficulty.innerHTML = this.difficulty;
+		extraData.innerHTML = this.extraData;
+		gasLimit.innerHTML = this.gasLimit;
+		gasUsed.innerHTML = this.gasUsed;
+		hash.innerHTML = this.hash;
+		logsBloom.innerHTML = this.logsBloom;
+		miner.innerHTML = this.miner;
+		mixHash.innerHTML = this.mixHash;
+		nonce.innerHTML = this.nonce;
+		number.innerHTML =  this.number;
+		parentHash.innerHTML = this.parentHash;
+		receiptsRoot.innerHTML = this.receiptsRoot;
+		sha3Uncles.innerHTML = this.sha3Uncles;
+		size.innerHTML = this.size;
+		stateRoot.innerHTML = this.stateRoot;
+		timeStamp.innerHTML = this.timestamp;
+		totalDifficulty.innerHTML = this.totalDifficulty;
+		transactions.innerHTML = this.transactions;
+		transactionsRoot.innerHTML = this.transactionsRoot;
+		uncles.innerHTML =  this.uncles;
+	}
+
+	function testBlock() {
+		//sample block (pulled from previous blockchain)
+		//change this to be pulled from blockchain (manually set for testing)
+		newBlock(584472,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		displayBlock(newBlock);
+	}
+
+	
+
 
 </script>
 </body>
