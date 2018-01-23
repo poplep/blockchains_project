@@ -284,7 +284,7 @@ function button(evt, tab){
 <!-- Javascript Block Creation for Viewing Blocks on Chain -->
 <script>
 	var block = document.getElementById('block');
-	var difficulty = document.getElementById('block').getElementById('difficulty');
+	var difficulty = document.getElementById('block').getElementsByTagName('div')[0];
 	var extraData  = document.getElementById('block').getElementById('extraData');
 	var gasLimit = document.getElementById('block').getElementById("gasLimit");
 	var gasUsed = document.getElementById('block').getElementById('gasUsed');
