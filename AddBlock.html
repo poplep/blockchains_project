@@ -98,6 +98,21 @@
 		pre {
 			word-wrap: break-word;
 		}
+
+		.block {
+			width: 400px;
+			height: 500px;
+			padding: 10px;
+			float:left;
+			border: 2px solid rgb(49, 57, 77);
+			border-radius: 10px;
+			background-color:rgb(49, 57, 77);
+			font-family: 'Lato', sans-serif;
+			overflow: scroll;
+			color: black;
+			margin:10px;
+
+	}
 </style>
 <head></head>
 <body>
@@ -151,9 +166,68 @@
 				<button id="button2"> Mine  </button>
 
 				<!-- Display the block that was mined to the user-->
-				<p>Once you add the block, it will be displayed below:</p>
-				<pre id="output"></pre>
-				<pre id="output2"></pre>
+				<br><br>
+				<div class="block"  id="duplicater0">	
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
+					<pre id="difficulty0"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
+					<pre id="extraData0"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
+					<pre id="gasLimit0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
+					<pre id="gasUsed0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
+					<pre id="hash0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
+					<pre id="logsBloom0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
+					<pre id="miner0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
+					<pre id="mixHash0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
+					<pre id="nonce0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
+					<pre id="number0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
+					<pre id="parentHash0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
+					<pre id="receiptsRoot0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
+					<pre id="sha3Uncles0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
+					<pre id="size0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
+					<pre id="stateRoot0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
+					<pre id="timestamp0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
+					<pre id="totalDifficulty0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
+					<pre id="transactions0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
+					<pre id="transactionsRoot0" type="text"></pre><br>
+		
+					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
+					<pre id="uncles0" type="text"></pre><br>
+					</div>
 
 		</div>
 
@@ -353,16 +427,17 @@ function button(evt, tab){
 							//console.error(error);
 					})
 				//}
-
+					var elements = [];
 				//this function gets the transaction hash of the block that was mined by the user
 				function getTransaction(){
 				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
 					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
 									if(!error){
 										for(const [key, value] of Object.entries(result)) {
-											output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+											elements.push(value);
+											//output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
 										}
-					 					
+					 					newBlock(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
 										console.log(result);
 								}	else{
 										alert("We could not retrieve the transaction hash successfully. Please try again.");
@@ -433,6 +508,59 @@ function button(evt, tab){
 				})
 				console.log(AGE);
 		});
+
+	var difficulty = document.getElementById("difficulty");
+	var extraData  = document.getElementById("extraData");
+	var gasLimit = document.getElementById("gasLimit");
+	var gasUsed = document.getElementById('gasUsed');
+	var hash = document.getElementById('hash');
+	var logsBloom = document.getElementById('logsBloom');
+	var miner = document.getElementById('miner');
+	var mixHash = document.getElementById('mixHash');
+	var nonce = document.getElementById('nonce');
+	var number = document.getElementById('number');
+	var parentHash = document.getElementById('parentHash');
+	var receiptsRoot = document.getElementById('receiptsRoot');
+	var sha3Uncles = document.getElementById('sha3Uncles');
+	var size = document.getElementById('size');
+	var stateRoot = document.getElementById('stateRoot');
+	var timestamp = document.getElementById('timestamp');
+	var totalDifficulty = document.getElementById('totalDifficulty');
+	var transactions = document.getElementById('transactions');
+	var transactionsRoot = document.getElementById('transactionsRoot');
+	var uncles = document.getElementById('uncles');
+	//function to create a new block object to be displayed on page
+	var i = 0;
+	function newBlock(difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+		$('#difficulty' + i).text(difficulty); 
+		$('#extraData'+ i).text(extraData); 
+		$('#gasLimit'+ i).text(gasLimit); 
+		$('#gasUsed'+ i).text(gasUsed); 
+		$('#hash'+ i).text(hash); 
+		$('#logsBloom'+ i).text(logsBloom); 
+		$('#miner'+ i).text(miner); 
+		$('#mixHash'+ i).text(mixHash); 
+		$('#nonce'+ i).text(nonce); 
+		$('#number'+ i).text(number); 
+		$('#parentHash'+ i).text(parentHash); 
+		$('#receiptsRoot'+ i).text(receiptsRoot); 
+		$('#sha3Uncles'+ i).text(sha3Uncles); 
+		$('#size'+ i).text(size); 
+		$('#stateRoot'+ i).text(stateRoot); 
+		$('#timestamp'+ i).text(timestamp); 
+		$('#totalDifficulty'+ i).text(totalDifficulty); 
+		$('#transactions'+ i).text(transactions); 
+		$('#transactionsRoot'+ i).text(transactionsRoot); 
+		$('#uncles'+ i).text(uncles); 		
+	}
+
+
+
+
+	
+
+
+
 	</script>
 
 
