@@ -1,9 +1,9 @@
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract'
 
-import addblock_artifacts from '../../build/contracts/AddBlock.json'
+import savedata_artifacts from '../../build/contracts/SaveData.json'
 
-var AddBlock = contract(addblock_artifacts);
+var SaveData = contract(savedata_artifacts);
 
 window.App = {
 	start: function(){
