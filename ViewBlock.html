@@ -341,16 +341,40 @@
 					  }]);
 					var view = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
 					
+				//temporary key number to avoid early zeros
 				key = 55;
 				var ID = [];
-				view.getID(key, function(worked, result){
-					if(!worked){
-						console.log(result);
-						ID = result.c[0];
-					}else
-						console.error(worked);
-				})
-				console.log(ID);
+				var age = [];
+				var name1 = [];
+				function viewingBlockID(key) {	
+					view.getID(key, function(worked, result){
+						if(result.c["0"]){
+							console.log(result.c["0"]);
+							ID.push(result.c["0"]);
+							viewingBlockAge(key);
+							viewingBlockName(key);
+							viewingBlockID(key + 1);
+						}else{
+							console.log("All keys found");
+							//TODO: call method that will draw blocks for user here!!!
+						}
+					})
+				}
+				function viewingBlockAge(key) {
+					view.getAge(key, function(worked, result){
+							console.log(result.c["0"]);
+							age.push(result.c["0"]);
+							})
+				}
+				function viewingBlockName(key) {
+					view.getName(key, function(worked, result){
+							console.log(result);
+							console.log(web3.toAscii(result));
+							name1.push(web3.toAscii(result));
+							})
+				}
+				viewingBlockID(key);
+				
 
 </script>
 

@@ -305,6 +305,7 @@ function button(evt, tab){
 		var hash;
 		var trans;
 		var block;
+		name = web3.fromAscii(name);
 		//click handler for button
 		button.addEventListener('click', function() {
 			//take value in the input and send it via contract
