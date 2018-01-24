@@ -342,7 +342,7 @@ function button(evt, tab){
 		var original = document.getElementById('duplicater' + i);
 		var clone = original.cloneNode(true); // "deep" clone
 		clone.id = "duplicater" + ++i; // there can only be one element with an ID
-		clone.onclick = duplicate; // event handlers are not cloned
+	
 		//update IDs of children pre fields
 		clone.getElementsByTagName('pre')[0].id = "difficulty" + i;
 		clone.getElementsByTagName('pre')[1].id = "extraData" + i;
@@ -365,7 +365,7 @@ function button(evt, tab){
 		clone.getElementsByTagName('pre')[18].id = "transactionsRoot" + i;
 		clone.getElementsByTagName('pre')[19].id = "uncles" + i;
 
-		original.parentNode.appendChild(clone);
+		original.parentNode.appendChild(clone); // appends child div to previous parent div
 	}
 	function testBlock() {
 		//sample block (pulled from previous blockchain)
