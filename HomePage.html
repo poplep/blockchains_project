@@ -134,24 +134,36 @@
 			}
 
 			function loadalert(){
-				// Opera 8.0+
-				var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-		
-				// Firefox 1.0+
-				var isFirefox = typeof InstallTrigger !== 'undefined';
-			
-				// Safari 3.0+ "[object HTMLElementConstructor]" 
-				var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
-			
-				// Internet Explorer 6-11
-				var isIE = /*@cc_on!@*/false || !!document.documentMode;
-			
+
+				 //Check if browser is IE
+				 if (navigator.userAgent.search("MSIE") >= 0) {
+					// insert conditional IE code here
+					var isIE = true;
+				}
+				//Check if browser is Chrome
+				else if (navigator.userAgent.search("Chrome") >= 0) {
+					// insert conditional Chrome code here
+					var isChrome = true;
+				}
+				//Check if browser is Firefox 
+				else if (navigator.userAgent.search("Firefox") >= 0) {
+					// insert conditional Firefox Code here
+					var isFirefox = true;
+				}
+				//Check if browser is Safari
+				else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+					// insert conditional Safari code here
+					var isSafari = true;
+				}
+				//Check if browser is Opera
+				else if (navigator.userAgent.search("Opera") >= 0) {
+					// insert conditional Opera code here
+					var isOpera = true;
+				}
+
 				// Edge 20+
 				var isEdge = !isIE && !!window.StyleMedia;
-			
-				// Chrome 1+
-				var isChrome = !!window.chrome && !!window.chrome.webstore;
-			
+
 				// Chromium (checks if there are any chromium plugins present that wouldnt be in chrome)
 				var isChromium = function isChromium(){ 
 
