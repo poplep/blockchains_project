@@ -291,15 +291,18 @@ function button(evt, tab){
                         $("#displaypage").load("SearchBlock.html");
 
                         $("#SearchBlock").modal("show").on("click", function () {
+                            $("#AddBlock").modal("hide");
                             $("#SearchBlock").modal("hide");
                             $("#displaypage").load("Viewblock.html");
 
                             $("#ViewBlock").modal("show").on("click", function () {
+                                $("#SearchBlock").modal("hide");
                                 $("#ViewBlock").modal("hide");
                                 $("#displaypage").load("BlockStats.html");
 
                                 
                                 $("#BlockStats").modal("show").on("click", function () {
+                                    $("#ViewBlock").modal("hide");
                                     $("#BlockStats").modal("hide");
                                     window.location.replace("HomePage.html");
                                 });
