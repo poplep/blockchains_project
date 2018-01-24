@@ -1,7 +1,7 @@
 {
 	"name": "blockchains",
 	"version": "1.0.0",
-	"description": "Some project",
+	"description": "Project that lets users interact with the blockchain in a UI.",
 	"main": "truffle.js",
 	"directories": {
 	  "test": "test"
@@ -13,6 +13,7 @@
 	"author": "Me",
 	"license": "ISC",
 	"devDependencies": {
-	  "lite-server": "^2.3.0"
+		"lite-server": "^2.3.0",
+		"web3": "^0.19.1"
 	}
   }

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI - Add a Block</title>
+<head>
+	<!--Title, imports for CSS, Google Fonts, Web3, and Promisejs -->
+	<title>Blockchain UI - Add a Block</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<!-- Importing Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<script src="/dist/web3.min.js"></script>
+<script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <!-- Style for the tile buttons -->
 <style>
 	div.gallery {
@@ -33,119 +38,132 @@
 
 <!-- Overall Page Styling -->
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Oxygen', sans-serif;}
-
-	.under { text-decoration: underline rgb(0, 0, 0);}
-	input[type=text], select {
-		width: 50%;
-		padding: 12px 20px;
-		margin: 8px 0;
-		display: inline-block;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		box-sizing: border-box;
-	}
-		
-	input[type=data], select {
-		width: 50%;
-		height: 150px;
-		padding: 12px 20px;
-		margin: 8px 0;
-		display: inline-block;
-		border: 1px solid #ccc;
-		border-radius: 4px;	
-	}
-
-	input[type=submit] {
-		width: 50%;
-		background-color: rgb(49, 57, 77);
-		color: white;
-		padding: 14px 20px;
-		margin: 8px 0;
-		border: none;
-		border-radius: 4px;
-		cursor: pointer;
-	}
-
-	input[type=submit]:hover {
-		background-color: rgb(49, 57, 77);
-	}
-	.button {
-		background-color: rgb(49, 57, 77); 
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		margin: 4px 2px;
-		cursor: pointer;
-	}
-	.button1 {font-size: 24px;}
-		
-    .w3-container {
-		background-color:rgb(49, 57, 77);
-	}
-    .w3-sidebar {
-        background-color:rgb(49, 57, 77);
-    }
+	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
+	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif;};
+	a {font-size: 15px; font-family: 'Lato', sans-serif;};
+		.under { text-decoration: underline rgb(0, 0, 0);}
+		input[type=text], select {
+			width: 50%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+			
+		input[type=data], select {
+			width: 50%;
+			height: 150px;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;	
+		}
+	
+		input[type=submit] {
+			width: 50%;
+			background-color: rgb(49, 57, 77);
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	
+		input[type=submit]:hover {
+			background-color: rgb(49, 57, 77);
+		}
+		.button {
+			background-color: rgb(49, 57, 77); 
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		.button1 {font-size: 24px;}
+			
+		.w3-container {
+			background-color:rgb(49, 57, 77);
+		}
+		.w3-sidebar {
+			background-color:rgb(49, 57, 77);
+		}
+		pre {
+			word-wrap: break-word;
+		}
 </style>
-
+<head></head>
 <body>
 
 <!-- Sidebar/menu -->
 <div position = "absolute">
-<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 250px" id="mySidebar"><br>
-	<div>
-	  <h5 class="w3-bar-block" style="color: white">Main Menu</h5>
-	</div>
-	<div class="w3-bar-block">
-		<a href="HomePage.html" style="color: white"><button class="w3-bar-item w3-button tablink">Home</button></a>
-		<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
-		<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
-		<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
-		<a href="ViewBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain</button></a>
-		<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
-		<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
-		<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
-		<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
-		<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
-		<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a><br><br>
-	</div>
-  </nav>
-  </div>
-<div style="margin-left:12%" style="width:100vw" position ="fixed" >
+		<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
+			<div><h5 class="w3-bar-block" style="color: white">Main Menu</h5></div>
+			<div class="w3-bar-block">
+				<a href="HomePage.html" style="color: white"><button class="w3-bar-item w3-button tablink">Home</button></a>
+	
+				<div><h5 class="w3-bar-block" style="color: white">About Blockchains</h5></div>
+				<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
+				<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
+				<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
+				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
+	
+				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
+				<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
+				<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
+				<a href="ViewBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain</button></a>
+				<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
+	
+		
+				<div><h5 class="w3-bar-block" style="color: white">Help Section</h5></div>
+				<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
+				<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
+				<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
+			</div>
+			</nav>
+			</div>
+	
+	<!-- Main Page Div-->
+<div style="margin-left:13%" style="width:100vw" position ="fixed" >
 	
 
 		<div class="w3-container" style= "margin-left:-1.5%" position ="fixed">
 			<h1 style="color: white">Add Block</h1>
 		</div>
 		<div>
-			<form action="/action_page.php">
-				<label for="Block#"></label>
-				<!--<script>[get the block number]</script>-->
 
-				<label for="Nonce"></label>
-				<!--<script>[get the nonce]</script>-->
+	
+				<!-- Ask user for the data -->
+				<p>Enter your data as name, age, id number</p>
+				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">Name:</a><br>
+				<input id="name" type="text"><br>
+				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Age of a student, employee, yourself." style="font-size:18px" style="color: black">Age:</a><br>
+				<input id="id" type="text"><br>
+				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: ID number of a student, employee, yourself." style="font-size:18px" style="color: black">ID:</a><br>
+				<input id="age" type="text">
+				<button id="button2"> Mine  </button>
 
-				<label for="Data"></label>
-				<input type="data" id="Data" name="Data" placeholder="Data">
-				<!-- send data to the blockchain to be mined --> 
-				
-				<label for="PreviousHash"></label>
-				<!--<script>[get the previous hash]</script>-->
-				
-				<label for="PreviousHash"></label>
-				<!--<script>[get the current hash]</script>-->
-				
-				<input type="Submit" value="Mine">
-			</form>
+				<!-- Display the block that was mined to the user-->
+				<p>Once you add the block, it will be displayed below:</p>
+				<pre id="output"></pre>
+				<pre id="output2"></pre>
+
 		</div>
 
 
 </div>
-
-
+<script>
+		$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();   
+		});
+		</script>
 <!Function to change page when button is pressed on home tab>
 <script>
 function button(evt, tab){
@@ -163,6 +181,256 @@ function button(evt, tab){
   	
 }
 </script>
+
+	<script>
+		var web3 =  new Web3(web3.currentProvider); //provider for web3
+		//web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
+		
+		//contract abi, pass json representation of contract to instance
+		var addBlockContract = web3.eth.contract([{
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "key",
+				"type": "uint256"
+			  }
+			],
+			"name": "getID",
+			"outputs": [
+			  {
+				"name": "",
+				"type": "uint256"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  },
+		  {
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "key",
+				"type": "uint256"
+			  }
+			],
+			"name": "getAge",
+			"outputs": [
+			  {
+				"name": "",
+				"type": "uint256"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  },
+		  {
+			"constant": false,
+			"inputs": [
+			  {
+				"name": "data",
+				"type": "bytes32"
+			  },
+			  {
+				"name": "uage",
+				"type": "uint8"
+			  },
+			  {
+				"name": "uid",
+				"type": "uint256"
+			  }
+			],
+			"name": "addData",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		  },
+		  {
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "key",
+				"type": "uint256"
+			  }
+			],
+			"name": "getName",
+			"outputs": [
+			  {
+				"name": "",
+				"type": "bytes32"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  },
+		  {
+			"constant": true,
+			"inputs": [
+			  {
+				"name": "",
+				"type": "uint256"
+			  }
+			],
+			"name": "blockchain",
+			"outputs": [
+			  {
+				"name": "age",
+				"type": "uint8"
+			  },
+			  {
+				"name": "id",
+				"type": "uint256"
+			  },
+			  {
+				"name": "name",
+				"type": "bytes32"
+			  }
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		  }]);
+		var addingBlock = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
+
+		//grabbing elements by element id and storing into variables
+		var name = document.getElementById('name');
+		var id = document.getElementById('id');
+		var age = document.getElementById('age');
+		var button = document.getElementById('button2');
+		var output = document.getElementById('output');
+		var output2 = document.getElementById('output2');
+		var hash;
+		var trans;
+		var block;
+		//click handler for button
+		button.addEventListener('click', function() {
+			//take value in the input and send it via contract
+
+				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){
+					if(!worked){
+						hash = result;
+						console.log(hash);
+						console.log(worked);
+						viewingBlock();
+					}else
+						console.error(worked);
+				})
+				
+				// get the block number and store it into a variable called number
+				var number = web3.eth.getBlockNumber(function(error, result){
+					if(!error)
+						console.log(result)
+					else
+						console.error(error);
+				})
+
+
+			// function for viewing the block
+			// this function is called after we add the block
+			function viewingBlock() {	
+				var transValue = 0;			
+				//while(transValue != 1){
+					web3.eth.getTransaction(hash, function(error, result){
+						if(!error){
+							trans = result;
+							console.log(trans.blockHash);
+							transValue = getTransaction();
+							if(transValue == 1){
+								return;
+							}
+							else {
+								viewingBlock();
+							}
+						}
+						else{}
+							//console.error(error);
+					})
+				//}
+
+				//this function gets the transaction hash of the block that was mined by the user
+				function getTransaction(){
+				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
+									if(!error){
+										for(const [key, value] of Object.entries(result)) {
+											output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+										}
+					 					
+										console.log(result);
+								}	else{
+										alert("We could not retrieve the transaction hash successfully. Please try again.");
+										console.error(error);
+									}
+							});
+							return 1;
+				} else {
+					return 0;
+				}
+				}
+			}
+				
+
+
+					//var filter = web3.eth.filter('latest', function(error, result){
+						//if(!error){
+							//var block = web3.eth.getBlock(result, function(error, result){
+							//		if(!error)
+						//				console.log(result)
+							//		else
+							//			console.error(error);
+							//});
+							//if(block.transactions.length > 0){
+								var printThis = "";
+									for(const [key, value] of Object.entries(block)) {
+										output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+									}
+							//}
+							//else
+							//console.log("Nothing here")
+						//}
+					//else
+						//console.error(error);
+					//});
+					
+						
+					
+				
+				//this function prints the block that was mined to the user
+				function register(blockSaved) {
+					var printThis = "";
+					for(const [key, value] of Object.entries(blockSaved)) {
+						printThis += "<br>" + `${key} ${value}`;
+					}
+				}
+
+				//this function gets the ID of the block that was mined
+				var num = addingBlock.getID(1, function(worked, result){
+					if(!worked){
+						//hash = result;
+						//console.log(hash);
+						console.log(result);
+						//viewingBlock();
+					}else
+						console.error(worked);
+				})
+				console.log(num);
+				//this function gets the age of the block that was mined
+				var AGE = addingBlock.getAge(1, function(worked, result){
+					if(!worked){
+						//hash = result;
+						//console.log(hash);
+						console.log(result);
+						//viewingBlock();
+					}else
+						console.error(worked);
+				})
+				console.log(AGE);
+		});
+	</script>
+
 
 </body>
 </html>
