@@ -234,39 +234,150 @@ a {font-size: 15px; font-family: 'Lato', sans-serif;};
 		</script>
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
-		//click handler for button
-			button2.addEventListener('click', function() {
-				web3.eth.getTransaction(search.value, function(error, result){
-							if(!error){
-								trans = result;
-								console.log(trans.blockHash);
-								transValue = getTransaction();
-							}
-							else{alert("We couldn't find the block. Please try again.");}
-								//console.error(error);
-						})
-						function getTransaction(){
-							if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
-								block = web3.eth.getBlock(trans.blockHash, function(error, result){
-												if(!error){
-													for(const [key, value] of Object.entries(result)) {
-														output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
-													}
-													
-													console.log(result);
-												}	
-											else{
-													alert("We couldn't find the block. Please try again.");
-													console.error(error);
-												}
-										});
-										return 1;
-							} else {
-								alert("We couldn't find the block. Please try again.");
-								return 0;
-							}
+	//contract abi, pass json representation of contract to instance
+	var addBlockContract = web3.eth.contract([{
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getID",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getAge",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": false,
+						"inputs": [
+						  {
+							"name": "data",
+							"type": "bytes32"
+						  },
+						  {
+							"name": "uage",
+							"type": "uint8"
+						  },
+						  {
+							"name": "uid",
+							"type": "uint256"
+						  }
+						],
+						"name": "addData",
+						"outputs": [],
+						"payable": true,
+						"stateMutability": "payable",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getName",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "bytes32"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"name": "blockchain",
+						"outputs": [
+						  {
+							"name": "age",
+							"type": "uint8"
+						  },
+						  {
+							"name": "id",
+							"type": "uint256"
+						  },
+						  {
+							"name": "name",
+							"type": "bytes32"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  }]);
+					var view = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
+					
+				//temporary key number to avoid early zeros
+				key = 55;
+				var ID = [];
+				var age = [];
+				var name1 = [];
+				function viewingBlockID(key) {	
+					view.getID(key, function(worked, result){
+						if(result.c["0"]){
+							console.log(result.c["0"]);
+							ID.push(result.c["0"]);
+							viewingBlockAge(key);
+							viewingBlockName(key);
+							viewingBlockID(key + 1);
+						}else{
+							console.log("All keys found");
+							//TODO: call method that will draw blocks for user here!!!
 						}
-			})
+					})
+				}
+				function viewingBlockAge(key) {
+					view.getAge(key, function(worked, result){
+							console.log(result.c["0"]);
+							age.push(result.c["0"]);
+							})
+				}
+				function viewingBlockName(key) {
+					view.getName(key, function(worked, result){
+							console.log(result);
+							console.log(web3.toAscii(result));
+							name1.push(web3.toAscii(result));
+							})
+				}
+				viewingBlockID(key);
+				
+
 </script>
 
 <!Function to change page when button is pressed on home tab>
