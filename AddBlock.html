@@ -309,7 +309,7 @@ function button(evt, tab){
 		//click handler for button
 		button.addEventListener('click', function() {
 			//take value in the input and send it via contract
-
+			try {
 				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){
 					if(!worked){
 						hash = result;
@@ -319,6 +319,9 @@ function button(evt, tab){
 					}else
 						console.error(worked);
 				})
+			}catch(e){
+				alert("Could not add your data as a block. Please make sure you entered numbers for the age and ID and a string of characters for the name.");
+			}
 				
 				// get the block number and store it into a variable called number
 				var number = web3.eth.getBlockNumber(function(error, result){
