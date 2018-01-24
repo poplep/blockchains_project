@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<title>Blockchain UI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Importing Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<!-- Style for the tile buttons -->
+<style>
+	div.gallery {
+		margin: 5px;
+		border: 1px solid #ccc;
+		float: left;
+		width: 300px;
+	}
+	
+	div.gallery:hover {
+		border: 1px solid #777;
+	}
+	
+	div.gallery img {
+		width: 100%;
+		height: auto;
+	}
+	
+	div.desc {
+		padding: 15px;
+		text-align: center;
+	}
+	</style>
+
+<!-- Styling for blocks -->
+<style>
+	.block {
+		width: 400px;
+		height: 500px;
+		padding: 10px;
+		float:left;
+		border: 2px solid rgb(49, 57, 77);
+		border-radius: 10px;
+		background-color:rgb(49, 57, 77);
+		font-family: 'Lato', sans-serif;
+		overflow: scroll;
+		color: black;
+		margin:10px;
+
+	}
+
+</style>
+<!-- Overall Page Styling -->
+<style>
+	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif; color: black};
+	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif; color: black};
+	a {font-size: 15px; font-family: 'Lato', sans-serif;};
+		.under { text-decoration: underline rgb(0, 0, 0);}
+		input[type=text], select {
+			width: 90%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+			
+		input[type=data], select {
+			width: 90%;
+			height: 150px;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;	
+		}
+	
+		input[type=submit] {
+			width: 50%;
+			background-color: rgb(49, 57, 77);
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	
+		input[type=submit]:hover {
+			background-color: rgb(49, 57, 77);
+		}
+		.button {
+			background-color: rgb(49, 57, 77); 
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		.button1 {font-size: 24px;}
+			
+		.w3-container {
+			background-color:rgb(49, 57, 77);
+		}
+		.w3-sidebar {
+			background-color:rgb(49, 57, 77);
+		}
+		pre {
+			word-wrap: break-word;
+			width: 95%;
+		}
+
+
+</style>
+<head></head>
+<body onload="testBlock()">
+
+<!-- Sidebar/menu -->
+<div position = "absolute">
+		<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
+			<div><h5 class="w3-bar-block" style="color: white">Main Menu</h5></div>
+			<div class="w3-bar-block">
+				<a href="HomePage.html" style="color: white"><button class="w3-bar-item w3-button tablink">Home</button></a>
+	
+				<div><h5 class="w3-bar-block" style="color: white">About Blockchains</h5></div>
+				<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
+				<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
+				<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
+				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
+	
+				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
+				<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
+				<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
+				<a href="ViewBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain</button></a>
+				<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
+	
+		
+				<div><h5 class="w3-bar-block" style="color: white">Help Section</h5></div>
+				<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
+				<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
+				<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
+			</div>
+		  </nav>
+		  </div>
+
+<!Each Page>
+<div style="margin-left:13%" style="width:100vw" position ="fixed" >
+	
+		<div class="w3-container" style= "margin-left:-1.5%" color= "rgb(49, 57, 77)">
+			<h1 style="color: white">View your Blockchain</h1>
+		</div>
+		
+
+		<div class="block"  id="duplicater0">	
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
+			<pre id="difficulty0"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
+			<pre id="extraData0"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
+			<pre id="gasLimit0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
+			<pre id="gasUsed0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
+			<pre id="hash0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
+			<pre id="logsBloom0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
+			<pre id="miner0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
+			<pre id="mixHash0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
+			<pre id="nonce0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
+			<pre id="number0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
+			<pre id="parentHash0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
+			<pre id="receiptsRoot0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
+			<pre id="sha3Uncles0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
+			<pre id="size0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
+			<pre id="stateRoot0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
+			<pre id="timestamp0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
+			<pre id="totalDifficulty0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
+			<pre id="transactions0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
+			<pre id="transactionsRoot0" type="text"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
+			<pre id="uncles0" type="text"></pre><br>
+			</div>
+
+
+		
+</div>
+<!-- Tooltip script-->
+<script>
+		$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();   
+		});
+		</script>
+<script>
+	var web3 =  new Web3(web3.currentProvider); //provider for web3
+	//contract abi, pass json representation of contract to instance
+	var addBlockContract = web3.eth.contract([{
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getID",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getAge",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": false,
+						"inputs": [
+						  {
+							"name": "data",
+							"type": "bytes32"
+						  },
+						  {
+							"name": "uage",
+							"type": "uint8"
+						  },
+						  {
+							"name": "uid",
+							"type": "uint256"
+						  }
+						],
+						"name": "addData",
+						"outputs": [],
+						"payable": true,
+						"stateMutability": "payable",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getName",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "bytes32"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"name": "blockchain",
+						"outputs": [
+						  {
+							"name": "age",
+							"type": "uint8"
+						  },
+						  {
+							"name": "id",
+							"type": "uint256"
+						  },
+						  {
+							"name": "name",
+							"type": "bytes32"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  }]);
+					var view = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
+					
+				//temporary key number to avoid early zeros
+				key = 55;
+				var ID = [];
+				var age = [];
+				var name1 = [];
+				function viewingBlockID(key) {	
+					view.getID(key, function(worked, result){
+						if(result.c["0"]){
+							console.log(result.c["0"]);
+							ID.push(result.c["0"]);
+							viewingBlockAge(key);
+							viewingBlockName(key);
+							viewingBlockID(key + 1);
+						}else{
+							console.log("All keys found");
+							//TODO: call method that will draw blocks for user here!!!
+						}
+					})
+				}
+				function viewingBlockAge(key) {
+					view.getAge(key, function(worked, result){
+							console.log(result.c["0"]);
+							age.push(result.c["0"]);
+							})
+				}
+				function viewingBlockName(key) {
+					view.getName(key, function(worked, result){
+							console.log(result);
+							console.log(web3.toAscii(result));
+							name1.push(web3.toAscii(result));
+							})
+				}
+				viewingBlockID(key);
+				
+
+</script>
+
+<!Function to change page when button is pressed on home tab>
+<script>
+	var output2 = document.getElementById('output2');
+	var printThis = "";
+function button(evt, tab){
+	
+	var i, x, tablinks;
+	x = document.getElementsByClassName("tab");
+	for (i = 0; i < x.length; i++) {
+     		x[i].style.display = "none";
+  	}
+  	tablinks = document.getElementsByClassName("tablink");
+  	for (i = 0; i < x.length; i++) {
+      		tablinks[i].className = tablinks[i].className.replace("", ""); 
+  	}
+  	document.getElementById(tab).style.display = "block";
+  	
+}
+</script>
+
+<!-- Javascript Block Creation for Viewing Blocks on Chain -->
+<script>
+	var difficulty = document.getElementById("difficulty");
+	var extraData  = document.getElementById("extraData");
+	var gasLimit = document.getElementById("gasLimit");
+	var gasUsed = document.getElementById('gasUsed');
+	var hash = document.getElementById('hash');
+	var logsBloom = document.getElementById('logsBloom');
+	var miner = document.getElementById('miner');
+	var mixHash = document.getElementById('mixHash');
+	var nonce = document.getElementById('nonce');
+	var number = document.getElementById('number');
+	var parentHash = document.getElementById('parentHash');
+	var receiptsRoot = document.getElementById('receiptsRoot');
+	var sha3Uncles = document.getElementById('sha3Uncles');
+	var size = document.getElementById('size');
+	var stateRoot = document.getElementById('stateRoot');
+	var timestamp = document.getElementById('timestamp');
+	var totalDifficulty = document.getElementById('totalDifficulty');
+	var transactions = document.getElementById('transactions');
+	var transactionsRoot = document.getElementById('transactionsRoot');
+	var uncles = document.getElementById('uncles');
+	//function to create a new block object to be displayed on page
+	var i = 0;
+	function newBlock(difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+		$('#difficulty' + i).text(difficulty); 
+		$('#extraData'+ i).text(extraData); 
+		$('#gasLimit'+ i).text(gasLimit); 
+		$('#gasUsed'+ i).text(gasUsed); 
+		$('#hash'+ i).text(hash); 
+		$('#logsBloom'+ i).text(logsBloom); 
+		$('#miner'+ i).text(miner); 
+		$('#mixHash'+ i).text(mixHash); 
+		$('#nonce'+ i).text(nonce); 
+		$('#number'+ i).text(number); 
+		$('#parentHash'+ i).text(parentHash); 
+		$('#receiptsRoot'+ i).text(receiptsRoot); 
+		$('#sha3Uncles'+ i).text(sha3Uncles); 
+		$('#size'+ i).text(size); 
+		$('#stateRoot'+ i).text(stateRoot); 
+		$('#timestamp'+ i).text(timestamp); 
+		$('#totalDifficulty'+ i).text(totalDifficulty); 
+		$('#transactions'+ i).text(transactions); 
+		$('#transactionsRoot'+ i).text(transactionsRoot); 
+		$('#uncles'+ i).text(uncles); 		
+	}
+
+
+
+
+	
+	function duplicate() {
+		var original = document.getElementById('duplicater' + i);
+		var clone = original.cloneNode(true); // "deep" clone
+		clone.id = "duplicater" + ++i; // there can only be one element with an ID
+	
+		//update IDs of children pre fields
+		clone.getElementsByTagName('pre')[0].id = "difficulty" + i;
+		clone.getElementsByTagName('pre')[1].id = "extraData" + i;
+		clone.getElementsByTagName('pre')[2].id = "gasLimit" + i;
+		clone.getElementsByTagName('pre')[3].id = "gasUsed" + i;
+		clone.getElementsByTagName('pre')[4].id = "hash" + i;
+		clone.getElementsByTagName('pre')[5].id = "logsBloom" + i;
+		clone.getElementsByTagName('pre')[6].id = "miner" + i;
+		clone.getElementsByTagName('pre')[7].id = "mixHash" + i;
+		clone.getElementsByTagName('pre')[8].id = "nonce" + i;
+		clone.getElementsByTagName('pre')[9].id = "number" + i;
+		clone.getElementsByTagName('pre')[10].id = "parentHash" + i;
+		clone.getElementsByTagName('pre')[11].id = "receiptsRoot" + i;
+		clone.getElementsByTagName('pre')[12].id = "sha3Uncles" + i;
+		clone.getElementsByTagName('pre')[13].id = "size" + i;
+		clone.getElementsByTagName('pre')[14].id = "stateRoot" + i;
+		clone.getElementsByTagName('pre')[15].id = "timestamp" + i;
+		clone.getElementsByTagName('pre')[16].id = "totalDifficulty" + i;
+		clone.getElementsByTagName('pre')[17].id = "transactions" + i;
+		clone.getElementsByTagName('pre')[18].id = "transactionsRoot" + i;
+		clone.getElementsByTagName('pre')[19].id = "uncles" + i;
+
+		original.parentNode.appendChild(clone); // appends child div to previous parent div
+	}
+	function testBlock() {
+		//sample block (pulled from previous blockchain)
+		//change this to be pulled from blockchain (manually set for testing)
+
+		//to change, set this in a while loop with the "result" key value pairs saved to an object and sent to newblock function and call duplicate after
+		//duplicate(); already 1 block created by default
+		newBlock(1,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		duplicate();
+		newBlock(2,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		duplicate();
+		newBlock(3,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		duplicate();
+		newBlock(4,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+
+
+		duplicate();
+		newBlock(5,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		duplicate();
+		newBlock(6,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		duplicate();
+		newBlock(7,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+		duplicate();
+		newBlock(8,"0xd783010800846765746887676f312e392e32856c696e7578", 4712388, 88530, "0xf54d7cb81471bed3dd4949b1c2792492d844c988e55937ba630a880710c7cddc","0x00000000000000000000000000000000000000000000000000000000000000000000000000000000", "0x13648789687689dea62e4eee50e5ebf5dcc7bce0", "0x5f9f9064110d7932d2abaf525c66f83678bb127da7822b9bb9e7deb1a5ed9032", "0x3474fae713abed6c", 7500, "0x10649fc1f0fdf22bc434791d3e6f4b93444a7df6b1372eb14a6cf76a2446d2a7", "0xbf2d6bda82080182e06a6defaf14eac73dc6ce09ed90945a28ddf24f487ff3c1", "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347", 746, "0x6a4551d97e3024f79c1592d8fd3bfa3ff9793d168c9ff4af81c1fdfcaea43126", 1512010394, 2470477781, "0x09d4cacd55ab16ffb46b4242f5762bd48d4fdc4970d6617145bb63c3b1f3cbf3", "0x16fb2dcafec7fe1a22430240678290b29214ef473eb6e1b6ff0c5dd4e2ff4215", 0);
+
+	}
+
+	
+
+
+</script>
+
+
+</body>
+</html>
