@@ -431,6 +431,7 @@ function button(evt, tab){
 				//this function gets the transaction hash of the block that was mined by the user
 				function getTransaction(){
 				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+					
 					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
 									if(!error){
 										for(const [key, value] of Object.entries(result)) {
