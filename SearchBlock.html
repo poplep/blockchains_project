@@ -145,7 +145,6 @@
             </form>
             <div id='res'></div>
 		<p>Once you add the block, it will be displayed below:</p>
-		<pre id="output"></pre>
 		<pre id="output2"></pre>
 </div>
 
@@ -191,127 +190,48 @@ $(document).keydown(function(event){
 	}
 });
 </script>
-<!-- Search Functionality-->
+
+<!-- Search Functionality (from view block)-->
+
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
+	var res = document.getElementById('res');
 		//click handler for button
-			button2.addEventListener('click', function() {
-					var web3 =  new Web3(web3.currentProvider); //provider for web3
-					//web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
-					
-					//contract abi, pass json representation of contract to instance
-					var addBlockContract = web3.eth.contract([{
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getID",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getAge",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": false,
-						"inputs": [
-						  {
-							"name": "data",
-							"type": "bytes32"
-						  },
-						  {
-							"name": "uage",
-							"type": "uint8"
-						  },
-						  {
-							"name": "uid",
-							"type": "uint256"
-						  }
-						],
-						"name": "addData",
-						"outputs": [],
-						"payable": true,
-						"stateMutability": "payable",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getName",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"name": "blockchain",
-						"outputs": [
-						  {
-							"name": "age",
-							"type": "uint8"
-						  },
-						  {
-							"name": "id",
-							"type": "uint256"
-						  },
-						  {
-							"name": "name",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  }]);
-					var search = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
-					
+		button2.addEventListener('click', function() {
+			web3.eth.getTransaction(res, function(error, result){
+						if(!error){
+							trans = result;
+							console.log(trans.blockHash);
+							transValue = getTransaction();
+						}
+						else{}
+							console.error(res);
+					})
+					function getTransaction(){
+						if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+							block = web3.eth.getBlock(trans.blockHash, function(error, result){
+											if(!error){
+												for(const [key, value] of Object.entries(result)) {
+													output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+												}
+												
+												console.log(result);
+											}	
+										else{
+												console.error(error);
+											}
+									});
+									return 1;
+						} else {
+							return 0;
+						}
+					}
+		})
 </script>
 
-<!Function to change page when button is pressed on home tab>
+
 <script>
+
 	var output2 = document.getElementById('output2');
 	var printThis = "";
 function button(evt, tab){
