@@ -168,6 +168,15 @@
 				<!-- Display the block that was mined to the user-->
 				<br><br>
 				<div class="block"  id="duplicater0">	
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
+						<pre id="name0"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
+						<pre id="id0"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
+						<pre id="age0" type="text"></pre><br>
+
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
 					<pre id="difficulty0"></pre><br>
 		
@@ -431,13 +440,14 @@ function button(evt, tab){
 				//this function gets the transaction hash of the block that was mined by the user
 				function getTransaction(){
 				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+					
 					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
 									if(!error){
 										for(const [key, value] of Object.entries(result)) {
 											elements.push(value);
 											//output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
 										}
-					 					newBlock(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
+					 					newBlock(id.value, age.value, String(name.value), elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
 										console.log(result);
 								}	else{
 										alert("We could not retrieve the transaction hash successfully. Please try again.");
@@ -531,7 +541,10 @@ function button(evt, tab){
 	var uncles = document.getElementById('uncles');
 	//function to create a new block object to be displayed on page
 	var i = 0;
-	function newBlock(difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+	function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+		$('#name' + i).text(name); 
+		$('#id'+ i).text(id); 
+		$('#age'+ i).text(age); 
 		$('#difficulty' + i).text(difficulty); 
 		$('#extraData'+ i).text(extraData); 
 		$('#gasLimit'+ i).text(gasLimit); 
@@ -553,6 +566,7 @@ function button(evt, tab){
 		$('#transactionsRoot'+ i).text(transactionsRoot); 
 		$('#uncles'+ i).text(uncles); 		
 	}
+
 
 
 
