@@ -160,9 +160,9 @@
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">Name:</a><br>
 				<input id="name" type="text"><br>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Age of a student, employee, yourself." style="font-size:18px" style="color: black">Age:</a><br>
-				<input id="id" type="text"><br>
+				<input id="age" type="text"><br>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: ID number of a student, employee, yourself." style="font-size:18px" style="color: black">ID:</a><br>
-				<input id="age" type="text">
+				<input id="id" type="text">
 				<button id="button2"> Mine  </button>
 
 				<!-- Display the block that was mined to the user-->
@@ -388,9 +388,17 @@ function button(evt, tab){
 		var hash;
 		var trans;
 		var block;
+
+		
 		name = web3.fromAscii(name);
 		//click handler for button
 		button.addEventListener('click', function() {
+			//make sure user didnt enter 0 for an id
+
+			if(id.value == '0') {
+				alert("Please enter an ID that is not 0.");
+				return;
+			}
 			//take value in the input and send it via contract
 			try {
 				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){
