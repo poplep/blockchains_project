@@ -293,47 +293,23 @@ function button(evt, tab){
 
                 $("#displaypage").load("addBlock.html"); // show the home page
                 $("#Welcome").modal('hide'); // hide the welcome modal
-                Welcome.addEventListener('click', function (event) {
-                  $("#Welcome").modal('hide'); // hide the welcome modal
-                });
                     $("#AddBlock").modal("show").click(function () { // show the add block modal
                       $("#Welcome").modal('hide'); // hide the welcome modal
-                      Welcome.addEventListener('click', function (event) {
-                        $("#Welcome").modal('hide'); // hide the welcome modal
-                      });
                         $("#displaypage").load("SearchBlock.html"); // show the search block page
                       
                         $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
-                        AddBlock.addEventListener('click', function (event) {
-                          $("#AddBlock").modal('hide'); // hide the welcome modal
-                        });
                         $("#SearchBlock").modal("show").click(function () { // show the search block modal
                           $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
-                          AddBlock.addEventListener('click', function (event) {
-                            $("#AddBlock").modal('hide'); // hide the welcome modal
-                          });
                           $("#displaypage").load("ViewBlockBasic.html"); // show the basic view block page
                             $("#SearchBlock").modal('hide');//hide the search block modal
-                            SearchBlock.addEventListener('click', function (event) {
-                            $("#SearchBlock").modal('hide'); // hide the welcome modal
-                          });
                             $("#ViewBlock").modal("show").click(function () { // show the view block modal
                               $("#SearchBlock").modal('hide');//hide the search block modal
-                                SearchBlock.addEventListener('click', function (event) {
-                                $("#SearchBlock").modal('hide'); // hide the welcome modal
-                              });
                                $("#SearchBlock").modal('hide');//hide the search block modal
                                 $("#displaypage").load("BlockStats.html"); // show the blockchain statistics page
                                 $("#ViewBlock").modal('hide'); // hide the view block modal
 
-                                ViewBlock.addEventListener('click', function (event) {
-                                  $("#ViewBlock").modal('hide'); // hide the welcome modal
-                                });
                                 $("#BlockStats").modal("show").click(function () { // show the blockstats modal
                                   $("#ViewBlock").modal('hide'); // hide the view block modal
-                                  ViewBlock.addEventListener('click', function (event) {
-                                    $("#ViewBlock").modal('hide'); // hide the welcome modal
-                                  });
                                   $("#ViewBlock").modal('hide'); // hide the view block modal
                                   $("#BlockStats").modal('hide'); // hide the blockchain stats modal
                                     window.location.replace("HomePage.html"); // go back to the home page
