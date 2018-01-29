@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/path/to/jquery.browser.js"></script>
 
 
 <!-- Style for the tile buttons -->
@@ -134,36 +135,27 @@
 			}
 
 			function loadalert(){
+				// Opera 8.0+
+				var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
-				 //Check if browser is IE
-				 if (navigator.userAgent.search("MSIE") >= 0) {
-					// insert conditional IE code here
-					var isIE = true;
-				}
-				//Check if browser is Chrome
-				else if (navigator.userAgent.search("Chrome") >= 0) {
-					// insert conditional Chrome code here
-					var isChrome = true;
-				}
-				//Check if browser is Firefox 
-				else if (navigator.userAgent.search("Firefox") >= 0) {
-					// insert conditional Firefox Code here
-					var isFirefox = true;
-				}
-				//Check if browser is Safari
-				else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-					// insert conditional Safari code here
-					var isSafari = true;
-				}
-				//Check if browser is Opera
-				else if (navigator.userAgent.search("Opera") >= 0) {
-					// insert conditional Opera code here
-					var isOpera = true;
-				}
+				// Firefox 1.0+
+				var isFirefox = typeof InstallTrigger !== 'undefined';
+
+				// Safari 3.0+ "[object HTMLElementConstructor]" 
+				var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+				// Internet Explorer 6-11
+				var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
 				// Edge 20+
 				var isEdge = !isIE && !!window.StyleMedia;
 
+				// Chrome 1+
+				var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+				// Blink engine detection
+				var isBlink = (isChrome || isOpera) && !!window.CSS;
+				
 				// Chromium (checks if there are any chromium plugins present that wouldnt be in chrome)
 				var isChromium = function isChromium(){ 
 
@@ -175,10 +167,11 @@
 
 						return false;
 					}
-				// Blink engine detection
-				var isBlink = (isChrome || isOpera) && !!window.CSS;
-				// if the user isnt using firefox, chrome, or opera
+				// if the user isnt using firefox, chrome, chromium, or opera
 				if(isFirefox == false || isChrome == false || isOpera == false || isChromium == false) {
+					alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
+				}
+				if(isSafari == true || isIE == true || isEdge == true) {
 					alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
 				}
 				//if metamask isnt installed
