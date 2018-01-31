@@ -128,7 +128,7 @@
 	  <div class="modal-dialog">
 	  
 		<!-- Modal content-->
-		<div class="modal-content">
+		<div class="modal-content" id="WelcomeContent" data-dismiss="modal">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h4 class="modal-title">Welcome to the Blockchain UI!</h4>
@@ -156,7 +156,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="AddBlockContent" data-dismiss="modal">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Adding a Block</h4>
@@ -183,7 +183,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="SearchBlockContent" data-dismiss="modal">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Searching for a Block</h4>
@@ -209,7 +209,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="ViewBlockContent" data-dismiss="modal">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Viewing the Blockchain</h4>
@@ -236,7 +236,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="BlockStatsContent">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Viewing Blockchain Statistics</h4>
@@ -278,33 +278,41 @@ function button(evt, tab){
 </script>
 
 <script>
+  //modal box divs
+  var Welcome = document.getElementById("WelcomeContent");
+  var AddBlock = document.getElementById("AddBlockContent");
+  var ViewBlock = document.getElementById("ViewBlockContent");
+  var SearchBlock = document.getElementById("SearchBlockContent");
+  var BlockStats = document.getElementById("BlockStatsContent");
     //load home page
      $("#displaypage").load("HomePage.html");
  
     //display welcome modal and when user clicks continue, go to add block page  
     setTimeout(function(){  
-        $("#Welcome").modal("show").on("click", function () {
-                $("#displaypage").load("addBlock.html");
+        $("#Welcome").modal("show").click(function () {
 
-                    $("#AddBlock").modal("show").on("click", function () {
-                        $("#AddBlock").modal("hide");
-                        $("#displaypage").load("SearchBlock.html");
+                $("#displaypage").load("addBlock.html"); // show the home page
+                $("#Welcome").modal('hide'); // hide the welcome modal
+                    $("#AddBlock").modal("show").click(function () { // show the add block modal
+                      $("#Welcome").modal('hide'); // hide the welcome modal
+                        $("#displaypage").load("SearchBlock.html"); // show the search block page
+                      
+                        $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
+                        $("#SearchBlock").modal("show").click(function () { // show the search block modal
+                          $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
+                          $("#displaypage").load("ViewBlockBasic.html"); // show the basic view block page
+                            $("#SearchBlock").modal('hide');//hide the search block modal
+                            $("#ViewBlock").modal("show").click(function () { // show the view block modal
+                              $("#SearchBlock").modal('hide');//hide the search block modal
+                               $("#SearchBlock").modal('hide');//hide the search block modal
+                                $("#displaypage").load("BlockStats.html"); // show the blockchain statistics page
+                                $("#ViewBlock").modal('hide'); // hide the view block modal
 
-                        $("#SearchBlock").modal("show").on("click", function () {
-                            $("#AddBlock").modal("hide");
-                            $("#SearchBlock").modal("hide");
-                            $("#displaypage").load("Viewblock.html");
-
-                            $("#ViewBlock").modal("show").on("click", function () {
-                                $("#SearchBlock").modal("hide");
-                                $("#ViewBlock").modal("hide");
-                                $("#displaypage").load("BlockStats.html");
-
-                                
-                                $("#BlockStats").modal("show").on("click", function () {
-                                    $("#ViewBlock").modal("hide");
-                                    $("#BlockStats").modal("hide");
-                                    window.location.replace("HomePage.html");
+                                $("#BlockStats").modal("show").click(function () { // show the blockstats modal
+                                  $("#ViewBlock").modal('hide'); // hide the view block modal
+                                  $("#ViewBlock").modal('hide'); // hide the view block modal
+                                  $("#BlockStats").modal('hide'); // hide the blockchain stats modal
+                                    window.location.replace("HomePage.html"); // go back to the home page
                                 });
                          });
                     });
