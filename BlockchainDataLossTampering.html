@@ -10,6 +10,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- Style for the tile buttons -->
+<style>
+	div.gallery {
+		margin: 5px;
+		border: 1px solid #ccc;
+		float: left;
+		width: 300px;
+	}
+	
+	div.gallery:hover {
+		border: 1px solid #777;
+	}
+	
+	div.gallery img {
+		width: 100%;
+		height: auto;
+	}
+	
+	div.desc {
+		padding: 15px;
+		text-align: center;
+	}
+	</style>
+
 <!-- Overall Page Styling -->
 <style>
 	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
@@ -84,8 +108,8 @@
 				<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
 				<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
 				<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
-				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
-				<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
+                <a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
+                <a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
 
 	
 				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
@@ -105,29 +129,21 @@
 		  </nav>
 		  </div>
 
-<!Each Page>
-<div style="margin-left:13%" style="width:100vw" position ="fixed" >
+      <div style="margin-left:13%" style="width:100vw" position ="fixed" >
 	
-
 		<div class="w3-container" style= "margin-left:-1.5%">
-			<h1 style="color: white">Help</h1>
+			<h1 style="color: white">Blockchains for Data Loss and Tampering Prevention</h1>
 		</div>
 		<br>
-        <p>1. How do I add a block?</p>
-        <p>Go to the Add Block page. From there, enter in the information you want to store on a block and click mine.
-            A transaction window will appear from Metamask asking you to confirm the transaction. Hit the submit button and your block 
-            will be sent to the blockchain to be mined. Once it is mined, it'll be displayed to you on the page.
-        </p>
+        <p>Blockchains are secure by nature as they use SHA-256 encryption for their data.</p>
+        <p>In order for an attacker to gain access to the data in one block, they need to decrypt the SHA-256 encryption for that block along with all of the other previous blocks since hashes are calculated using the current and previous hash of that block.</p>
+        <p>Security of a network and of data is never 100%. Therefore, the goal of a blockchain to prevent data loss and tampering is to greatly increase the amount of effort required to access the data in the hopes that it will deter attackers since they will deem the amount of work needed to access the data not worth the effort.</p>
+		<p>Blockchains are decentralized tamper-proof ledgers. Copies of the blockchain are stored on all network nodes instead of on a centralized location like a server. Therefore, if one node is compromised, then there are still various copies of the data on the network nodes. </p>
+		<p>Blockchains function on a consensus mechanism. Therefore, if an attacker wanted to change or add malicious data to the blockchain, then 51% of all nodes on the network would need to ensure that the data is valid before adding it to the blockchain. In this case, the data is malicious and therefore would not be added to the blockchain.</p>
+        <p>Blocks are constantly being mined on the blockchain whether or not data is actually being added. This is done to prevent against 51% attacks. 51% attacks occur when an attacker gains control of 51% of the nodes on the network and begin to maliciously alter or add blocks on the blockchain.</p>
+        <p>Blockchains, by nature, cannot be deleted or edited and are linked chronologically. Each block is timestamped and can be verified by the other nodes on the chain. Blockchains ensure data integrity by validating all copies of the blocks on the chain, ensuring full availability, providing tamper-proof security, and ensuring that all data can be linked to an irrefutable identity.</p>
+    </div>
 
-        <p>2. How do I view a block?</p>
-        <p>As of now, you can view a block by copying the hash under the "transaction" of your block that you
-            got on the Add Block page and paste it into the search bar on the View Block page. This will be made easier
-            in future versions of our application.
-        </p>
-
-  
-
-</div>
 <!Function to change page when button is pressed on home tab>
 <script>
 function button(evt, tab){
