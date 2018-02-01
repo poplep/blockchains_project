@@ -409,6 +409,30 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 						}else{
 							console.log("All keys found");
 							//TODO: call method that will draw blocks for user here!!!
+							var block = web3.eth.getBlock(key, function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									
+									newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
+									duplicate();
+									iterate++;
+									console.log("END!!!!!!!!!!!!!!!!!");
+								});
+								
+								
+							
+							console.log("COMPLETED");
+							
 						}
 					})
 				}
