@@ -22,7 +22,7 @@ contract addBlock {
     struct NewBlock {
         uint8 age;
         uint id;
-        bytes32 name;
+        string name;
     }
     //id for the address of struct mapping
     uint blockid;
@@ -33,7 +33,7 @@ contract addBlock {
 
 
     // function to add a block of data to the blockchain
-    function addData (bytes32 data, uint8 uage, uint uid) public {
+    function addData (string data, uint8 uage, uint uid) public {
 
         //iterates key to indicate new struct
         blockid++;
@@ -56,7 +56,7 @@ contract addBlock {
     function getAge(uint256 key) public view returns (uint) {
         return blockchain[key].age;
     }
-    function getName(uint256 key) public view returns (bytes32) {
+    function getName(uint256 key) public view returns (string) {
         return blockchain[key].name;
     }
     //event addedData(uint256 thing); //event
