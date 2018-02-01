@@ -381,7 +381,7 @@ function button(evt, tab){
 			"stateMutability": "view",
 			"type": "function"
 		  }]);
-		var addingBlock = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
+		var addingBlock = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 
 		//grabbing elements by element id and storing into variables
 		var name = document.getElementById('name');
@@ -395,7 +395,7 @@ function button(evt, tab){
 		var block;
 
 		
-		name = web3.fromAscii(name);
+		//console.log(name)
 		//click handler for button
 		button.addEventListener('click', function() {
 			//make sure user didnt enter 0 for an id
@@ -404,6 +404,7 @@ function button(evt, tab){
 				alert("Please enter an ID that is not 0.");
 				return;
 			}
+			//name = web3.fromAscii(name, 32);
 			//take value in the input and send it via contract
 			try {
 				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){

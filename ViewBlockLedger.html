@@ -310,7 +310,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 						"stateMutability": "view",
 						"type": "function"
 					  }]);
-					var view = addBlockContract.at('0x011567d473723960c1a985ded433e7ab95b32c9d'); // contract instance to work with
+					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 					
 				//temporary key number to avoid early zeros
 				key = 1;
@@ -345,8 +345,8 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				function viewingBlockName(key) {
 					view.getName(key, function(worked, result){
 							console.log(result);
-							console.log(web3.toAscii(result));
-							name1.push(web3.toAscii(result));
+							console.log(result);
+							name1.push(result);
 							})
 				}
 				viewingBlockID(key);
