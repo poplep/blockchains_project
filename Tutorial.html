@@ -140,7 +140,9 @@
 		  </div>
 		  <div class="modal-footer">
 			<button class="btn btn-default" id="nextAdd" data-dismiss="modal">Add a Block</button>
-		  </div>
+      <button class="btn btn-default" id="exit0" data-dismiss="modal">Exit Tutorial</button>
+  
+    </div>
 		</div>
 		
 	  </div>
@@ -167,6 +169,8 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" id="nextSearch" data-dismiss="modal">Search for a Block</button>
+                <button class="btn btn-default" id="exit1" data-dismiss="modal">Exit Tutorial</button>
+
               </div>
             </div>
             
@@ -193,7 +197,9 @@
     
               </div>
               <div class="modal-footer">
-               </a><button class="btn btn-default" id="nextView" data-dismiss="modal">View the Blockchain</button>
+               <button class="btn btn-default" id="nextView" data-dismiss="modal">View the Blockchain</button>
+               <button class="btn btn-default" id="exit2" data-dismiss="modal">Exit Tutorial</button>
+
               </div>
             </div>
             
@@ -220,6 +226,8 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" id="nextStats" data-dismiss="modal">Blockchain Statistics</button>
+                <button class="btn btn-default" id="exit3" data-dismiss="modal">Exit Tutorial</button>
+
               </div>
             </div>
             
@@ -248,7 +256,7 @@
                 <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
               </div>
               <div class="modal-footer">
-               <button class="btn btn-default" data-dismiss="modal">Exit</button>
+               <button class="btn btn-default" id="exit4" data-dismiss="modal">Exit</button>
               </div>
             </div>
             
@@ -284,33 +292,66 @@ function button(evt, tab){
   var ViewBlock = document.getElementById("ViewBlockContent");
   var SearchBlock = document.getElementById("SearchBlockContent");
   var BlockStats = document.getElementById("BlockStatsContent");
+  var exit0 = document.getElementById("exit0");
+  var exit1 = document.getElementById("exit1");
+  var exit2 = document.getElementById("exit2");
+  var exit3 = document.getElementById("exit3");
+  var exit4 = document.getElementById("exit4");
     //load home page
      $("#displaypage").load("HomePage.html");
  
     //display welcome modal and when user clicks continue, go to add block page  
     setTimeout(function(){  
-        $("#Welcome").modal("show").click(function () {
-
+      exit0.addEventListener('click', function() {// if the exit tutorial button is clicked
+                        window.location.replace("HomePage.html"); // go back to the home page
+                        return false;
+                      });
+        $("#Welcome").modal("show").click(function () { // show the welcome page modal
+          
                 $("#displaypage").load("addBlock.html"); // show the home page
+               
+
                 $("#Welcome").modal('hide'); // hide the welcome modal
+                exit1.addEventListener('click', function() { // if the exit tutorial button is clicked
+                            window.location.replace("HomePage.html"); // go back to the home page
+                           return false;
+                          });
                     $("#AddBlock").modal("show").click(function () { // show the add block modal
+                      
                       $("#Welcome").modal('hide'); // hide the welcome modal
                         $("#displaypage").load("SearchBlock.html"); // show the search block page
                       
                         $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
+                        exit2.addEventListener('click', function() {
+                                window.location.replace("HomePage.html"); // go back to the home page
+                                return false;
+                              });
                         $("#SearchBlock").modal("show").click(function () { // show the search block modal
+                          
                           $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
                           $("#displaypage").load("ViewBlockBasic.html"); // show the basic view block page
+                          
                             $("#SearchBlock").modal('hide');//hide the search block modal
+                            exit3.addEventListener('click', function() {// if the exit tutorial button is clicked
+                                    window.location.replace("HomePage.html"); // go back to the home page
+                                    return false;
+                                  });
                             $("#ViewBlock").modal("show").click(function () { // show the view block modal
+                              
                               $("#SearchBlock").modal('hide');//hide the search block modal
                                $("#SearchBlock").modal('hide');//hide the search block modal
                                 $("#displaypage").load("BlockStats.html"); // show the blockchain statistics page
+                               
                                 $("#ViewBlock").modal('hide'); // hide the view block modal
-
+                                exit4.addEventListener('click', function() { // if the exit tutorial button is clicked
+                                    window.location.replace("HomePage.html"); // go back to the home page
+                                    return false;
+                                  });
                                 $("#BlockStats").modal("show").click(function () { // show the blockstats modal
+                                  
                                   $("#ViewBlock").modal('hide'); // hide the view block modal
                                   $("#ViewBlock").modal('hide'); // hide the view block modal
+                                  
                                   $("#BlockStats").modal('hide'); // hide the blockchain stats modal
                                     window.location.replace("HomePage.html"); // go back to the home page
                                 });
