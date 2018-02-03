@@ -125,11 +125,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 </style>
 <head>
 	<!-- Tooltip script-->
-<script>
-	$(document).ready(function(){
-			$('[data-toggle="tooltip"]').tooltip();   
-	});
-	</script>
+
 </head>
 <body>
 
@@ -497,7 +493,11 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		clone.getElementsByTagName('pre')[22].id = "uncles" + i;
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
+		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
 	}
+
+	
+	
 				/*
 				var difficulty = document.getElementById("difficulty");
 	var extraData  = document.getElementById("extraData");
