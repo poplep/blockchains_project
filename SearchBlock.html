@@ -38,6 +38,24 @@
 	</style>
 
 <!-- Overall Page Styling -->
+<!-- Styling for blocks -->
+<style>
+	.block {
+		width: 400px;
+		height: 500px;
+		padding: 10px;
+		float:left;
+		border: 2px solid rgb(49, 57, 77);
+		border-radius: 10px;
+		background-color:rgb(49, 57, 77);
+		font-family: 'Open Sans', sans-serif;
+		overflow: scroll;
+		color: black;
+		margin:10px;
+
+	}
+
+</style>
 <style>
 	p,h1,h2,h3,h4,h5,body {font-family: 'Open Sans', sans-serif;}
 	p,h5, pre {font-size: 22px; font-family: 'Open Sans', sans-serif;};
@@ -144,12 +162,23 @@
 		<br>
 		<a href="#" data-toggle="tooltip" data-placement="right" title="The transaction hash of the block that you just added." style="font-size:18px" style="color: black">Enter Hash:</a><br>
 		<form id='form-prompt'>
-            <input type='text' id='textTest'>
+            <input type='text' id="textTest">
                 <input type="submit" id="button2"/>
-            </form>
-            <div id='res'></div>
+			</form>
+			
+           
 		<p>Once you add the block, it will be displayed below:</p>
-		<pre id="output2"></pre>
+		<div class="block"  id="duplicater0">	
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
+			<pre id="name0"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
+			<pre id="id0"></pre><br>
+
+			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
+			<pre id="age0" type="text"></pre><br>
+			</div>
+
 </div>
 
 <script>
@@ -199,37 +228,161 @@ $(document).keydown(function(event){
 
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
-	var res = document.getElementById('res');
+		//contract abi, pass json representation of contract to instance
+		var addBlockContract = web3.eth.contract([{
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getID",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getAge",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": false,
+						"inputs": [
+						  {
+							"name": "data",
+							"type": "bytes32"
+						  },
+						  {
+							"name": "uage",
+							"type": "uint8"
+						  },
+						  {
+							"name": "uid",
+							"type": "uint256"
+						  }
+						],
+						"name": "addData",
+						"outputs": [],
+						"payable": true,
+						"stateMutability": "payable",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "key",
+							"type": "uint256"
+						  }
+						],
+						"name": "getName",
+						"outputs": [
+						  {
+							"name": "",
+							"type": "bytes32"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  },
+					  {
+						"constant": true,
+						"inputs": [
+						  {
+							"name": "",
+							"type": "uint256"
+						  }
+						],
+						"name": "blockchain",
+						"outputs": [
+						  {
+							"name": "age",
+							"type": "uint8"
+						  },
+						  {
+							"name": "id",
+							"type": "uint256"
+						  },
+						  {
+							"name": "name",
+							"type": "bytes32"
+						  }
+						],
+						"payable": false,
+						"stateMutability": "view",
+						"type": "function"
+					  }]);
+					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
+					
+	var res = document.getElementById('textTest');
+
+	//res = Number(res);
 		//click handler for button
 		button2.addEventListener('click', function() {
-			web3.eth.getTransaction(res, function(error, result){
-						if(!error){
-							trans = result;
-							console.log(trans.blockHash);
-							transValue = getTransaction();
+			console.log("RES:" + res.value);
+				key = 1;
+				var ID = [];
+				var age = [];
+				var name1 = [];
+				function viewingBlockID(key, res) {	
+					view.getID(key, function(worked, result){
+						if(result.c["0"]){
+							console.log((result.c["0"]));
+							if (res == Number(result.c["0"])){
+								console.log("HERE");
+							ID.push(result.c["0"]);
+							viewingBlockAge(key, res);
+							viewingBlockName(key, res);
+							}
+							viewingBlockID(key + 1, res);
+						}else{
+							console.log("All keys found");
+							//TODO: call method that will draw blocks for user here!!!
+							var i;
+							for(i = 0; i< ID.length; i++) {
+									newBlock(ID[i], age[i], name1[i]);
+									duplicate();
+							}
 						}
-						else{}
-							console.error(res);
 					})
-					function getTransaction(){
-						if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
-							block = web3.eth.getBlock(trans.blockHash, function(error, result){
-											if(!error){
-												for(const [key, value] of Object.entries(result)) {
-													output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
-												}
-												
-												console.log(result);
-											}	
-										else{
-												console.error(error);
-											}
-									});
-									return 1;
-						} else {
-							return 0;
-						}
-					}
+				}
+				function viewingBlockAge(key, res) {
+					view.getAge(key, function(worked, result){
+							console.log(result.c["0"]);
+							age.push(result.c["0"]);
+							})
+				}
+				function viewingBlockName(key, res) {
+					view.getName(key, function(worked, result){
+							console.log(result);
+							console.log(result);
+							name1.push(web3.toAscii(result));
+							})
+				}
+				viewingBlockID(key, Number(res.value));
 		})
 </script>
 
@@ -254,7 +407,43 @@ function button(evt, tab){
 }
 </script>
 
+<!-- Javascript Block Creation for Viewing Blocks on Chain -->
+<script>
+	var difficulty = document.getElementById("name");
+	var extraData  = document.getElementById("id");
+	var gasLimit = document.getElementById("age");
 
+	//function to create a new block object to be displayed on page
+	var i = 0;
+	function newBlock(id, age, name) {
+		$('#name' + i).text(name); 
+		$('#id'+ i).text(id); 
+		$('#age'+ i).text(age); 		
+	}
+
+
+
+
+	
+	function duplicate() {
+		var original = document.getElementById('duplicater' + i);
+		var clone = original.cloneNode(true); // "deep" clone
+		clone.id = "duplicater" + ++i; // there can only be one element with an ID
+	
+		//update IDs of children pre fields
+		clone.getElementsByTagName('pre')[0].id = "name" + i;
+		clone.getElementsByTagName('pre')[1].id = "id" + i;
+		clone.getElementsByTagName('pre')[2].id = "age" + i;
+
+		original.parentNode.appendChild(clone); // appends child div to previous parent div
+		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
+
+	}
+
+	
+
+
+</script>
 
 </body>
 </html>
