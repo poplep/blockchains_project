@@ -405,14 +405,7 @@ function button(evt, tab){
 				return;
 			}
 			//make sure user entered valid name
-			if(/^\d+$/.test(name.value)) {
-				//proceed with rest of code
-				alert("Valid");
-			   }
-			   else {
-				alert("Invalid");
-				return false;
-			   }
+
 			//name = web3.fromAscii(name, 32);
 			//take value in the input and send it via contract
 			try {
