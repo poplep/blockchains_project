@@ -202,117 +202,111 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 	//contract abi, pass json representation of contract to instance
 	var addBlockContract = web3.eth.contract([{
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getID",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getAge",
-						"outputs": [
-						  {console.log("All keys found");
-							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							for(i = 0; i< ID.length; i++) {
-									newBlock(ID[i], age[i], name1[i]);
-									duplicate();
-							}
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": false,
-						"inputs": [
-						  {
-							"name": "data",
-							"type": "bytes32"
-						  },
-						  {
-							"name": "uage",
-							"type": "uint8"
-						  },
-						  {
-							"name": "uid",
-							"type": "uint256"
-						  }
-						],
-						"name": "addData",
-						"outputs": [],
-						"payable": true,
-						"stateMutability": "payable",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getName",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"name": "blockchain",
-						"outputs": [
-						  {
-							"name": "age",
-							"type": "uint8"
-						  },
-						  {
-							"name": "id",
-							"type": "uint256"
-						  },
-						  {
-							"name": "name",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  }]);
+		"constant": true,
+		"inputs": [
+			{
+			"name": "key",
+			"type": "uint256"
+			}
+		],
+		"name": "getID",
+		"outputs": [
+			{
+			"name": "",
+			"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		},
+		{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "key",
+			"type": "uint256"
+			}
+		],
+		"name": "getAge",
+		"outputs": [
+			{
+			"name": "",
+			"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		},
+		{
+		"constant": false,
+		"inputs": [
+			{
+			"name": "data",
+			"type": "bytes32"
+			},
+			{
+			"name": "uage",
+			"type": "uint8"
+			},
+			{
+			"name": "uid",
+			"type": "uint256"
+			}
+		],
+		"name": "addData",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+		},
+		{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "key",
+			"type": "uint256"
+			}
+		],
+		"name": "getName",
+		"outputs": [
+			{
+			"name": "",
+			"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		},
+		{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "",
+			"type": "uint256"
+			}
+		],
+		"name": "blockchain",
+		"outputs": [
+			{
+			"name": "age",
+			"type": "uint8"
+			},
+			{
+			"name": "id",
+			"type": "uint256"
+			},
+			{
+			"name": "name",
+			"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		}]);
 					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 					
 				key = 1;
@@ -353,32 +347,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				}
 				viewingBlockID(key);
 				
-
-</script>
-
-<!Function to change page when button is pressed on home tab>
-<script>
-	var output2 = document.getElementById('output2');
-	var printThis = "";
-function button(evt, tab){
-	
-	var i, x, tablinks;
-	x = document.getElementsByClassName("tab");
-	for (i = 0; i < x.length; i++) {
-     		x[i].style.display = "none";
-  	}
-  	tablinks = document.getElementsByClassName("tablink");
-  	for (i = 0; i < x.length; i++) {
-      		tablinks[i].className = tablinks[i].className.replace("", ""); 
-  	}
-  	document.getElementById(tab).style.display = "block";
-  	
-}
-</script>
-
-<!-- Javascript Block Creation for Viewing Blocks on Chain -->
-<script>
-	var difficulty = document.getElementById("name");
+				var difficulty = document.getElementById("name");
 	var extraData  = document.getElementById("id");
 	var gasLimit = document.getElementById("age");
 
@@ -408,11 +377,28 @@ function button(evt, tab){
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
 
 	}
-
-	
-
-
 </script>
+
+<!Function to change page when button is pressed on home tab>
+<script>
+	var output2 = document.getElementById('output2');
+	var printThis = "";
+function button(evt, tab){
+	
+	var i, x, tablinks;
+	x = document.getElementsByClassName("tab");
+	for (i = 0; i < x.length; i++) {
+     		x[i].style.display = "none";
+  	}
+  	tablinks = document.getElementsByClassName("tablink");
+  	for (i = 0; i < x.length; i++) {
+      		tablinks[i].className = tablinks[i].className.replace("", ""); 
+  	}
+  	document.getElementById(tab).style.display = "block";
+  	
+}
+</script>
+
 
 
 </body>
