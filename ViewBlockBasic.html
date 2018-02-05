@@ -390,6 +390,8 @@ function button(evt, tab){
 		clone.getElementsByTagName('pre')[2].id = "age" + i;
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
+		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
+
 	}
 
 	

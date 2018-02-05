@@ -398,12 +398,21 @@ function button(evt, tab){
 		//console.log(name)
 		//click handler for button
 		button.addEventListener('click', function() {
+			
 			//make sure user didnt enter 0 for an id
-
 			if(id.value == '0') {
 				alert("Please enter an ID that is not 0.");
 				return;
 			}
+			//make sure user entered valid name
+			if(/^\d+$/.test(name.value)) {
+				//proceed with rest of code
+				alert("Valid");
+			   }
+			   else {
+				alert("Invalid");
+				return false;
+			   }
 			//name = web3.fromAscii(name, 32);
 			//take value in the input and send it via contract
 			try {
