@@ -356,17 +356,18 @@ $(document).keydown(function(event){
 				var ID = [];
 				var age = [];
 				var name1 = [];
-				function viewingBlockID(key, idTest) {	
+				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
 							console.log((result.c["0"]));
-							if (idTest == Number(result.c["0"])){
+							if (test == Number(result.c["0"])){
 								console.log("HERE");
 							ID.push(result.c["0"]);
-							viewingBlockAge(key, idTest);
-							viewingBlockName(key, idTest);
+							viewingBlockAge(key, test);
+							viewingBlockName(key, test);
 							}
-							viewingBlockID(key + 1, idTest);
+							
+							viewingBlockID(key + 1, Number(test));
 						}else{
 							console.log("All keys found");
 							//TODO: call method that will draw blocks for user here!!!
