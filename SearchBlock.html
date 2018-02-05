@@ -163,13 +163,13 @@
 		<form id='form-prompt'>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="The name that you entered into the block." style="font-size:18px" style="color: black">Enter Name:</a><br>
             <input type='text' id="nameTest">
-				<input type="submit" id="button2"/><br>
+				<input type="submit" id="button1"/><br>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="The id that you entered into the block." style="font-size:18px" style="color: black">Enter ID:</a><br>
 			<input type='text' id="idTest">
 				<input type="submit" id="button2"/><br>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="The age that you entered into the block." style="font-size:18px" style="color: black">Enter Age:</a><br>
 			<input type='text' id="ageTest">
-                <input type="submit" id="button2"/>
+        <input type="submit" id="button3"/>
 			</form>
 			
            
@@ -343,28 +343,30 @@ $(document).keydown(function(event){
 					  }]);
 					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 					
-	var res = document.getElementById('textTest');
+	var idTest = document.getElementById('idTest');
+	var button1 = document.getElementById('button1');
 	var button2 = document.getElementById('button2');
+	var button3 = document.getElementById('button3');
 
-	//res = Number(res);
+	
 		//click handler for button
 		button2.addEventListener('click', function() {
-			console.log("RES:" + res.value);
+			console.log("RES:" + idTest.value);
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
-				function viewingBlockID(key, res) {	
+				function viewingBlockID(key, idTest) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
 							console.log((result.c["0"]));
-							if (res == Number(result.c["0"])){
+							if (idTest == Number(result.c["0"])){
 								console.log("HERE");
 							ID.push(result.c["0"]);
-							viewingBlockAge(key, res);
-							viewingBlockName(key, res);
+							viewingBlockAge(key, idTest);
+							viewingBlockName(key, idTest);
 							}
-							viewingBlockID(key + 1, res);
+							viewingBlockID(key + 1, idTest);
 						}else{
 							console.log("All keys found");
 							//TODO: call method that will draw blocks for user here!!!
@@ -376,20 +378,20 @@ $(document).keydown(function(event){
 						}
 					})
 				}
-				function viewingBlockAge(key, res) {
+				function viewingBlockAge(key, test) {
 					view.getAge(key, function(worked, result){
 							console.log(result.c["0"]);
 							age.push(result.c["0"]);
 							})
 				}
-				function viewingBlockName(key, res) {
+				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
 							console.log(result);
 							console.log(result);
 							name1.push(web3.toAscii(result));
 							})
 				}
-				viewingBlockID(key, Number(res.value));
+				viewingBlockID(key, Number(idTest.value));
 		})
 </script>
 
