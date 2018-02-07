@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI</title>
+<title>Blockchain UI - Ledger</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Importing Fonts and Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-
-
-
 
 <!-- Style for the tile buttons -->
 <style>
@@ -55,8 +51,8 @@
 		margin:10px;
 
 	}
-
 </style>
+
 <!-- Overall Page Styling -->
 <style>
 p,h1,h2,h3,h4,h5,body {font-family: 'Open Sans', sans-serif;}
@@ -121,10 +117,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			word-wrap: break-word;
 			width: 95%;
 		}
-
-
-
-
 </style>
 <head></head>
 <body>
@@ -142,7 +134,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
 				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
 				<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
-
 	
 				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
 				<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
@@ -152,7 +143,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				<a href="ViewBlockLedger.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Ledger</button></a>
 				<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
 	
-		
 				<div><h5 class="w3-bar-block" style="color: white">Help Section</h5></div>
 				<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
 				<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
@@ -167,7 +157,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		<div class="w3-container" style= "margin-left:-1.5%" color= "rgb(49, 57, 77)">
 			<h1 style="color: white">View your Blockchain</h1>
 		</div>
-		
         <br>
         <table>
                 <tr>
@@ -183,24 +172,18 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
                     <td><pre id="id0" style="width:200px"></pre></td>
                     <td><pre id="age0" style="width:200px"></pre></td>
             </table>
-
-           
-        </div>
-                
-                
-                   
+        </div>         
         </table>
-		
-
-
-		
 </div>
+
 <!-- Tooltip script-->
 <script>
 		$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();   
 		});
-		</script>
+</script>
+
+<!-- Start of Block Viewing Script -->
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 	//contract abi, pass json representation of contract to instance
@@ -327,7 +310,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 							viewingBlockID(key + 1);
 						}else{
 							console.log("All keys found");
-							//TODO: call method that will draw blocks for user here!!!
 							var i;
 							for(i = 0; i< ID.length; i++) {
 									newBlock(ID[i], age[i], name1[i]);
@@ -336,12 +318,14 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 						}
 					})
 				}
+				//function to get the block age
 				function viewingBlockAge(key) {
 					view.getAge(key, function(worked, result){
 							console.log(result.c["0"]);
 							age.push(result.c["0"]);
 							})
 				}
+				//function to get the block name
 				function viewingBlockName(key) {
 					view.getName(key, function(worked, result){
 							console.log(result);
@@ -350,8 +334,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 							})
 				}
 				viewingBlockID(key);
-				
-
 </script>
 
 <!Function to change page when button is pressed on home tab>
@@ -359,7 +341,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 	var output2 = document.getElementById('output2');
 	var printThis = "";
 function button(evt, tab){
-	
 	var i, x, tablinks;
 	x = document.getElementsByClassName("tab");
 	for (i = 0; i < x.length; i++) {
@@ -369,8 +350,7 @@ function button(evt, tab){
   	for (i = 0; i < x.length; i++) {
       		tablinks[i].className = tablinks[i].className.replace("", ""); 
   	}
-  	document.getElementById(tab).style.display = "block";
-  	
+  	document.getElementById(tab).style.display = "block";	
 }
 </script>
 
@@ -388,10 +368,7 @@ function button(evt, tab){
 		$('#age'+ i).text(age); 		
 	}
 
-
-
-
-	
+//function to duplicate the blocks
 	function duplicate() {
 		var original = document.getElementById('duplicater' + i);
 		var clone = original.cloneNode(true); // "deep" clone
@@ -405,11 +382,6 @@ function button(evt, tab){
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 	}
 
-	
-
-
 </script>
-
-
 </body>
 </html>

@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI</title>
+<title>Blockchain UI - Basic</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Importing Fonts & Libraries  -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-
-
 
 <!-- Style for the tile buttons -->
 <style>
@@ -120,10 +118,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			word-wrap: break-word;
 			width: 95%;
 		}
-
-
-
-
 </style>
 <head></head>
 <body>
@@ -142,7 +136,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
 				<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
 
-	
 				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
 				<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
 				<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
@@ -150,7 +143,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				<a href="ViewBlockAdvanced.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Advanced</button></a>
 				<a href="ViewBlockLedger.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Ledger</button></a>
 				<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
-	
 		
 				<div><h5 class="w3-bar-block" style="color: white">Help Section</h5></div>
 				<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
@@ -175,8 +167,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
 			<pre id="age0" type="text"></pre><br>
 			</div>
-
-		
 		<br>
 		<div class="block"  id="duplicater0">	
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
@@ -187,17 +177,17 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
 			<pre id="age0" type="text"></pre><br>
-			</div>
-
-
-		
+			</div>	
 </div>
+
 <!-- Tooltip script-->
 <script>
 		$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();   
 		});
-		</script>
+</script>
+
+<!-- Start of Viewing Block Script -->
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 	//contract abi, pass json representation of contract to instance
@@ -307,47 +297,49 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		"stateMutability": "view",
 		"type": "function"
 		}]);
-					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
+		var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 					
-				key = 1;
-				var ID = [];
-				var age = [];
-				var name1 = [];
-				function viewingBlockID(key) {	
-					view.getID(key, function(worked, result){
-						if(result.c["0"]){
-							console.log(result.c["0"]);
-							ID.push(result.c["0"]);
-							viewingBlockAge(key);
-							viewingBlockName(key);
-							viewingBlockID(key + 1);
-						}else{
-							console.log("All keys found");
-							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							for(i = 0; i< ID.length; i++) {
-									newBlock(ID[i], age[i], name1[i]);
-									duplicate();
-							}
-						}
-					})
+	key = 1;
+	var ID = [];
+	var age = [];
+	var name1 = [];
+	//function to view the block id
+	function viewingBlockID(key) {	
+		view.getID(key, function(worked, result){
+			if(result.c["0"]){
+				console.log(result.c["0"]);
+				ID.push(result.c["0"]);
+				viewingBlockAge(key);
+				viewingBlockName(key);
+				viewingBlockID(key + 1);
+			}else{
+				console.log("All keys found");
+				var i;
+				for(i = 0; i< ID.length; i++) {
+						newBlock(ID[i], age[i], name1[i]);
+						duplicate();
 				}
-				function viewingBlockAge(key) {
-					view.getAge(key, function(worked, result){
-							console.log(result.c["0"]);
-							age.push(result.c["0"]);
-							})
-				}
-				function viewingBlockName(key) {
-					view.getName(key, function(worked, result){
-							console.log(result);
-							console.log(result);
-							name1.push(web3.toAscii(result));
-							})
-				}
-				viewingBlockID(key);
-				
-				var difficulty = document.getElementById("name");
+			}
+		})
+	}
+	//function to view the block age
+	function viewingBlockAge(key) {
+		view.getAge(key, function(worked, result){
+				console.log(result.c["0"]);
+				age.push(result.c["0"]);
+				})
+	}
+	//function to view the block name
+	function viewingBlockName(key) {
+		view.getName(key, function(worked, result){
+				console.log(result);
+				console.log(result);
+				name1.push(web3.toAscii(result));
+				})
+	}
+	viewingBlockID(key);
+	
+	var difficulty = document.getElementById("name");
 	var extraData  = document.getElementById("id");
 	var gasLimit = document.getElementById("age");
 
@@ -358,11 +350,8 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age); 		
 	}
-
-
-
-
 	
+	//function to duplicate the blocks
 	function duplicate() {
 		var original = document.getElementById('duplicater' + i);
 		var clone = original.cloneNode(true); // "deep" clone
@@ -394,12 +383,8 @@ function button(evt, tab){
   	for (i = 0; i < x.length; i++) {
       		tablinks[i].className = tablinks[i].className.replace("", ""); 
   	}
-  	document.getElementById(tab).style.display = "block";
-  	
+  	document.getElementById(tab).style.display = "block"; 	
 }
 </script>
-
-
-
 </body>
 </html>
