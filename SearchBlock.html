@@ -371,13 +371,19 @@ $(document).keydown(function(event){
 							age.push(result.c["0"]);
 							})
 				}
+
+				function removeSpecialChars(strVal)
+				{
+				strVal = strVal.replace(/[^a-zA-Z 0-9]+/g,);
+				}
+				
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
-						if(result.c["0"]){
-							console.log((result.c["0"]));
-							if (test == result.c["0"]){
+						if(result){
+							console.log((result));
+							if (test == result){
 								console.log("HERE");
-							name.push(result.c["0"]);
+							name.push(result);
 							viewingBlockAge(key, test);
 							viewingBlockID(key, test);
 							}
@@ -435,7 +441,7 @@ $(document).keydown(function(event){
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
-							console.log(result);
+							console.log("NAME" + result);
 							console.log(result);
 							name1.push(web3.toAscii(result));
 							})
