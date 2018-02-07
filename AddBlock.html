@@ -385,7 +385,7 @@ function button(evt, tab){
 		var addingBlock = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 
 		//grabbing elements by element id and storing into variables
-		var name = document.getElementById('name');
+		
 		var id = document.getElementById('id');
 		var age = document.getElementById('age');
 		var button = document.getElementById('button2');
@@ -406,11 +406,14 @@ function button(evt, tab){
 				return;
 			}
 			//make sure user entered valid name
-
+			
 			//name = web3.fromAscii(name, 32);
 			//take value in the input and send it via contract
 			try {
-				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){
+				console.log("NAME IS:" + name.value);
+				console.log("AGE IS:" + age.value);
+				console.log("ID IS:" + id.value);
+				addingBlock.addData(String(document.getElementById('name').value), age.value, id.value, function(worked, result){
 					if(!worked){
 						hash = result;
 						console.log(hash);
