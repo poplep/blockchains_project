@@ -2,15 +2,14 @@
 <html>
 <title>Blockchain UI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Importing Fonts and Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
 
 
 <!-- Style for the tile buttons -->
@@ -233,7 +232,13 @@ $(document).keydown(function(event){
 <!-- Search Functionality (from view block)-->
 
 <script>
+	
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
+	function removeSpecialChars(strVal)
+				{
+				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+				return strVal;
+				}
 		//contract abi, pass json representation of contract to instance
 		var addBlockContract = web3.eth.contract([{
 						"constant": true,
@@ -405,6 +410,7 @@ $(document).keydown(function(event){
 				var name1 = [];
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
+
 						if(result.c["0"]){
 							console.log((result.c["0"]));
 							if (test == Number(result.c["0"])){
@@ -412,6 +418,7 @@ $(document).keydown(function(event){
 							ID.push(result.c["0"]);
 							viewingBlockAge(key, test);
 							viewingBlockName(key, test);
+
 							}
 							
 							viewingBlockID(key + 1, Number(test));
@@ -458,8 +465,10 @@ $(document).keydown(function(event){
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
+
 							
 							viewingBlockAge(key, test);
+
 							
 						}else{
 							console.log("All keys found");
@@ -484,13 +493,16 @@ $(document).keydown(function(event){
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
+
 							console.log(result);
+
 							console.log(result);
 							name1.push(web3.toAscii(result));
 							})
 				}
 				viewingBlockID(key, Number(ageTest.value));
 		})
+
 </script>
 
 
@@ -523,7 +535,7 @@ function button(evt, tab){
 	//function to create a new block object to be displayed on page
 	var i = 0;
 	function newBlock(id, age, name) {
-		$('#name' + i).text(name); 
+		$('#name' + i).text(removeSpecialChars(name)); 
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age); 		
 	}

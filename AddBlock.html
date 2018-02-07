@@ -395,7 +395,11 @@ function button(evt, tab){
 		var trans;
 		var block;
 
-		
+		function removeSpecialChars(strVal)
+				{
+				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+				return strVal;
+				}
 		//console.log(name)
 		//click handler for button
 		button.addEventListener('click', function() {
@@ -560,7 +564,7 @@ function button(evt, tab){
 	//function to create a new block object to be displayed on page
 	var i = 0;
 	function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
-		$('#name' + i).text(name); 
+		$('#name' + i).text(removeSpecialChars(name)); 
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age); 
 		$('#difficulty' + i).text(difficulty); 
