@@ -427,6 +427,10 @@ $(document).keydown(function(event){
 						}
 					})
 				}
+				function removeSpecialChars(strVal)
+				{
+				strVal = strVal.replace(/[^a-zA-Z 0-9]+/g,);
+				}
 				function viewingBlockAge(key, test) {
 					view.getAge(key, function(worked, result){
 							console.log(result.c["0"]);
@@ -437,6 +441,7 @@ $(document).keydown(function(event){
 					view.getName(key, function(worked, result){
 							console.log(result);
 							console.log(result);
+							removeSpecialChars(result);
 							name1.push(web3.toAscii(result));
 							})
 				}
