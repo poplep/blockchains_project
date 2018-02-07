@@ -408,7 +408,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 					view.getName(key, function(worked, result){
 							console.log(result);
 							//console.log(web3.toAscii(result));
-							name1.push(result);
+							name1.push(web3.toAscii(result));
 							})
 				}
 				viewingBlockID(key);
