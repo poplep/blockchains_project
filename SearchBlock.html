@@ -2,15 +2,14 @@
 <html>
 <title>Blockchain UI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Importing Fonts and Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Importing Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
 
 
 <!-- Style for the tile buttons -->
@@ -233,7 +232,13 @@ $(document).keydown(function(event){
 <!-- Search Functionality (from view block)-->
 
 <script>
+	
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
+	function removeSpecialChars(strVal)
+				{
+				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+				return strVal;
+				}
 		//contract abi, pass json representation of contract to instance
 		var addBlockContract = web3.eth.contract([{
 						"constant": true,
@@ -349,11 +354,7 @@ $(document).keydown(function(event){
 	var button1 = document.getElementById('button1');
 	var button2 = document.getElementById('button2');
 	var button3 = document.getElementById('button3');
-	function removeSpecialChars(strVal)
-				{
-				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
-				return strVal;
-				}
+
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
 			console.log("RES:" + nameTest.value);
@@ -376,15 +377,13 @@ $(document).keydown(function(event){
 							})
 				}
 
-				
-
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
 						if(result){
-							console.log((result));
-							if (test == result){
-								removeSpecialChars(result);
-							console.log("NAME " + result);
+							console.log(("RESULT: " + web3.toAscii(result)));
+							if (test == web3.toAscii(result)){
+								
+								console.log("NAME " + result);
 								name.push(result);
 								console.log("RESULT:" + result);
 								viewingBlockAge(key, test);
@@ -444,7 +443,6 @@ $(document).keydown(function(event){
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
-							removeSpecialChars(result);
 							console.log("NAME " + result);
 							console.log(result);
 							name1.push(web3.toAscii(result));
