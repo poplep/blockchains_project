@@ -348,14 +348,16 @@ $(document).keydown(function(event){
 					  }]);
 					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 					
-	var idTest = document.getElementById('idTest');
-	var button1 = document.getElementById('button1');
-	var button2 = document.getElementById('button2');
-	var button3 = document.getElementById('button3');
+					var idTest = document.getElementById('idTest');
+					var ageTest = document.getElementById('ageTest');
+					var nameTest = document.getElementById('nameTest');
+					var button1 = document.getElementById('button1');
+					var button2 = document.getElementById('button2');
+					var button3 = document.getElementById('button3');
 
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
-			console.log("RES:" + idTest.value);
+			console.log("RES:" + nameTest.value);
 			key = 1;
 			var ID = [];
 			var age = [];
@@ -389,8 +391,8 @@ $(document).keydown(function(event){
 			}
 			function viewingBlockName(key, test) {
 				view.getName(key, function(worked, result){
-					console.log(key)
-						if(result == test){
+					console.log(test)
+						if(removeSpecialChars(web3.toAscii(result)) == test){
 							name1.push(web3.toAscii(result));
 							addID(key, test);
 							viewingBlockAge(key, test)
@@ -399,7 +401,7 @@ $(document).keydown(function(event){
 						})
 						
 			}
-				viewingBlockID(key, Number(nameTest.value));
+				viewingBlockID(key, nameTest.value);
 		})
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
