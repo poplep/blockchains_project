@@ -349,63 +349,59 @@ $(document).keydown(function(event){
 					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 					
 	var idTest = document.getElementById('idTest');
-	var ageTest = document.getElementById('ageTest');
-	var nameTest = document.getElementById('nameTest');
 	var button1 = document.getElementById('button1');
 	var button2 = document.getElementById('button2');
 	var button3 = document.getElementById('button3');
 
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
-			console.log("RES:" + nameTest.value);
-				key = 1;
-				var ID = [];
-				var age = [];
-				var name1 = [];
-				function viewingBlockID(key, test) {	
-					view.getID(key, function(worked, result){
-						view.getID(key, function(worked, result){
-						console.log(result.c["0"]);
-						ID.push(result.c["0"]);
-						})
-					})
-				}
-				function viewingBlockAge(key, test) {
-					view.getAge(key, function(worked, result){
-							console.log(result.c["0"]);
-							age.push(result.c["0"]);
-							})
-				}
-
-				function viewingBlockName(key, test) {
-					view.getName(key, function(worked, result){
-						if(result){
-							console.log(("RESULT: " + web3.toAscii(result)));
-							if (test == web3.toAscii(result)){
-								
-								console.log("NAME " + result);
-								name.push(result);
-								console.log("RESULT:" + result);
-								viewingBlockAge(key, test);
-								viewingBlockID(key, test);
-							}
-							
-							viewingBlockName(key + 1, Number(test));
-						}else{
-							console.log("All keys found");
-							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							for(i = 0; i< ID.length; i++) {
-									newBlock(ID[i], age[i], name1[i]);
-									duplicate();
-							}
+			console.log("RES:" + idTest.value);
+			key = 1;
+			var ID = [];
+			var age = [];
+			var name1 = [];
+			function addID(key, test){
+				view.getID(key, function(worked, result){
+					ID.push(result.c["0"]);
+				});
+				viewingBlockAge(key, test);
+			}
+			function viewingBlockID(key, test) {	
+				view.getID(key, function(worked, result){
+					if(result.c["0"]){
+						viewingBlockName(key, test);
+					}else{
+						console.log("All keys found");
+						//TODO: call method that will draw blocks for user here!!!
+						var i;
+						for(i = 0; i< ID.length; i++) {
+								newBlock(ID[i], age[i], name1[i]);
+								duplicate();
 						}
-					})
-				}
-				viewingBlockName(key, nameTest.value);
+					}
+				})
+			}
+			function viewingBlockAge(key, test) {
+				view.getAge(key, function(worked, result){
+						console.log(result.c["0"]);
+						age.push(result.c["0"]);
+						})
+			}
+			function viewingBlockName(key, test) {
+				view.getName(key, function(worked, result){
+					console.log(key)
+						if(result == test){
+							name1.push(web3.toAscii(result));
+							addID(key, test);
+							viewingBlockAge(key, test)
+						}
+						viewingBlockID(key + 1, test);
+						})
+						
+			}
+				viewingBlockID(key, Number(nameTest.value));
 		})
-
-		//click handler - searching by ID: WORKING
+		//click handler - searching by ID
 		button2.addEventListener('click', function() {
 			console.log("RES:" + idTest.value);
 				key = 1;
@@ -414,13 +410,15 @@ $(document).keydown(function(event){
 				var name1 = [];
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
+
 						if(result.c["0"]){
 							console.log((result.c["0"]));
 							if (test == Number(result.c["0"])){
 								console.log("HERE");
-								ID.push(result.c["0"]);
-								viewingBlockAge(key, test);
-								viewingBlockName(key, test);
+							ID.push(result.c["0"]);
+							viewingBlockAge(key, test);
+							viewingBlockName(key, test);
+
 							}
 							
 							viewingBlockID(key + 1, Number(test));
@@ -443,7 +441,7 @@ $(document).keydown(function(event){
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
-							console.log("NAME " + result);
+							console.log(result);
 							console.log(result);
 							name1.push(web3.toAscii(result));
 							})
@@ -451,61 +449,60 @@ $(document).keydown(function(event){
 				viewingBlockID(key, Number(idTest.value));
 		})
 
-			//click handler - searching by age: Seems to be Working - needs testing
+			//click handler - searching by age
 			button3.addEventListener('click', function() {
-				console.log("RES:" + ageTest.value);
-					key = 1;
-					var ID = [];
-					var age = [];
-					var name1 = [];
-					function viewingBlockID(key, test) {	
-						view.getID(key, function(worked, result){
-							view.getID(key, function(worked, result){
-							console.log(result.c["0"]);
-							ID.push(result.c["0"]);
-						
-							})
-						})
-					}
-					function viewingBlockAge(key, test) {
-						view.getAge(key, function(worked, result){
-							/*
-								console.log(result.c["0"]);
-								age.push(result.c["0"]);*/
+			console.log("RES:" + ageTest.value);
+				key = 1;
+				var ID = [];
+				var age = [];
+				var name1 = [];
+				function addID(key, test){
+				view.getID(key, function(worked, result){
+					ID.push(result.c["0"]);
+				});
+				viewingBlockAge(key, test);
+			}
+				function viewingBlockID(key, test) {	
+					view.getID(key, function(worked, result){
+						if(result.c["0"]){
 
-								if(result.c["0"]){
-								console.log((result.c["0"]));
-								if (test == Number(result.c["0"])){
-									console.log("HERE");
-								age.push(result.c["0"]);
-								viewingBlockID(key, test);
-								viewingBlockName(key, test);
-								}
-								
-								viewingBlockAge(key + 1, Number(test));
-							}else{
-								console.log("All keys found");
-								//TODO: call method that will draw blocks for user here!!!
-								var i;
-								for(i = 0; i< ID.length; i++) {
-										newBlock(ID[i], age[i], name1[i]);
-										duplicate();
-								}
+							
+							viewingBlockAge(key, test);
+
+							
+						}else{
+							console.log("All keys found");
+							//TODO: call method that will draw blocks for user here!!!
+							var i;
+							for(i = 0; i< ID.length; i++) {
+									newBlock(ID[i], age[i], name1[i]);
+									duplicate();
 							}
-								})
-					}
-					function viewingBlockName(key, test) {
-						view.getName(key, function(worked, result){
-								removeSpecialChars(result);
-								console.log("NAME " + result);
-								name1.push(web3.toAscii(result));
-								})
-					}
-					viewingBlockID(key, Number(idTest.value));
-					viewingBlockAge(key, Number(ageTest.value));
-					viewingBlockName(key, Number(nameTest.value));
+						}
+					})
+				}
+				function viewingBlockAge(key, test) {
+					view.getAge(key, function(worked, result){
+							if(result.c["0"] == test){
+								age.push(result.c["0"]);
+								viewingBlockName(key, test);
+								addID(key, test);
+							}
+							})
+							viewingBlockID(key+1, test)
+				}
+				function viewingBlockName(key, test) {
+					view.getName(key, function(worked, result){
 
-			})
+							console.log(result);
+
+							console.log(result);
+							name1.push(web3.toAscii(result));
+							})
+				}
+				viewingBlockID(key, Number(ageTest.value));
+		})
+
 </script>
 
 
