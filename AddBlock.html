@@ -385,7 +385,7 @@ function button(evt, tab){
 		var addingBlock = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
 
 		//grabbing elements by element id and storing into variables
-		var name = document.getElementById('name');
+		
 		var id = document.getElementById('id');
 		var age = document.getElementById('age');
 		var button = document.getElementById('button2');
@@ -410,7 +410,7 @@ function button(evt, tab){
 			//name = web3.fromAscii(name, 32);
 			//take value in the input and send it via contract
 			try {
-				addingBlock.addData(String(name.value), age.value, id.value, function(worked, result){
+				addingBlock.addData(String(document.getElementById('name').value), age.value, id.value, function(worked, result){
 					if(!worked){
 						hash = result;
 						console.log(hash);
@@ -464,7 +464,7 @@ function button(evt, tab){
 											elements.push(value);
 											//output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
 										}
-					 					newBlock(id.value, age.value, String(name.value), elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
+					 					newBlock(id.value, age.value, String(document.getElementById('name').value), elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
 										console.log(result);
 								}	else{
 										alert("We could not retrieve the transaction hash successfully. Please try again.");
