@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI</title>
+<title>Blockchain UI - Advanced</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Importing Google Fonts -->
@@ -10,9 +10,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-
-
 
 <!-- Style for the tile buttons -->
 <style>
@@ -52,9 +49,7 @@
 		overflow: scroll;
 		color: black;
 		margin:10px;
-
 	}
-
 </style>
 <!-- Overall Page Styling -->
 <style>
@@ -120,13 +115,8 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			word-wrap: break-word;
 			width: 95%;
 		}
-
-
 </style>
-<head>
-	<!-- Tooltip script-->
-
-</head>
+<head></head>
 <body>
 
 <!-- Sidebar/menu -->
@@ -239,12 +229,9 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
 			<pre id="uncles0" type="text"></pre><br>
-			</div>
-
-
-		
+			</div>	
 </div>
-
+<!-- Start of Viewing Block Script -->
 <script>
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 	//contract abi, pass json representation of contract to instance
@@ -354,20 +341,21 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 						"stateMutability": "view",
 						"type": "function"
 					  }]);
-					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
-					function wait(ms)
-					{
-					var d = new Date();
-					var d2 = null;
-					do { d2 = new Date(); }
-					while(d2-d < ms);
-					}
+				var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
+				function wait(ms)
+				{
+				var d = new Date();
+				var d2 = null;
+				do { d2 = new Date(); }
+				while(d2-d < ms);
+				}
 				//temporary key number to avoid early zeros
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
-				var iterate = 0;	
+				var iterate = 0;
+				//function to view the block ID	
 				function viewingBlockID(key) {
 					var elements = [];
 					view.getID(key, function(worked, result){

@@ -406,10 +406,11 @@ function button(evt, tab){
 				return;
 			}
 			//make sure user entered valid name
-
+			
 			//name = web3.fromAscii(name, 32);
 			//take value in the input and send it via contract
 			try {
+
 				addingBlock.addData(String(document.getElementById('name').value), age.value, id.value, function(worked, result){
 					if(!worked){
 						hash = result;
