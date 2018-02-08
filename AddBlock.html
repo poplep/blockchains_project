@@ -410,8 +410,13 @@ function button(evt, tab){
 				return;
 			}
 			//make sure user entered valid name
-			
-			//name = web3.fromAscii(name, 32);
+			var name=$("#name").val();
+
+			if(!name.match(/^[a-z]+$/i)) {
+				alert('Not A Name');
+				return;
+			}
+
 			//take value in the input and send it via contract
 			try {
 
