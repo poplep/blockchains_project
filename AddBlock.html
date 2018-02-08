@@ -410,13 +410,20 @@ function button(evt, tab){
 				return;
 			}
 			//make sure user entered valid name
-			var name=$("#name").val();
+			var namevalidate=$("#name").val();
+			var agevalidate=$("#age").val();
+			var idvalidate=$("#id").val();
 
-			if(!name.match(/^[a-z]+$/i)) {
+			if(!namevalidate.match(/^[a-z]+$/i)) {
 				alert('Not A Name');
 				return;
 			}
 
+			//make sure user entered a valid age
+			if(!agevalidate.match(/^[0-9]+$/i)) {
+				alert('Not A Valid Age');
+				return;
+			}
 			//take value in the input and send it via contract
 			try {
 
