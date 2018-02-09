@@ -414,7 +414,7 @@ function button(evt, tab){
 			var agevalidate=$("#age").val();
 			var idvalidate=$("#id").val();
 
-			if(!namevalidate.match(/^[a-z]+$/i)) {
+			if(!namevalidate.match("^[ A-Za-z]+$")) {
 				alert('Not A Name');
 				return;
 			}
