@@ -293,6 +293,13 @@ function button(evt, tab){
   	document.getElementById(tab).style.display = "block";
   	
 }
+
+//check if the user is logged into metamask
+web3.eth.getAccounts(function(err, accounts){
+    if (err != null) alert("An error occurred: "+err);
+    else if (accounts.length == 0) alert("User is not logged in to MetaMask");
+    else alert("User is logged in to MetaMask");
+});
 </script>
 
 </body>
