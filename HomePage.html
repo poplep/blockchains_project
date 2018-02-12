@@ -297,8 +297,8 @@ function button(evt, tab){
 //check if the user is logged into metamask
 web3.eth.getAccounts(function(err, accounts){
     if (err != null) alert("An error occurred: "+err);
-    else if (accounts.length == 0) alert("User is not logged in to MetaMask");
-    else alert("User is logged in to MetaMask");
+    else if (accounts.length == 0) alert("It doesn't seem like you're logged into Metamask. Please log into the LocalHost and try again.");
+    else alert("Successfully logged into Metamask.");
 });
 </script>
 
