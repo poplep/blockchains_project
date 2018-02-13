@@ -122,7 +122,55 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 </style>
 <head></head>
 <body>
+      <!-- Block Modal Window -->
+	  <div class="container">
+  
+        <!-- Modal Window -->
+        <div class="modal fade" id="blockContent" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" id="blockModalContent" data-dismiss="modal">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Here's your block:</h4>
+              </div>
+              <div class="modal-body">
+				<p id="modalName"></p>
+				<p id="modalID"></p>
+				<p id="modalAge"></p>
+				<p id="modalDifficulty"></p>
+				<p id="modalExtraData"></p>
+				<p id="modalGasLimit"></p>
+				<p id="modalGasUsed"></p>
+				<p id="modalHash"></p>
+				<p id="modalLogsBloom"></p>
+				<p id="modalMiner"></p>
+				<p id="modalmixHash"></p>
+				<p id="modalnonce"></p>
+				<p id="modalnumber"></p>
+				<p id="modalparentHash"></p>
+				<p id="modalreceiptsRoot"></p>
+				<p id="modalsha3Uncles"></p>
+				<p id="modalsize"></p>
+				<p id="modalstateRoot"></p>
+				<p id="modaltimestamp"></p>
+				<p id="modaltotalDifficulty"></p>
+				<p id="modaltransactions"></p>
+				<p id="modaltransactionsRoot"></p>
+				<p id="modaluncles"></p>
 
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" id="exit" data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
 <!-- Sidebar/menu -->
 <div position = "absolute">
 		<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
@@ -390,6 +438,27 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				var age = [];
 				var name1 = [];
 				var iterate = 0;
+				var difficulty = [];
+				var extraData = [];
+				var gasLimit = [];
+				var gasUsed = [];
+				var hash = [];
+				var logsBloom = [];
+				var miner = [];
+				var mixHash = [];
+				var nonce = [];
+				var number = [];
+				var parentHash = [];
+				var receiptsRoot = [];
+				var sha3Uncles = [];
+				var size = [];
+				var stateRoot = [];
+				var timestamp = [];
+				var totalDifficulty = [];
+				var transactions = [];
+				var transactionsRoot = [];
+				var uncles = [];
+
 				//function to view the block ID	
 				function viewingBlockID(key) {
 					var elements = [];
@@ -417,6 +486,26 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 									newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
 									duplicate();
 									iterate++;
+									difficulty.push(elements[0]);
+									extraData.push(elements[1]);
+									gasLimit.push(elements[2]);
+									gasUsed.push(elements[3]);
+									hash.push(elements[4]);
+									logsBloom.push(elements[5]);
+									miner.push(elements[6]);
+									mixHash.push(elements[7]);
+									nonce.push(elements[8]);
+									number.push(elements[9]);
+									parentHash.push(elements[10]);
+									receiptsRoot.push(elements[11]);
+									sha3Uncles.push(elements[12]);
+									size.push(elements[13]);
+									stateRoot.push(elements[14]);
+									timestamp.push(elements[15]);
+									totalDifficulty.push(elements[16]);
+									transactions.push(elements[17]);
+									transactionsRoot.push(elements[18]);
+									uncles.push(elements[19]);
 									console.log("END!!!!!!!!!!!!!!!!!");
 								});
 								
@@ -518,6 +607,41 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
 	}
+	setTimeout(function(){  
+		document.addEventListener('click', function(e) {
+			var duplicaterid = e.target.id;
+			//accessing block
+			var blockNumber = duplicaterid.substr(10, 11);
+			document.getElementById("modalName").innerHTML = name1[blockNumber];
+			document.getElementById("modalAge").innerHTML = age[blockNumber];
+			document.getElementById("modalID").innerHTML = ID[blockNumber];
+			document.getElementById("modalDifficulty").innerHTML = difficulty[blockNumber];
+			document.getElementById("modalextraData").innerHTML = extraData[blockNumber];
+			document.getElementById("modalgasLimit").innerHTML = gasLimit[blockNumber];
+			document.getElementById("modalgasUsed").innerHTML = gasUsed[blockNumber];
+			document.getElementById("modalhash").innerHTML = hash[blockNumber];
+			document.getElementById("modallogsBloom").innerHTML = logsBloom[blockNumber];
+			document.getElementById("modalminer").innerHTML = miner[blockNumber];
+			document.getElementById("modalmixHash").innerHTML = mixHash[blockNumber];
+			document.getElementById("modalnonce").innerHTML = nonce[blockNumber];
+			document.getElementById("modalnumber").innerHTML = number[blockNumber];
+			document.getElementById("modalparentHash").innerHTML = parentHash[blockNumber];
+			document.getElementById("modalreceiptsRoot").innerHTML = receiptsRoot[blockNumber];
+			document.getElementById("modalsha3Uncles").innerHTML = sha3Uncles[blockNumber];
+			document.getElementById("modalsize").innerHTML = size[blockNumber];
+			document.getElementById("modalstateRoot").innerHTML = stateRoot[blockNumber];
+			document.getElementById("modaltimestamp").innerHTML = timestamp[blockNumber];
+			document.getElementById("modaltotalDifficulty").innerHTML = totalDifficulty[blockNumber];
+			document.getElementById("modaltransactions").innerHTML = transactions[blockNumber];
+			document.getElementById("modaltransactionsRoot").innerHTML = transactionsRoot[blockNumber];
+			document.getElementById("modaluncles").innerHTML = uncles[blockNumber];
+			$("#blockContent").modal("show").click(function () { // show the welcome page modal
+		 		 $("#blockContent").modal('hide'); 
+			});
+			
+		});
+	}, 1000);
+
 
 	
 	

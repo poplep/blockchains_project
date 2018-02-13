@@ -139,9 +139,9 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
                 <h4 class="modal-title">Here's your block:</h4>
               </div>
               <div class="modal-body">
-				<p id="name"></p>
-				<p id="id"></p>
-				<p id="age"></p>
+				<p id="modalName"></p>
+				<p id="modalID"></p>
+				<p id="modalAge"></p>
 
               </div>
               <div class="modal-footer">
@@ -406,21 +406,8 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age);	
 
-		setTimeout(function(){  
-		document.addEventListener('click', function(e) {
-			var duplicaterid = e.target.id;
-			//accessing block
-			if(duplicaterid.substr(0, 10) == "duplicater") {
-				alert("Success ");
-				alert("NAME" + removeSpecialChars(name));
-				alert("ID " + id);
-				alert("AGE " + age);
-			}
-		});
-	}, 100);
 
 	}
-	
 	//function to duplicate the blocks
 	function duplicate() {
 		var original = document.getElementById('duplicater' + i);
@@ -437,6 +424,24 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
 	}
 	
+		
+	setTimeout(function(){  
+		document.addEventListener('click', function(e) {
+			var duplicaterid = e.target.id;
+			//accessing block
+			var blockNumber = duplicaterid.substr(10, 11);
+			var nameforModal = document.getElementById('name' + blockNumber).innerHTML;
+			var ageforModal = document.getElementById('age' + blockNumber).innerHTML;
+			var idforModal = document.getElementById('id' + blockNumber).innerHTML;
+			document.getElementById("modalName").innerHTML = name1[blockNumber];
+			document.getElementById("modalAge").innerHTML = age[blockNumber];
+			document.getElementById("modalID").innerHTML = ID[blockNumber];
+			$("#blockContent").modal("show").click(function () { // show the welcome page modal
+		 		 $("#blockContent").modal('hide'); 
+			});
+			
+		});
+	}, 1000);
 </script>
 
 <!Function to change page when button is pressed on home tab>
