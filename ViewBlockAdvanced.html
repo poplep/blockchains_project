@@ -205,30 +205,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
 					<pre id="modaluncles"></pre>
 
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-
+			
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" id="exit" data-dismiss="modal">Close</button>
@@ -316,7 +293,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
 			<pre id="age0" type="text"></pre><br>
 
-			<center><button class="btn btn-default" id="exit" data-dismiss="modal">See More</button></center>
+			<center><button class="btn btn-default" id="exit0" data-dismiss="modal">See More</button></center>
 			<!--
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
 			<pre id="difficulty0"></pre><br>
@@ -659,7 +636,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		clone.getElementsByTagName('pre')[0].id = "name" + i;
 		clone.getElementsByTagName('pre')[1].id = "id" + i;
 		clone.getElementsByTagName('pre')[2].id = "age" + i;
-		clone.getElementsByTagName('button')[0] = "exit";
+		clone.getElementsByTagName('button')[0].id = "exit" + i;
 		/*
 		clone.getElementsByTagName('pre')[3].id = "difficulty" + i;
 		clone.getElementsByTagName('pre')[4].id = "extraData" + i;
@@ -686,12 +663,12 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
 	}
 	try {
-		var exit = document.getElementById("exit");
+		
 		setTimeout(function(){  
-		exit.addEventListener('click', function(e) {
-			var duplicaterid = e.target.id;
+		document.addEventListener('click', function(e) {
+			var duplicaterid = e.target.id; // gets id of target which is seemorebutton
 			//accessing block
-			var blockNumber = duplicaterid.substr(10, 11);
+			var blockNumber = duplicaterid.substr(4, 5);
 			var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
 			var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
 			var idforModal = document.getElementById('id' + blockNumber).innerHTML;
