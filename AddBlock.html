@@ -460,6 +460,7 @@ function button(evt, tab){
 						console.log(hash);
 						console.log(worked);
 						viewingBlock();
+						alert("A block was successfully added to the blockchain. Waiting to be mined...");
 					}else
 						console.error(worked);
 				})
@@ -625,7 +626,8 @@ function button(evt, tab){
 		$('#totalDifficulty'+ i).text(totalDifficulty); 
 		$('#transactions'+ i).text(transactions); 
 		$('#transactionsRoot'+ i).text(transactionsRoot); 
-		$('#uncles'+ i).text(uncles); 		
+		$('#uncles'+ i).text(uncles); 
+		alert("Mining complete.");		
 	}
 
 
