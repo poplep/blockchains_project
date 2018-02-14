@@ -38,15 +38,14 @@
 <!-- Styling for blocks -->
 <style>
 	.block {
-		width: 400px;
-		height: 500px;
+		width: 350px;
+		height: 350px;
 		padding: 10px;
 		float:left;
 		border: 2px solid rgb(49, 57, 77);
 		border-radius: 10px;
 		background-color:rgb(49, 57, 77);
 		font-family: 'Open Sans', sans-serif;
-		overflow: scroll;
 		color: black;
 		margin:10px;
 	}
@@ -136,29 +135,99 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
                 <h4 class="modal-title">Here's your block:</h4>
               </div>
               <div class="modal-body">
-				<p id="modalName"></p>
-				<p id="modalID"></p>
-				<p id="modalAge"></p>
-				<p id="modalDifficulty"></p>
-				<p id="modalExtraData"></p>
-				<p id="modalGasLimit"></p>
-				<p id="modalGasUsed"></p>
-				<p id="modalHash"></p>
-				<p id="modalLogsBloom"></p>
-				<p id="modalMiner"></p>
-				<p id="modalmixHash"></p>
-				<p id="modalnonce"></p>
-				<p id="modalnumber"></p>
-				<p id="modalparentHash"></p>
-				<p id="modalreceiptsRoot"></p>
-				<p id="modalsha3Uncles"></p>
-				<p id="modalsize"></p>
-				<p id="modalstateRoot"></p>
-				<p id="modaltimestamp"></p>
-				<p id="modaltotalDifficulty"></p>
-				<p id="modaltransactions"></p>
-				<p id="modaltransactionsRoot"></p>
-				<p id="modaluncles"></p>
+
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
+					<pre id="modalName"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
+					<pre id="modalID"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
+					<pre id="modalAge"></pre>
+					
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
+					<pre id="modalDifficulty"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
+					<pre id="modalextraData"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
+					<pre id="modalgasLimit"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
+					<pre id="modalgasUsed"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
+					<pre id="modalhash"></pre>
+
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
+					<pre id="modallogsBloom"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
+					<pre id="modalminer"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
+					<pre id="modalmixHash"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
+					<pre id="modalnonce"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
+					<pre id="modalnumber"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
+					<pre id="modalparentHash"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
+					<pre id="modalreceiptsRoot"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
+					<pre id="modalsha3Uncles"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
+					<pre id="modalsize"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
+					<pre id="modalstateRoot"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
+					<pre id="modaltimestamp"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
+					<pre id="modaltotalDifficulty"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
+					<pre id="modaltransactions"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
+					<pre id="modaltransactionsRoot"></pre>
+		
+					<a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
+					<pre id="modaluncles"></pre>
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 
               </div>
               <div class="modal-footer">
@@ -246,7 +315,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
 			<pre id="age0" type="text"></pre><br>
-
+			<!--
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
 			<pre id="difficulty0"></pre><br>
 
@@ -306,6 +375,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 
 			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
 			<pre id="uncles0" type="text"></pre><br>
+			-->
 			</div>	
 </div>
 <!-- Start of Viewing Block Script -->
@@ -438,26 +508,26 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 				var age = [];
 				var name1 = [];
 				var iterate = 0;
-				var difficulty = [];
-				var extraData = [];
-				var gasLimit = [];
-				var gasUsed = [];
-				var hash = [];
-				var logsBloom = [];
-				var miner = [];
-				var mixHash = [];
-				var nonce = [];
-				var number = [];
-				var parentHash = [];
-				var receiptsRoot = [];
-				var sha3Uncles = [];
-				var size = [];
-				var stateRoot = [];
-				var timestamp = [];
-				var totalDifficulty = [];
-				var transactions = [];
-				var transactionsRoot = [];
-				var uncles = [];
+				var difficultyVals = [];
+				var extraDataVals = [];
+				var gasLimitVals = [];
+				var gasUsedVals = [];
+				var hashVals = [];
+				var logsBloomVals = [];
+				var minerVals = [];
+				var mixHashVals = [];
+				var nonceVals = [];
+				var numberVals = [];
+				var parentHashVals = [];
+				var receiptsRootVals = [];
+				var sha3UnclesVals = [];
+				var sizeVals = [];
+				var stateRootVals = [];
+				var timestampVals = [];
+				var totalDifficultyVals = [];
+				var transactionsVals = [];
+				var transactionsRootVals = [];
+				var unclesVals = [];
 
 				//function to view the block ID	
 				function viewingBlockID(key) {
@@ -482,31 +552,12 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 											
 										}
 									}
-									
 									newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
 									duplicate();
 									iterate++;
-									difficulty.push(elements[0]);
-									extraData.push(elements[1]);
-									gasLimit.push(elements[2]);
-									gasUsed.push(elements[3]);
-									hash.push(elements[4]);
-									logsBloom.push(elements[5]);
-									miner.push(elements[6]);
-									mixHash.push(elements[7]);
-									nonce.push(elements[8]);
-									number.push(elements[9]);
-									parentHash.push(elements[10]);
-									receiptsRoot.push(elements[11]);
-									sha3Uncles.push(elements[12]);
-									size.push(elements[13]);
-									stateRoot.push(elements[14]);
-									timestamp.push(elements[15]);
-									totalDifficulty.push(elements[16]);
-									transactions.push(elements[17]);
-									transactionsRoot.push(elements[18]);
-									uncles.push(elements[19]);
 									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
 								});
 								
 								
@@ -548,6 +599,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		$('#name' + i).text(removeSpecialChars(name));  
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age); 
+		/*
 		$('#difficulty' + i).text(difficulty); 
 		$('#extraData'+ i).text(extraData); 
 		$('#gasLimit'+ i).text(gasLimit); 
@@ -567,7 +619,28 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		$('#totalDifficulty'+ i).text(totalDifficulty); 
 		$('#transactions'+ i).text(transactions); 
 		$('#transactionsRoot'+ i).text(transactionsRoot); 
-		$('#uncles'+ i).text(uncles); 		
+		$('#uncles'+ i).text(uncles); 
+*/
+		difficultyVals.push(difficulty);
+		extraDataVals.push(extraData);
+		gasLimitVals.push(gasLimit);
+		gasUsedVals.push(gasUsed);
+		hashVals.push(hash);
+		logsBloomVals.push(logsBloom);
+		minerVals.push(miner);
+		mixHashVals.push(mixHash);
+		nonceVals.push(nonce);
+		numberVals.push(number);
+		parentHashVals.push(parentHash);
+		receiptsRootVals.push(receiptsRoot);
+		sha3UnclesVals.push(sha3Uncles);
+		sizeVals.push(size);
+		stateRootVals.push(stateRoot);
+		timestampVals.push(timestamp);
+		totalDifficultyVals.push(totalDifficulty);
+		transactionsVals.push(transactions);
+		transactionsRootVals.push(transactionsRoot);
+		unclesVals.push(uncles);		
 	}
 
 
@@ -583,6 +656,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		clone.getElementsByTagName('pre')[0].id = "name" + i;
 		clone.getElementsByTagName('pre')[1].id = "id" + i;
 		clone.getElementsByTagName('pre')[2].id = "age" + i;
+		/*
 		clone.getElementsByTagName('pre')[3].id = "difficulty" + i;
 		clone.getElementsByTagName('pre')[4].id = "extraData" + i;
 		clone.getElementsByTagName('pre')[5].id = "gasLimit" + i;
@@ -602,45 +676,74 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		clone.getElementsByTagName('pre')[19].id = "totalDifficulty" + i;
 		clone.getElementsByTagName('pre')[20].id = "transactions" + i;
 		clone.getElementsByTagName('pre')[21].id = "transactionsRoot" + i;
-		clone.getElementsByTagName('pre')[22].id = "uncles" + i;
+		clone.getElementsByTagName('pre')[22].id = "uncles" + i;*/
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
 	}
-	setTimeout(function(){  
+	try {
+		setTimeout(function(){  
 		document.addEventListener('click', function(e) {
 			var duplicaterid = e.target.id;
 			//accessing block
 			var blockNumber = duplicaterid.substr(10, 11);
+			var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
+			var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
+			var idforModal = document.getElementById('id' + blockNumber).innerHTML;
+			var difficultyforModal = document.getElementById("modalDifficulty").innerHTML;
+			var extraDataforModal = document.getElementById("modalextraData").innerHTML;
+			var gasLimitforModal = document.getElementById("modalgasLimit").innerHTML;
+			var gasUsedforModal = document.getElementById("modalgasUsed").innerHTML;
+			var hashforModal = document.getElementById("modalhash").innerHTML;
+			var logsBloomforModal = document.getElementById("modallogsBloom").innerHTML;
+			var minerforModal = document.getElementById("modalminer").innerHTML;
+			var mixhashforModal = document.getElementById("modalmixHash").innerHTML;
+			var nonceforModal = document.getElementById("modalnonce").innerHTML;
+			var numberforModal = document.getElementById("modalnumber").innerHTML;
+			var parentHashforModal = document.getElementById("modalparentHash").innerHTML;
+			var receiptsRootforModal = document.getElementById("modalreceiptsRoot").innerHTML;
+			var sha3UnclesforModal = document.getElementById("modalsha3Uncles").innerHTML;
+			var sizeforModal = document.getElementById("modalsize").innerHTML;
+			var stateRootforModal = document.getElementById("modalstateRoot").innerHTML;
+			var timestampforModal = document.getElementById("modaltimestamp").innerHTML;
+			var totalDifficultyforModal = document.getElementById("modaltotalDifficulty").innerHTML;
+			var transactionsforModal = document.getElementById("modaltransactions").innerHTML;
+			var transactionsRootforModal = document.getElementById("modaltransactionsRoot").innerHTML;
+			var unclesforModal = document.getElementById("modaluncles").innerHTML ;
+			
 			document.getElementById("modalName").innerHTML = name1[blockNumber];
 			document.getElementById("modalAge").innerHTML = age[blockNumber];
 			document.getElementById("modalID").innerHTML = ID[blockNumber];
-			document.getElementById("modalDifficulty").innerHTML = difficulty[blockNumber];
-			document.getElementById("modalextraData").innerHTML = extraData[blockNumber];
-			document.getElementById("modalgasLimit").innerHTML = gasLimit[blockNumber];
-			document.getElementById("modalgasUsed").innerHTML = gasUsed[blockNumber];
-			document.getElementById("modalhash").innerHTML = hash[blockNumber];
-			document.getElementById("modallogsBloom").innerHTML = logsBloom[blockNumber];
-			document.getElementById("modalminer").innerHTML = miner[blockNumber];
-			document.getElementById("modalmixHash").innerHTML = mixHash[blockNumber];
-			document.getElementById("modalnonce").innerHTML = nonce[blockNumber];
-			document.getElementById("modalnumber").innerHTML = number[blockNumber];
-			document.getElementById("modalparentHash").innerHTML = parentHash[blockNumber];
-			document.getElementById("modalreceiptsRoot").innerHTML = receiptsRoot[blockNumber];
-			document.getElementById("modalsha3Uncles").innerHTML = sha3Uncles[blockNumber];
-			document.getElementById("modalsize").innerHTML = size[blockNumber];
-			document.getElementById("modalstateRoot").innerHTML = stateRoot[blockNumber];
-			document.getElementById("modaltimestamp").innerHTML = timestamp[blockNumber];
-			document.getElementById("modaltotalDifficulty").innerHTML = totalDifficulty[blockNumber];
-			document.getElementById("modaltransactions").innerHTML = transactions[blockNumber];
-			document.getElementById("modaltransactionsRoot").innerHTML = transactionsRoot[blockNumber];
-			document.getElementById("modaluncles").innerHTML = uncles[blockNumber];
+			document.getElementById("modalDifficulty").innerHTML = difficultyVals[blockNumber];
+			document.getElementById("modalextraData").innerHTML = extraDataVals[blockNumber];
+			document.getElementById("modalgasLimit").innerHTML = gasLimitVals[blockNumber];
+			document.getElementById("modalgasUsed").innerHTML = gasUsedVals[blockNumber];
+			document.getElementById("modalhash").innerHTML = hashVals[blockNumber];
+			document.getElementById("modallogsBloom").innerHTML = logsBloomVals[blockNumber];
+			document.getElementById("modalminer").innerHTML = minerVals[blockNumber];
+			document.getElementById("modalmixHash").innerHTML = mixHashVals[blockNumber];
+			document.getElementById("modalnonce").innerHTML = nonceVals[blockNumber];
+			document.getElementById("modalnumber").innerHTML = numberVals[blockNumber];
+			document.getElementById("modalparentHash").innerHTML = parentHashVals[blockNumber];
+			document.getElementById("modalreceiptsRoot").innerHTML = receiptsRootVals[blockNumber];
+			document.getElementById("modalsha3Uncles").innerHTML = sha3UnclesVals[blockNumber];
+			document.getElementById("modalsize").innerHTML = sizeVals[blockNumber];
+			document.getElementById("modalstateRoot").innerHTML = stateRootVals[blockNumber];
+			document.getElementById("modaltimestamp").innerHTML = timestampVals[blockNumber];
+			document.getElementById("modaltotalDifficulty").innerHTML = totalDifficultyVals[blockNumber];
+			document.getElementById("modaltransactions").innerHTML = transactionsVals[blockNumber];
+			document.getElementById("modaltransactionsRoot").innerHTML = transactionsRootVals[blockNumber];
+			document.getElementById("modaluncles").innerHTML = unclesVals[blockNumber];
 			$("#blockContent").modal("show").click(function () { // show the welcome page modal
 		 		 $("#blockContent").modal('hide'); 
 			});
 			
 		});
 	}, 1000);
+	}catch(e) {
+
+	}
+	
 
 
 	
