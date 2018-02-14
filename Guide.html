@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><!-- Style for the tile buttons -->
+<link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet"><!-- Style for the tile buttons -->
 
 
 <!-- Style for the tile buttons -->
@@ -38,9 +38,9 @@
 
 <!-- Overall Page Styling -->
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Open Sans', sans-serif;}
-	p,h5, pre {font-size: 22px; font-family: 'Open Sans', sans-serif;};
-	a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
+	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
+	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
+	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
 			width: 50%;
@@ -95,40 +95,68 @@
 		.w3-sidebar {
 			background-color:rgb(49, 57, 77);
 		}
+		.w3-bar-item {
+			padding: 20px;
+			margin: -5px;
+		}
 </style>
 
 <body>
 <!-- Sidebar/menu -->
 <div position = "absolute">
-		<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
-			<div><h5 class="w3-bar-block" style="color: white">Main Menu</h5></div>
-			<div class="w3-bar-block">
-				<a href="HomePage.html" style="color: white"><button class="w3-bar-item w3-button tablink">Home</button></a>
-	
-				<div><h5 class="w3-bar-block" style="color: white">About Blockchains</h5></div>
-				<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain 101</button></a>
-				<a href="FAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
-				<a href="About.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
-				<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
-				<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
+	<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
+		<div class="w3-bar-block">
+			<a href="HomePage.html" style="color: white; font-size: 26px"><h5><button class="w3-bar-item w3-button tablink">Home</button></h5></a>
+
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchains</h5></div>
+			<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About</button></a>
+			<a href="BlockchainFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
+			<a href="BlockchainAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
+			<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
+			<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
+
+			<div><b><h5 class="w3-bar-block" style="color: white; font-size: 20px">&nbsp;Blockchain Functionality</h5></b></div>
+			<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
+			<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
+			<a href="ViewBlockAdvanced.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Advanced</button></a>
+			<a href="ViewBlockLedger.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Ledger</button></a>
+			<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
 
 	
-				<div><h5 class="w3-bar-block" style="color: white">Blockchain Functionality</h5></div>
-				<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
-				<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
-				<a href="ViewBlockBasic.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Basic</button></a>
-				<a href="ViewBlockAdvanced.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Advanced</button></a>
-				<a href="ViewBlockLedger.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Ledger</button></a>
-				<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
-	
-		
-				<div><h5 class="w3-bar-block" style="color: white">Help Section</h5></div>
-				<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
-				<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
-				<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
-			</div>
-		  </nav>
-		  </div>
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Hashgraph</h5></div>
+			<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
+			<a href="HashgraphFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+			<a href="HashgraphDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph for Preventing Data Loss and Tampering</button></a>
+
+
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Tangle</h5></div>
+			<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
+			<a href="TangleFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+			<a href="TangleDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle for Preventing Data Loss and Tampering</button></a>
+
+
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;R3 Corda</h5></div>
+			<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
+			<a href="CordaFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+			<a href="CordaDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> R3 Corda for Preventing Data Loss and Tampering</button></a>
+
+
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Hyperledger</h5></div>
+			<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
+			<a href="HyperledgerFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+			<a href="HyperledgerDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger for Preventing Data Loss and Tampering</button></a>
+
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Alternatives to the Blockchain Comparison</h5></div>
+			<a href="Comparison.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Comparing Blockchain, Hyperledger, Corda, Tangle, and Hashgraph</button></a>
+
+
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Help Section</h5></div>
+			<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
+			<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
+			<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
+		</div>
+	  </nav>
+	  </div>
 
 <!Each Page>
 <div style="margin-left:13%" style="width:100vw" position ="fixed" >
