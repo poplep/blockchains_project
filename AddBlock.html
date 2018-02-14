@@ -426,7 +426,7 @@ function button(evt, tab){
 				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
 				return strVal;
 				}
-		//console.log(name)
+
 		//click handler for button
 		button.addEventListener('click', function() {
 			
@@ -522,28 +522,11 @@ function button(evt, tab){
 				}
 			}
 				
-
-
-					//var filter = web3.eth.filter('latest', function(error, result){
-						//if(!error){
-							//var block = web3.eth.getBlock(result, function(error, result){
-							//		if(!error)
-						//				console.log(result)
-							//		else
-							//			console.error(error);
-							//});
-							//if(block.transactions.length > 0){
 								var printThis = "";
 									for(const [key, value] of Object.entries(block)) {
 										output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
 									}
-							//}
-							//else
-							//console.log("Nothing here")
-						//}
-					//else
-						//console.error(error);
-					//});
+
 					
 						
 					
