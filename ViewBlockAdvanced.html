@@ -54,7 +54,7 @@
 <style>
 p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
 p,h5 {font-size: 22px; font-family: 'Pavanam', sans-serif;};
-pre {font-size: 18px; font-family: 'Pavanam', sans-serif; overflow-y: scroll;};
+pre {font-size: 18px; font-family: 'Pavanam', sans-serif; overflow-x:hidden;};
 a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 	.under { text-decoration: underline rgb(0, 0, 0);}
 	input[type=text], select {
@@ -112,6 +112,7 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 	}
 		pre {
 			word-wrap: break-word;
+			overflow-y: hidden;
 			width: 95%;
 		}
 		.w3-bar-item {
@@ -142,79 +143,79 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
             <!-- Modal content-->
             <div class="modal-content" id="blockModalContent" data-dismiss="modal">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="color: white; font-size: 20px">&times;</button>
                 <h4 class="modal-title" style="color: white">Here's your block:</h4>
               </div>
               <div class="modal-body">
 
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
-					<pre id="modalName"></pre>
+					<pre id="modalName" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
-					<pre id="modalID"></pre>
+					<pre id="modalID" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
-					<pre id="modalAge"></pre>
+					<pre id="modalAge" style="overflow-x:hidden; overflow-y: hidden"></pre>
 					
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
-					<pre id="modalDifficulty"></pre>
+					<pre id="modalDifficulty" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
-					<pre id="modalextraData"></pre>
+					<pre id="modalextraData" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
-					<pre id="modalgasLimit"></pre>
+					<pre id="modalgasLimit" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
-					<pre id="modalgasUsed"></pre>
-		
+					<pre id="modalgasUsed" style="overflow-x:hidden; overflow-y: hidden"></pre>
+		 
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
-					<pre id="modalhash"></pre>
+					<pre id="modalhash" style="overflow-x:hidden; overflow-y: hidden"></pre>
 
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
-					<pre id="modallogsBloom"></pre>
+					<pre id="modallogsBloom" style="overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
-					<pre id="modalminer"></pre>
+					<pre id="modalminer" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
-					<pre id="modalmixHash"></pre>
+					<pre id="modalmixHash" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
-					<pre id="modalnonce"></pre>
+					<pre id="modalnonce" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
-					<pre id="modalnumber"></pre>
+					<pre id="modalnumber" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
-					<pre id="modalparentHash"></pre>
+					<pre id="modalparentHash" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
-					<pre id="modalreceiptsRoot"></pre>
+					<pre id="modalreceiptsRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
-					<pre id="modalsha3Uncles"></pre>
+					<pre id="modalsha3Uncles" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
-					<pre id="modalsize"></pre>
+					<pre id="modalsize" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
-					<pre id="modalstateRoot"></pre>
+					<pre id="modalstateRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
-					<pre id="modaltimestamp"></pre>
+					<pre id="modaltimestamp" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
-					<pre id="modaltotalDifficulty"></pre>
+					<pre id="modaltotalDifficulty" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
-					<pre id="modaltransactions"></pre>
+					<pre id="modaltransactions" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
-					<pre id="modaltransactionsRoot"></pre>
+					<pre id="modaltransactionsRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
 		
 					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
-					<pre id="modaluncles"></pre>
+					<pre id="modaluncles" style="overflow-x:hidden; overflow-y: hidden"></pre>
 
 			
               </div>
