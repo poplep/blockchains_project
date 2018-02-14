@@ -118,6 +118,9 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			padding: 20px;
 			margin: -5px;
 		}
+		.modal-content {
+			width:750px;
+		}
 </style>
 <head></head>
 <body>
@@ -294,67 +297,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 			<pre id="age0" type="text"></pre><br>
 
 			<center><button class="btn btn-default" id="exit0" data-dismiss="modal">See More</button></center>
-			<!--
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
-			<pre id="difficulty0"></pre><br>
 
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
-			<pre id="extraData0"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
-			<pre id="gasLimit0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
-			<pre id="gasUsed0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
-			<pre id="hash0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
-			<pre id="logsBloom0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
-			<pre id="miner0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
-			<pre id="mixHash0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
-			<pre id="nonce0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
-			<pre id="number0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
-			<pre id="parentHash0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
-			<pre id="receiptsRoot0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
-			<pre id="sha3Uncles0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
-			<pre id="size0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
-			<pre id="stateRoot0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
-			<pre id="timestamp0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
-			<pre id="totalDifficulty0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
-			<pre id="transactions0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
-			<pre id="transactionsRoot0" type="text"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
-			<pre id="uncles0" type="text"></pre><br>
-			-->
 			</div>	
 </div>
 <!-- Start of Viewing Block Script -->
@@ -637,27 +580,7 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 		clone.getElementsByTagName('pre')[1].id = "id" + i;
 		clone.getElementsByTagName('pre')[2].id = "age" + i;
 		clone.getElementsByTagName('button')[0].id = "exit" + i;
-		/*
-		clone.getElementsByTagName('pre')[3].id = "difficulty" + i;
-		clone.getElementsByTagName('pre')[4].id = "extraData" + i;
-		clone.getElementsByTagName('pre')[5].id = "gasLimit" + i;
-		clone.getElementsByTagName('pre')[6].id = "gasUsed" + i;
-		clone.getElementsByTagName('pre')[7].id = "hash" + i;
-		clone.getElementsByTagName('pre')[8].id = "logsBloom" + i;
-		clone.getElementsByTagName('pre')[9].id = "miner" + i;
-		clone.getElementsByTagName('pre')[10].id = "mixHash" + i;
-		clone.getElementsByTagName('pre')[11].id = "nonce" + i;
-		clone.getElementsByTagName('pre')[12].id = "number" + i;
-		clone.getElementsByTagName('pre')[13].id = "parentHash" + i;
-		clone.getElementsByTagName('pre')[14].id = "receiptsRoot" + i;
-		clone.getElementsByTagName('pre')[15].id = "sha3Uncles" + i;
-		clone.getElementsByTagName('pre')[16].id = "size" + i;
-		clone.getElementsByTagName('pre')[17].id = "stateRoot" + i;
-		clone.getElementsByTagName('pre')[18].id = "timestamp" + i;
-		clone.getElementsByTagName('pre')[19].id = "totalDifficulty" + i;
-		clone.getElementsByTagName('pre')[20].id = "transactions" + i;
-		clone.getElementsByTagName('pre')[21].id = "transactionsRoot" + i;
-		clone.getElementsByTagName('pre')[22].id = "uncles" + i;*/
+
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
@@ -727,138 +650,6 @@ a {font-size: 15px; font-family: 'Open Sans', sans-serif;};
 	}
 	
 
-
-	
-	
-				/*
-				var difficulty = document.getElementById("difficulty");
-	var extraData  = document.getElementById("extraData");
-	var gasLimit = document.getElementById("gasLimit");
-	var gasUsed = document.getElementById('gasUsed');
-	var hash = document.getElementById('hash');
-	var logsBloom = document.getElementById('logsBloom');
-	var miner = document.getElementById('miner');
-	var mixHash = document.getElementById('mixHash');
-	var nonce = document.getElementById('nonce');
-	var number = document.getElementById('number');
-	var parentHash = document.getElementById('parentHash');
-	var receiptsRoot = document.getElementById('receiptsRoot');
-	var sha3Uncles = document.getElementById('sha3Uncles');
-	var size = document.getElementById('size');
-	var stateRoot = document.getElementById('stateRoot');
-	var timestamp = document.getElementById('timestamp');
-	var totalDifficulty = document.getElementById('totalDifficulty');
-	var transactions = document.getElementById('transactions');
-	var transactionsRoot = document.getElementById('transactionsRoot');
-	var uncles = document.getElementById('uncles');
-	//function to create a new block object to be displayed on page
-	var i = 0;
-	function newBlock(difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
-		$('#difficulty' + i).text(difficulty); 
-		$('#extraData'+ i).text(extraData); 
-		$('#gasLimit'+ i).text(gasLimit); 
-		$('#gasUsed'+ i).text(gasUsed); 
-		$('#hash'+ i).text(hash); 
-		$('#logsBloom'+ i).text(logsBloom); 
-		$('#miner'+ i).text(miner); 
-		$('#mixHash'+ i).text(mixHash); 
-		$('#nonce'+ i).text(nonce); 
-		$('#number'+ i).text(number); 
-		$('#parentHash'+ i).text(parentHash); 
-		$('#receiptsRoot'+ i).text(receiptsRoot); 
-		$('#sha3Uncles'+ i).text(sha3Uncles); 
-		$('#size'+ i).text(size); 
-		$('#stateRoot'+ i).text(stateRoot); 
-		$('#timestamp'+ i).text(timestamp); 
-		$('#totalDifficulty'+ i).text(totalDifficulty); 
-		$('#transactions'+ i).text(transactions); 
-		$('#transactionsRoot'+ i).text(transactionsRoot); 
-		$('#uncles'+ i).text(uncles); 		
-	}
-
-
-
-
-	
-	function duplicate() {
-		var original = document.getElementById('duplicater' + i);
-		var clone = original.cloneNode(true); // "deep" clone
-		clone.id = "duplicater" + ++i; // there can only be one element with an ID
-	
-		//update IDs of children pre fields
-		clone.getElementsByTagName('pre')[0].id = "difficulty" + i;
-		clone.getElementsByTagName('pre')[1].id = "extraData" + i;
-		clone.getElementsByTagName('pre')[2].id = "gasLimit" + i;
-		clone.getElementsByTagName('pre')[3].id = "gasUsed" + i;
-		clone.getElementsByTagName('pre')[4].id = "hash" + i;
-		clone.getElementsByTagName('pre')[5].id = "logsBloom" + i;
-		clone.getElementsByTagName('pre')[6].id = "miner" + i;
-		clone.getElementsByTagName('pre')[7].id = "mixHash" + i;
-		clone.getElementsByTagName('pre')[8].id = "nonce" + i;
-		clone.getElementsByTagName('pre')[9].id = "number" + i;
-		clone.getElementsByTagName('pre')[10].id = "parentHash" + i;
-		clone.getElementsByTagName('pre')[11].id = "receiptsRoot" + i;
-		clone.getElementsByTagName('pre')[12].id = "sha3Uncles" + i;
-		clone.getElementsByTagName('pre')[13].id = "size" + i;
-		clone.getElementsByTagName('pre')[14].id = "stateRoot" + i;
-		clone.getElementsByTagName('pre')[15].id = "timestamp" + i;
-		clone.getElementsByTagName('pre')[16].id = "totalDifficulty" + i;
-		clone.getElementsByTagName('pre')[17].id = "transactions" + i;
-		clone.getElementsByTagName('pre')[18].id = "transactionsRoot" + i;
-		clone.getElementsByTagName('pre')[19].id = "uncles" + i;
-
-		original.parentNode.appendChild(clone); // appends child div to previous parent div
-	}
-
-						
-				var ID = [];
-					
-				
-				function viewingBlockID(key) {
-					var elements = [];
-					view.getID(key, function(worked, result){
-						
-						if(result.c["0"]){
-							console.log(result.c["0"]);
-							ID.push(result.c["0"]);
-							var block = web3.eth.getBlock(key, function(error, result){
-									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
-										var elementcount = 0;
-										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-											
-											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-											elementcount++;
-											
-										}
-									}
-									var iterate = 0;
-									newBlock(elements[iterate], elements[iterate+1], elements[iterate+2], elements[iterate+3], elements[iterate+4], elements[iterate+5], elements[iterate+6], elements[iterate+7], elements[iterate+8], elements[iterate+9], elements[iterate+10], elements[iterate+11], elements[iterate+12], elements[iterate+13], elements[iterate+14], elements[iterate+15], elements[iterate+16], elements[iterate+17], elements[iterate+18], elements[iterate+19]);
-									duplicate();
-
-									console.log("END!!!!!!!!!!!!!!!!!");
-								});
-								
-								
-							
-							console.log("COMPLETED");
-							//viewingBlockID(key + 1);
-							viewingBlockID(key + 1);
-
-							
-						}else{
-							console.log("All keys found");
-							
-							
-							
-								//TODO: call method that will draw blocks for user here!!!
-								
-						}
-					})
-				}
-				viewingBlockID(key);*/
 
 </script>
 
