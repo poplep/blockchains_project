@@ -1,79 +1,64 @@
 //version pragma - used to reject being compiled with future compiler versions that might introduce incompatible changes
 //confirms that code will always compile as intended and avoids problems with future versions
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.4;
 
-//import files using import "filename"
+/*
+    Quick writeup here:
+    blockid is the key to the mapping, in order to access previously stored data we need to pass it the key.
+    This is needed because of how we are storing the data, think of mappings like arrays, but it's a hash table instead
+    This is why we need a key. 
+    As for the struct, they work pretty much like you would expect, you can create mappings of them, and you can call elements with foo[key].bar
+    The function addBlock is transactional, meaning it modifies storage on the contract.
+    Storage is physically stored within the blockchain, unlike memory, which is temporary.
+    All the getters are keyworded with "view"
+    View tells the compiler these functions do not change the contract state, but do look at the state itself.
+    This is the only way to return values from storage that I know of.
+    I hope this helps in you understanding what is happening in this contract!
 
-    //block and transaction properties
-    //block.blockhash(uint blockNumber) --> hash of a given block
-    //block.coinbase(address) --> current block miner's address
-    //block.difficulty(uint) --> current block difficulty
-    //block.gaslimit(uint) --> current block gaslimit
-    //block.number(uint) --> current block number
-    //block.timestamp(uint) --> current block timestamp as seconds
-    //msg.data(bytes) --> complete calldata
-    //msg.gas(uint) --> remaining gas
-    //msg.sender(address) --> sender of the message(current call)
-    //msg.sig(bytes4) --> first 4 bytes of the calldata
-    //msg.value(uint) --> number of wei sent with the message
-    //now(uint) --> current block timestamp
-    //tx.gasprice(uint) --> gas price of the transaction
-    //tx.origin(address) --> sender of the transaction
+*/
+contract addBlock {
 
-
-    //error handling
-    //assert(bool condition) --> throws if condition isnt met, use for internal errors
-    //require(bool condition) --> throws if condition isnt met, used for errors in input/external components
-    //revert() --> abort execution and revert state changes
-
-/** @title Add a Block*/
-contract SolidityContract {
-
-    //mapping
-    //declares a state variable that stores a newBlock struct for each possible address
-    //do we need this?
-    mapping (address => uint) public blocks;
-
-    newBlock [] public blockchain; // block to add to the blockchain
-
-    //new block structure
-    struct newBlock {
-         uint blocknumber; // current block number
-         uint nonce; // block's nonce
-         String data; // data to be stored in the block
-         string prevHash; // hash of previous block
-         string curHash; // hash of current block
+    //new block structure, stores name age and ID
+    struct NewBlock {
+        uint8 age;
+        uint id;
+        string name;
     }
+    //id for the address of struct mapping
+    uint blockid;
+    
+    //mapping allows you to use a key to map a hash table of structs in this case
+    //uint256 is the key type, and NewBlock is what data type is being mapped.
+    mapping(uint256 => NewBlock) public blockchain;
+
 
     // function to add a block of data to the blockchain
-    function addBlock (String data) returns (bool success){
-        // is this right?
-        newBlock.blockNumber = block.number();
-        newBlock.nonce; // not sure how to get this part
-        newBlock.data = this.data; 
-        newBlock.prevHash = block.blockHash(block.number(newBlock.blockNumber-1));
-        newBlock.curHash = block.blockhash(newBlock.blockNumber);
+    function addData (string data, uint8 uage, uint uid) public {
 
-        blockchain.push(newBlock); // adds the block to the chain?
-        return true; // indicates successful adding of block
+        //iterates key to indicate new struct
+        blockid++;
+        //"pointer" to new data struct, makes it easier on us
+        var n = blockchain[blockid];
+
+        //sets the data
+        n.age = uage;
+        n.id = uid;
+        n.name = data;
+        //addedData(blockid);
     }
-
-    function getBlock(uint blocknumber) returns (newBlock, bool success) {
-        uint length = blockchain.length; // length of the blockchain
-
-        //finds the block by block number for the viewing functionality
-        for(uint i = 0; i < length; i++) {
-            if(blockchain[i].blockNumber == blocknumber) {
-                return blockchain[i];
-            }
-        }
+    
+    
+    //getters using key pased in from function
+    function getID(uint256 key) public view returns (uint) {
+        return blockchain[key].id;
     }
-
-
-
-
-
-
-
+    
+    function getAge(uint256 key) public view returns (uint) {
+        return blockchain[key].age;
+    }
+    function getName(uint256 key) public view returns (string) {
+        return blockchain[key].name;
+    }
+    //event addedData(uint256 thing); //event
 }
 

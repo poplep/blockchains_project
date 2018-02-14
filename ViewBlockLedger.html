@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI</title>
+<title>Blockchain UI - Ledger</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Importing Fonts and Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -10,7 +10,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
-
 
 <!-- Style for the tile buttons -->
 <style>
@@ -36,84 +35,87 @@
 	}
 	</style>
 
-<!-- Overall Page Styling -->
 <!-- Styling for blocks -->
 <style>
 	.block {
-		width: 350px;
-		height: 350px;
+		width: 400px;
+		height: 500px;
 		padding: 10px;
 		float:left;
 		border: 2px solid rgb(49, 57, 77);
 		border-radius: 10px;
 		background-color:rgb(49, 57, 77);
 		font-family: 'Pavanam', sans-serif;
+		overflow: scroll;
 		color: black;
 		margin:10px;
 
 	}
-
 </style>
+
+<!-- Overall Page Styling -->
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
-	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
-	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
-		.under { text-decoration: underline rgb(0, 0, 0);}
-		input[type=text], select {
-			width: 50%;
-			padding: 12px 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			box-sizing: border-box;
-		}
-			
-		input[type=data], select {
-			width: 50%;
-			height: 150px;
-			padding: 12px 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			border-radius: 4px;	
-		}
-	
-		input[type=submit] {
-			width: 50%;
-			background-color: rgb(49, 57, 77);
-			color: white;
-			padding: 14px 20px;
-			margin: 8px 0;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-		}
-	
-		input[type=submit]:hover {
-			background-color: rgb(49, 57, 77);
-		}
-		.button {
-			background-color: rgb(49, 57, 77); 
-			border: none;
-			color: white;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			margin: 4px 2px;
-			cursor: pointer;
-		}
-		.button1 {font-size: 24px;}
-			
-		.w3-container {
-			background-color:rgb(49, 57, 77);
-		}
-		.w3-sidebar {
-			background-color:rgb(49, 57, 77);
-		}
+p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
+p,h5 {font-size: 22px; font-family: 'Pavanam', sans-serif;};
+pre {font-size: 18px; font-family: 'Pavanam', sans-serif;};
+a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
+	.under { text-decoration: underline rgb(0, 0, 0);}
+	input[type=text], select {
+		width: 50%;
+		padding: 12p3 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+		
+	input[type=data], select {
+		width: 50%;
+		height: 150px;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;	
+	}
+
+	input[type=submit] {
+		width: 50%;
+		background-color: rgb(49, 57, 77);
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+		background-color: rgb(49, 57, 77);
+	}
+	.button {
+		background-color: rgb(49, 57, 77); 
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+	.button1 {font-size: 24px;}
+		
+	.w3-container {
+		background-color:rgb(49, 57, 77);
+	}
+	.w3-sidebar {
+		background-color:rgb(49, 57, 77);
+	}
 		pre {
 			word-wrap: break-word;
+			width: 95%;
 		}
 		.w3-bar-item {
 			padding: 20px;
@@ -122,6 +124,7 @@
 </style>
 <head></head>
 <body>
+
 <!-- Sidebar/menu -->
 <div position = "absolute">
 	<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
@@ -175,97 +178,51 @@
 			<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
 			<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
 		</div>
-	  </nav>
-	  </div>
+		</nav>
+		</div>
+
 <!Each Page>
 <div style="margin-left:13%" style="width:100vw" position ="fixed" >
 	
 		<div class="w3-container" style= "margin-left:-1.5%" color= "rgb(49, 57, 77)">
-			<h1 style="color: white">Search for a Block</h1>
+			<h1 style="color: white">View your Blockchain</h1>
 		</div>
-		<br>
-		<form id='form-prompt'>
-				<a href="#" data-toggle="tooltip" data-placement="right" title="The name that you entered into the block." style="font-size:18px" style="color: black">Enter Name:</a><br>
-            <input type='text' id="nameTest">
-				<input type="submit" id="button1"/><br>
-				<a href="#" data-toggle="tooltip" data-placement="right" title="The id that you entered into the block." style="font-size:18px" style="color: black">Enter ID:</a><br>
-			<input type='text' id="idTest">
-				<input type="submit" id="button2"/><br>
-				<a href="#" data-toggle="tooltip" data-placement="right" title="The age that you entered into the block." style="font-size:18px" style="color: black">Enter Age:</a><br>
-			<input type='text' id="ageTest">
-        <input type="submit" id="button3"/>
-			</form>
-			
-           
-		<p>Once you add the block, it will be displayed below:</p>
-		<div class="block"  id="duplicater0">	
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
-			<pre id="name0"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
-			<pre id="id0"></pre><br>
-
-			<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
-			<pre id="age0" type="text"></pre><br>
-			</div>
-
+        <br>
+        <table>
+                <tr>
+                        <th style="width:500px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a></th> 
+                        <th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a></th>  
+                        <th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a></th>                      
+                    </tr> 
+        </table>
+    
+        <div  id="duplicater0">	
+            <table>
+                    <td ><pre id="name0" style="width:500px"></pre></td>
+                    <td><pre id="id0" style="width:200px"></pre></td>
+                    <td><pre id="age0" style="width:200px"></pre></td>
+            </table>
+        </div>         
+        </table>
 </div>
 
+<!-- Tooltip script-->
 <script>
 		$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();   
 		});
-		</script>
-<!-- Search History -->
-<script>
-    var store = {
-
-    keyCount:0,
-    commandCount:0,
-    prevCommand:[],
-    put : function(val) {        
-        this.commandCount++;
-        this.keyCount = this.commandCount;
-        this.prevCommand.push(val);        
-    },
-    get : function() {
-        this.keyCount--;
-        if(typeof this.prevCommand[this.keyCount] !== "undefined") {
-            return this.prevCommand[this.keyCount];
-        }    
-    }    
-
-}
-
-
-$("#form-prompt").on("submit", function (e) {
-	store.put($('#textTest').val())
-	e.preventDefault();
-    $('#textTest').val('');	
-});
-
-$(document).keydown(function(event){
-	if(event.which == 38 && $("#textTest").is(":focus")){
-         var val = store.get();
-		 val && $('#res').append('<hr>'+val);
-	}else if(event.which == 40 && $("#command-text").is(":focus")) {
-
-	}
-});
 </script>
 
-<!-- Search Functionality (from view block)-->
-
+<!-- Start of Block Viewing Script -->
 <script>
-	
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 	function removeSpecialChars(strVal)
 				{
 				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
 				return strVal;
 				}
-		//contract abi, pass json representation of contract to instance
-		var addBlockContract = web3.eth.contract([{
+	//contract abi, pass json representation of contract to instance
+	var addBlockContract = web3.eth.contract([{
 						"constant": true,
 						"inputs": [
 						  {
@@ -372,86 +329,22 @@ $(document).keydown(function(event){
 						"type": "function"
 					  }]);
 					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
-					
-					var idTest = document.getElementById('idTest');
-					var ageTest = document.getElementById('ageTest');
-					var nameTest = document.getElementById('nameTest');
-					var button1 = document.getElementById('button1');
-					var button2 = document.getElementById('button2');
-					var button3 = document.getElementById('button3');
-
-		//click handler - searching by name
-		button1.addEventListener('click', function() {
-			console.log("RES:" + nameTest.value);
-			key = 1;
-			var ID = [];
-			var age = [];
-			var name1 = [];
-			function addID(key, test){
-				view.getID(key, function(worked, result){
-					ID.push(result.c["0"]);
-				});
-				viewingBlockAge(key, test);
-			}
-			function viewingBlockID(key, test) {	
-				view.getID(key, function(worked, result){
-					if(result.c["0"]){
-						viewingBlockName(key, test);
-					}else{
-						console.log("All keys found");
-						//TODO: call method that will draw blocks for user here!!!
-						var i;
-						for(i = 0; i< ID.length; i++) {
-								newBlock(ID[i], age[i], name1[i]);
-								duplicate();
-						}
-					}
-				})
-			}
-			function viewingBlockAge(key, test) {
-				view.getAge(key, function(worked, result){
-						console.log(result.c["0"]);
-						age.push(result.c["0"]);
-						})
-			}
-			function viewingBlockName(key, test) {
-				view.getName(key, function(worked, result){
-					console.log(test)
-						if(removeSpecialChars(web3.toAscii(result)) == test){
-							name1.push(web3.toAscii(result));
-							addID(key, test);
-							viewingBlockAge(key, test)
-						}
-						viewingBlockID(key + 1, test);
-						})
-						
-			}
-				viewingBlockID(key, nameTest.value);
-		})
-		//click handler - searching by ID
-		button2.addEventListener('click', function() {
-			console.log("RES:" + idTest.value);
+				
+				//temporary key number to avoid early zeros
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
-				function viewingBlockID(key, test) {	
+				function viewingBlockID(key) {	
 					view.getID(key, function(worked, result){
-
 						if(result.c["0"]){
-							console.log((result.c["0"]));
-							if (test == Number(result.c["0"])){
-								console.log("HERE");
+							console.log(result.c["0"]);
 							ID.push(result.c["0"]);
-							viewingBlockAge(key, test);
-							viewingBlockName(key, test);
-
-							}
-							
-							viewingBlockID(key + 1, Number(test));
+							viewingBlockAge(key);
+							viewingBlockName(key);
+							viewingBlockID(key + 1);
 						}else{
 							console.log("All keys found");
-							//TODO: call method that will draw blocks for user here!!!
 							var i;
 							for(i = 0; i< ID.length; i++) {
 									newBlock(ID[i], age[i], name1[i]);
@@ -460,85 +353,29 @@ $(document).keydown(function(event){
 						}
 					})
 				}
-				function viewingBlockAge(key, test) {
+				//function to get the block age
+				function viewingBlockAge(key) {
 					view.getAge(key, function(worked, result){
 							console.log(result.c["0"]);
 							age.push(result.c["0"]);
 							})
 				}
-				function viewingBlockName(key, test) {
+				//function to get the block name
+				function viewingBlockName(key) {
 					view.getName(key, function(worked, result){
 							console.log(result);
 							console.log(result);
 							name1.push(web3.toAscii(result));
 							})
 				}
-				viewingBlockID(key, Number(idTest.value));
-		})
-
-			//click handler - searching by age
-			button3.addEventListener('click', function() {
-			console.log("RES:" + ageTest.value);
-				key = 1;
-				var ID = [];
-				var age = [];
-				var name1 = [];
-				function addID(key, test){
-				view.getID(key, function(worked, result){
-					ID.push(result.c["0"]);
-				});
-				viewingBlockAge(key, test);
-			}
-				function viewingBlockID(key, test) {	
-					view.getID(key, function(worked, result){
-						if(result.c["0"]){
-
-							
-							viewingBlockAge(key, test);
-
-							
-						}else{
-							console.log("All keys found");
-							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							for(i = 0; i< ID.length; i++) {
-									newBlock(ID[i], age[i], name1[i]);
-									duplicate();
-							}
-						}
-					})
-				}
-				function viewingBlockAge(key, test) {
-					view.getAge(key, function(worked, result){
-							if(result.c["0"] == test){
-								age.push(result.c["0"]);
-								viewingBlockName(key, test);
-								addID(key, test);
-							}
-							})
-							viewingBlockID(key+1, test)
-				}
-				function viewingBlockName(key, test) {
-					view.getName(key, function(worked, result){
-
-							console.log(result);
-
-							console.log(result);
-							name1.push(web3.toAscii(result));
-							})
-				}
-				viewingBlockID(key, Number(ageTest.value));
-		})
-
+				viewingBlockID(key);
 </script>
 
-
+<!Function to change page when button is pressed on home tab>
 <script>
-
 	var output2 = document.getElementById('output2');
 	var printThis = "";
 function button(evt, tab){
-	
 	var i, x, tablinks;
 	x = document.getElementsByClassName("tab");
 	for (i = 0; i < x.length; i++) {
@@ -548,8 +385,7 @@ function button(evt, tab){
   	for (i = 0; i < x.length; i++) {
       		tablinks[i].className = tablinks[i].className.replace("", ""); 
   	}
-  	document.getElementById(tab).style.display = "block";
-  	
+  	document.getElementById(tab).style.display = "block";	
 }
 </script>
 
@@ -562,15 +398,12 @@ function button(evt, tab){
 	//function to create a new block object to be displayed on page
 	var i = 0;
 	function newBlock(id, age, name) {
-		$('#name' + i).text(removeSpecialChars(name)); 
+		$('#name' + i).text(removeSpecialChars(name));  
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age); 		
 	}
 
-
-
-
-	
+//function to duplicate the blocks
 	function duplicate() {
 		var original = document.getElementById('duplicater' + i);
 		var clone = original.cloneNode(true); // "deep" clone
@@ -582,14 +415,8 @@ function button(evt, tab){
 		clone.getElementsByTagName('pre')[2].id = "age" + i;
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
-		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
-
 	}
 
-	
-
-
 </script>
-
 </body>
 </html>

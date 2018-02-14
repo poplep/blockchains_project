@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+
 
 
 <!-- Style for the tile buttons -->
@@ -40,9 +42,9 @@
 
 <!-- Overall Page Styling -->
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Lato', sans-serif;}
-	p,h5, pre {font-size: 18px; font-family: 'Lato', sans-serif;};
-	a {font-size: 15px; font-family: 'Lato', sans-serif;};
+	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
+	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
+	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
 			width: 50%;
@@ -128,7 +130,7 @@
 	  <div class="modal-dialog">
 	  
 		<!-- Modal content-->
-		<div class="modal-content">
+		<div class="modal-content" id="WelcomeContent" data-dismiss="modal">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h4 class="modal-title">Welcome to the Blockchain UI!</h4>
@@ -139,8 +141,10 @@
 
 		  </div>
 		  <div class="modal-footer">
-			<button class="btn btn-default" id="nextAdd" data-dismiss="modal">Add a Block</button>
-		  </div>
+			<button class="btn btn-default" id="nextAdd" >Add a Block</button>
+      <button class="btn btn-default" id="exit0" data-dismiss="modal">Exit Tutorial</button>
+  
+    </div>
 		</div>
 		
 	  </div>
@@ -156,7 +160,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="AddBlockContent" data-dismiss="modal">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Adding a Block</h4>
@@ -167,6 +171,8 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" id="nextSearch" data-dismiss="modal">Search for a Block</button>
+                <button class="btn btn-default" id="exit1" data-dismiss="modal">Exit Tutorial</button>
+
               </div>
             </div>
             
@@ -183,7 +189,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="SearchBlockContent" data-dismiss="modal">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Searching for a Block</h4>
@@ -193,7 +199,9 @@
     
               </div>
               <div class="modal-footer">
-               </a><button class="btn btn-default" id="nextView" data-dismiss="modal">View the Blockchain</button>
+               <button class="btn btn-default" id="nextView" data-dismiss="modal">View the Blockchain</button>
+               <button class="btn btn-default" id="exit2" data-dismiss="modal">Exit Tutorial</button>
+
               </div>
             </div>
             
@@ -209,7 +217,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="ViewBlockContent" data-dismiss="modal">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Viewing the Blockchain</h4>
@@ -220,6 +228,8 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" id="nextStats" data-dismiss="modal">Blockchain Statistics</button>
+                <button class="btn btn-default" id="exit3" data-dismiss="modal">Exit Tutorial</button>
+
               </div>
             </div>
             
@@ -236,7 +246,7 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="BlockStatsContent">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Viewing Blockchain Statistics</h4>
@@ -248,7 +258,7 @@
                 <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
               </div>
               <div class="modal-footer">
-               <button class="btn btn-default" data-dismiss="modal">Exit</button>
+               <button class="btn btn-default" id="exit4" data-dismiss="modal">Exit</button>
               </div>
             </div>
             
@@ -278,34 +288,107 @@ function button(evt, tab){
 </script>
 
 <script>
-    //load home page
-     $("#displaypage").load("HomePage.html");
+  //modal box divs
+  var Welcome = document.getElementById("WelcomeContent");
+  var AddBlock = document.getElementById("AddBlockContent");
+  var ViewBlock = document.getElementById("ViewBlockContent");
+  var SearchBlock = document.getElementById("SearchBlockContent");
+  var BlockStats = document.getElementById("BlockStatsContent");
+  var exit0 = document.getElementById("exit0");
+  var exit1 = document.getElementById("exit1");
+  var exit2 = document.getElementById("exit2");
+  var exit3 = document.getElementById("exit3");
+  var exit4 = document.getElementById("exit4");
+  var nextAdd = document.getElementById("nextAdd");
+  var nextView = document.getElementById("nextView");
+  var nextSearch = document.getElementById("nextSearch");
+  var nextStats = document.getElementById("nextStats");
+
+   
+     $("#displaypage").load("HomePage.html"); // show the home page
  
-    //display welcome modal and when user clicks continue, go to add block page  
     setTimeout(function(){  
-        $("#Welcome").modal("show").on("click", function () {
-                $("#displaypage").load("addBlock.html");
+      exit0.addEventListener('click', function() {// if the exit tutorial button is clicked
+            window.location.replace("HomePage.html"); // go back to the home page
+            return false;
+          });
 
-                    $("#AddBlock").modal("show").on("click", function () {
-                        $("#AddBlock").modal("hide");
-                        $("#displaypage").load("SearchBlock.html");
+      exit1.addEventListener('click', function() { // if the exit tutorial button is clicked
+          window.location.replace("HomePage.html"); // go back to the home page
+          return false;
+        });
 
-                        $("#SearchBlock").modal("show").on("click", function () {
-                            $("#SearchBlock").modal("hide");
-                            $("#displaypage").load("Viewblock.html");
+        exit2.addEventListener('click', function() {
+          window.location.replace("HomePage.html"); // go back to the home page
+          return false;
+        });
 
-                            $("#ViewBlock").modal("show").on("click", function () {
-                                $("#ViewBlock").modal("hide");
-                                $("#displaypage").load("BlockStats.html");
+        exit3.addEventListener('click', function() {// if the exit tutorial button is clicked
+          window.location.replace("HomePage.html"); // go back to the home page
+          return false;
+        });
 
-                                
-                                $("#BlockStats").modal("show").on("click", function () {
-                                    $("#BlockStats").modal("hide");
-                                    window.location.replace("HomePage.html");
-                                });
-                         });
-                    });
-                 });
+        exit4.addEventListener('click', function() { // if the exit tutorial button is clicked
+          window.location.replace("HomePage.html"); // go back to the home page
+          return false;
+        });
+       nextAdd.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+            $("#displaypage").load("AddBlock.html"); // show the add block page
+
+        });
+
+        nextStats.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+            $("#displaypage").load("BlockStats.html"); // show the add block page
+
+          })
+
+        nextView.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+          $("#displaypage").load("ViewBlock.html"); // show the add block page
+
+        })
+
+        nextSearch.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+          $("#displaypage").load("SearchBlock.html"); // show the add block page
+
+        })
+
+        
+        $("#Welcome").modal("show").click(function () { // show the welcome page modal
+
+              $("#Welcome").modal('hide'); // hide the welcome modal
+            $("#AddBlock").modal("show").click(function () { // show the add block modal
+             
+              $("#Welcome").modal('hide'); // hide the welcome modal
+                $("#displaypage").load("SearchBlock.html"); // show the search block page
+              
+                $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
+                
+                $("#SearchBlock").modal("show").click(function () { // show the search block modal
+                  
+                  $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
+                  $("#displaypage").load("ViewBlockBasic.html"); // show the basic view block page
+                  
+                    $("#SearchBlock").modal('hide');//hide the search block modal
+                    
+                    $("#ViewBlock").modal("show").click(function () { // show the view block modal
+                      
+                      $("#SearchBlock").modal('hide');//hide the search block modal
+                        $("#SearchBlock").modal('hide');//hide the search block modal
+                        $("#displaypage").load("BlockStats.html"); // show the blockchain statistics page
+                        
+                        $("#ViewBlock").modal('hide'); // hide the view block modal
+                        
+                        $("#BlockStats").modal("show").click(function () { // show the blockstats modal
+                          
+                          $("#ViewBlock").modal('hide'); // hide the view block modal
+                          $("#ViewBlock").modal('hide'); // hide the view block modal
+                          
+                          $("#BlockStats").modal('hide'); // hide the blockchain stats modal
+                            window.location.replace("HomePage.html"); // go back to the home page
+                        });
+                  });
+            });
+          });
 
 
         });
