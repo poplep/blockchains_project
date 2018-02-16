@@ -450,6 +450,12 @@ function button(evt, tab){
 				alert('Not A Valid Age');
 				return;
 			}
+
+			//make sure the user didnt enter a period for the id
+			if(!idvalidate.match(/^[0-9]+$/i)) {
+				alert('Not A Valid ID');
+				return;
+			}
 			//take value in the input and send it via contract
 			try {
 
