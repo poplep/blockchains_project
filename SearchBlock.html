@@ -361,14 +361,31 @@ $(document).keydown(function(event){
 					var button1 = document.getElementById('button1');
 					var button2 = document.getElementById('button2');
 					var button3 = document.getElementById('button3');
-
+					var nextsearch = 0;
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
+
+			if(nameTest.innerHTML.length == 0) {
+				return;
+			}
 			console.log("RES:" + nameTest.value);
 			key = 1;
 			var ID = [];
 			var age = [];
 			var name1 = [];
+			var blockcount = 0;
+			nextsearch = 0;
+
+			var x;
+			for(x = 1; x < nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
+			
 			function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
@@ -383,10 +400,15 @@ $(document).keydown(function(event){
 						console.log("All keys found");
 						//TODO: call method that will draw blocks for user here!!!
 						var i;
+						
 						for(i = 0; i< ID.length; i++) {
+							
 								newBlock(ID[i], age[i], name1[i]);
+								blockcount++;
 								duplicate();
 						}
+
+						
 					}
 				})
 			}
@@ -412,6 +434,9 @@ $(document).keydown(function(event){
 		})
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
+			if(idTest.innerHTML.length == 0) {
+				return;
+			}
 			console.log("RES:" + idTest.value);
 				key = 1;
 				var ID = [];
@@ -460,6 +485,9 @@ $(document).keydown(function(event){
 
 			//click handler - searching by age
 			button3.addEventListener('click', function() {
+				if(ageTest.innerHTML.length == 0) {
+				return;
+			}
 			console.log("RES:" + ageTest.value);
 				key = 1;
 				var ID = [];
@@ -511,7 +539,34 @@ $(document).keydown(function(event){
 				}
 				viewingBlockID(key, Number(ageTest.value));
 		})
+		
+	var difficulty = document.getElementById("name");
+	var extraData  = document.getElementById("id");
+	var gasLimit = document.getElementById("age");
 
+	//function to create a new block object to be displayed on page
+	
+	function newBlock(id, age, name) {
+		$('#name' + nextsearch).text(removeSpecialChars(name)); 
+		$('#id'+ nextsearch).text(id); 
+		$('#age'+ nextsearch).text(age); 		
+	}
+	
+	function duplicate() {
+		var original = document.getElementById('duplicater' + nextsearch);
+		var clone = original.cloneNode(true); // "deep" clone
+		clone.id = "duplicater" + ++nextsearch; // there can only be one element with an ID
+	
+		//update IDs of children pre fields
+		clone.getElementsByTagName('pre')[0].id = "name" + nextsearch;
+		clone.getElementsByTagName('pre')[1].id = "id" + nextsearch;
+		clone.getElementsByTagName('pre')[2].id = "age" + nextsearch;
+
+		original.parentNode.appendChild(clone); // appends child div to previous parent div
+		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
+	}
+
+	
 </script>
 
 
@@ -537,38 +592,8 @@ function button(evt, tab){
 
 <!-- Javascript Block Creation for Viewing Blocks on Chain -->
 <script>
-	var difficulty = document.getElementById("name");
-	var extraData  = document.getElementById("id");
-	var gasLimit = document.getElementById("age");
-
-	//function to create a new block object to be displayed on page
-	var i = 0;
-	function newBlock(id, age, name) {
-		$('#name' + i).text(removeSpecialChars(name)); 
-		$('#id'+ i).text(id); 
-		$('#age'+ i).text(age); 		
-	}
-
-
-
-
 	
-	function duplicate() {
-		var original = document.getElementById('duplicater' + i);
-		var clone = original.cloneNode(true); // "deep" clone
-		clone.id = "duplicater" + ++i; // there can only be one element with an ID
-	
-		//update IDs of children pre fields
-		clone.getElementsByTagName('pre')[0].id = "name" + i;
-		clone.getElementsByTagName('pre')[1].id = "id" + i;
-		clone.getElementsByTagName('pre')[2].id = "age" + i;
 
-		original.parentNode.appendChild(clone); // appends child div to previous parent div
-		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
-
-	}
-
-	
 
 
 </script>
