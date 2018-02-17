@@ -368,6 +368,21 @@ $(document).keydown(function(event){
 			if(nameTest.value.length == 0) {
 				return;
 			}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+			}
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
 			console.log("RES:" + nameTest.value);
 			key = 1;
 			var ID = [];
@@ -376,15 +391,7 @@ $(document).keydown(function(event){
 			var blockcount = 0;
 			nextsearch = 0;
 
-			var x;
-			for(x = 1; x < nextsearch; x++) {
-				$("#duplicater" + x).remove();
-				$("#name" + x).empty();
-				$("#id" + x).empty();
-				$("#age" + x).empty();
-				console.log("Removed old blocks");
-				
-			}
+			
 			
 			function addID(key, test){
 				view.getID(key, function(worked, result){
@@ -398,15 +405,21 @@ $(document).keydown(function(event){
 						viewingBlockName(key, test);
 					}else{
 						console.log("All keys found");
+						if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
 						//TODO: call method that will draw blocks for user here!!!
 						var i;
 						
 						for(i = 0; i< ID.length; i++) {
+
+								
 							
 								newBlock(ID[i], age[i], name1[i]);
 								blockcount++;
 								duplicate();
 						}
+						return;
 
 						
 					}
@@ -437,11 +450,27 @@ $(document).keydown(function(event){
 			if(idTest.value.length == 0) {
 				return;
 			}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+			}
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
 			console.log("RES:" + idTest.value);
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
+				nextsearch = 0;
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 
@@ -458,12 +487,16 @@ $(document).keydown(function(event){
 							viewingBlockID(key + 1, Number(test));
 						}else{
 							console.log("All keys found");
+							if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
 							//TODO: call method that will draw blocks for user here!!!
 							var i;
 							for(i = 0; i< ID.length; i++) {
 									newBlock(ID[i], age[i], name1[i]);
 									duplicate();
 							}
+							return;
 						}
 					})
 				}
@@ -488,11 +521,27 @@ $(document).keydown(function(event){
 				if(ageTest.value.length == 0) {
 				return;
 			}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+			}
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
 			console.log("RES:" + ageTest.value);
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
+				nextsearch = 0;
 				function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
@@ -509,12 +558,16 @@ $(document).keydown(function(event){
 							
 						}else{
 							console.log("All keys found");
+							if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
 							//TODO: call method that will draw blocks for user here!!!
 							var i;
 							for(i = 0; i< ID.length; i++) {
 									newBlock(ID[i], age[i], name1[i]);
 									duplicate();
 							}
+							return;
 						}
 					})
 				}
@@ -526,7 +579,7 @@ $(document).keydown(function(event){
 								addID(key, test);
 							}
 							})
-							viewingBlockID(key+1, test)
+							viewingBlockID(key+1, test);
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
