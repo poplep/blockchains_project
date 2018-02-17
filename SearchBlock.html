@@ -365,7 +365,7 @@ $(document).keydown(function(event){
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
 
-			if(nameTest.innerHTML.length == 0) {
+			if(nameTest.value.length == 0) {
 				return;
 			}
 			console.log("RES:" + nameTest.value);
@@ -434,7 +434,7 @@ $(document).keydown(function(event){
 		})
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
-			if(idTest.innerHTML.length == 0) {
+			if(idTest.value.length == 0) {
 				return;
 			}
 			console.log("RES:" + idTest.value);
@@ -485,7 +485,7 @@ $(document).keydown(function(event){
 
 			//click handler - searching by age
 			button3.addEventListener('click', function() {
-				if(ageTest.innerHTML.length == 0) {
+				if(ageTest.value.length == 0) {
 				return;
 			}
 			console.log("RES:" + ageTest.value);
