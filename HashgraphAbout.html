@@ -38,7 +38,7 @@
 <!-- Overall Page Styling -->
 <style>
 	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
-	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
+	p,h5, pre, ul, b {font-size: 22px; font-family: 'Pavanam', sans-serif;};
 	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
@@ -152,6 +152,71 @@
 
 		</form>
 		<b><p style="font-size: 30px;">Hashgraph</p></b>
+
+		<p>Hashgraph is a data structure and consensus algorithm that is fast, secure, and fair. 
+			It grows upward over time and every participant has a copy of the hashgraph in its memory. 
+			Each member (full node) on the Hashgraph starts by creating an event which is a small data structure that is stored in memory. 
+			The goal of the Hashgraph consensus algorithm is for all members of the community to come to an agreement on the order of the events and the order of the transactions in the events and to agree on a timestamp for each event and transaction. 
+			Using this system, it should be relatively difficult for attackers to prevent a consensus on the Hashgraph, to force different members to come to a different consensus, or to unfairly influence the order and timestamps that are agreed upon amongst the members of the Hashgraph. 
+		</p>
+		<br>
+
+		<img src="hashgraph.png" style="height: 500px; width: 500px">
+		<b><p>Hashgraph is...</p> <br></b>
+		<p><b>Fair</b> <br>
+			<ul>
+				<li>No individual can manipulate the order of transactions.<br></li>
+				<li>No individual can stop or delay a transaction from entering the system.<br></li>
+			</ul>
+
+		<br>
+		<b>Provable</b> <br>
+		<ul>
+			<li>Once an event occurs, within a couple of minutes every member in the community will know where it should be placed in history. <br></li>
+			<li>Every member will know that every other member is aware of the event. <br></li>
+			<li>Members don’t need to remember old transactions or blocks which shrinks the amount of storage needed.<br></li>
+		</ul>
+		<br>
+		<b>Byzantine</b> <br>
+		<ul>
+			<li>No single member or group of members can prevent the community from reaching a consensus. <br></li>
+			<li>No member or group of members can change the consensus once it has been reached. <br></li>
+			<li>Each member will eventually reach a point where they know with 100% certainty that a consensus has been reached. <br></li>
+		</ul>
+		
+		<br>
+		<b>ACID Compliant</b> <br>
+		<ul>
+			<li>Atomicity, Consistency, Isolation, Durability<br></li>
+			<li>Applies to the hashgraph when it is used as a distributed database: a community of members uses it to reach a consensus. Once a consensus is reached, each member feeds the transactions to their local copy of the database. <br></li>
+			<li>The community as a whole can be said to have a single, distributed database with the properties of ACID if the local database has all of those standard properties. <br></li>
+		</ul>
+		
+		<br>
+		<b>Inexpensive</b> <br>
+		<ul>
+			<li>Avoids proof-of-work mechanism which can impact performance<br></li>
+			<li>Does not need to waste computations to slow itself down for blocks to be properly mined.<br></li>
+		</ul>
+		
+		<br>
+		<b>Timestamped</b> <br>
+		<ul>
+			<li>Every transaction is assigned a consensus time which is the median of the times that each member first received it. <br></li>
+			<li>If a majority of the participating members are honest and have reliable computer clock times, then the timestamp itself will be honest and reliable. <br></li>
+			<li>Consensus timestamping is useful for smart contracts since there will be a consensus on whether an event happened by a deadline.<br></li>
+			<li>Timestamps are resistant to manipulation by an attacker.<br></li>
+		</ul>
+	
+		<br>
+		<b>Non-permissioned</b> <br>
+		<ul>
+			<li>A permissioned system is one where only trusted members can be part of the community and participate in transactions. <br></li>
+			<li>An open system is not permissioned and allows anyone to participate.<br></li>
+			<li>Hashgraph can be designed to work in various ways such as proof-of-stake.<br></li>
+		</ul>
+	
+		</p>
 
 	
 </div>
