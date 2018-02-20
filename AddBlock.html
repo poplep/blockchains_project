@@ -412,16 +412,26 @@ function button(evt, tab){
 		//click handler for button
 		button.addEventListener('click', function() {
 			
+			
 			//make sure user didnt enter 0 for an id
 			if(id.value == '0') {
 				alert("Please enter an ID that is not 0.");
 				return;
 			}
+
 			//make sure user entered valid name
 			var namevalidate=$("#name").val();
 			var agevalidate=$("#age").val();
 			var idvalidate=$("#id").val();
 
+			if(!namevalidate.match("^[ A-Za-z]+$")) {
+				if(!agevalidate.match(/^[0-9]+$/i)) {
+					if(!idvalidate.match(/^[0-9]+$/i)) {
+						alert("No input received. Please enter your information and try again.");
+						return;
+					}
+				}
+			}
 			if(!namevalidate.match("^[ A-Za-z]+$")) {
 				alert('Not A Name');
 				return;
@@ -438,6 +448,9 @@ function button(evt, tab){
 				alert('Not A Valid ID');
 				return;
 			}
+
+
+			
 			//take value in the input and send it via contract
 			try {
 
