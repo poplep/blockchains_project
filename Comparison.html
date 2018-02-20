@@ -38,7 +38,7 @@
 <!-- Overall Page Styling -->
 <style>
 	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
-	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
+	p,h5, pre, td, th {font-size: 22px; font-family: 'Pavanam', sans-serif;};
 	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
@@ -122,32 +122,14 @@
 			<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
 
 	
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Hashgraph</h5></div>
-			<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="HashgraphFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="HashgraphDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph for Preventing Data Loss and Tampering</button></a>
-
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Tangle</h5></div>
-			<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="TangleFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="TangleDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle for Preventing Data Loss and Tampering</button></a>
-
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;R3 Corda</h5></div>
-			<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="CordaFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="CordaDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> R3 Corda for Preventing Data Loss and Tampering</button></a>
-
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Hyperledger</h5></div>
-			<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="HyperledgerFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="HyperledgerDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger for Preventing Data Loss and Tampering</button></a>
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Alternatives to the Blockchain Comparison</h5></div>
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchain Alternatives</h5></div>
+			<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph </button></a>
+			<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle </button></a>
+			<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger </button></a>
+			<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Corda </button></a>
+			<a href="DCSFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+			<a href="DCSDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Preventing Data Loss and Tampering</button></a>
 			<a href="Comparison.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Comparing Blockchain, Hyperledger, Corda, Tangle, and Hashgraph</button></a>
-
 
 			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Help Section</h5></div>
 			<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
@@ -172,6 +154,87 @@
 		</form>
 		<b><p style="font-size: 30px;">Comparison</p></b>
 
+
+<table style="width:100%">
+
+	<tr>
+		<th>Characteristic</th>
+		<th>Blockchain</th>
+		<th>Hashgraph</th> 
+		<th>Tangle</th>
+		<th>Hyperledger</th>
+		<th>Corda</th>
+  </tr>
+
+  <tr>
+    <td>Description of Platform</td> <!-- Characteristic-->
+    <td>Decentralized Tamperproof Ledger</td>  <!-- Characteristic - Blockchain -->
+	<td>Directed Acyclic Graph (DAG)</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>TBD</td><!-- Characteristic - Hyperledger -->
+	<td>TBD</td><!-- Characteristic - Corda -->
+  </tr>
+
+  <tr>
+    <td>Governance</td> <!-- Characteristic-->
+    <td>Satoshi Nakamoto</td>  <!-- Characteristic - Blockchain -->
+	<td>Swirlds</td><!-- Characteristic - Hashgraph -->
+	<td>IOTA</td><!-- Characteristic - Tangle -->
+	<td>Linux Foundation</td><!-- Characteristic - Hyperledger -->
+	<td>R3</td><!-- Characteristic - Corda -->
+  </tr>
+  <tr>
+    <td>Mode of Operation</td> <!-- Characteristic-->
+    <td>Private (Permissioned) or Public (Non-Permissioned)</td>  <!-- Characteristic - Blockchain -->
+	<td>Private (Permissioned)</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>Private (Permissioned)</td><!-- Characteristic - Hyperledger -->
+	<td>Private (Permissioned)</td><!-- Characteristic - Corda -->
+  </tr>
+  <tr>
+    <td>Consensus Mechanism</td> <!-- Characteristic-->
+    <td>Proof-of-Work, Proof-of-Stake, Proof-of-Authority<br> Ledger Level</td>  <!-- Characteristic - Blockchain -->
+	<td>Gossip About Gossip, Virtual Voting</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>Broad understanding of consensus that allows multiple approaches. <br> Transaction Level</td><!-- Characteristic - Hyperledger -->
+	<td>Specific understanding of consensus (i.e. notary nodes) <br> Transaction Level</td><!-- Characteristic - Corda -->
+  </tr>
+  <tr>
+    <td>Byzantine Type</td> <!-- Characteristic-->
+    <td>Not Byzantine</td>  <!-- Characteristic - Blockchain -->
+	<td>Asynchronous Byzantine Fault Tolerant</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>TBD</td><!-- Characteristic - Hyperledger -->
+	<td>TBD</td><!-- Characteristic - Corda -->
+  </tr>
+
+  <tr>
+    <td>Smart Contracts</td> <!-- Characteristic-->
+    <td>Solidity</td>  <!-- Characteristic - Blockchain -->
+	<td>TBD</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>Go, Java</td><!-- Characteristic - Hyperledger -->
+	<td>Kotlin, Java, Legal Prose</td><!-- Characteristic - Corda -->
+  </tr>
+
+  <tr>
+    <td>Currency</td> <!-- Characteristic-->
+    <td>Varies by Platform (e.g. Ether for Ethereum)</td>  <!-- Characteristic - Blockchain -->
+	<td>None</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>None</td><!-- Characteristic - Hyperledger -->
+	<td>None</td><!-- Characteristic - Corda -->
+  </tr>
+
+  <tr>
+    <td>Attack Resistance</td> <!-- Characteristic-->
+    <td>Denial of Service (DoS)</td>  <!-- Characteristic - Blockchain -->
+	<td>Denial of Service (DoS) and Sybil</td><!-- Characteristic - Hashgraph -->
+	<td>TBD</td><!-- Characteristic - Tangle -->
+	<td>TBD</td><!-- Characteristic - Hyperledger -->
+	<td>TBD</td><!-- Characteristic - Corda -->
+  </tr>
+</table>
 
 </div>
 

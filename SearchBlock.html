@@ -133,7 +133,7 @@
 			<a href="BlockchainFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
 			<a href="BlockchainAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
 			<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
-			<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
+			<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink "> Blockchains for Preventing Data Loss and Tampering</button></a>
 
 			<div><b><h5 class="w3-bar-block" style="color: white; font-size: 20px">&nbsp;Blockchain Functionality</h5></b></div>
 			<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
@@ -143,32 +143,14 @@
 			<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
 
 	
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Hashgraph</h5></div>
-			<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="HashgraphFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="HashgraphDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph for Preventing Data Loss and Tampering</button></a>
-
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Tangle</h5></div>
-			<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="TangleFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="TangleDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle for Preventing Data Loss and Tampering</button></a>
-
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;R3 Corda</h5></div>
-			<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="CordaFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="CordaDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> R3 Corda for Preventing Data Loss and Tampering</button></a>
-
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Hyperledger</h5></div>
-			<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About </button></a>
-			<a href="HyperledgerFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="HyperledgerDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger for Preventing Data Loss and Tampering</button></a>
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Alternatives to the Blockchain Comparison</h5></div>
+			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchain Alternatives</h5></div>
+			<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph </button></a>
+			<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle </button></a>
+			<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger </button></a>
+			<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Corda </button></a>
+			<a href="DCSFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+			<a href="DCSDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Preventing Data Loss and Tampering</button></a>
 			<a href="Comparison.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Comparing Blockchain, Hyperledger, Corda, Tangle, and Hashgraph</button></a>
-
 
 			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Help Section</h5></div>
 			<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
@@ -379,14 +361,39 @@ $(document).keydown(function(event){
 					var button1 = document.getElementById('button1');
 					var button2 = document.getElementById('button2');
 					var button3 = document.getElementById('button3');
-
+					var nextsearch = 0;
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
+
+			if(nameTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
+				return;
+			}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+			}
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
 			console.log("RES:" + nameTest.value);
 			key = 1;
 			var ID = [];
 			var age = [];
 			var name1 = [];
+			var blockcount = 0;
+			nextsearch = 0;
+
+			
+			
 			function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
@@ -399,12 +406,23 @@ $(document).keydown(function(event){
 						viewingBlockName(key, test);
 					}else{
 						console.log("All keys found");
+						if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
 						//TODO: call method that will draw blocks for user here!!!
 						var i;
+						
 						for(i = 0; i< ID.length; i++) {
+
+								
+							
 								newBlock(ID[i], age[i], name1[i]);
+								blockcount++;
 								duplicate();
 						}
+						return;
+
+						
 					}
 				})
 			}
@@ -430,11 +448,31 @@ $(document).keydown(function(event){
 		})
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
+			if(idTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
+				return;
+			}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+			}
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
 			console.log("RES:" + idTest.value);
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
+				nextsearch = 0;
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 
@@ -451,12 +489,16 @@ $(document).keydown(function(event){
 							viewingBlockID(key + 1, Number(test));
 						}else{
 							console.log("All keys found");
+							if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
 							//TODO: call method that will draw blocks for user here!!!
 							var i;
 							for(i = 0; i< ID.length; i++) {
 									newBlock(ID[i], age[i], name1[i]);
 									duplicate();
 							}
+							return;
 						}
 					})
 				}
@@ -478,11 +520,31 @@ $(document).keydown(function(event){
 
 			//click handler - searching by age
 			button3.addEventListener('click', function() {
+				if(ageTest.value.length == 0) {
+					alert("No input received. Please enter your information and try again.");
+				return;
+				}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+			}
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
 			console.log("RES:" + ageTest.value);
 				key = 1;
 				var ID = [];
 				var age = [];
 				var name1 = [];
+				nextsearch = 0;
 				function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
@@ -499,12 +561,16 @@ $(document).keydown(function(event){
 							
 						}else{
 							console.log("All keys found");
+							if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
 							//TODO: call method that will draw blocks for user here!!!
 							var i;
 							for(i = 0; i< ID.length; i++) {
 									newBlock(ID[i], age[i], name1[i]);
 									duplicate();
 							}
+							return;
 						}
 					})
 				}
@@ -516,7 +582,7 @@ $(document).keydown(function(event){
 								addID(key, test);
 							}
 							})
-							viewingBlockID(key+1, test)
+							viewingBlockID(key+1, test);
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
@@ -529,7 +595,34 @@ $(document).keydown(function(event){
 				}
 				viewingBlockID(key, Number(ageTest.value));
 		})
+		
+	var difficulty = document.getElementById("name");
+	var extraData  = document.getElementById("id");
+	var gasLimit = document.getElementById("age");
 
+	//function to create a new block object to be displayed on page
+	
+	function newBlock(id, age, name) {
+		$('#name' + nextsearch).text(removeSpecialChars(name)); 
+		$('#id'+ nextsearch).text(id); 
+		$('#age'+ nextsearch).text(age); 		
+	}
+	
+	function duplicate() {
+		var original = document.getElementById('duplicater' + nextsearch);
+		var clone = original.cloneNode(true); // "deep" clone
+		clone.id = "duplicater" + ++nextsearch; // there can only be one element with an ID
+	
+		//update IDs of children pre fields
+		clone.getElementsByTagName('pre')[0].id = "name" + nextsearch;
+		clone.getElementsByTagName('pre')[1].id = "id" + nextsearch;
+		clone.getElementsByTagName('pre')[2].id = "age" + nextsearch;
+
+		original.parentNode.appendChild(clone); // appends child div to previous parent div
+		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
+	}
+
+	
 </script>
 
 
@@ -555,38 +648,8 @@ function button(evt, tab){
 
 <!-- Javascript Block Creation for Viewing Blocks on Chain -->
 <script>
-	var difficulty = document.getElementById("name");
-	var extraData  = document.getElementById("id");
-	var gasLimit = document.getElementById("age");
-
-	//function to create a new block object to be displayed on page
-	var i = 0;
-	function newBlock(id, age, name) {
-		$('#name' + i).text(removeSpecialChars(name)); 
-		$('#id'+ i).text(id); 
-		$('#age'+ i).text(age); 		
-	}
-
-
-
-
 	
-	function duplicate() {
-		var original = document.getElementById('duplicater' + i);
-		var clone = original.cloneNode(true); // "deep" clone
-		clone.id = "duplicater" + ++i; // there can only be one element with an ID
-	
-		//update IDs of children pre fields
-		clone.getElementsByTagName('pre')[0].id = "name" + i;
-		clone.getElementsByTagName('pre')[1].id = "id" + i;
-		clone.getElementsByTagName('pre')[2].id = "age" + i;
 
-		original.parentNode.appendChild(clone); // appends child div to previous parent div
-		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
-
-	}
-
-	
 
 
 </script>
