@@ -366,6 +366,7 @@ $(document).keydown(function(event){
 		button1.addEventListener('click', function() {
 
 			if(nameTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
 				return;
 			}
 			//clearing old blocks before executing search
@@ -448,6 +449,7 @@ $(document).keydown(function(event){
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
 			if(idTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
 				return;
 			}
 			//clearing old blocks before executing search
@@ -519,8 +521,9 @@ $(document).keydown(function(event){
 			//click handler - searching by age
 			button3.addEventListener('click', function() {
 				if(ageTest.value.length == 0) {
+					alert("No input received. Please enter your information and try again.");
 				return;
-			}
+				}
 			//clearing old blocks before executing search
 			var x;
 			for(x = 0; x <= nextsearch; x++) {
