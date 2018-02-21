@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<!--Title, imports for CSS, Google Fonts, Web3, and Promisejs -->
-	<title>Blockchain UI - Add a Block</title>
+<title>Blockchain UI - Add a Block</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -12,7 +13,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+
 </head>
+
 <!-- Style for the tile buttons -->
 <style>
 	div.gallery {
@@ -163,13 +166,13 @@
 	
 
 		<div class="w3-container" style= "margin-left:-1.5%" position ="fixed">
-			<h1 style="color: white">Add Block</h1>
+			<h1 style="color: white">Add a Block to the Blockchain</h1>
 		</div>
 		<div>
 			<br>
 	
 				<!-- Ask user for the data -->
-				<p>Enter your data as name, age, id number</p>
+				<p>To add a block, please enter in a name, age, and ID below:</p>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Name of a student, employee, yourself." style="font-size:18px" style="color: black">Name:</a><br>
 				<input id="name" type="text"><br>
 				<a href="#" data-toggle="tooltip" data-placement="right" title="Ex: Age of a student, employee, yourself." style="font-size:18px" style="color: black">Age:</a><br>
@@ -191,76 +194,78 @@
 						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
 						<pre id="age0" type="text"></pre><br>
 
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
-					<pre id="difficulty0"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
-					<pre id="extraData0"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
-					<pre id="gasLimit0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
-					<pre id="gasUsed0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
-					<pre id="hash0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
-					<pre id="logsBloom0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
-					<pre id="miner0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
-					<pre id="mixHash0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
-					<pre id="nonce0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
-					<pre id="number0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
-					<pre id="parentHash0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
-					<pre id="receiptsRoot0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
-					<pre id="sha3Uncles0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
-					<pre id="size0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
-					<pre id="stateRoot0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
-					<pre id="timestamp0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
-					<pre id="totalDifficulty0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
-					<pre id="transactions0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
-					<pre id="transactionsRoot0" type="text"></pre><br>
-		
-					<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
-					<pre id="uncles0" type="text"></pre><br>
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
+						<pre id="difficulty0"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
+						<pre id="extraData0"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
+						<pre id="gasLimit0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
+						<pre id="gasUsed0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
+						<pre id="hash0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
+						<pre id="logsBloom0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
+						<pre id="miner0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
+						<pre id="mixHash0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
+						<pre id="nonce0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
+						<pre id="number0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
+						<pre id="parentHash0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
+						<pre id="receiptsRoot0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
+						<pre id="sha3Uncles0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
+						<pre id="size0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
+						<pre id="stateRoot0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
+						<pre id="timestamp0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
+						<pre id="totalDifficulty0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
+						<pre id="transactions0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
+						<pre id="transactionsRoot0" type="text"></pre><br>
+			
+						<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
+						<pre id="uncles0" type="text"></pre><br>
 					</div>
 
 		</div>
 
 
 </div>
+<!-- Tooltip functionality-->
 <script>
 		$(document).ready(function(){
 				$('[data-toggle="tooltip"]').tooltip();   
 		});
-		</script>
+</script>
+
 <!Function to change page when button is pressed on home tab>
 <script>
 function button(evt, tab){
@@ -279,290 +284,279 @@ function button(evt, tab){
 }
 </script>
 
-	<script>
-		var web3 =  new Web3(web3.currentProvider); //provider for web3
-		//web3.eth.defaultAccount = web3.eth.accounts[0]; // setting default account from testrpc
+<!-- Start of Add Block Functionality-->
+<script>
+	var web3 =  new Web3(web3.currentProvider); //provider for web3
+	
+	//contract abi, pass json representation of contract to instance
+	var addBlockContract = web3.eth.contract([{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "key",
+			"type": "uint256"
+			}
+		],
+		"name": "getID",
+		"outputs": [
+			{
+			"name": "",
+			"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		},
+		{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "key",
+			"type": "uint256"
+			}
+		],
+		"name": "getAge",
+		"outputs": [
+			{
+			"name": "",
+			"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		},
+		{
+		"constant": false,
+		"inputs": [
+			{
+			"name": "data",
+			"type": "bytes32"
+			},
+			{
+			"name": "uage",
+			"type": "uint8"
+			},
+			{
+			"name": "uid",
+			"type": "uint256"
+			}
+		],
+		"name": "addData",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+		},
+		{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "key",
+			"type": "uint256"
+			}
+		],
+		"name": "getName",
+		"outputs": [
+			{
+			"name": "",
+			"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		},
+		{
+		"constant": true,
+		"inputs": [
+			{
+			"name": "",
+			"type": "uint256"
+			}
+		],
+		"name": "blockchain",
+		"outputs": [
+			{
+			"name": "age",
+			"type": "uint8"
+			},
+			{
+			"name": "id",
+			"type": "uint256"
+			},
+			{
+			"name": "name",
+			"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+		}]);
+	var addingBlock = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
+
+	//grabbing elements by element id and storing into variables
+	var id = document.getElementById('id');
+	var age = document.getElementById('age');
+	var button = document.getElementById('button2');
+	var output = document.getElementById('output');
+	var output2 = document.getElementById('output2');
+	var hash;
+	var trans;
+	var block;
+
+	//function that removes special characters from the name so it can be displayed properly to the user
+	function removeSpecialChars(strVal)
+			{
+			strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+			return strVal;
+			}
+
+	//click handler for adding a block button
+	button.addEventListener('click', function() {
 		
-		//contract abi, pass json representation of contract to instance
-		var addBlockContract = web3.eth.contract([{
-			"constant": true,
-			"inputs": [
-			  {
-				"name": "key",
-				"type": "uint256"
-			  }
-			],
-			"name": "getID",
-			"outputs": [
-			  {
-				"name": "",
-				"type": "uint256"
-			  }
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		  },
-		  {
-			"constant": true,
-			"inputs": [
-			  {
-				"name": "key",
-				"type": "uint256"
-			  }
-			],
-			"name": "getAge",
-			"outputs": [
-			  {
-				"name": "",
-				"type": "uint256"
-			  }
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		  },
-		  {
-			"constant": false,
-			"inputs": [
-			  {
-				"name": "data",
-				"type": "bytes32"
-			  },
-			  {
-				"name": "uage",
-				"type": "uint8"
-			  },
-			  {
-				"name": "uid",
-				"type": "uint256"
-			  }
-			],
-			"name": "addData",
-			"outputs": [],
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "function"
-		  },
-		  {
-			"constant": true,
-			"inputs": [
-			  {
-				"name": "key",
-				"type": "uint256"
-			  }
-			],
-			"name": "getName",
-			"outputs": [
-			  {
-				"name": "",
-				"type": "bytes32"
-			  }
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		  },
-		  {
-			"constant": true,
-			"inputs": [
-			  {
-				"name": "",
-				"type": "uint256"
-			  }
-			],
-			"name": "blockchain",
-			"outputs": [
-			  {
-				"name": "age",
-				"type": "uint8"
-			  },
-			  {
-				"name": "id",
-				"type": "uint256"
-			  },
-			  {
-				"name": "name",
-				"type": "bytes32"
-			  }
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		  }]);
-		var addingBlock = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
+		//make sure user didnt enter 0 for an id
+		if(id.value == '0') {
+			alert("Please enter an ID that is not 0.");
+			return;
+		}
 
-		//grabbing elements by element id and storing into variables
-		
-		var id = document.getElementById('id');
-		var age = document.getElementById('age');
-		var button = document.getElementById('button2');
-		var output = document.getElementById('output');
-		var output2 = document.getElementById('output2');
-		var hash;
-		var trans;
-		var block;
+		//make sure user entered valid name
+		var namevalidate=$("#name").val();
+		var agevalidate=$("#age").val();
+		var idvalidate=$("#id").val();
 
-		function removeSpecialChars(strVal)
-				{
-				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
-				return strVal;
-				}
-
-		//click handler for button
-		button.addEventListener('click', function() {
-			
-			
-			//make sure user didnt enter 0 for an id
-			if(id.value == '0') {
-				alert("Please enter an ID that is not 0.");
-				return;
-			}
-
-			//make sure user entered valid name
-			var namevalidate=$("#name").val();
-			var agevalidate=$("#age").val();
-			var idvalidate=$("#id").val();
-
-			if(!namevalidate.match("^[ A-Za-z]+$")) {
-				if(!agevalidate.match(/^[0-9]+$/i)) {
-					if(!idvalidate.match(/^[0-9]+$/i)) {
-						alert("No input received. Please enter your information and try again.");
-						return;
-					}
-				}
-			}
-			if(!namevalidate.match("^[ A-Za-z]+$")) {
-				alert('Not A Name');
-				return;
-			}
-
-			//make sure user entered a valid age
+		//if nothing was input for the name, age, and ID then let the user know and exit the function 
+		if(!namevalidate.match("^[ A-Za-z]+$")) {
 			if(!agevalidate.match(/^[0-9]+$/i)) {
-				alert('Not A Valid Age');
-				return;
+				if(!idvalidate.match(/^[0-9]+$/i)) {
+					alert("No input received. Please enter your information and try again.");
+					return;
+				}
 			}
+		}
+		//if the user didnt enter letters for the name, let them know and exit the function
+		if(!namevalidate.match("^[ A-Za-z]+$")) {
+			alert('Not A Name');
+			return;
+		}
 
-			//make sure the user didnt enter a period for the id
-			if(!idvalidate.match(/^[0-9]+$/i)) {
-				alert('Not A Valid ID');
-				return;
-			}
+		//make sure user entered a valid age
+		if(!agevalidate.match(/^[0-9]+$/i)) {
+			alert('Not A Valid Age');
+			return;
+		}
 
+		//make sure the user didnt enter a period for the id
+		if(!idvalidate.match(/^[0-9]+$/i)) {
+			alert('Not A Valid ID');
+			return;
+		}
+		
+		//take value in the input and send it via contract
+		try {
 
+			addingBlock.addData(String(document.getElementById('name').value), age.value, id.value, function(worked, result){
+				if(!worked){
+					hash = result;
+					console.log(hash);
+					console.log(worked);
+					viewingBlock();
+					alert("A block was successfully added to the blockchain. Waiting to be mined...");
+				}else
+					console.error(worked);
+			})
+		}catch(e){
+			alert("Could not add your data as a block. Please make sure you entered numbers for the age and ID and a string of characters for the name.");
+		}
 			
-			//take value in the input and send it via contract
-			try {
+		// get the block number and store it into a variable called number
+		var number = web3.eth.getBlockNumber(function(error, result){
+			if(!error)
+				console.log(result)
+			else
+				console.error(error);
+		})
 
-				addingBlock.addData(String(document.getElementById('name').value), age.value, id.value, function(worked, result){
-					if(!worked){
-						hash = result;
-						console.log(hash);
-						console.log(worked);
-						viewingBlock();
-						alert("A block was successfully added to the blockchain. Waiting to be mined...");
-					}else
-						console.error(worked);
-				})
-			}catch(e){
-				alert("Could not add your data as a block. Please make sure you entered numbers for the age and ID and a string of characters for the name.");
-			}
-				
-				// get the block number and store it into a variable called number
-				var number = web3.eth.getBlockNumber(function(error, result){
-					if(!error)
-						console.log(result)
-					else
-						console.error(error);
-				})
-
-
-			// function for viewing the block
-			// this function is called after we add the block
-			function viewingBlock() {	
-				var transValue = 0;			
-				//while(transValue != 1){
-					web3.eth.getTransaction(hash, function(error, result){
-						if(!error){
-							trans = result;
-							console.log(trans.blockHash);
-							transValue = getTransaction();
-							if(transValue == 1){
-								return;
-							}
-							else {
-								viewingBlock();
-							}
+		// function for viewing the block
+		// this function is called after we add the block
+		function viewingBlock() {	
+			var transValue = 0;			
+			//while(transValue != 1){
+				web3.eth.getTransaction(hash, function(error, result){
+					if(!error){
+						trans = result;
+						console.log(trans.blockHash);
+						transValue = getTransaction();
+						if(transValue == 1){
+							return;
 						}
-						else{}
-							//console.error(error);
-					})
-				//}
-					var elements = [];
-				//this function gets the transaction hash of the block that was mined by the user
-				function getTransaction(){
-				if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
-					
-					 block = web3.eth.getBlock(trans.blockHash, function(error, result){
-									if(!error){
-										for(const [key, value] of Object.entries(result)) {
-											elements.push(value);
-											//output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
-										}
-					 					newBlock(id.value, age.value, String(document.getElementById('name').value), elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
-										console.log(result);
-								}	else{
-										alert("We could not retrieve the transaction hash successfully. Please try again.");
-										console.error(error);
-									}
-							});
-							return 1;
-				} else {
-					return 0;
-				}
-				}
-			}
-				
-								var printThis = "";
-									for(const [key, value] of Object.entries(block)) {
-										output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
-									}
-
-					
-						
-					
-				
-				//this function prints the block that was mined to the user
-				function register(blockSaved) {
-					var printThis = "";
-					for(const [key, value] of Object.entries(blockSaved)) {
-						printThis += "<br>" + `${key} ${value}`;
+						else {
+							viewingBlock();
+						}
 					}
-				}
+					else{}
+						//console.error(error);
+				})
+			//}
+				var elements = [];
+			//this function gets the transaction hash of the block that was mined by the user
+			function getTransaction(){
+			if(trans.blockHash != "0x0000000000000000000000000000000000000000000000000000000000000000"){
+				
+					block = web3.eth.getBlock(trans.blockHash, function(error, result){
+								if(!error){
+									for(const [key, value] of Object.entries(result)) {
+										elements.push(value);
+										//output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+									}
+									newBlock(id.value, age.value, String(document.getElementById('name').value), elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
+									console.log(result);
+							}	else{
+									alert("We could not retrieve the transaction hash successfully. Please try again.");
+									console.error(error);
+								}
+						});
+						return 1;
+			} else {
+				return 0;
+			}
+			}
+		}
 
-				//this function gets the ID of the block that was mined
-				var num = addingBlock.getID(1, function(worked, result){
-					if(!worked){
-						//hash = result;
-						//console.log(hash);
-						console.log(result);
-						//viewingBlock();
-					}else
-						console.error(worked);
-				})
-				console.log(num);
-				//this function gets the age of the block that was mined
-				var AGE = addingBlock.getAge(1, function(worked, result){
-					if(!worked){
-						//hash = result;
-						//console.log(hash);
-						console.log(result);
-						//viewingBlock();
-					}else
-						console.error(worked);
-				})
-				console.log(AGE);
-		});
+		//variable for printing	
+		var printThis = "";
+			for(const [key, value] of Object.entries(block)) {
+				output2.innerHTML = (printThis += "<br>" + `${key} ${value}`);
+			}
+
+		//this function prints the block that was mined to the user
+		function register(blockSaved) {
+			var printThis = "";
+			for(const [key, value] of Object.entries(blockSaved)) {
+				printThis += "<br>" + `${key} ${value}`;
+			}
+		}
+
+		//this function gets the ID of the block that was mined
+		var num = addingBlock.getID(1, function(worked, result){
+			if(!worked){
+				console.log(result);
+			}else
+				console.error(worked);
+		})
+		console.log(num);
+		//this function gets the age of the block that was mined
+		var AGE = addingBlock.getAge(1, function(worked, result){
+			if(!worked){
+				console.log(result);
+			}else
+				console.error(worked);
+		})
+		console.log(AGE);
+	});
 
 	var difficulty = document.getElementById("difficulty");
 	var extraData  = document.getElementById("extraData");
@@ -584,6 +578,7 @@ function button(evt, tab){
 	var transactions = document.getElementById('transactions');
 	var transactionsRoot = document.getElementById('transactionsRoot');
 	var uncles = document.getElementById('uncles');
+
 	//function to create a new block object to be displayed on page
 	var i = 0;
 	function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
@@ -613,16 +608,7 @@ function button(evt, tab){
 		alert("Mining complete.");		
 	}
 
-
-
-
-
-	
-
-
-
 	</script>
-
 
 </body>
 </html>
