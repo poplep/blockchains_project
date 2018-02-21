@@ -318,20 +318,22 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				var ID = [];
 				var age = [];
 				var name1 = [];
+
+				//function to get the block ID
 				function viewingBlockID(key) {	
 					view.getID(key, function(worked, result){
-						if(result.c["0"]){
-							console.log(result.c["0"]);
-							ID.push(result.c["0"]);
-							viewingBlockAge(key);
-							viewingBlockName(key);
-							viewingBlockID(key + 1);
+						if(result.c["0"]){ //if we found the ID
+							console.log(result.c["0"]); // print it to the console
+							ID.push(result.c["0"]); //push it to the ID array
+							viewingBlockAge(key); // get the age 
+							viewingBlockName(key); // get the name
+							viewingBlockID(key + 1); // move to the next block
 						}else{
-							console.log("All keys found");
+							console.log("All keys found"); //all keys were found
 							var i;
 							for(i = 0; i< ID.length; i++) {
-									newBlock(ID[i], age[i], name1[i]);
-									duplicate();
+									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
+									duplicate(); // duplicate the block structure 
 							}
 						}
 					})
@@ -339,16 +341,15 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				//function to get the block age
 				function viewingBlockAge(key) {
 					view.getAge(key, function(worked, result){
-							console.log(result.c["0"]);
-							age.push(result.c["0"]);
+							console.log(result.c["0"]); // print the age to the console
+							age.push(result.c["0"]); // push the age to its array
 							})
 				}
 				//function to get the block name
 				function viewingBlockName(key) {
 					view.getName(key, function(worked, result){
-							console.log(result);
-							console.log(result);
-							name1.push(web3.toAscii(result));
+							console.log(result); // print the name to the console
+							name1.push(web3.toAscii(result)); // push the name to its array
 							})
 				}
 				viewingBlockID(key);

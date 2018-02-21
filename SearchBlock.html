@@ -200,25 +200,25 @@
 		</script>
 <!-- Search History -->
 <script>
+
     var store = {
 
-    keyCount:0,
-    commandCount:0,
-    prevCommand:[],
-    put : function(val) {        
-        this.commandCount++;
-        this.keyCount = this.commandCount;
-        this.prevCommand.push(val);        
-    },
-    get : function() {
-        this.keyCount--;
-        if(typeof this.prevCommand[this.keyCount] !== "undefined") {
-            return this.prevCommand[this.keyCount];
-        }    
-    }    
+		keyCount:0,
+		commandCount:0,
+		prevCommand:[],
+		put : function(val) {        
+			this.commandCount++;
+			this.keyCount = this.commandCount;
+			this.prevCommand.push(val);        
+		},
+		get : function() {
+			this.keyCount--;
+			if(typeof this.prevCommand[this.keyCount] !== "undefined") {
+				return this.prevCommand[this.keyCount];
+			}    
+		}    
 
-}
-
+	}
 
 $("#form-prompt").on("submit", function (e) {
 	store.put($('#textTest').val())
@@ -241,130 +241,131 @@ $(document).keydown(function(event){
 <script>
 	
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
-	function removeSpecialChars(strVal)
+
+	//remove special characters from the name so it can be displayed properly to the user
+	function removeSpecialChars(strVal){
+		strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+		return strVal;
+	}
+//contract abi, pass json representation of contract to instance
+var addBlockContract = web3.eth.contract([{
+			"constant": true,
+			"inputs": [
 				{
-				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
-				return strVal;
+				"name": "key",
+				"type": "uint256"
 				}
-		//contract abi, pass json representation of contract to instance
-		var addBlockContract = web3.eth.contract([{
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getID",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getAge",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": false,
-						"inputs": [
-						  {
-							"name": "data",
-							"type": "bytes32"
-						  },
-						  {
-							"name": "uage",
-							"type": "uint8"
-						  },
-						  {
-							"name": "uid",
-							"type": "uint256"
-						  }
-						],
-						"name": "addData",
-						"outputs": [],
-						"payable": true,
-						"stateMutability": "payable",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getName",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"name": "blockchain",
-						"outputs": [
-						  {
-							"name": "age",
-							"type": "uint8"
-						  },
-						  {
-							"name": "id",
-							"type": "uint256"
-						  },
-						  {
-							"name": "name",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  }]);
-					var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
-					
-					var idTest = document.getElementById('idTest');
-					var ageTest = document.getElementById('ageTest');
-					var nameTest = document.getElementById('nameTest');
-					var button1 = document.getElementById('button1');
-					var button2 = document.getElementById('button2');
-					var button3 = document.getElementById('button3');
-					var nextsearch = 0;
+			],
+			"name": "getID",
+			"outputs": [
+				{
+				"name": "",
+				"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+			},
+			{
+			"constant": true,
+			"inputs": [
+				{
+				"name": "key",
+				"type": "uint256"
+				}
+			],
+			"name": "getAge",
+			"outputs": [
+				{
+				"name": "",
+				"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+			},
+			{
+			"constant": false,
+			"inputs": [
+				{
+				"name": "data",
+				"type": "bytes32"
+				},
+				{
+				"name": "uage",
+				"type": "uint8"
+				},
+				{
+				"name": "uid",
+				"type": "uint256"
+				}
+			],
+			"name": "addData",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+			},
+			{
+			"constant": true,
+			"inputs": [
+				{
+				"name": "key",
+				"type": "uint256"
+				}
+			],
+			"name": "getName",
+			"outputs": [
+				{
+				"name": "",
+				"type": "bytes32"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+			},
+			{
+			"constant": true,
+			"inputs": [
+				{
+				"name": "",
+				"type": "uint256"
+				}
+			],
+			"name": "blockchain",
+			"outputs": [
+				{
+				"name": "age",
+				"type": "uint8"
+				},
+				{
+				"name": "id",
+				"type": "uint256"
+				},
+				{
+				"name": "name",
+				"type": "bytes32"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+			}]);
+		var view = addBlockContract.at('0x76908c7e27d2ab126e1fc9dfb037feafbb1fa9f1'); // contract instance to work with
+		
+		var idTest = document.getElementById('idTest');
+		var ageTest = document.getElementById('ageTest');
+		var nameTest = document.getElementById('nameTest');
+		var button1 = document.getElementById('button1');
+		var button2 = document.getElementById('button2');
+		var button3 = document.getElementById('button3');
+		var nextsearch = 0;
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
-
+			//if no name was entered into the search field, then let the user know and exit the function
 			if(nameTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
 				return;
@@ -376,6 +377,7 @@ $(document).keydown(function(event){
 				$("#id" + x).empty();
 				$("#age" + x).empty();
 			}
+			//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
 			for(x = 1; x <= nextsearch; x++) {
 				$("#duplicater" + x).remove();
 				$("#name" + x).empty();
