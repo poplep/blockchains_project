@@ -332,8 +332,14 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 							console.log("All keys found"); //all keys were found
 							var i;
 							for(i = 0; i< ID.length; i++) {
+								if(i == ID.length-1) {
 									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
-									duplicate(); // duplicate the block structure 
+
+								}else {
+									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
+									duplicate();
+								}
+									
 							}
 						}
 					})
