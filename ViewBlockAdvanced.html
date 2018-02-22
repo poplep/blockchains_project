@@ -442,7 +442,8 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				var transactionsVals = [];
 				var transactionsRootVals = [];
 				var unclesVals = [];
-
+				var blockcount = 0;
+				var elementloop = 0;
 				//function to view the block ID	
 				function viewingBlockID(key) {
 					var elements = [];
@@ -452,7 +453,7 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 							ID.push(result.c["0"]);
 							viewingBlockAge(key);
 							viewingBlockName(key);
-						
+							setTimeout(function(){  
 							var block = web3.eth.getBlock(key, function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
@@ -466,24 +467,43 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 											
 										}
 									}
-									newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
-									duplicate();
+									blockcount++;
+									
+
 									iterate++;
+								
 									console.log("END!!!!!!!!!!!!!!!!!");
 									
 									
 								});
+								}, 2);
 								
 								
 							
 							console.log("COMPLETED");
 							
+							
 							viewingBlockID(key + 1);
 						}else{
 
 							console.log("All keys found");
+							var i;
+							setTimeout(function(){  
+							for(i = 0; i < ID.length; i++) {
+								if(i == ID.length-1) {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1]);
+
+								}else {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1], elements[elementloop+=1]);
+									duplicate();
+								}
+							
+							}
+						}, 1000);
 							//TODO: call method that will draw blocks for user here!!!
 							
+							//newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
+
 						}
 					})
 				}
