@@ -551,7 +551,6 @@ var addBlockContract = web3.eth.contract([{
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
 				});
-				viewingBlockAge(key, test);
 			}
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
@@ -595,7 +594,7 @@ var addBlockContract = web3.eth.contract([{
 							name1.push(web3.toAscii(result));
 							})
 				}
-				viewingBlockID(key, Number(ageTest.value));
+				viewingBlockAge(key, Number(ageTest.value));
 		})
 		
 	var difficulty = document.getElementById("name");
