@@ -553,7 +553,12 @@ var addBlockContract = web3.eth.contract([{
 				var age = [];
 				var name1 = [];
 				nextsearch = 0;
-		
+				function addID(key, test){
+				view.getID(key, function(worked, result){
+					ID.push(result.c["0"]);
+					console.log(result.c["0"])
+				});
+			}
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
@@ -568,17 +573,21 @@ var addBlockContract = web3.eth.contract([{
 									alert("No blocks found matching your search criteria.");
 								}
 							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							for(i = 0; i< ID.length; i++) {
+							var i = 0;
+							console.log(ID.length)
+							for(i = 0; i < ID.length; i++) {
 								if(i == ID.length-1) {
+									console.log(ID[i])
+									console.log(name1[i])
+									console.log(age[i])
 									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
 
 								}else {
 									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
 									duplicate();
 								}
-							return;
 							}
+							return;
 						}
 					})
 				}
@@ -587,17 +596,19 @@ var addBlockContract = web3.eth.contract([{
 							if(result.c["0"] == test){
 								age.push(result.c["0"]);
 								viewingBlockName(key, test);
-								ID.push(result.c["0"]);
+								addID(key, test);
+								console.log(result.c["0"])
 							}
-							})
 							viewingBlockID(key+1, test);
+							})
+							//viewingBlockID(key+1, test);
 				}
 				function viewingBlockName(key, test) {
 					view.getName(key, function(worked, result){
 
-							console.log(result);
+							console.log(web3.toAscii(result));
 
-							console.log(result);
+							//console.log(result);
 							name1.push(web3.toAscii(result));
 							})
 				}
