@@ -444,9 +444,10 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				var unclesVals = [];
 				var blockcount = 0;
 				var elementloop = 0;
+				var elements = [];
 				//function to view the block ID	
 				function viewingBlockID(key) {
-					var elements = [];
+					
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
 							console.log(result.c["0"]);

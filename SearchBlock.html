@@ -563,7 +563,7 @@ var addBlockContract = web3.eth.contract([{
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
 
-							
+							ID.push(result.c["0"]);
 							viewingBlockAge(key, test);
 
 							
