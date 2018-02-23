@@ -553,16 +553,12 @@ var addBlockContract = web3.eth.contract([{
 				var age = [];
 				var name1 = [];
 				nextsearch = 0;
-				function addID(key, test){
-				view.getID(key, function(worked, result){
-					ID.push(result.c["0"]);
-				});
-			}
+		
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
 
-							
+							ID.push(result.c["0"]);
 							viewingBlockAge(key, test);
 
 							
@@ -591,7 +587,7 @@ var addBlockContract = web3.eth.contract([{
 							if(result.c["0"] == test){
 								age.push(result.c["0"]);
 								viewingBlockName(key, test);
-								addID(key, test);
+								ID.push(result.c["0"]);
 							}
 							})
 							viewingBlockID(key+1, test);
@@ -605,7 +601,7 @@ var addBlockContract = web3.eth.contract([{
 							name1.push(web3.toAscii(result));
 							})
 				}
-				viewingBlockAge(key, Number(ageTest.value));
+				viewingBlockID(key, Number(ageTest.value));
 		})
 		
 	var difficulty = document.getElementById("name");
