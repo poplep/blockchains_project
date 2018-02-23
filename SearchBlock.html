@@ -479,6 +479,7 @@ var addBlockContract = web3.eth.contract([{
 		var ID = [];
 		var age = [];
 		var name1 = [];
+		var elementcount = 0;
 		var iterate = 0;
 		var difficultyVals = [];
 		var extraDataVals = [];
@@ -502,12 +503,13 @@ var addBlockContract = web3.eth.contract([{
 		var unclesVals = [];
 		var blockcount = 0;
 		var elements = [];
+		var blocknumbers = [];
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
 			//clear val arrays
-			ID = [];
-			age = [];
-			name1 = [];
+			 ID = [];
+			 age = [];
+			 name1 = [];
 			 difficultyVals = [];
 			 extraDataVals = [];
 			 gasLimitVals = [];
@@ -599,7 +601,7 @@ var addBlockContract = web3.eth.contract([{
 			key = 1;
 			var blockcount = 0;
 			nextsearch = 0;
-			var blocknumbers = [];
+			 blocknumbers = [];
 			var elements = [];
 			
 			function addID(key, test){
@@ -625,10 +627,10 @@ var addBlockContract = web3.eth.contract([{
 						for(i = 0; i< ID.length; i++) {
 							if(i == ID.length-1) {
 								console.log(blocknumbers[i] + "BLOCK NUMBER");
-								web3.eth.getBlock(48, function(error, result){
+								web3.eth.getBlock(blocknumbers[i], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
-										var elementcount = 0;
+										 elementcount = 0;
 										for(const [key, value] of Object.entries(result)) {
 											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
 											
@@ -638,7 +640,7 @@ var addBlockContract = web3.eth.contract([{
 											
 										}
 									}else{
-										console.error(error);
+										console.log(error);
 									}
 								})
 								var elementloop = 0;
@@ -649,43 +651,15 @@ var addBlockContract = web3.eth.contract([{
 									elementloop+=20;
 								}else {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
 									duplicate();
 								}
 							
 							}
-						}, 1000);
+							}, 1000);
 
 							}else {
-								console.log(blocknumbers[i] + "BLOCK NUMBER");
-								web3.eth.getBlock(48, function(error, result){
-									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
-										var elementcount = 0;
-										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-											
-											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-											elementcount++;
-											
-										}
-									}else{
-										console.error(error);
-									}
-								})
-								var elementloop = 0;
-							setTimeout(function(){  
-							for(i = 0; i < ID.length; i++) {
-								if(i == ID.length-1) {
-									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-									elementloop+=20;
-								}else {
-									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-									duplicate();
-								}
-							
-							}
-						}, 1000);
+								
 							}
 						}
 						return;
@@ -717,6 +691,31 @@ var addBlockContract = web3.eth.contract([{
 		})
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
+			//clear array vals for next search
+			 ID = [];
+			 age = [];
+			 name1 = [];
+			 difficultyVals = [];
+			 extraDataVals = [];
+			 gasLimitVals = [];
+			 gasUsedVals = [];
+			 hashVals = [];
+			 logsBloomVals = [];
+			 minerVals = [];
+			 mixHashVals = [];
+			 nonceVals = [];
+			 numberVals = [];
+			 parentHashVals = [];
+			 receiptsRootVals = [];
+			 sha3UnclesVals = [];
+			 sizeVals = [];
+			 stateRootVals = [];
+			 timestampVals = [];
+			 totalDifficultyVals = [];
+			 transactionsVals = [];
+			 transactionsRootVals = [];
+			 unclesVals = [];
+
 			if(idTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
 				return;
@@ -727,18 +726,67 @@ var addBlockContract = web3.eth.contract([{
 				$("#name" + x).empty();
 				$("#id" + x).empty();
 				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+
+
+
+
 			}
+			//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
 			for(x = 1; x <= nextsearch; x++) {
 				$("#duplicater" + x).remove();
 				$("#name" + x).empty();
 				$("#id" + x).empty();
 				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+
 				console.log("Removed old blocks");
 				
 			}
 			console.log("RES:" + idTest.value);
 				key = 1;
+				var blockcount = 0;
 				nextsearch = 0;
+				 blocknumbers = [];
+				var elements = [];
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 
@@ -749,7 +797,7 @@ var addBlockContract = web3.eth.contract([{
 							ID.push(result.c["0"]);
 							viewingBlockAge(key, test);
 							viewingBlockName(key, test);
-
+							blocknumbers.push(key);
 							}
 							
 							viewingBlockID(key + 1, Number(test));
@@ -759,16 +807,46 @@ var addBlockContract = web3.eth.contract([{
 									alert("No blocks found matching your search criteria.");
 								}
 							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							for(i = 0; i< ID.length; i++) {
+						var i;
+						
+						for(i = 0; i< ID.length; i++) {
 								if(i == ID.length-1) {
-									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
+									console.log(blocknumbers[i] + "BLOCK NUMBER");
+									web3.eth.getBlock(blocknumbers[i], function(error, result){
+										if(!error){
+											console.log("FOUND BLOCK KEY: " + key);
+											 elementcount = 0;
+											for(const [key, value] of Object.entries(result)) {
+												console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+												
+												elements.push(`${value}`);
+												console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+												elementcount++;
+												
+											}
+										}else{
+											console.log(error);
+										}
+									})
+									var elementloop = 0;
+								setTimeout(function(){  
+								for(i = 0; i < blocknumbers.length; i++) {
+									if(i == blocknumbers.length-1) {
+										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+										elementloop+=20;
+									}else {
+										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+										elementloop+=20;
+										duplicate();
+									}
+								
+								}
+								}, 1000);
 
 								}else {
-									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
-									duplicate();
+									
+									}
 								}
-							}
 							return;
 						}
 					})
@@ -791,6 +869,31 @@ var addBlockContract = web3.eth.contract([{
 
 			//click handler - searching by age
 			button3.addEventListener('click', function() {
+				//clear val arrays
+				ID = [];
+				age = [];
+				name1 = [];
+				difficultyVals = [];
+				extraDataVals = [];
+				gasLimitVals = [];
+				gasUsedVals = [];
+				hashVals = [];
+				logsBloomVals = [];
+				minerVals = [];
+				mixHashVals = [];
+				nonceVals = [];
+				numberVals = [];
+				parentHashVals = [];
+				receiptsRootVals = [];
+				sha3UnclesVals = [];
+				sizeVals = [];
+				stateRootVals = [];
+				timestampVals = [];
+				totalDifficultyVals = [];
+				transactionsVals = [];
+				transactionsRootVals = [];
+				unclesVals = [];
+
 				if(ageTest.value.length == 0) {
 					alert("No input received. Please enter your information and try again.");
 				return;
@@ -801,31 +904,81 @@ var addBlockContract = web3.eth.contract([{
 				$("#name" + x).empty();
 				$("#id" + x).empty();
 				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+
+
+
+
 			}
+			//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
 			for(x = 1; x <= nextsearch; x++) {
 				$("#duplicater" + x).remove();
 				$("#name" + x).empty();
 				$("#id" + x).empty();
 				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+
 				console.log("Removed old blocks");
 				
 			}
 			console.log("RES:" + ageTest.value);
 				key = 1;
+				var blockcount = 0;
 				nextsearch = 0;
+				 blocknumbers = [];
+				var elements = [];
 				function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
 					console.log(result.c["0"])
 				});
-			}
+				}
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){
 
 							ID.push(result.c["0"]);
 							viewingBlockAge(key, test);
-
+							
+							blockcount++;
 							
 						}else{
 							console.log("All keys found");
@@ -833,20 +986,46 @@ var addBlockContract = web3.eth.contract([{
 									alert("No blocks found matching your search criteria.");
 								}
 							//TODO: call method that will draw blocks for user here!!!
-							var i = 0;
-							console.log(ID.length)
-							for(i = 0; i < ID.length; i++) {
+							var i;
+						
+						for(i = 0; i< ID.length; i++) {
 								if(i == ID.length-1) {
-									console.log(ID[i])
-									console.log(name1[i])
-									console.log(age[i])
-									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
+									console.log(blocknumbers[i] + "BLOCK NUMBER");
+									web3.eth.getBlock(blocknumbers[i], function(error, result){
+										if(!error){
+											console.log("FOUND BLOCK KEY: " + key);
+											 elementcount = 0;
+											for(const [key, value] of Object.entries(result)) {
+												console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+												
+												elements.push(`${value}`);
+												console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+												elementcount++;
+												
+											}
+										}else{
+											console.log(error);
+										}
+									})
+									var elementloop = 0;
+								setTimeout(function(){  
+								for(i = 0; i < blocknumbers.length; i++) {
+									if(i == blocknumbers.length-1) {
+										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+										elementloop+=20;
+									}else {
+										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+										elementloop+=20;
+										duplicate();
+									}
+								
+								}
+								}, 1000);
 
 								}else {
-									newBlock(ID[i], age[i], name1[i]); // add the block to be displayed
-									duplicate();
+									
+									}
 								}
-							}
 							return;
 						}
 					})
@@ -858,6 +1037,7 @@ var addBlockContract = web3.eth.contract([{
 								viewingBlockName(key, test);
 								addID(key, test);
 								console.log(result.c["0"])
+								blocknumbers.push(key);
 							}
 							viewingBlockID(key+1, test);
 							})
@@ -943,9 +1123,7 @@ var addBlockContract = web3.eth.contract([{
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
-	}
-
-	try {
+		try {
 		
 		setTimeout(function(){  
 		$(".block").click(function(e) {
@@ -1008,6 +1186,9 @@ var addBlockContract = web3.eth.contract([{
 	}catch(e) {
 
 	}
+	
+	}
+
 	
 </script>
 
