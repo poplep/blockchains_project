@@ -357,10 +357,11 @@ $(document).keydown(function(event){
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 
 	//remove special characters from the name so it can be displayed properly to the user
-	function removeSpecialChars(strVal){
-		strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
-		return strVal;
-	}
+	function removeSpecialChars(strVal)
+				{
+				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+				return strVal;
+				}
 //contract abi, pass json representation of contract to instance
 var addBlockContract = web3.eth.contract([{
 			"constant": true,
@@ -611,8 +612,8 @@ var addBlockContract = web3.eth.contract([{
 			nextsearch = 0;
 			elementloop = 0;
 			 blocknumbers = [];
-			var elements = [];
-			
+			elements = [];
+			 elementcount = 0;
 			function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
@@ -622,26 +623,7 @@ var addBlockContract = web3.eth.contract([{
 			function viewingBlockID(key, test) {	
 				view.getID(key, function(worked, result){
 					if(result.c["0"]){
-						var block = web3.eth.getBlock(key, function(error, result){
-									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
-										 elementcount = 0;
-										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-											
-											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-											elementcount++;
-											
-										}
-									}else{
-										console.log(error);
-									}
-									blockcount++;
-									
-
-									iterate++;
-								})
+						
 						viewingBlockName(key, test);
 					}else{
 						
@@ -651,22 +633,24 @@ var addBlockContract = web3.eth.contract([{
 								}
 						//TODO: call method that will draw blocks for user here!!!
 						var i;
-					
-							elementloop = 0;
+							 elementloop = 0;
 							setTimeout(function(){  
 							for(i = 0; i < blocknumbers.length; i++) {
 								if(i == blocknumbers.length-1) {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									elementloop+=20;
+									console.log("ELEMENT LOOP ------->" + elementloop);
+
 								}else {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									elementloop+=20;
+									console.log("ELEMENT LOOP ------->" + elementloop);
+
 									duplicate();
 								}
 							
 							}
-							}, 1000);
-
+						}, 1000);
 							
 						seemore();
 						return;
@@ -686,10 +670,36 @@ var addBlockContract = web3.eth.contract([{
 					console.log(test)
 						if(removeSpecialChars(web3.toAscii(result)) == test){
 							name1.push(web3.toAscii(result));
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(key, function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
 							addID(key, test);
+							
 							viewingBlockAge(key, test)
 							blocknumbers.push(key);
 						}
+						
 						viewingBlockID(key + 1, test);
 						})
 						
@@ -794,7 +804,8 @@ var addBlockContract = web3.eth.contract([{
 				nextsearch = 0;
 				 blocknumbers = [];
 				 elementloop = 0;
-				var elements = [];
+			 elements = [];
+				 elementcount = 0;
 				function viewingBlockID(key, test) {	
 					view.getID(key, function(worked, result){
 
@@ -802,11 +813,36 @@ var addBlockContract = web3.eth.contract([{
 							console.log((result.c["0"]));
 							if (test == Number(result.c["0"])){
 								console.log("HERE");
-							ID.push(result.c["0"]);
-							viewingBlockAge(key, test);
-							viewingBlockName(key, test);
-							blocknumbers.push(key);
+								ID.push(result.c["0"]);
+								setTimeout(function(){  
+							var block = web3.eth.getBlock(key, function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+								viewingBlockAge(key, test);
+								viewingBlockName(key, test);
+								blocknumbers.push(key);
 							}
+							
 							
 							viewingBlockID(key + 1, Number(test));
 						}else{
@@ -815,47 +851,24 @@ var addBlockContract = web3.eth.contract([{
 									alert("No blocks found matching your search criteria.");
 								}
 							//TODO: call method that will draw blocks for user here!!!
-						var i;
-						
-						for(i = 0; i< blocknumbers.length; i++) {
+							var i;
+							 elementloop = 0;
+							setTimeout(function(){  
+							for(i = 0; i < blocknumbers.length; i++) {
 								if(i == blocknumbers.length-1) {
-									console.log(blocknumbers[i] + "BLOCK NUMBER");
-									web3.eth.getBlock(blocknumbers[i], function(error, result){
-										if(!error){
-											console.log("FOUND BLOCK KEY: " + key);
-											 elementcount = 0;
-											for(const [key, value] of Object.entries(result)) {
-												console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-												
-												elements.push(`${value}`);
-												console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-												elementcount++;
-												
-											}
-										}else{
-											console.log(error);
-										}
-									})
-									
-								setTimeout(function(){  
-								for(i = 0; i < blocknumbers.length; i++) {
-									if(i == blocknumbers.length-1) {
-										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-										elementloop+=20;
-									}else {
-										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-										elementloop+=20;
-										duplicate();
-									}
-								
-								}
-								}, 1000);
-
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
 								}else {
-									
-									}
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
+									duplicate();
 								}
-								seemore();
+							
+							}
+						}, 1000);
+
+
+							seemore();
 							return;
 						}
 					})
@@ -974,7 +987,8 @@ var addBlockContract = web3.eth.contract([{
 				nextsearch = 0;
 				elementloop = 0;
 				 blocknumbers = [];
-				var elements = [];
+				 elements = [];
+				 elementcount = 0;
 				function addID(key, test){
 				view.getID(key, function(worked, result){
 					ID.push(result.c["0"]);
@@ -988,6 +1002,7 @@ var addBlockContract = web3.eth.contract([{
 							ID.push(result.c["0"]);
 							viewingBlockAge(key, test);
 							
+								
 							blockcount++;
 							
 						}else{
@@ -997,46 +1012,30 @@ var addBlockContract = web3.eth.contract([{
 								}
 							//TODO: call method that will draw blocks for user here!!!
 							var i;
-						
-						for(i = 0; i< blocknumbers.length; i++) {
+							 elementloop = 0;
+							setTimeout(function(){  
+							for(i = 0; i < blocknumbers.length; i++) {
 								if(i == blocknumbers.length-1) {
-									console.log(blocknumbers[i] + "BLOCK NUMBER");
-									web3.eth.getBlock(blocknumbers[i], function(error, result){
-										if(!error){
-											console.log("FOUND BLOCK KEY: " + key);
-											 elementcount = 0;
-											for(const [key, value] of Object.entries(result)) {
-												console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-												
-												elements.push(`${value}`);
-												console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-												elementcount++;
-												
-											}
-										}else{
-											console.log(error);
-										}
-									})
-									elementloop = 0;
-								setTimeout(function(){  
-								for(i = 0; i < blocknumbers.length; i++) {
-									if(i == blocknumbers.length-1) {
-										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-										elementloop+=20;
-									}else {
-										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-										elementloop+=20;
-										duplicate();
-									}
-								
-								}
-								}, 1000);
-
-								}else {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									
-									}
+									elementloop+=20;
+									
+									
+									
+								}else {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									
+									elementloop+=20;
+									
+									duplicate();
 								}
+								
+							
+							}
+						}, 1000);
+						
 								seemore();
+								
 							return;
 						}
 					})
@@ -1045,10 +1044,35 @@ var addBlockContract = web3.eth.contract([{
 					view.getAge(key, function(worked, result){
 							if(result.c["0"] == test){
 								age.push(result.c["0"]);
+								setTimeout(function(){  
+							var block = web3.eth.getBlock(key, function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
 								viewingBlockName(key, test);
 								addID(key, test);
 								console.log(result.c["0"])
 								blocknumbers.push(key);
+								
 							}
 							viewingBlockID(key+1, test);
 							})
@@ -1131,6 +1155,8 @@ var addBlockContract = web3.eth.contract([{
 		clone.getElementsByTagName('pre')[0].id = "name" + nextsearch;
 		clone.getElementsByTagName('pre')[1].id = "id" + nextsearch;
 		clone.getElementsByTagName('pre')[2].id = "age" + nextsearch;
+		clone.getElementsByTagName('button')[0].id = "exit" + i;
+
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
