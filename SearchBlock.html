@@ -55,9 +55,10 @@
 
 </style>
 <style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
-	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
-	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
+p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
+p,h5 {font-size: 22px; font-family: 'Pavanam', sans-serif;};
+pre {font-size: 18px; font-family: 'Pavanam', sans-serif; overflow-x:hidden;};
+a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 		.under { text-decoration: underline rgb(0, 0, 0);}
 		input[type=text], select {
 			width: 50%;
@@ -468,7 +469,13 @@ var addBlockContract = web3.eth.contract([{
 			"type": "function"
 			}]);
 		var view = addBlockContract.at('0x252c8a561c00c95829687beed251878206a6d622'); // contract instance to work with
-		
+		function wait(ms)
+				{
+				var d = new Date();
+				var d2 = null;
+				do { d2 = new Date(); }
+				while(d2-d < ms);
+				}
 		var idTest = document.getElementById('idTest');
 		var ageTest = document.getElementById('ageTest');
 		var nameTest = document.getElementById('nameTest');
@@ -615,21 +622,7 @@ var addBlockContract = web3.eth.contract([{
 			function viewingBlockID(key, test) {	
 				view.getID(key, function(worked, result){
 					if(result.c["0"]){
-						
-						viewingBlockName(key, test);
-					}else{
-						
-						console.log("All keys found");
-						if(ID.length == 0) {
-									alert("No blocks found matching your search criteria.");
-								}
-						//TODO: call method that will draw blocks for user here!!!
-						var i;
-						
-						for(i = 0; i< blocknumbers.length; i++) {
-							if(i == blocknumbers.length-1) {
-								console.log(blocknumbers[i] + "BLOCK NUMBER");
-								web3.eth.getBlock(blocknumbers[i], function(error, result){
+						var block = web3.eth.getBlock(key, function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
 										 elementcount = 0;
@@ -644,7 +637,21 @@ var addBlockContract = web3.eth.contract([{
 									}else{
 										console.log(error);
 									}
+									blockcount++;
+									
+
+									iterate++;
 								})
+						viewingBlockName(key, test);
+					}else{
+						
+						console.log("All keys found");
+						if(ID.length == 0) {
+									alert("No blocks found matching your search criteria.");
+								}
+						//TODO: call method that will draw blocks for user here!!!
+						var i;
+					
 							elementloop = 0;
 							setTimeout(function(){  
 							for(i = 0; i < blocknumbers.length; i++) {
@@ -660,10 +667,8 @@ var addBlockContract = web3.eth.contract([{
 							}
 							}, 1000);
 
-							}else {
-								
-							}
-						}
+							
+						seemore();
 						return;
 
 						
@@ -850,6 +855,7 @@ var addBlockContract = web3.eth.contract([{
 									
 									}
 								}
+								seemore();
 							return;
 						}
 					})
@@ -1030,6 +1036,7 @@ var addBlockContract = web3.eth.contract([{
 									
 									}
 								}
+								seemore();
 							return;
 						}
 					})
@@ -1127,7 +1134,10 @@ var addBlockContract = web3.eth.contract([{
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
-		try {
+	}
+
+function seemore() {
+try {
 		
 		setTimeout(function(){  
 		$(".block").click(function(e) {
@@ -1190,9 +1200,7 @@ var addBlockContract = web3.eth.contract([{
 	}catch(e) {
 
 	}
-	
-	}
-
+}
 	
 </script>
 
