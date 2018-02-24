@@ -1016,15 +1016,19 @@ var addBlockContract = web3.eth.contract([{
 							setTimeout(function(){  
 							for(i = 0; i < blocknumbers.length; i++) {
 								if(i == blocknumbers.length-1) {
+									//PULLING AND SENDING TO BLOCK ARRAYS FINE. ISSUE IS DISPLAYING.
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-									
+			
+
+							
 									elementloop+=20;
 									
 									
 									
 								}else {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-									
+								
+								
 									elementloop+=20;
 									
 									duplicate();
@@ -1047,13 +1051,13 @@ var addBlockContract = web3.eth.contract([{
 								setTimeout(function(){  
 							var block = web3.eth.getBlock(key, function(error, result){
 									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
+										//console.log("FOUND BLOCK KEY: " + key);
 										
 										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											//console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
 											
 											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											//console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
 											elementcount++;
 											
 										}
@@ -1155,7 +1159,7 @@ var addBlockContract = web3.eth.contract([{
 		clone.getElementsByTagName('pre')[0].id = "name" + nextsearch;
 		clone.getElementsByTagName('pre')[1].id = "id" + nextsearch;
 		clone.getElementsByTagName('pre')[2].id = "age" + nextsearch;
-		clone.getElementsByTagName('button')[0].id = "exit" + i;
+		clone.getElementsByTagName('button')[0].id = "exit" + nextsearch;
 
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
@@ -1170,6 +1174,8 @@ try {
 			var duplicaterid = e.target.id; // gets id of target which is seemorebutton
 			//accessing block
 			var blockNumber = duplicaterid.substr(4, 5);
+			console.log("DUPLICATERID ------------->" + duplicaterid);
+			console.log("BLOCK NUMBER ------------->" + blockNumber);
 			var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
 			var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
 			var idforModal = document.getElementById('id' + blockNumber).innerHTML;
