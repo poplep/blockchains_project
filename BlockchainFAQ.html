@@ -101,7 +101,38 @@
 </style>
 
 <body>
-
+	  <!-- Question Modal-->
+	  <div class="container">
+  
+			<!-- Modal Window -->
+			<div class="modal fade" id="QuestionForm" role="dialog">
+			  <div class="modal-dialog">
+			  
+				<!-- Modal content-->
+				<div class="modal-content" id="AddBlockContent" >
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Ask a Question!</h4>
+				  </div>
+				  <div class="modal-body">
+						<form action="https://formspree.io/vsoares1@umassd.edu"  method="POST">
+							<input type="text" name="Bug Description: " style="height: 200px; width: 550px">
+							
+							<input type="hidden" name="_next" value="http://134.88.13.89/FAQ.html" />
+							<div class="modal-footer">
+									<input type="submit" value="Send">
+								<button class="btn btn-default" id="exit1" data-dismiss="modal">Cancel</button>
+				
+							  </div>
+						</form>
+				  </div>
+				 
+				</div>
+				
+			  </div>
+			</div>
+			
+		  </div>
 <!-- Sidebar/menu -->
 <div position = "absolute">
 	<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
@@ -143,16 +174,10 @@
       <div style="margin-left:13%" style="width:100vw" position ="fixed" >
 	
 		<div class="w3-container" style= "margin-left:-1.5%">
-			<h1 style="color: white">Blockchain: Frequently Asked Questions</h1>
+			<h1 style="color: white">Blockchain: Frequently Asked Questions<img src ="ask.png" style="height: 50px; width: 50px" id="question"></h1>
 		</div>
 		<br>
-		<p>Ask a question!</p>
-		<form action="https://formspree.io/vsoares1@umassd.edu"  method="POST">
-			<input type="text" name="Bug Description: " style="height: 200px">
-			<input type="submit" value="Send">
-			<input type="hidden" name="_next" value="http://134.88.13.89/BlockchainFAQ.html" />
 
-		</form>
 
 		<p>Table of Contents</p>
 		<ol style="font-size: 25px;">
@@ -301,5 +326,15 @@ function button(evt, tab){
 }
 </script>
 
+<script>
+		var ask = document.getElementById("question");
+		
+		ask.addEventListener('click', function() {
+			$("#QuestionForm").modal("show");
+		
+		});
+		
+		  </script>
+		
 </body>
 </html>
