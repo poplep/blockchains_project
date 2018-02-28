@@ -1,204 +1,483 @@
 <!DOCTYPE html>
 <html>
-<title>Blockchain UI</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Importing Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
-
-<!-- Style for the tile buttons -->
-<style>
-	div.gallery {
-		margin: 5px;
-		border: 1px solid #ccc;
-		float: left;
-		width: 300px;
-	}
-	
-	div.gallery:hover {
-		border: 1px solid #777;
-	}
-	
-	div.gallery img {
-		width: 100%;
-		height: auto;
-	}
-	
-	div.desc {
-		padding: 15px;
-		text-align: center;
-	}
-	</style>
-
-<!-- Overall Page Styling -->
-<style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Pavanam', sans-serif;}
-	p,h5, pre {font-size: 22px; font-family: 'Pavanam', sans-serif;};
-	a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
-		.under { text-decoration: underline rgb(0, 0, 0);}
-		input[type=text], select {
-			width: 50%;
-			padding: 12px 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			box-sizing: border-box;
-		}
-			
-		input[type=data], select {
-			width: 50%;
-			height: 150px;
-			padding: 12px 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			border-radius: 4px;	
-		}
-	
-		input[type=submit] {
-			width: 50%;
-			background-color: rgb(49, 57, 77);
-			color: white;
-			padding: 14px 20px;
-			margin: 8px 0;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-		}
-	
-		input[type=submit]:hover {
-			background-color: rgb(49, 57, 77);
-		}
-		.button {
-			background-color: rgb(49, 57, 77); 
-			border: none;
-			color: white;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			margin: 4px 2px;
-			cursor: pointer;
-		}
-		.button1 {font-size: 24px;}
-			
-		.w3-container {
-			background-color:rgb(49, 57, 77);
-		}
-		.w3-sidebar {
-			background-color:rgb(49, 57, 77);
-		}
-		.w3-bar-item {
-			padding: 20px;
-			margin: -5px;
-		}
-
-		.textbox {
-			word-wrap: break-word;
-			overflow-wrap: break-word;
-			word-break: break-all;
-		}
-</style>
-
-<body>
-	<body>
-<!-- Sidebar/menu -->
-<div position = "absolute">
-	<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
-		<div class="w3-bar-block">
-			<a href="HomePage.html" style="color: white; font-size: 26px"><h5><button class="w3-bar-item w3-button tablink">Home</button></h5></a>
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchains</h5></div>
-			<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About</button></a>
-			<a href="BlockchainFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
-			<a href="BlockchainAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
-			<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
-			<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
-
-			<div><b><h5 class="w3-bar-block" style="color: white; font-size: 20px">&nbsp;Blockchain Functionality</h5></b></div>
-			<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
-			<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
-			<a href="ViewBlockAdvanced.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Advanced</button></a>
-			<a href="ViewBlockLedger.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Ledger</button></a>
-			<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
-
-	
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchain Alternatives</h5></div>
-			<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph </button></a>
-			<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle </button></a>
-			<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger </button></a>
-			<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Corda </button></a>
-			<a href="DCSFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
-			<a href="DCSDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Preventing Data Loss and Tampering</button></a>
-			<a href="Comparison.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Comparing Blockchain, Hyperledger, Corda, Tangle, and Hashgraph</button></a>
-
-			<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Help Section</h5></div>
-			<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
-			<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
-			<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
-		</div>
-	  </nav>
-	  </div>
-      <!Each Page>
-
-	  <div style="margin-left:13%" style="width:100vw" position ="fixed" >
-			<div class="w3-container" style= "margin-left:-1.5%">
-					<h1 style="color: white"> Report Bug</h1>
-				</div>
-				<br>
-				<p>Tell us what's happening:</p>
-				
-						<form action="https://formspree.io/vsoares1@umassd.edu"  method="POST">
-							
-							<textarea id="textbox" type="text" class="textbox" name="Bug Description: " style="height: 500px; width: 1043px"></textarea><br>
-							<input type="submit" value="Send" id="Submitting">
-							<input type="hidden" name="_next" value="http://134.88.13.89/ReportBug.html" />
-						
-						</form>
-
-      
-		  </div>
-		</div>
-
-
-<!Function to change page when button is pressed on home tab>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Collapsible sidebar using Bootstrap 3</title>
+         <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style4.css">
+        <!-- Check browser - if its not firefox or chrome, then let the user know -->
 <script>
-function button(evt, tab){
-	
-	var i, x, tablinks;
-	x = document.getElementsByClassName("tab");
-	for (i = 0; i < x.length; i++) {
-     		x[i].style.display = "none";
-  	}
-  	tablinks = document.getElementsByClassName("tablink");
-  	for (i = 0; i < x.length; i++) {
-      		tablinks[i].className = tablinks[i].className.replace("", ""); 
-  	}
-  	document.getElementById(tab).style.display = "block";
-  	
+        
+        // original source: http://www.javascriptkit.com/script/script2/alertmsg.shtml
+        // modified
+        var once_per_session = 1;
+        
+        function get_cookie(Name) {
+            var search = Name + "="
+            var returnvalue = "";
+            if (document.cookie.length > 0) {
+                offset = document.cookie.indexOf(search)
+                if (offset != -1) { // if cookie exists
+                    offset += search.length
+                    // set index of beginning of value
+                    end = document.cookie.indexOf(";", offset);
+                    // set index of end of cookie value
+                    if (end == -1)
+                        end = document.cookie.length;
+                    returnvalue=unescape(document.cookie.substring(offset, end))
+                }
+            }
+            return returnvalue;
+        }
+        function alertornot(){
+            if (get_cookie('alerted')==''){
+                loadalert()
+                document.cookie="alerted=yes"
+                //check if the user is logged into metamask
+                web3.eth.getAccounts(function(err, accounts){
+                    if (err != null) alert("An error occurred: "+err);
+                    else if (accounts.length == 0) alert("It doesn't seem like you're logged into Metamask. Please log into the LocalHost and try again.");
+                    else alert("Successfully logged into Metamask.");
+                });
+            }
+        }
+        function loadalert(){
+             //Check if browser is IE
+             if (navigator.userAgent.search("MSIE") >= 0) {
+                // insert conditional IE code here
+                var isIE = true;
+            }
+            //Check if browser is Chrome
+            else if (navigator.userAgent.search("Chrome") >= 0) {
+                // insert conditional Chrome code here
+                var isChrome = true;
+            }
+            //Check if browser is Firefox 
+            else if (navigator.userAgent.search("Firefox") >= 0) {
+                // insert conditional Firefox Code here
+                var isFirefox = true;
+            }
+            //Check if browser is Safari
+            else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                // insert conditional Safari code here
+                var isSafari = true;
+            }
+            //Check if browser is Opera
+            else if (navigator.userAgent.search("Opera") >= 0) {
+                // insert conditional Opera code here
+                var isOpera = true;
+            }
+            
+            // Chromium (checks if there are any chromium plugins present that wouldnt be in chrome)
+            var isChromium = function isChromium(){ 
+                    for (var i = 0, u="Chromium", l =u.length; i < navigator.plugins.length; i++)
+                    {
+                        if (navigator.plugins[i].name != null && navigator.plugins[i].name.substr(0, l) === u)
+                            return true;
+                    }
+                    return false;
+                }
+            // if the user isnt using firefox, chrome, chromium, or opera
+            if(isFirefox == false || isChrome == false || isOpera == false || isChromium == false) {
+                alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
+            }
+            if(isSafari == true || isIE == true) {
+                alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
+            }
+            //if metamask isnt installed
+            if(typeof web3 == "undefined") {
+                alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser. Install Metamask here: https://metamask.io");
+            }
+        }
+        if (once_per_session==0){
+            loadalert()
+        }else{
+            alertornot()
+        }
+</script>
+    </head>
+    <!-- Style for the tile buttons -->
+<style>
+        div.gallery {
+            margin: 5px;
+            float: left;
+            width: 1000px;
+            border-radius: 20px 20px 0px 0px;
+        }
+        
+        
+        div.gallery img {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px 20px 0px 0px;
+    
+        }
+        
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            background-color: rgb(49, 57, 77);
+            color: white;
+            border-radius: 0px 0px 20px 20px;
+    
+    
+        }
+        </style>
+    <style>
+        /*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Pavanam:300,400,500,600,700";
+.w3-container {
+            background-color:rgb(49, 57, 77);
+        }
+body {
+    font-family: 'Pavanam', sans-serif;
+    background: #fafafa;
+    font-size: 18px;
 }
-</script>
-<script>
-	var button = document.getElementById('Submitting');
-
-	button.addEventListener('click', function() {
-		if($("#textbox").val().length == 0) {
-			alert("No input received. Please tell us what's happening and click Send.");
-			return;
-		}
-		setTimeout(function() {
-			window.location.replace("HomePage.html"); // go back to the home page
-			console.log("REDIRECTED");
-		}, 30000);
-	});
-
-</script>
-
-</body>
+p {
+    font-family: 'Pavanam', sans-serif;
+}
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+i, span {
+    display: inline-block;
+}
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    background: rgb(49, 57, 77);
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar.active {
+    min-width: 100px;
+    max-width: 100px;
+    text-align: center;
+}
+#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+    display: none;
+}
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+#sidebar ul li a {
+    text-align: left;
+}
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+.w3-container {
+            background-color:rgb(49, 57, 77);
+        }
+#sidebar.active ul li a i {
+    margin-right:  0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
+    top: auto;
+    bottom: 5px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: rgb(49, 57, 77);
+}
+#sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+}
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: rgb(49, 57, 77);
+    background: #fff;
+}
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(100, 117, 160);
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: rgb(49, 57, 77);
+}
+ul.CTAs {
+    padding: 20px;
+}
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+a.download {
+    background: rgb(100, 117, 160);
+    color: white;
+}
+a.article, a.article:hover {
+    background: rgb(100, 117, 160) !important;
+    color: #fff !important;
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 100px;
+        max-width: 100px;
+        text-align: center;
+        margin-left: -80px !important ;
+    }
+    a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+        top: auto;
+        bottom: 5px;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    #sidebar.active {
+        margin-left: 0 !important;
+    }
+    #sidebar .sidebar-header h3, #sidebar .CTAs {
+        display: none;
+    }
+    #sidebar .sidebar-header strong {
+        display: block;
+    }
+    #sidebar ul li a {
+        padding: 20px 10px;
+    }
+    #sidebar ul li a span {
+        font-size: 0.85em;
+    }
+    #sidebar ul li a i {
+        margin-right:  0;
+        display: block;
+    }
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+    #sidebar ul li a i {
+        font-size: 1.3em;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+    </style>
+    <body>
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                
+                <div class="sidebar-header">
+                    <h3><a href="HomePage.html">Home</a></h3>
+                    <strong>BC</strong>
+                </div>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                            
+                            Blockchains
+                        </a>
+                        <ul class="collapse list-unstyled in" id="homeSubmenu">
+                            <li><a href="Blockchain.html">About the Blockchain</a></li>
+                            <li><a href="BlockchainFAQ.html">FAQ</a></li>
+                            <li><a href="BlockchainAbout.html">About our Application</a></li>
+                            <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
+                            <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                            
+                            Blockchain Functionality
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="AddBlock.html">Add a Block</a></li>
+                            <li><a href="SearchBlock.html">Search for a Block</a></li>
+                            <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
+                            <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
+                            <li><a href="BlockStats.html">Blockchain Statistics</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li>
+                            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
+                                
+                                Blockchain Alternatives
+                            </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                                <li><a href="HashgraphAbout.html">Hashgraph</a></li>
+                                <li><a href="TangleAbout.html">Tangle</a></li>
+                                <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
+                                <li><a href="CordaAbout.html">Corda</a></li>
+                                <li><a href="DCSFAQ.html">FAQ</a></li>
+                                <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
+                                <li><a href="Comparison.html">Comparison</a></li>
+                            </ul>
+                        </li>
+                </ul>
+                <ul class="list-unstyled CTAs">
+                    <li><a href="Help.html" class="download">Help</a></li>
+                    <li><a href="ReportBug.html" class="article">Report a Bug</a></li>
+                    <li><a href="Tutorial.html" class="article">Tutorial</a></li>
+                   
+                </ul>
+                <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <span>Hide</span>
+                        </button>
+                    </div>
+            </nav>
+            <!-- Page Content Holder -->
+            <div id="content">
+					<div class="w3-container" style= "margin-left:-1.5%">
+							<h1 style="color: white"> Report Bug</h1>
+						</div>
+						<br>
+						<p>Tell us what's happening:</p>
+						
+								<form action="https://formspree.io/vsoares1@umassd.edu"  method="POST">
+									
+									<textarea id="textbox" type="text" class="textbox" name="Bug Description: " style="height: 500px; width: 1043px"></textarea><br>
+									<input type="submit" value="Send" id="Submitting">
+									<input type="hidden" name="_next" value="http://134.88.13.89/ReportBug.html" />
+								
+								</form>
+		
+			  
+				  </div>
+        </div>
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+		 </script>
+		 <!Function to change page when button is pressed on home tab>
+		 <script>
+		 function button(evt, tab){
+			 
+			 var i, x, tablinks;
+			 x = document.getElementsByClassName("tab");
+			 for (i = 0; i < x.length; i++) {
+					  x[i].style.display = "none";
+			   }
+			   tablinks = document.getElementsByClassName("tablink");
+			   for (i = 0; i < x.length; i++) {
+					   tablinks[i].className = tablinks[i].className.replace("", ""); 
+			   }
+			   document.getElementById(tab).style.display = "block";
+			   
+		 }
+		 </script>
+		 <script>
+			 var button = document.getElementById('Submitting');
+		 
+			 button.addEventListener('click', function() {
+				 if($("#textbox").val().length == 0) {
+					 alert("No input received. Please tell us what's happening and click Send.");
+					 return;
+				 }
+				 setTimeout(function() {
+					 window.location.replace("HomePage.html"); // go back to the home page
+					 console.log("REDIRECTED");
+				 }, 30000);
+			 });
+		 
+		 </script>
+		 
+    </body>
 </html>
+
+
