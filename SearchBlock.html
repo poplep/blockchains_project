@@ -363,113 +363,138 @@ $(document).keydown(function(event){
 				return strVal;
 				}
 //contract abi, pass json representation of contract to instance
-var addBlockContract = web3.eth.contract([{
-			"constant": true,
-			"inputs": [
-				{
-				"name": "key",
-				"type": "uint256"
-				}
-			],
-			"name": "getID",
-			"outputs": [
-				{
-				"name": "",
-				"type": "uint256"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-			},
-			{
-			"constant": true,
-			"inputs": [
-				{
-				"name": "key",
-				"type": "uint256"
-				}
-			],
-			"name": "getAge",
-			"outputs": [
-				{
-				"name": "",
-				"type": "uint256"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-			},
-			{
-			"constant": false,
-			"inputs": [
-				{
-				"name": "data",
-				"type": "bytes32"
-				},
-				{
-				"name": "uage",
-				"type": "uint8"
-				},
-				{
-				"name": "uid",
-				"type": "uint256"
-				}
-			],
-			"name": "addData",
-			"outputs": [],
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "function"
-			},
-			{
-			"constant": true,
-			"inputs": [
-				{
-				"name": "key",
-				"type": "uint256"
-				}
-			],
-			"name": "getName",
-			"outputs": [
-				{
-				"name": "",
-				"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-			},
-			{
-			"constant": true,
-			"inputs": [
-				{
-				"name": "",
-				"type": "uint256"
-				}
-			],
-			"name": "blockchain",
-			"outputs": [
-				{
-				"name": "age",
-				"type": "uint8"
-				},
-				{
-				"name": "id",
-				"type": "uint256"
-				},
-				{
-				"name": "name",
-				"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-			}]);
-		var view = addBlockContract.at('0x252c8a561c00c95829687beed251878206a6d622'); // contract instance to work with
+var addBlockContract = web3.eth.contract([
+{
+	"constant": true,
+	"inputs": [
+		{
+			"name": "key",
+			"type": "uint256"
+		}
+	],
+	"name": "getName",
+	"outputs": [
+		{
+			"name": "",
+			"type": "bytes32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [
+		{
+			"name": "key",
+			"type": "uint256"
+		}
+	],
+	"name": "getID",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint256"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [
+		{
+			"name": "key",
+			"type": "uint256"
+		}
+	],
+	"name": "getBlockNum",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint256"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [
+		{
+			"name": "key",
+			"type": "uint256"
+		}
+	],
+	"name": "getAge",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint256"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [
+		{
+			"name": "",
+			"type": "uint256"
+		}
+	],
+	"name": "blockchain",
+	"outputs": [
+		{
+			"name": "age",
+			"type": "uint8"
+		},
+		{
+			"name": "id",
+			"type": "uint256"
+		},
+		{
+			"name": "name",
+			"type": "bytes32"
+		},
+		{
+			"name": "blockNum",
+			"type": "uint256"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "data",
+			"type": "bytes32"
+		},
+		{
+			"name": "uage",
+			"type": "uint8"
+		},
+		{
+			"name": "uid",
+			"type": "uint256"
+		}
+	],
+	"name": "addData",
+	"outputs": [],
+	"payable": true,
+	"stateMutability": "payable",
+	"type": "function"
+}
+]);
+			var view = addBlockContract.at('0xff22e3e85df986e12d68358e9e4982d92632cd6f'); // contract instance to work with
 		function wait(ms)
 				{
 				var d = new Date();
@@ -519,6 +544,7 @@ var addBlockContract = web3.eth.contract([{
 			 ID = [];
 			 age = [];
 			 name1 = [];
+			 blockNum = [];
 			 difficultyVals = [];
 			 extraDataVals = [];
 			 gasLimitVals = [];
@@ -660,27 +686,42 @@ var addBlockContract = web3.eth.contract([{
 				})
 			}
 
+			function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+							})
+				}
 			function viewingBlockName(key, test) {
 				view.getName(key, function(worked, result){
 					console.log(test);
 					if(removeSpecialChars(web3.toAscii(result)) == test){
 						name1.push(web3.toAscii(result));
-						setTimeout(function(){  
-							var block = web3.eth.getBlock(key, function(error, result){
-									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
-										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-											elementcount++;
-										}
-									}
-									blockcount++;
-									iterate++;
-									console.log("END!!!!!!!!!!!!!!!!!");	
-							});
-						}, 2);
+						viewingBlockNum(key);
 						addID(key, test);
 						viewingBlockAge(key, test)
 						blocknumbers.push(key);
@@ -697,6 +738,7 @@ var addBlockContract = web3.eth.contract([{
 			 ID = [];
 			 age = [];
 			 name1 = [];
+			 blockNum = [];
 			 difficultyVals = [];
 			 extraDataVals = [];
 			 gasLimitVals = [];
@@ -792,22 +834,7 @@ var addBlockContract = web3.eth.contract([{
 						if (test == Number(result.c["0"])){
 							console.log("HERE");
 							ID.push(result.c["0"]);
-							setTimeout(function(){  
-								var block = web3.eth.getBlock(key, function(error, result){
-										if(!error){
-											console.log("FOUND BLOCK KEY: " + key);
-											for(const [key, value] of Object.entries(result)) {
-												console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-												elements.push(`${value}`);
-												console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-												elementcount++;
-											}
-										}
-										blockcount++;
-										iterate++;
-										console.log("END!!!!!!!!!!!!!!!!!");
-								});
-							}, 2);
+							viewingBlockNum(key)
 							viewingBlockAge(key, test);
 							viewingBlockName(key, test);
 							blocknumbers.push(key);
@@ -838,6 +865,36 @@ var addBlockContract = web3.eth.contract([{
 					}
 				})
 			}
+			function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+							})
+				}
 			function viewingBlockAge(key, test) {
 				view.getAge(key, function(worked, result){
 					console.log(result.c["0"]);
@@ -860,6 +917,7 @@ var addBlockContract = web3.eth.contract([{
 			ID = [];
 			age = [];
 			name1 = [];
+			blockNum = [];
 			difficultyVals = [];
 			extraDataVals = [];
 			gasLimitVals = [];
@@ -985,24 +1043,42 @@ var addBlockContract = web3.eth.contract([{
 				}
 			})
 		}
+		function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+							})
+				}
 		function viewingBlockAge(key, test) {
 			view.getAge(key, function(worked, result){
 					if(result.c["0"] == test){
 						age.push(result.c["0"]);
-						setTimeout(function(){  
-							var block = web3.eth.getBlock(key, function(error, result){
-								if(!error){
-									for(const [key, value] of Object.entries(result)) {	
-										elements.push(`${value}`);
-										elementcount++;	
-									}
-								}
-								blockcount++;
-								iterate++;
-								console.log("END!!!!!!!!!!!!!!!!!");
-							});
-						}, 2);
 						viewingBlockName(key, test);
+						viewingBlockNum(key);
 						addID(key, test);
 						console.log(result.c["0"])
 						blocknumbers.push(key);	

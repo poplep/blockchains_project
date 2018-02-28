@@ -207,113 +207,138 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				return strVal;
 				}
 	//contract abi, pass json representation of contract to instance
-	var addBlockContract = web3.eth.contract([{
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getID",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getAge",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": false,
-						"inputs": [
-						  {
-							"name": "data",
-							"type": "bytes32"
-						  },
-						  {
-							"name": "uage",
-							"type": "uint8"
-						  },
-						  {
-							"name": "uid",
-							"type": "uint256"
-						  }
-						],
-						"name": "addData",
-						"outputs": [],
-						"payable": true,
-						"stateMutability": "payable",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getName",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"name": "blockchain",
-						"outputs": [
-						  {
-							"name": "age",
-							"type": "uint8"
-						  },
-						  {
-							"name": "id",
-							"type": "uint256"
-						  },
-						  {
-							"name": "name",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  }]);
-					var view = addBlockContract.at('0x252c8a561c00c95829687beed251878206a6d622'); // contract instance to work with
+	var addBlockContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getID",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getBlockNum",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getAge",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "blockchain",
+		"outputs": [
+			{
+				"name": "age",
+				"type": "uint8"
+			},
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "bytes32"
+			},
+			{
+				"name": "blockNum",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "data",
+				"type": "bytes32"
+			},
+			{
+				"name": "uage",
+				"type": "uint8"
+			},
+			{
+				"name": "uid",
+				"type": "uint256"
+			}
+		],
+		"name": "addData",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]);
+				var view = addBlockContract.at('0xff22e3e85df986e12d68358e9e4982d92632cd6f'); // contract instance to work with
 				
 				//temporary key number to avoid early zeros
 				key = 1;

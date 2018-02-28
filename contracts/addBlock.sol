@@ -23,6 +23,7 @@ contract addBlock {
         uint8 age;
         uint id;
         bytes32 name;
+	uint blockNum;
     }
     //id for the address of struct mapping
     uint blockid;
@@ -44,6 +45,7 @@ contract addBlock {
         n.age = uage;
         n.id = uid;
         n.name = data;
+	    n.blockNum = block.number;
     }
 
 
@@ -58,6 +60,8 @@ contract addBlock {
     function getName(uint256 key) public view returns (bytes32) {
         return blockchain[key].name;    
     }
-    
+    function getBlockNum(uint256 key) public view returns (uint) {
+        return blockchain[key].blockNum;    
+    }
 
 }

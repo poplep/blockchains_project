@@ -302,113 +302,138 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				}
 	var web3 =  new Web3(web3.currentProvider); //provider for web3
 	//contract abi, pass json representation of contract to instance
-	var addBlockContract = web3.eth.contract([{
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getID",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getAge",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": false,
-						"inputs": [
-						  {
-							"name": "data",
-							"type": "bytes32"
-						  },
-						  {
-							"name": "uage",
-							"type": "uint8"
-						  },
-						  {
-							"name": "uid",
-							"type": "uint256"
-						  }
-						],
-						"name": "addData",
-						"outputs": [],
-						"payable": true,
-						"stateMutability": "payable",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "key",
-							"type": "uint256"
-						  }
-						],
-						"name": "getName",
-						"outputs": [
-						  {
-							"name": "",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  },
-					  {
-						"constant": true,
-						"inputs": [
-						  {
-							"name": "",
-							"type": "uint256"
-						  }
-						],
-						"name": "blockchain",
-						"outputs": [
-						  {
-							"name": "age",
-							"type": "uint8"
-						  },
-						  {
-							"name": "id",
-							"type": "uint256"
-						  },
-						  {
-							"name": "name",
-							"type": "bytes32"
-						  }
-						],
-						"payable": false,
-						"stateMutability": "view",
-						"type": "function"
-					  }]);
-				var view = addBlockContract.at('0x252c8a561c00c95829687beed251878206a6d622'); // contract instance to work with
+	var addBlockContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getID",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getBlockNum",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "key",
+				"type": "uint256"
+			}
+		],
+		"name": "getAge",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "blockchain",
+		"outputs": [
+			{
+				"name": "age",
+				"type": "uint8"
+			},
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "bytes32"
+			},
+			{
+				"name": "blockNum",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "data",
+				"type": "bytes32"
+			},
+			{
+				"name": "uage",
+				"type": "uint8"
+			},
+			{
+				"name": "uid",
+				"type": "uint256"
+			}
+		],
+		"name": "addData",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]);
+				var view = addBlockContract.at('0xff22e3e85df986e12d68358e9e4982d92632cd6f'); // contract instance to work with
 				function wait(ms)
 				{
 				var d = new Date();
@@ -421,6 +446,7 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 				var ID = [];
 				var age = [];
 				var name1 = [];
+				var blockNum = [];
 				var iterate = 0;
 				var difficultyVals = [];
 				var extraDataVals = [];
@@ -453,33 +479,9 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 						if(result.c["0"]){
 							console.log(result.c["0"]);
 							ID.push(result.c["0"]);
+							viewingBlockNum(key);
 							viewingBlockAge(key);
 							viewingBlockName(key);
-							setTimeout(function(){  
-							var block = web3.eth.getBlock(key, function(error, result){
-									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
-										var elementcount = 0;
-										for(const [key, value] of Object.entries(result)) {
-											
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-											
-											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-											elementcount++;
-											
-										}
-									}
-									blockcount++;
-									
-
-									iterate++;
-								
-									console.log("END!!!!!!!!!!!!!!!!!");
-									
-									
-								});
-								}, 2);
 								
 								
 							
@@ -528,6 +530,36 @@ a {font-size: 15px; font-family: 'Pavanam', sans-serif;};
 							console.log(result);
 							//console.log(web3.toAscii(result));
 							name1.push(web3.toAscii(result));
+							})
+				}
+				function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
 							})
 				}
 				viewingBlockID(key);
