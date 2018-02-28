@@ -104,6 +104,55 @@
 			margin: -5px;
 		}
 
+/* Shrinking the sidebar from 250px to 80px and center aligining its content*/
+#sidebar.active {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+}
+
+/* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+#sidebar .sidebar-header strong {
+    display: none;
+}
+#sidebar.active .sidebar-header h3 {
+    display: none;
+}
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a i {
+    margin-right:  0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+/* Same dropdown links padding*/
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+/* Changing the arrow position to bottom center position, 
+   translateX(50%) works with right: 50% 
+   to accurately  center the arrow */
+#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
+    top: auto;
+    bottom: 5px;
+    right: 50%;
+    transform: translateX(50%);
+}
 </style>
 <head>
 <!-- Check browser - if its not firefox or chrome, then let the user know -->
@@ -209,7 +258,8 @@
 
 </head>
 <body>
-<!-- Sidebar/menu -->
+	<!--
+
 <div position = "absolute">
 		<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
 			<div class="w3-bar-block">
@@ -245,7 +295,44 @@
 				<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
 			</div>
 		  </nav>
-		  </div>
+		  </div>-->
+	
+		  <div position = "absolute">
+				<nav class="w3-sidebar w3-collapse" style="z-index:3; width: 12%" id="mySidebar"><br>
+					<div class="w3-bar-block">
+						<a href="HomePage.html" style="color: white; font-size: 26px"><h5><button class="w3-bar-item w3-button tablink">Home</button></h5></a>
+			
+						<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchains</h5></div>
+						<a href="Blockchain.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About</button></a>
+						<a href="BlockchainFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ</button></a>
+						<a href="BlockchainAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> About our Application </button></a>
+						<a href="Guide.html" style="color: white"><button class="w3-bar-item w3-button tablink"> A Guide to Blockchain</button></a>
+						<a href="BlockchainDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchains for Preventing Data Loss and Tampering</button></a>
+			
+						<div><b><h5 class="w3-bar-block" style="color: white; font-size: 20px">&nbsp;Blockchain Functionality</h5></b></div>
+						<a href="AddBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Add Block</button></a>
+						<a href="SearchBlock.html" style="color: white"><button class="w3-bar-item w3-button tablink" > Search for a Block</button></a>
+						<a href="ViewBlockAdvanced.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Advanced</button></a>
+						<a href="ViewBlockLedger.html" style="color: white"><button class="w3-bar-item w3-button tablink"> View the Blockchain - Ledger</button></a>
+						<a href="BlockStats.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Blockchain Statistics</button></a>
+			
+				
+						<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Blockchain Alternatives</h5></div>
+						<a href="HashgraphAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hashgraph </button></a>
+						<a href="TangleAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Tangle </button></a>
+						<a href="HyperledgerAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Hyperledger </button></a>
+						<a href="CordaAbout.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Corda </button></a>
+						<a href="DCSFAQ.html" style="color: white"><button class="w3-bar-item w3-button tablink"> FAQ </button></a>
+						<a href="DCSDataLossTampering.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Preventing Data Loss and Tampering</button></a>
+						<a href="Comparison.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Comparing Blockchain, Hyperledger, Corda, Tangle, and Hashgraph</button></a>
+		
+						<div><h5 class="w3-bar-block" style="color: white; font-size: 26px">&nbsp;Help Section</h5></div>
+						<a href="Help.html" style="color: white"><button class="w3-bar-item w3-button tablink"> Help</button></a>
+						<a href="ReportBug.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> Report a Bug</button></a>
+						<a href="Tutorial.html"style="color: white" ><button class="w3-bar-item w3-button tablink"> App Tutorial</button></a><br><br>
+					</div>
+				  </nav>
+				  </div>
 <!Each Page>
 <div style="margin-left:13%" style="width:100vw" position ="fixed" >
 	
