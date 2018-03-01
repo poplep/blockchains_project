@@ -426,7 +426,8 @@ a.article, a.article:hover {
 						
 								<table>
 										<tr>
-																<th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The block number.." style="font-size:18px" style="color: white">Block Number:</a></th> 
+											<th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The number of the block that you've added through the UI." style="font-size:18px" style="color: white">Block No. (Added):</a></th> 
+											<th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The number of the block on the actual blockchain." style="font-size:18px" style="color: white">Block No. (On Blockchain):</a></th> 
 											<th style="width:500px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a></th> 
 											<th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a></th>  
 											<th style="width:200px"><a href="#" style="color:black" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a></th>                      
@@ -435,6 +436,7 @@ a.article, a.article:hover {
 								<div  id="duplicater0">	
 									<table>
 															<td><pre id="blocknumber0" style="width:200px"></pre></td>
+															<td><pre id="blocknumberchain0" style="width:200px"></pre></td>
 											<td ><pre id="name0" style="width:500px"></pre></td>
 											<td><pre id="id0" style="width:200px"></pre></td>
 																<td><pre id="age0" style="width:200px"></pre></td>
@@ -613,12 +615,14 @@ a.article, a.article:hover {
 				var blocknumbers = [];
 				var prev = 0;
 				var count = 0;
+				var blockNum = [];
 				//function to get the block ID
 				function viewingBlockID(key) {	
 					view.getID(key, function(worked, result){
 						if(result.c["0"]){ //if we found the ID
 							console.log(result.c["0"]); // print it to the console
 							ID.push(result.c["0"]); //push it to the ID array
+							
 							var number =  web3.eth.getBlock(key, function (e, res) {
 								if (res.number >= prev) {
 									console.log('latest', count++, res.number, res.timestamp)
@@ -628,7 +632,7 @@ a.article, a.article:hover {
 								prev = res.number
 								blocknumbers.push(res.number);
 							})
-							
+							viewingBlockNum(key);
 							viewingBlockAge(key); // get the age 
 							viewingBlockName(key); // get the name
 							viewingBlockID(key + 1); // move to the next block
@@ -638,10 +642,10 @@ a.article, a.article:hover {
 							var i;
 							for(i = 0; i< ID.length; i++) {
 								if(i == ID.length-1) {
-									newBlock(blocknumbers[i], ID[i], age[i], name1[i]); // add the block to be displayed
+									newBlock(blocknumbers[i], blockNum[i], ID[i], age[i], name1[i]); // add the block to be displayed
 
 								}else {
-									newBlock(blocknumbers[i], ID[i], age[i], name1[i]); // add the block to be displayed
+									newBlock(blocknumbers[i], blockNum[i], ID[i], age[i], name1[i]); // add the block to be displayed
 									duplicate();
 								}
 									
@@ -661,6 +665,14 @@ a.article, a.article:hover {
 					view.getName(key, function(worked, result){
 							console.log(result); // print the name to the console
 							name1.push(web3.toAscii(result)); // push the name to its array
+							})
+				}
+
+				function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							
 							})
 				}
 				viewingBlockID(key);
@@ -692,8 +704,9 @@ function button(evt, tab){
 
 	//function to create a new block object to be displayed on page
 	var i = 0;
-	function newBlock(blocknumber, id, age, name) {
+	function newBlock(blocknumber, blockchainno, id, age, name) {
 		$('#blocknumber'+ i).text(blocknumber); 
+		$('#blocknumberchain'+ i).text(blockchainno); 
 		$('#name' + i).text(removeSpecialChars(name));  
 		$('#id'+ i).text(id); 
 		$('#age'+ i).text(age); 		
@@ -707,9 +720,10 @@ function button(evt, tab){
 	
 		//update IDs of children pre fields
 		clone.getElementsByTagName('pre')[0].id = "blocknumber" + i;
-		clone.getElementsByTagName('pre')[1].id = "name" + i;
-		clone.getElementsByTagName('pre')[2].id = "id" + i;
-		clone.getElementsByTagName('pre')[3].id = "age" + i;
+		clone.getElementsByTagName('pre')[1].id = "blocknumberchain" + i;
+		clone.getElementsByTagName('pre')[2].id = "name" + i;
+		clone.getElementsByTagName('pre')[3].id = "id" + i;
+		clone.getElementsByTagName('pre')[4].id = "age" + i;
 
 		original.parentNode.appendChild(clone); // appends child div to previous parent div
 	}
