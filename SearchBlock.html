@@ -460,8 +460,7 @@ a.article, a.article:hover {
                 
                 <div class="sidebar-header">
                     <h3><a href="HomePage.html">Home</a></h3>
-                    <strong>BC</strong>
-                </div>
+					<strong><a href="HomePage.html">BC</a></strong>                </div>
                 <ul class="list-unstyled components">
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
@@ -509,8 +508,8 @@ a.article, a.article:hover {
                 </ul>
                 <ul class="list-unstyled CTAs">
                     <li><a href="Help.html" class="download">Help</a></li>
-                    <li><a href="ReportBug.html" class="article">Report a Bug</a></li>
-                    <li><a href="Tutorial.html" class="article">Tutorial</a></li>
+                    <li><a href="ReportBug.html" class="download">Report a Bug</a></li>
+                    <li><a href="Tutorial.html" class="download">Tutorial</a></li>
                    
                 </ul>
                 <div class="navbar-header">
@@ -759,755 +758,772 @@ a.article, a.article:hover {
 			"type": "function"
 		}
 		]);
-					var view = addBlockContract.at('0xff22e3e85df986e12d68358e9e4982d92632cd6f'); // contract instance to work with
-				function wait(ms)
-						{
-						var d = new Date();
-						var d2 = null;
-						do { d2 = new Date(); }
-						while(d2-d < ms);
-						}
-				var idTest = document.getElementById('idTest');
-				var ageTest = document.getElementById('ageTest');
-				var nameTest = document.getElementById('nameTest');
-				var button1 = document.getElementById('button1');
-				var button2 = document.getElementById('button2');
-				var button3 = document.getElementById('button3');
-				var nextsearch = 0;
-				var ID = [];
-				var age = [];
-				var name1 = [];
-				var elementcount = 0;
-				var elementloop = 0;
-				var iterate = 0;
-				var difficultyVals = [];
-				var extraDataVals = [];
-				var gasLimitVals = [];
-				var gasUsedVals = [];
-				var hashVals = [];
-				var logsBloomVals = [];
-				var minerVals = [];
-				var mixHashVals = [];
-				var nonceVals = [];
-				var numberVals = [];
-				var parentHashVals = [];
-				var receiptsRootVals = [];
-				var sha3UnclesVals = [];
-				var sizeVals = [];
-				var stateRootVals = [];
-				var timestampVals = [];
-				var totalDifficultyVals = [];
-				var transactionsVals = [];
-				var transactionsRootVals = [];
-				var unclesVals = [];
-				var blockcount = 0;
-				var elements = [];
-				var blocknumbers = [];
-				//click handler - searching by name
-				button1.addEventListener('click', function() {
-					//clear val arrays
-					 ID = [];
-					 age = [];
-					 name1 = [];
-					 blockNum = [];
-					 difficultyVals = [];
-					 extraDataVals = [];
-					 gasLimitVals = [];
-					 gasUsedVals = [];
-					 hashVals = [];
-					 logsBloomVals = [];
-					 minerVals = [];
-					 mixHashVals = [];
-					 nonceVals = [];
-					 numberVals = [];
-					 parentHashVals = [];
-					 receiptsRootVals = [];
-					 sha3UnclesVals = [];
-					 sizeVals = [];
-					 stateRootVals = [];
-					 timestampVals = [];
-					 totalDifficultyVals = [];
-					 transactionsVals = [];
-					 transactionsRootVals = [];
-					 unclesVals = [];
-					//if no name was entered into the search field, then let the user know and exit the function
-					
-					if(nameTest.value.length == 0) {
-						alert("No input received. Please enter your information and try again.");
-						return;
-					}
-					//clearing old blocks before executing search
-					var x;
-					for(x = 0; x <= nextsearch; x++) {
-						$("#name" + x).empty();
-						$("#id" + x).empty();
-						$("#age" + x).empty();
-						$("#modalDifficulty" + x).empty();
-						$("#modalextraData" + x).empty();
-						$("#modalgasLimit" + x).empty();
-						$("#modalgasUsed" + x).empty();
-						$("#modalhash" + x).empty();
-						$("#modallogsBloom" + x).empty();
-						$("#modalminer" + x).empty();
-						$("#modalmixhash" + x).empty();
-						$("#modalnonce" + x).empty();
-						$("#modalnumber" + x).empty();
-						$("#modalparentHash" + x).empty();
-						$("#modalreceiptsRoot" + x).empty();
-						$("#modalsha3Uncles" + x).empty();
-						$("#modalsize" + x).empty();
-						$("#modalstateRoot" + x).empty();
-						$("#modaltimestamp" + x).empty();
-						$("#modaltotalDifficulty" + x).empty();
-						$("#modaltransactions" + x).empty();
-						$("#modaltransactionsRoot" + x).empty();
-						$("#modaluncles" + x).empty();
-					}
-					//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
-					for(x = 1; x <= nextsearch; x++) {
-						$("#duplicater" + x).remove();
-						$("#name" + x).empty();
-						$("#id" + x).empty();
-						$("#age" + x).empty();
-						$("#modalDifficulty" + x).empty();
-						$("#modalextraData" + x).empty();
-						$("#modalgasLimit" + x).empty();
-						$("#modalgasUsed" + x).empty();
-						$("#modalhash" + x).empty();
-						$("#modallogsBloom" + x).empty();
-						$("#modalminer" + x).empty();
-						$("#modalmixhash" + x).empty();
-						$("#modalnonce" + x).empty();
-						$("#modalnumber" + x).empty();
-						$("#modalparentHash" + x).empty();
-						$("#modalreceiptsRoot" + x).empty();
-						$("#modalsha3Uncles" + x).empty();
-						$("#modalsize" + x).empty();
-						$("#modalstateRoot" + x).empty();
-						$("#modaltimestamp" + x).empty();
-						$("#modaltotalDifficulty" + x).empty();
-						$("#modaltransactions" + x).empty();
-						$("#modaltransactionsRoot" + x).empty();
-						$("#modaluncles" + x).empty();
-						console.log("Removed old blocks");
-						
-					}
 		
-					console.log("RES:" + nameTest.value);
-					key = 1;
-					var blockcount = 0;
-					nextsearch = 0;
-					elementloop = 0;
-					blocknumbers = [];
-					elements = [];
-					elementcount = 0;
 		
-					function addID(key, test){
-						view.getID(key, function(worked, result){
-							ID.push(result.c["0"]);
-						});
-						viewingBlockAge(key, test);
-					}
-		
-					function viewingBlockID(key, test) {	
-						view.getID(key, function(worked, result){
-							if(result.c["0"]){
-								viewingBlockName(key, test);
-							}else{
-								console.log("All keys found");
-		
-								if(ID.length == 0) {
-									alert("No blocks found matching your search criteria.");
-								}
-								//TODO: call method that will draw blocks for user here!!!
-								var i;
-								elementloop = 0;
-								setTimeout(function(){  
-									for(i = 0; i < blocknumbers.length; i++) {
-										if(i == blocknumbers.length-1) {
-											newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-											elementloop+=20;
-											console.log("ELEMENT LOOP ------->" + elementloop);
-		
-										}else {
-											newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-											elementloop+=20;
-											console.log("ELEMENT LOOP ------->" + elementloop);
-											duplicate();
-										}
-									
-									}
-								}, 1000);
-								seemore();
-								return;
-							}
-						})
-					}
-					
-					function viewingBlockAge(key, test) {
-						view.getAge(key, function(worked, result){
-							console.log(result.c["0"]);
-							age.push(result.c["0"]);
-						})
-					}
-		
-					function viewingBlockNum(key) {
-							view.getBlockNum(key, function(worked, result){
-									console.log(result.c["0"]);
-									blockNum.push(result.c["0"]);
-									setTimeout(function(){  
-									var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
-											if(!error){
-												console.log("FOUND BLOCK KEY: " + key);
-												var elementcount = 0;
-												for(const [key, value] of Object.entries(result)) {
-													console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-													
-													elements.push(`${value}`);
-													console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-													elementcount++;
-													
-												}
-											}
-											blockcount++;
-											
-		
-											iterate++;
-										
-											console.log("END!!!!!!!!!!!!!!!!!");
-											
-											
-										});
-										}, 2);
-									})
-						}
-					function viewingBlockName(key, test) {
-						view.getName(key, function(worked, result){
-							console.log(test);
-							if(removeSpecialChars(web3.toAscii(result)) == test){
-								name1.push(web3.toAscii(result));
-								viewingBlockNum(key);
-								addID(key, test);
-								viewingBlockAge(key, test)
-								blocknumbers.push(key);
-							}
-							viewingBlockID(key + 1, test);
-							})		
-					}
-					viewingBlockID(key, nameTest.value);
-				})
-		
-				//click handler - searching by ID
-				button2.addEventListener('click', function() {
-					//clear array vals for next search
-					 ID = [];
-					 age = [];
-					 name1 = [];
-					 blockNum = [];
-					 difficultyVals = [];
-					 extraDataVals = [];
-					 gasLimitVals = [];
-					 gasUsedVals = [];
-					 hashVals = [];
-					 logsBloomVals = [];
-					 minerVals = [];
-					 mixHashVals = [];
-					 nonceVals = [];
-					 numberVals = [];
-					 parentHashVals = [];
-					 receiptsRootVals = [];
-					 sha3UnclesVals = [];
-					 sizeVals = [];
-					 stateRootVals = [];
-					 timestampVals = [];
-					 totalDifficultyVals = [];
-					 transactionsVals = [];
-					 transactionsRootVals = [];
-					 unclesVals = [];
-		
-					if(idTest.value.length == 0) {
-						alert("No input received. Please enter your information and try again.");
-						return;
-					}
-					//clearing old blocks before executing search
-					var x;
-					for(x = 0; x <= nextsearch; x++) {
-						$("#name" + x).empty();
-						$("#id" + x).empty();
-						$("#age" + x).empty();
-						$("#modalDifficulty" + x).empty();
-						$("#modalextraData" + x).empty();
-						$("#modalgasLimit" + x).empty();
-						$("#modalgasUsed" + x).empty();
-						$("#modalhash" + x).empty();
-						$("#modallogsBloom" + x).empty();
-						$("#modalminer" + x).empty();
-						$("#modalmixhash" + x).empty();
-						$("#modalnonce" + x).empty();
-						$("#modalnumber" + x).empty();
-						$("#modalparentHash" + x).empty();
-						$("#modalreceiptsRoot" + x).empty();
-						$("#modalsha3Uncles" + x).empty();
-						$("#modalsize" + x).empty();
-						$("#modalstateRoot" + x).empty();
-						$("#modaltimestamp" + x).empty();
-						$("#modaltotalDifficulty" + x).empty();
-						$("#modaltransactions" + x).empty();
-						$("#modaltransactionsRoot" + x).empty();
-						$("#modaluncles" + x).empty();
-					}
-					//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
-					for(x = 1; x <= nextsearch; x++) {
-						$("#duplicater" + x).remove();
-						$("#name" + x).empty();
-						$("#id" + x).empty();
-						$("#age" + x).empty();
-						$("#modalDifficulty" + x).empty();
-						$("#modalextraData" + x).empty();
-						$("#modalgasLimit" + x).empty();
-						$("#modalgasUsed" + x).empty();
-						$("#modalhash" + x).empty();
-						$("#modallogsBloom" + x).empty();
-						$("#modalminer" + x).empty();
-						$("#modalmixhash" + x).empty();
-						$("#modalnonce" + x).empty();
-						$("#modalnumber" + x).empty();
-						$("#modalparentHash" + x).empty();
-						$("#modalreceiptsRoot" + x).empty();
-						$("#modalsha3Uncles" + x).empty();
-						$("#modalsize" + x).empty();
-						$("#modalstateRoot" + x).empty();
-						$("#modaltimestamp" + x).empty();
-						$("#modaltotalDifficulty" + x).empty();
-						$("#modaltransactions" + x).empty();
-						$("#modaltransactionsRoot" + x).empty();
-						$("#modaluncles" + x).empty();
-						console.log("Removed old blocks");	
-					}
-					console.log("RES:" + idTest.value);
-					key = 1;
-					var blockcount = 0;
-					nextsearch = 0;
-					blocknumbers = [];
-					elementloop = 0;
-					elements = [];
-					elementcount = 0;
-					function viewingBlockID(key, test) {	
-						view.getID(key, function(worked, result){
-							if(result.c["0"]){
-								console.log((result.c["0"]));
-								if (test == Number(result.c["0"])){
-									console.log("HERE");
-									ID.push(result.c["0"]);
-									viewingBlockNum(key)
-									viewingBlockAge(key, test);
-									viewingBlockName(key, test);
-									blocknumbers.push(key);
-								}
-								viewingBlockID(key + 1, Number(test));
-							}else{
-								console.log("All keys found");
-								if(ID.length == 0) {
-									alert("No blocks found matching your search criteria.");
-								}
-								//TODO: call method that will draw blocks for user here!!!
-								var i;
-								elementloop = 0;
-								setTimeout(function(){  
-									for(i = 0; i < blocknumbers.length; i++) {
-										if(i == blocknumbers.length-1) {
-											newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-											elementloop+=20;
-										}else {
-											newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-											elementloop+=20;
-											duplicate();
-										}
-									}
-								}, 1000);
-								seemore();
-								return;
-							}
-						})
-					}
-					function viewingBlockNum(key) {
-							view.getBlockNum(key, function(worked, result){
-									console.log(result.c["0"]);
-									blockNum.push(result.c["0"]);
-									setTimeout(function(){  
-									var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
-											if(!error){
-												console.log("FOUND BLOCK KEY: " + key);
-												var elementcount = 0;
-												for(const [key, value] of Object.entries(result)) {
-													console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-													
-													elements.push(`${value}`);
-													console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-													elementcount++;
-													
-												}
-											}
-											blockcount++;
-											
-		
-											iterate++;
-										
-											console.log("END!!!!!!!!!!!!!!!!!");
-											
-											
-										});
-										}, 2);
-									})
-						}
-					function viewingBlockAge(key, test) {
-						view.getAge(key, function(worked, result){
-							console.log(result.c["0"]);
-							age.push(result.c["0"]);
-						})
-					}
-					function viewingBlockName(key, test) {
-						view.getName(key, function(worked, result){
-							console.log(result);
-							console.log(result);
-							name1.push(web3.toAscii(result));
-						})
-					}
-					viewingBlockID(key, Number(idTest.value));
-				})
-		
-				//click handler - searching by age
-				button3.addEventListener('click', function() {
-					//clear val arrays
-					ID = [];
-					age = [];
-					name1 = [];
-					blockNum = [];
-					difficultyVals = [];
-					extraDataVals = [];
-					gasLimitVals = [];
-					gasUsedVals = [];
-					hashVals = [];
-					logsBloomVals = [];
-					minerVals = [];
-					mixHashVals = [];
-					nonceVals = [];
-					numberVals = [];
-					parentHashVals = [];
-					receiptsRootVals = [];
-					sha3UnclesVals = [];
-					sizeVals = [];
-					stateRootVals = [];
-					timestampVals = [];
-					totalDifficultyVals = [];
-					transactionsVals = [];
-					transactionsRootVals = [];
-					unclesVals = [];
-		
-					if(ageTest.value.length == 0) {
-						alert("No input received. Please enter your information and try again.");
-					return;
-					}
-				//clearing old blocks before executing search
-				var x;
-				for(x = 0; x <= nextsearch; x++) {
-					$("#name" + x).empty();
-					$("#id" + x).empty();
-					$("#age" + x).empty();
-					$("#modalDifficulty" + x).empty();
-					$("#modalextraData" + x).empty();
-					$("#modalgasLimit" + x).empty();
-					$("#modalgasUsed" + x).empty();
-					$("#modalhash" + x).empty();
-					$("#modallogsBloom" + x).empty();
-					$("#modalminer" + x).empty();
-					$("#modalmixhash" + x).empty();
-					$("#modalnonce" + x).empty();
-					$("#modalnumber" + x).empty();
-					$("#modalparentHash" + x).empty();
-					$("#modalreceiptsRoot" + x).empty();
-					$("#modalsha3Uncles" + x).empty();
-					$("#modalsize" + x).empty();
-					$("#modalstateRoot" + x).empty();
-					$("#modaltimestamp" + x).empty();
-					$("#modaltotalDifficulty" + x).empty();
-					$("#modaltransactions" + x).empty();
-					$("#modaltransactionsRoot" + x).empty();
-					$("#modaluncles" + x).empty();
+		var view = addBlockContract.at('0xff22e3e85df986e12d68358e9e4982d92632cd6f'); // contract instance to work with
+		//wait function
+		function wait(ms)
+				{
+				var d = new Date();
+				var d2 = null;
+				do { d2 = new Date(); }
+				while(d2-d < ms);
 				}
-				//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
-				for(x = 1; x <= nextsearch; x++) {
-					$("#duplicater" + x).remove();
-					$("#name" + x).empty();
-					$("#id" + x).empty();
-					$("#age" + x).empty();
-					$("#modalDifficulty" + x).empty();
-					$("#modalextraData" + x).empty();
-					$("#modalgasLimit" + x).empty();
-					$("#modalgasUsed" + x).empty();
-					$("#modalhash" + x).empty();
-					$("#modallogsBloom" + x).empty();
-					$("#modalminer" + x).empty();
-					$("#modalmixhash" + x).empty();
-					$("#modalnonce" + x).empty();
-					$("#modalnumber" + x).empty();
-					$("#modalparentHash" + x).empty();
-					$("#modalreceiptsRoot" + x).empty();
-					$("#modalsha3Uncles" + x).empty();
-					$("#modalsize" + x).empty();
-					$("#modalstateRoot" + x).empty();
-					$("#modaltimestamp" + x).empty();
-					$("#modaltotalDifficulty" + x).empty();
-					$("#modaltransactions" + x).empty();
-					$("#modaltransactionsRoot" + x).empty();
-					$("#modaluncles" + x).empty();
-					console.log("Removed old blocks");
-				}
-				console.log("RES:" + ageTest.value);
-				key = 1;
-				var blockcount = 0;
-				nextsearch = 0;
-				elementloop = 0;
-				blocknumbers = [];
-				elements = [];
-				elementcount = 0;
-				function addID(key, test){
-					view.getID(key, function(worked, result){
-						ID.push(result.c["0"]);
-						console.log(result.c["0"])
-					});
-				}
-				function viewingBlockID(key, test) {	
-					view.getID(key, function(worked, result){
-						if(result.c["0"]){
-							ID.push(result.c["0"]);
-							viewingBlockAge(key, test);	
-							blockcount++;	
-						}else{
-							console.log("All keys found");
-							if(ID.length == 0) {
-								alert("No blocks found matching your search criteria.");
-							}
-							//TODO: call method that will draw blocks for user here!!!
-							var i;
-							elementloop = 0;
-							setTimeout(function(){  
-								for(i = 0; i < blocknumbers.length; i++) {
-									if(i == blocknumbers.length-1) {
-										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-										elementloop+=20;
-									}else {
-										newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-										elementloop+=20;
-										duplicate();
-									}
-								}
-							}, 1000);
-							seemore();
-							return;
-						}
-					})
-				}
-				function viewingBlockNum(key) {
-							view.getBlockNum(key, function(worked, result){
-									console.log(result.c["0"]);
-									blockNum.push(result.c["0"]);
-									setTimeout(function(){  
-									var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
-											if(!error){
-												console.log("FOUND BLOCK KEY: " + key);
-												var elementcount = 0;
-												for(const [key, value] of Object.entries(result)) {
-													console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-													
-													elements.push(`${value}`);
-													console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-													elementcount++;
-													
-												}
-											}
-											blockcount++;
-											
-		
-											iterate++;
-										
-											console.log("END!!!!!!!!!!!!!!!!!");
-											
-											
-										});
-										}, 2);
-									})
-						}
-				function viewingBlockAge(key, test) {
-					view.getAge(key, function(worked, result){
-							if(result.c["0"] == test){
-								age.push(result.c["0"]);
-								viewingBlockName(key, test);
-								viewingBlockNum(key);
-								addID(key, test);
-								console.log(result.c["0"])
-								blocknumbers.push(key);	
-							}
-						viewingBlockID(key+1, test);
-					})
-				}
-		
-				function viewingBlockName(key, test) {
-					view.getName(key, function(worked, result){
-						console.log(web3.toAscii(result));
-						name1.push(web3.toAscii(result));
-					})
-				}
-				viewingBlockID(key, Number(ageTest.value));
-			})
-				
-			var difficulty = document.getElementById("name");
-			var extraData  = document.getElementById("id");
-			var gasLimit = document.getElementById("age");
-		
-			//function to create a new block object to be displayed on page
-			
-			var i = 0;
-			function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
-				$('#name' + i).text(removeSpecialChars(name));  
-				$('#id'+ i).text(id); 
-				$('#age'+ i).text(age); 
-				
-				difficultyVals.push(difficulty);
-				extraDataVals.push(extraData);
-				gasLimitVals.push(gasLimit);
-				gasUsedVals.push(gasUsed);
-				hashVals.push(hash);
-				logsBloomVals.push(logsBloom);
-				minerVals.push(miner);
-				mixHashVals.push(mixHash);
-				nonceVals.push(nonce);
-				numberVals.push(number);
-				parentHashVals.push(parentHash);
-				receiptsRootVals.push(receiptsRoot);
-				sha3UnclesVals.push(sha3Uncles);
-				sizeVals.push(size);
-				stateRootVals.push(stateRoot);
-				timestampVals.push(timestamp);
-				totalDifficultyVals.push(totalDifficulty);
-				transactionsVals.push(transactions);
-				transactionsRootVals.push(transactionsRoot);
-				unclesVals.push(uncles);		
+
+		//variable declarations
+		var idTest = document.getElementById('idTest');
+		var ageTest = document.getElementById('ageTest');
+		var nameTest = document.getElementById('nameTest');
+		var button1 = document.getElementById('button1');
+		var button2 = document.getElementById('button2');
+		var button3 = document.getElementById('button3');
+		var nextsearch = 0;
+		var ID = [];
+		var age = [];
+		var name1 = [];
+		var elementcount = 0;
+		var elementloop = 0;
+		var iterate = 0;
+		var difficultyVals = [];
+		var extraDataVals = [];
+		var gasLimitVals = [];
+		var gasUsedVals = [];
+		var hashVals = [];
+		var logsBloomVals = [];
+		var minerVals = [];
+		var mixHashVals = [];
+		var nonceVals = [];
+		var numberVals = [];
+		var parentHashVals = [];
+		var receiptsRootVals = [];
+		var sha3UnclesVals = [];
+		var sizeVals = [];
+		var stateRootVals = [];
+		var timestampVals = [];
+		var totalDifficultyVals = [];
+		var transactionsVals = [];
+		var transactionsRootVals = [];
+		var unclesVals = [];
+		var blockcount = 0;
+		var elements = [];
+		var blocknumbers = [];
+		//click handler - searching by name
+		button1.addEventListener('click', function() {
+			//clear val arrays so they can be reused for this search
+				ID = [];
+				age = [];
+				name1 = [];
+				blockNum = [];
+				difficultyVals = [];
+				extraDataVals = [];
+				gasLimitVals = [];
+				gasUsedVals = [];
+				hashVals = [];
+				logsBloomVals = [];
+				minerVals = [];
+				mixHashVals = [];
+				nonceVals = [];
+				numberVals = [];
+				parentHashVals = [];
+				receiptsRootVals = [];
+				sha3UnclesVals = [];
+				sizeVals = [];
+				stateRootVals = [];
+				timestampVals = [];
+				totalDifficultyVals = [];
+				transactionsVals = [];
+				transactionsRootVals = [];
+				unclesVals = [];
+			//if no name was entered into the search field, then let the user know and exit the function
+			if(nameTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
+				return;
 			}
-			
-			function duplicate() {
-				var original = document.getElementById('duplicater' + nextsearch);
-				var clone = original.cloneNode(true); // "deep" clone
-				clone.id = "duplicater" + ++nextsearch; // there can only be one element with an ID
-			
-				//update IDs of children pre fields
-				clone.getElementsByTagName('pre')[0].id = "name" + nextsearch;
-				clone.getElementsByTagName('pre')[1].id = "id" + nextsearch;
-				clone.getElementsByTagName('pre')[2].id = "age" + nextsearch;
-				clone.getElementsByTagName('button')[0].id = "exit" + nextsearch;
-		
-				original.parentNode.appendChild(clone); // appends child div to previous parent div
-				$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
 			}
-		
-		function seemore() {
-			try {	
-				setTimeout(function(){  
-				$(".block").click(function(e) {
-					var duplicaterid = e.target.id; // gets id of target which is seemorebutton
-					//accessing block
-					var blockNumber = duplicaterid.substr(4, 5);
-					console.log("DUPLICATERID ------------->" + duplicaterid);
-					console.log("BLOCK NUMBER ------------->" + blockNumber);
-					var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
-					var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
-					var idforModal = document.getElementById('id' + blockNumber).innerHTML;
-					var difficultyforModal = document.getElementById("modalDifficulty").innerHTML;
-					var extraDataforModal = document.getElementById("modalextraData").innerHTML;
-					var gasLimitforModal = document.getElementById("modalgasLimit").innerHTML;
-					var gasUsedforModal = document.getElementById("modalgasUsed").innerHTML;
-					var hashforModal = document.getElementById("modalhash").innerHTML;
-					var logsBloomforModal = document.getElementById("modallogsBloom").innerHTML;
-					var minerforModal = document.getElementById("modalminer").innerHTML;
-					var mixhashforModal = document.getElementById("modalmixHash").innerHTML;
-					var nonceforModal = document.getElementById("modalnonce").innerHTML;
-					var numberforModal = document.getElementById("modalnumber").innerHTML;
-					var parentHashforModal = document.getElementById("modalparentHash").innerHTML;
-					var receiptsRootforModal = document.getElementById("modalreceiptsRoot").innerHTML;
-					var sha3UnclesforModal = document.getElementById("modalsha3Uncles").innerHTML;
-					var sizeforModal = document.getElementById("modalsize").innerHTML;
-					var stateRootforModal = document.getElementById("modalstateRoot").innerHTML;
-					var timestampforModal = document.getElementById("modaltimestamp").innerHTML;
-					var totalDifficultyforModal = document.getElementById("modaltotalDifficulty").innerHTML;
-					var transactionsforModal = document.getElementById("modaltransactions").innerHTML;
-					var transactionsRootforModal = document.getElementById("modaltransactionsRoot").innerHTML;
-					var unclesforModal = document.getElementById("modaluncles").innerHTML ;
-					
-					document.getElementById("modalName").innerHTML = name1[blockNumber];
-					document.getElementById("modalAge").innerHTML = age[blockNumber];
-					document.getElementById("modalID").innerHTML = ID[blockNumber];
-					document.getElementById("modalDifficulty").innerHTML = difficultyVals[blockNumber];
-					document.getElementById("modalextraData").innerHTML = extraDataVals[blockNumber];
-					document.getElementById("modalgasLimit").innerHTML = gasLimitVals[blockNumber];
-					document.getElementById("modalgasUsed").innerHTML = gasUsedVals[blockNumber];
-					document.getElementById("modalhash").innerHTML = hashVals[blockNumber];
-					document.getElementById("modallogsBloom").innerHTML = logsBloomVals[blockNumber];
-					document.getElementById("modalminer").innerHTML = minerVals[blockNumber];
-					document.getElementById("modalmixHash").innerHTML = mixHashVals[blockNumber];
-					document.getElementById("modalnonce").innerHTML = nonceVals[blockNumber];
-					document.getElementById("modalnumber").innerHTML = numberVals[blockNumber];
-					document.getElementById("modalparentHash").innerHTML = parentHashVals[blockNumber];
-					document.getElementById("modalreceiptsRoot").innerHTML = receiptsRootVals[blockNumber];
-					document.getElementById("modalsha3Uncles").innerHTML = sha3UnclesVals[blockNumber];
-					document.getElementById("modalsize").innerHTML = sizeVals[blockNumber];
-					document.getElementById("modalstateRoot").innerHTML = stateRootVals[blockNumber];
-					document.getElementById("modaltimestamp").innerHTML = timestampVals[blockNumber];
-					document.getElementById("modaltotalDifficulty").innerHTML = totalDifficultyVals[blockNumber];
-					document.getElementById("modaltransactions").innerHTML = transactionsVals[blockNumber];
-					document.getElementById("modaltransactionsRoot").innerHTML = transactionsRootVals[blockNumber];
-					document.getElementById("modaluncles").innerHTML = unclesVals[blockNumber];
-					$("#blockContent").modal("show").click(function () { // show the welcome page modal
-						$("#blockContent").modal('hide'); 
-					});
-					
+			//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+				console.log("Removed old blocks");
+				
+			}
+
+			console.log("RES:" + nameTest.value);
+			//setting values for variables
+			key = 1;
+			var blockcount = 0;
+			nextsearch = 0;
+			elementloop = 0;
+			blocknumbers = [];
+			elements = [];
+			elementcount = 0;
+			//function to add the ID to the ID array
+			function addID(key, test){
+				view.getID(key, function(worked, result){
+					ID.push(result.c["0"]);
 				});
-			}, 1000);
-			}catch(e) {
-		
+				viewingBlockAge(key, test);
 			}
+			//gets the block ID
+			function viewingBlockID(key, test) {	
+				view.getID(key, function(worked, result){ //calling solidity contract getID function
+					if(result.c["0"]){
+						viewingBlockName(key, test); //get the name of the block
+					}else{
+						console.log("All keys found"); //all blocks were found that match the search parameters, so proceed to print
+
+						//no blocks were found
+						if(ID.length == 0) {
+							alert("No blocks found matching your search criteria.");
+						}
+						//print the blocks
+						var i;
+						elementloop = 0;
+						setTimeout(function(){  
+							for(i = 0; i < blocknumbers.length; i++) {
+								if(i == blocknumbers.length-1) {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
+									console.log("ELEMENT LOOP ------->" + elementloop);
+
+								}else {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
+									console.log("ELEMENT LOOP ------->" + elementloop);
+									duplicate();
+								}
+							
+							}
+						}, 1000);
+						seemore();
+						return;
+					}
+				})
+			}
+			//function to get the block age
+			function viewingBlockAge(key, test) {
+				view.getAge(key, function(worked, result){
+					console.log(result.c["0"]);
+					age.push(result.c["0"]);
+				})
+			}
+
+			//function to get the block number from the contract
+			function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+							})
+				}
+
+			//function to get the block name from the contract
+			function viewingBlockName(key, test) {
+				view.getName(key, function(worked, result){
+					console.log(test);
+					if(removeSpecialChars(web3.toAscii(result)) == test){
+						name1.push(web3.toAscii(result));
+						viewingBlockNum(key);
+						addID(key, test);
+						viewingBlockAge(key, test)
+						blocknumbers.push(key);
+					}
+					viewingBlockID(key + 1, test);
+					})		
+			}
+			viewingBlockID(key, nameTest.value);
+		})
+
+		//click handler - searching by ID
+		button2.addEventListener('click', function() {
+			//clear array vals for next search
+				ID = [];
+				age = [];
+				name1 = [];
+				blockNum = [];
+				difficultyVals = [];
+				extraDataVals = [];
+				gasLimitVals = [];
+				gasUsedVals = [];
+				hashVals = [];
+				logsBloomVals = [];
+				minerVals = [];
+				mixHashVals = [];
+				nonceVals = [];
+				numberVals = [];
+				parentHashVals = [];
+				receiptsRootVals = [];
+				sha3UnclesVals = [];
+				sizeVals = [];
+				stateRootVals = [];
+				timestampVals = [];
+				totalDifficultyVals = [];
+				transactionsVals = [];
+				transactionsRootVals = [];
+				unclesVals = [];
+			//user didnt provide any parameters
+			if(idTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
+				return;
+			}
+			//clearing old blocks before executing search
+			var x;
+			for(x = 0; x <= nextsearch; x++) {
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+			}
+			//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
+			for(x = 1; x <= nextsearch; x++) {
+				$("#duplicater" + x).remove();
+				$("#name" + x).empty();
+				$("#id" + x).empty();
+				$("#age" + x).empty();
+				$("#modalDifficulty" + x).empty();
+				$("#modalextraData" + x).empty();
+				$("#modalgasLimit" + x).empty();
+				$("#modalgasUsed" + x).empty();
+				$("#modalhash" + x).empty();
+				$("#modallogsBloom" + x).empty();
+				$("#modalminer" + x).empty();
+				$("#modalmixhash" + x).empty();
+				$("#modalnonce" + x).empty();
+				$("#modalnumber" + x).empty();
+				$("#modalparentHash" + x).empty();
+				$("#modalreceiptsRoot" + x).empty();
+				$("#modalsha3Uncles" + x).empty();
+				$("#modalsize" + x).empty();
+				$("#modalstateRoot" + x).empty();
+				$("#modaltimestamp" + x).empty();
+				$("#modaltotalDifficulty" + x).empty();
+				$("#modaltransactions" + x).empty();
+				$("#modaltransactionsRoot" + x).empty();
+				$("#modaluncles" + x).empty();
+				console.log("Removed old blocks");	
+			}
+			console.log("RES:" + idTest.value);
+			//reset values
+			key = 1;
+			var blockcount = 0;
+			nextsearch = 0;
+			blocknumbers = [];
+			elementloop = 0;
+			elements = [];
+			elementcount = 0;
+
+			//function to get the block id from the contract
+			function viewingBlockID(key, test) {	
+				view.getID(key, function(worked, result){
+					if(result.c["0"]){
+						console.log((result.c["0"]));
+						if (test == Number(result.c["0"])){
+							console.log("HERE");
+							ID.push(result.c["0"]);
+							viewingBlockNum(key)
+							viewingBlockAge(key, test);
+							viewingBlockName(key, test);
+							blocknumbers.push(key);
+						}
+						viewingBlockID(key + 1, Number(test));
+					}else{
+						console.log("All keys found");
+						if(ID.length == 0) {
+							alert("No blocks found matching your search criteria.");
+						}
+						//TODO: call method that will draw blocks for user here!!!
+						var i;
+						elementloop = 0;
+						setTimeout(function(){  
+							for(i = 0; i < blocknumbers.length; i++) {
+								if(i == blocknumbers.length-1) {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
+								}else {
+									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+									elementloop+=20;
+									duplicate();
+								}
+							}
+						}, 1000);
+						seemore();
+						return;
+					}
+				})
+			}
+
+			//function to get the block number from the contract
+			function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+							})
+				}
+
+			//function to get the age from the contract
+			function viewingBlockAge(key, test) {
+				view.getAge(key, function(worked, result){
+					console.log(result.c["0"]);
+					age.push(result.c["0"]);
+				})
+			}
+
+			//function to get the name from the contract
+			function viewingBlockName(key, test) {
+				view.getName(key, function(worked, result){
+					console.log(result);
+					console.log(result);
+					name1.push(web3.toAscii(result));
+				})
+			}
+			viewingBlockID(key, Number(idTest.value));
+		})
+
+		//click handler - searching by age
+		button3.addEventListener('click', function() {
+			//clear val arrays
+			ID = [];
+			age = [];
+			name1 = [];
+			blockNum = [];
+			difficultyVals = [];
+			extraDataVals = [];
+			gasLimitVals = [];
+			gasUsedVals = [];
+			hashVals = [];
+			logsBloomVals = [];
+			minerVals = [];
+			mixHashVals = [];
+			nonceVals = [];
+			numberVals = [];
+			parentHashVals = [];
+			receiptsRootVals = [];
+			sha3UnclesVals = [];
+			sizeVals = [];
+			stateRootVals = [];
+			timestampVals = [];
+			totalDifficultyVals = [];
+			transactionsVals = [];
+			transactionsRootVals = [];
+			unclesVals = [];
+
+			if(ageTest.value.length == 0) {
+				alert("No input received. Please enter your information and try again.");
+			return;
+			}
+		//clearing old blocks before executing search
+		var x;
+		for(x = 0; x <= nextsearch; x++) {
+			$("#name" + x).empty();
+			$("#id" + x).empty();
+			$("#age" + x).empty();
+			$("#modalDifficulty" + x).empty();
+			$("#modalextraData" + x).empty();
+			$("#modalgasLimit" + x).empty();
+			$("#modalgasUsed" + x).empty();
+			$("#modalhash" + x).empty();
+			$("#modallogsBloom" + x).empty();
+			$("#modalminer" + x).empty();
+			$("#modalmixhash" + x).empty();
+			$("#modalnonce" + x).empty();
+			$("#modalnumber" + x).empty();
+			$("#modalparentHash" + x).empty();
+			$("#modalreceiptsRoot" + x).empty();
+			$("#modalsha3Uncles" + x).empty();
+			$("#modalsize" + x).empty();
+			$("#modalstateRoot" + x).empty();
+			$("#modaltimestamp" + x).empty();
+			$("#modaltotalDifficulty" + x).empty();
+			$("#modaltransactions" + x).empty();
+			$("#modaltransactionsRoot" + x).empty();
+			$("#modaluncles" + x).empty();
 		}
-			
-		</script>
-		
-		
-		<script>
-		
-			var output2 = document.getElementById('output2');
-			var printThis = "";
-		function button(evt, tab){
-			
-			var i, x, tablinks;
-			x = document.getElementsByClassName("tab");
-			for (i = 0; i < x.length; i++) {
-					 x[i].style.display = "none";
-			  }
-			  tablinks = document.getElementsByClassName("tablink");
-			  for (i = 0; i < x.length; i++) {
-					  tablinks[i].className = tablinks[i].className.replace("", ""); 
-			  }
-			  document.getElementById(tab).style.display = "block";
-			  
+		//clear out all the data displayed in the blocks from the previous search and remove the blocks except for the first one
+		for(x = 1; x <= nextsearch; x++) {
+			$("#duplicater" + x).remove();
+			$("#name" + x).empty();
+			$("#id" + x).empty();
+			$("#age" + x).empty();
+			$("#modalDifficulty" + x).empty();
+			$("#modalextraData" + x).empty();
+			$("#modalgasLimit" + x).empty();
+			$("#modalgasUsed" + x).empty();
+			$("#modalhash" + x).empty();
+			$("#modallogsBloom" + x).empty();
+			$("#modalminer" + x).empty();
+			$("#modalmixhash" + x).empty();
+			$("#modalnonce" + x).empty();
+			$("#modalnumber" + x).empty();
+			$("#modalparentHash" + x).empty();
+			$("#modalreceiptsRoot" + x).empty();
+			$("#modalsha3Uncles" + x).empty();
+			$("#modalsize" + x).empty();
+			$("#modalstateRoot" + x).empty();
+			$("#modaltimestamp" + x).empty();
+			$("#modaltotalDifficulty" + x).empty();
+			$("#modaltransactions" + x).empty();
+			$("#modaltransactionsRoot" + x).empty();
+			$("#modaluncles" + x).empty();
+			console.log("Removed old blocks");
 		}
-		</script>
+		console.log("RES:" + ageTest.value);
+		key = 1;
+		var blockcount = 0;
+		nextsearch = 0;
+		elementloop = 0;
+		blocknumbers = [];
+		elements = [];
+		elementcount = 0;
+		function addID(key, test){
+			view.getID(key, function(worked, result){
+				ID.push(result.c["0"]);
+				console.log(result.c["0"])
+			});
+		}
+		function viewingBlockID(key, test) {	
+			view.getID(key, function(worked, result){
+				if(result.c["0"]){
+					ID.push(result.c["0"]);
+					viewingBlockAge(key, test);	
+					blockcount++;	
+				}else{
+					console.log("All keys found");
+					if(ID.length == 0) {
+						alert("No blocks found matching your search criteria.");
+					}
+					//TODO: call method that will draw blocks for user here!!!
+					var i;
+					elementloop = 0;
+					setTimeout(function(){  
+						for(i = 0; i < blocknumbers.length; i++) {
+							if(i == blocknumbers.length-1) {
+								newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+								elementloop+=20;
+							}else {
+								newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
+								elementloop+=20;
+								duplicate();
+							}
+						}
+					}, 1000);
+					seemore();
+					return;
+				}
+			})
+		}
+		function viewingBlockNum(key) {
+					view.getBlockNum(key, function(worked, result){
+							console.log(result.c["0"]);
+							blockNum.push(result.c["0"]);
+							setTimeout(function(){  
+							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+									if(!error){
+										console.log("FOUND BLOCK KEY: " + key);
+										var elementcount = 0;
+										for(const [key, value] of Object.entries(result)) {
+											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											
+											elements.push(`${value}`);
+											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											elementcount++;
+											
+										}
+									}
+									blockcount++;
+									
+
+									iterate++;
+								
+									console.log("END!!!!!!!!!!!!!!!!!");
+									
+									
+								});
+								}, 2);
+							})
+				}
+		function viewingBlockAge(key, test) {
+			view.getAge(key, function(worked, result){
+					if(result.c["0"] == test){
+						age.push(result.c["0"]);
+						viewingBlockName(key, test);
+						viewingBlockNum(key);
+						addID(key, test);
+						console.log(result.c["0"])
+						blocknumbers.push(key);	
+					}
+				viewingBlockID(key+1, test);
+			})
+		}
+
+		function viewingBlockName(key, test) {
+			view.getName(key, function(worked, result){
+				console.log(web3.toAscii(result));
+				name1.push(web3.toAscii(result));
+			})
+		}
+		viewingBlockID(key, Number(ageTest.value));
+	})
 		
-		<!-- Javascript Block Creation for Viewing Blocks on Chain -->
-		<script>
-			
+	//variable declarations
+	var difficulty = document.getElementById("name");
+	var extraData  = document.getElementById("id");
+	var gasLimit = document.getElementById("age");
+
+	
+	var i = 0;
+
+	//function to create a new block object to be displayed on page	
+	function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+		//set the values in the name, id, and age of the block to their corresponding values
+		$('#name' + i).text(removeSpecialChars(name));  
+		$('#id'+ i).text(id); 
+		$('#age'+ i).text(age); 
+		//push the values to the arrays to be displayed later
+		difficultyVals.push(difficulty);
+		extraDataVals.push(extraData);
+		gasLimitVals.push(gasLimit);
+		gasUsedVals.push(gasUsed);
+		hashVals.push(hash);
+		logsBloomVals.push(logsBloom);
+		minerVals.push(miner);
+		mixHashVals.push(mixHash);
+		nonceVals.push(nonce);
+		numberVals.push(number);
+		parentHashVals.push(parentHash);
+		receiptsRootVals.push(receiptsRoot);
+		sha3UnclesVals.push(sha3Uncles);
+		sizeVals.push(size);
+		stateRootVals.push(stateRoot);
+		timestampVals.push(timestamp);
+		totalDifficultyVals.push(totalDifficulty);
+		transactionsVals.push(transactions);
+		transactionsRootVals.push(transactionsRoot);
+		unclesVals.push(uncles);		
+	}
+	
+	function duplicate() {
+		var original = document.getElementById('duplicater' + nextsearch);
+		var clone = original.cloneNode(true); // "deep" clone
+		clone.id = "duplicater" + ++nextsearch; // there can only be one element with an ID
+	
+		//update IDs of children pre fields
+		clone.getElementsByTagName('pre')[0].id = "name" + nextsearch;
+		clone.getElementsByTagName('pre')[1].id = "id" + nextsearch;
+		clone.getElementsByTagName('pre')[2].id = "age" + nextsearch;
+		clone.getElementsByTagName('button')[0].id = "exit" + nextsearch;
+
+		original.parentNode.appendChild(clone); // appends child div to previous parent div
+		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
+	}
+
+//duplication of blocks for viewing the searched blocks on the UI
+function seemore() {
+	try {	
+		setTimeout(function(){  
+			$(".block").click(function(e) {
+				var duplicaterid = e.target.id; // gets id of target which is seemorebutton
+				//accessing block
+				var blockNumber = duplicaterid.substr(4, 5); //gets the block number
+				console.log("DUPLICATERID ------------->" + duplicaterid);
+				console.log("BLOCK NUMBER ------------->" + blockNumber);
+				//variable declarations
+				var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
+				var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
+				var idforModal = document.getElementById('id' + blockNumber).innerHTML;
+				var difficultyforModal = document.getElementById("modalDifficulty").innerHTML;
+				var extraDataforModal = document.getElementById("modalextraData").innerHTML;
+				var gasLimitforModal = document.getElementById("modalgasLimit").innerHTML;
+				var gasUsedforModal = document.getElementById("modalgasUsed").innerHTML;
+				var hashforModal = document.getElementById("modalhash").innerHTML;
+				var logsBloomforModal = document.getElementById("modallogsBloom").innerHTML;
+				var minerforModal = document.getElementById("modalminer").innerHTML;
+				var mixhashforModal = document.getElementById("modalmixHash").innerHTML;
+				var nonceforModal = document.getElementById("modalnonce").innerHTML;
+				var numberforModal = document.getElementById("modalnumber").innerHTML;
+				var parentHashforModal = document.getElementById("modalparentHash").innerHTML;
+				var receiptsRootforModal = document.getElementById("modalreceiptsRoot").innerHTML;
+				var sha3UnclesforModal = document.getElementById("modalsha3Uncles").innerHTML;
+				var sizeforModal = document.getElementById("modalsize").innerHTML;
+				var stateRootforModal = document.getElementById("modalstateRoot").innerHTML;
+				var timestampforModal = document.getElementById("modaltimestamp").innerHTML;
+				var totalDifficultyforModal = document.getElementById("modaltotalDifficulty").innerHTML;
+				var transactionsforModal = document.getElementById("modaltransactions").innerHTML;
+				var transactionsRootforModal = document.getElementById("modaltransactionsRoot").innerHTML;
+				var unclesforModal = document.getElementById("modaluncles").innerHTML ;
+				
+				//set the elements of the block to the element in its corresponding array
+				document.getElementById("modalName").innerHTML = name1[blockNumber];
+				document.getElementById("modalAge").innerHTML = age[blockNumber];
+				document.getElementById("modalID").innerHTML = ID[blockNumber];
+				document.getElementById("modalDifficulty").innerHTML = difficultyVals[blockNumber];
+				document.getElementById("modalextraData").innerHTML = extraDataVals[blockNumber];
+				document.getElementById("modalgasLimit").innerHTML = gasLimitVals[blockNumber];
+				document.getElementById("modalgasUsed").innerHTML = gasUsedVals[blockNumber];
+				document.getElementById("modalhash").innerHTML = hashVals[blockNumber];
+				document.getElementById("modallogsBloom").innerHTML = logsBloomVals[blockNumber];
+				document.getElementById("modalminer").innerHTML = minerVals[blockNumber];
+				document.getElementById("modalmixHash").innerHTML = mixHashVals[blockNumber];
+				document.getElementById("modalnonce").innerHTML = nonceVals[blockNumber];
+				document.getElementById("modalnumber").innerHTML = numberVals[blockNumber];
+				document.getElementById("modalparentHash").innerHTML = parentHashVals[blockNumber];
+				document.getElementById("modalreceiptsRoot").innerHTML = receiptsRootVals[blockNumber];
+				document.getElementById("modalsha3Uncles").innerHTML = sha3UnclesVals[blockNumber];
+				document.getElementById("modalsize").innerHTML = sizeVals[blockNumber];
+				document.getElementById("modalstateRoot").innerHTML = stateRootVals[blockNumber];
+				document.getElementById("modaltimestamp").innerHTML = timestampVals[blockNumber];
+				document.getElementById("modaltotalDifficulty").innerHTML = totalDifficultyVals[blockNumber];
+				document.getElementById("modaltransactions").innerHTML = transactionsVals[blockNumber];
+				document.getElementById("modaltransactionsRoot").innerHTML = transactionsRootVals[blockNumber];
+				document.getElementById("modaluncles").innerHTML = unclesVals[blockNumber];
+
+				$("#blockContent").modal("show").click(function () { // show the welcome page modal
+					$("#blockContent").modal('hide'); 
+				});
+				
+			});
+		}, 1000);
+	}catch(e) {
+
+	}
+}
+	
+</script>
+
+<script>
+//change pages when button is pressed
+	var output2 = document.getElementById('output2');
+	var printThis = "";
+function button(evt, tab){
+	
+	var i, x, tablinks;
+	x = document.getElementsByClassName("tab");
+	for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace("", ""); 
+		}
+		document.getElementById(tab).style.display = "block";
 		
-		
-		
-		</script>
-    </body>
+}
+</script>
+
+</body>
 </html>
 
 
