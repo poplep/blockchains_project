@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Collapsible sidebar using Bootstrap 3</title>
-         <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="style4.css">
-        <!-- Check browser - if its not firefox or chrome, then let the user know -->
-<script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blockchain UI</title>
+        <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style4.css">
+    <!-- Check browser - if its not firefox or chrome, then let the user know -->
+    <script>
         
         // original source: http://www.javascriptkit.com/script/script2/alertmsg.shtml
         // modified
@@ -144,6 +144,7 @@ body {
 }
 p {
     font-family: 'Pavanam', sans-serif;
+    font-size: 22px;
 }
 a, a:hover, a:focus {
     color: inherit;
@@ -185,6 +186,7 @@ i, span {
     background: rgb(49, 57, 77);
     color: #fff;
     transition: all 0.3s;
+    font-size: 18px;
 }
 #sidebar.active {
     min-width: 100px;
@@ -347,126 +349,127 @@ a.article, a.article:hover {
         display: none;
     }
 }
-    </style>
-    <body>
-        <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                
-                <div class="sidebar-header">
-                    <h3><a href="HomePage.html">Home</a></h3>
-                    <strong>BC</strong>
-                </div>
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                            
-                            Blockchains
-                        </a>
-                        <ul class="collapse list-unstyled in" id="homeSubmenu">
-                            <li><a href="Blockchain.html">About the Blockchain</a></li>
-                            <li><a href="BlockchainFAQ.html">FAQ</a></li>
-                            <li><a href="BlockchainAbout.html">About our Application</a></li>
-                            <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
-                            <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            
-                            Blockchain Functionality
-                        </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="AddBlock.html">Add a Block</a></li>
-                            <li><a href="SearchBlock.html">Search for a Block</a></li>
-                            <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
-                            <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
-                            <li><a href="BlockStats.html">Blockchain Statistics</a></li>
-                        </ul>
-                    </li>
-                  
-                    <li>
-                            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
-                                
-                                Blockchain Alternatives
-                            </a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu2">
-                                <li><a href="HashgraphAbout.html">Hashgraph</a></li>
-                                <li><a href="TangleAbout.html">Tangle</a></li>
-                                <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
-                                <li><a href="CordaAbout.html">Corda</a></li>
-                                <li><a href="DCSFAQ.html">FAQ</a></li>
-                                <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
-                                <li><a href="Comparison.html">Comparison</a></li>
-                            </ul>
-                        </li>
-                </ul>
-                <ul class="list-unstyled CTAs">
-                    <li><a href="Help.html" class="download">Help</a></li>
-                    <li><a href="ReportBug.html" class="article">Report a Bug</a></li>
-                    <li><a href="Tutorial.html" class="article">Tutorial</a></li>
-                   
-                </ul>
-                <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                            <span>Hide</span>
-                        </button>
-                    </div>
-            </nav>
-            <!-- Page Content Holder -->
-            <div id="content">
-                    <div class="w3-container"> 
-                            <h1 style="color: white">Welcome</h1>
-                        </div>
-                <div style="padding-left: 10px">
-                        <p>Welcome to the Blockchain UI. This application provides a simple graphical interface for you to interact with a private blockchain.</p>
-                        <p>Before you start, you need to log into the following Metamask account in order to have access to our blockchain and test Ether:</p>
-                        <p><b>account:</b> 0x13648789687689dea62E4Eee50e5EBF5dcC7bce0 <br><b>password:</b> 123456789</p>
-                        <p><b>private key:</b> decbe50a981aa43f079487fdd44383cb895c841c5c6b7d56c79be6c43818ed42</p>
-                        <p>Below are some of the basic tasks that can be done on a blockchain:</p>
-                        <div class="gallery">
-                            <a href="AddBlock.html">
-                              <img src="addblock.png" width="1000" height="1000">
-                            </a>
-                            <div class="desc">Add a Block</div>
-                          </div>
-                          
-                          <div class="gallery">
-                            <a href="SearchBlock.html">
-                              <img src="searchblock.png" width="1000" height="1000">
-                            </a>
-                            <div class="desc">Search for a Block</div>
-                          </div>
-                          
-                          <div class="gallery">
-                            <a href="ViewBlockAdvanced.html">
-                              <img src="viewblock.png" width="1000" height="1000">
-                            </a>
-                            <div class="desc">View the Blockchain</div>
-                          </div>
-                          <div class="gallery">
-                            <a href="BlockStats.html">
-                              <img src="blockstats.png" width="1000" height="1000">
-                            </a>
-                            <div class="desc">Blockchain Statistics</div>
-                          </div>
-                </div>
-               
+</style>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            
+            <div class="sidebar-header">
+                <h3><a href="HomePage.html">Home</a></h3>
+                <strong>BC</strong>
             </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        
+                        Blockchains
+                    </a>
+                    <ul class="collapse list-unstyled in" id="homeSubmenu">
+                        <li><a href="Blockchain.html">About the Blockchain</a></li>
+                        <li><a href="BlockchainFAQ.html">FAQ</a></li>
+                        <li><a href="BlockchainAbout.html">About our Application</a></li>
+                        <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
+                        <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
+                    </ul>
+                </li>
+                <li>
+                    
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                        
+                        Blockchain Functionality
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="AddBlock.html">Add a Block</a></li>
+                        <li><a href="SearchBlock.html">Search for a Block</a></li>
+                        <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
+                        <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
+                        <li><a href="BlockStats.html">Blockchain Statistics</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
+                            
+                            Blockchain Alternatives
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu2">
+                            <li><a href="HashgraphAbout.html">Hashgraph</a></li>
+                            <li><a href="TangleAbout.html">Tangle</a></li>
+                            <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
+                            <li><a href="CordaAbout.html">Corda</a></li>
+                            <li><a href="DCSFAQ.html">FAQ</a></li>
+                            <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
+                            <li><a href="Comparison.html">Comparison</a></li>
+                        </ul>
+                    </li>
+            </ul>
+            <ul class="list-unstyled CTAs">
+                <li><a href="Help.html" class="download">Help</a></li>
+                <li><a href="ReportBug.html" class="article">Report a Bug</a></li>
+                <li><a href="Tutorial.html" class="article">Tutorial</a></li>
+                
+            </ul>
+            <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                        <span>Hide</span>
+                    </button>
+                </div>
+        </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+                <div class="w3-container"> 
+                        <h1 style="color: white">Welcome</h1>
+                    </div>
+            <div style="padding-left: 10px">
+                <br>
+                    <p>Welcome to the Blockchain UI. This application provides a simple graphical interface for you to interact with a private blockchain.</p>
+                    <p>Before you start, you need to log into the following Metamask account in order to have access to our blockchain and test Ether:</p>
+                    <p><b>account:</b> 0x13648789687689dea62E4Eee50e5EBF5dcC7bce0 <b>password:</b> 123456789 <br> <b>private key:</b> decbe50a981aa43f079487fdd44383cb895c841c5c6b7d56c79be6c43818ed42</p>
+                   
+                    <p>Below are some of the basic tasks that can be done on a blockchain:</p>
+                    <div class="gallery">
+                        <a href="AddBlock.html">
+                            <img src="addblock.png" width="1000" height="1000">
+                        </a>
+                        <div class="desc">Add a Block</div>
+                        </div>
+                        
+                        <div class="gallery">
+                        <a href="SearchBlock.html">
+                            <img src="searchblock.png" width="1000" height="1000">
+                        </a>
+                        <div class="desc">Search for a Block</div>
+                        </div>
+                        
+                        <div class="gallery">
+                        <a href="ViewBlockAdvanced.html">
+                            <img src="viewblock.png" width="1000" height="1000">
+                        </a>
+                        <div class="desc">View the Blockchain</div>
+                        </div>
+                        <div class="gallery">
+                        <a href="BlockStats.html">
+                            <img src="blockstats.png" width="1000" height="1000">
+                        </a>
+                        <div class="desc">Blockchain Statistics</div>
+                        </div>
+            </div>
+            
         </div>
-        <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
-    </body>
+    </div>
+    <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+        </script>
+</body>
 </html>
 
 

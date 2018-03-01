@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Collapsible sidebar using Bootstrap 3</title>
+        <title>Blockchain UI</title>
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
@@ -450,93 +450,95 @@ a.article, a.article:hover {
             </nav>
             <!-- Page Content Holder -->
             <div id="content">
-                    <div class="w3-container" style= "margin-left:-1.5%">
+                    <div class="w3-container" >
 							<h1 style="color: white">Comparison<img src ="ask.png" style="height: 50px; width: 50px" id="question"></h1>
 						</div>
 						<br>
 				
 				
+                <div style="padding-left: 20px">
+                        <table style="width:100%">
 				
-				<table style="width:100%">
+                                <tr>
+                                    <th>Characteristic</th>
+                                    <th>Blockchain</th>
+                                    <th>Hashgraph</th> 
+                                    <th>Tangle</th>
+                                    <th>Hyperledger</th>
+                                    <th>Corda</th>
+                              </tr>
+                            
+                              <tr>
+                                <td>Description of Platform</td> <!-- Characteristic-->
+                                <td>Decentralized Tamperproof Ledger</td>  <!-- Characteristic - Blockchain -->
+                                <td>Directed Acyclic Graph (DAG)</td><!-- Characteristic - Hashgraph -->
+                                <td>Directed Acyclic Graph (DAG)</td><!-- Characteristic - Tangle -->
+                                <td>TBD</td><!-- Characteristic - Hyperledger -->
+                                <td>TBD</td><!-- Characteristic - Corda -->
+                              </tr>
+                            
+                              <tr>
+                                <td>Governance</td> <!-- Characteristic-->
+                                <td>Satoshi Nakamoto</td>  <!-- Characteristic - Blockchain -->
+                                <td>Swirlds</td><!-- Characteristic - Hashgraph -->
+                                <td>IOTA</td><!-- Characteristic - Tangle -->
+                                <td>Linux Foundation</td><!-- Characteristic - Hyperledger -->
+                                <td>R3</td><!-- Characteristic - Corda -->
+                              </tr>
+                              <tr>
+                                <td>Mode of Operation</td> <!-- Characteristic-->
+                                <td>Private (Permissioned) or Public (Non-Permissioned)</td>  <!-- Characteristic - Blockchain -->
+                                <td>Private (Permissioned)</td><!-- Characteristic - Hashgraph -->
+                                <td>TBD</td><!-- Characteristic - Tangle -->
+                                <td>Private (Permissioned)</td><!-- Characteristic - Hyperledger -->
+                                <td>Private (Permissioned)</td><!-- Characteristic - Corda -->
+                              </tr>
+                              <tr>
+                                <td>Consensus Mechanism</td> <!-- Characteristic-->
+                                <td>Proof-of-Work, Proof-of-Stake, Proof-of-Authority<br> Ledger Level</td>  <!-- Characteristic - Blockchain -->
+                                <td>Gossip About Gossip, Virtual Voting</td><!-- Characteristic - Hashgraph -->
+                                <td>TBD</td><!-- Characteristic - Tangle -->
+                                <td>Broad understanding of consensus that allows multiple approaches. <br> Transaction Level</td><!-- Characteristic - Hyperledger -->
+                                <td>Specific understanding of consensus (i.e. notary nodes) <br> Transaction Level</td><!-- Characteristic - Corda -->
+                              </tr>
+                              <tr>
+                                <td>Byzantine Type</td> <!-- Characteristic-->
+                                <td>Not Byzantine</td>  <!-- Characteristic - Blockchain -->
+                                <td>Asynchronous Byzantine Fault Tolerant</td><!-- Characteristic - Hashgraph -->
+                                <td>TBD</td><!-- Characteristic - Tangle -->
+                                <td>TBD</td><!-- Characteristic - Hyperledger -->
+                                <td>TBD</td><!-- Characteristic - Corda -->
+                              </tr>
+                            
+                              <tr>
+                                <td>Smart Contracts</td> <!-- Characteristic-->
+                                <td>Solidity</td>  <!-- Characteristic - Blockchain -->
+                                <td>TBD</td><!-- Characteristic - Hashgraph -->
+                                <td>TBD</td><!-- Characteristic - Tangle -->
+                                <td>Go, Java</td><!-- Characteristic - Hyperledger -->
+                                <td>Kotlin, Java, Legal Prose</td><!-- Characteristic - Corda -->
+                              </tr>
+                            
+                              <tr>
+                                <td>Currency</td> <!-- Characteristic-->
+                                <td>Varies by Platform (e.g. Ether for Ethereum)</td>  <!-- Characteristic - Blockchain -->
+                                <td>None</td><!-- Characteristic - Hashgraph -->
+                                <td>TBD</td><!-- Characteristic - Tangle -->
+                                <td>None</td><!-- Characteristic - Hyperledger -->
+                                <td>None</td><!-- Characteristic - Corda -->
+                              </tr>
+                            
+                              <tr>
+                                <td>Attack Resistance</td> <!-- Characteristic-->
+                                <td>Denial of Service (DoS)</td>  <!-- Characteristic - Blockchain -->
+                                <td>Denial of Service (DoS) and Sybil</td><!-- Characteristic - Hashgraph -->
+                                <td>TBD</td><!-- Characteristic - Tangle -->
+                                <td>TBD</td><!-- Characteristic - Hyperledger -->
+                                <td>TBD</td><!-- Characteristic - Corda -->
+                              </tr>
+                            </table>
+                </div>
 				
-					<tr>
-						<th>Characteristic</th>
-						<th>Blockchain</th>
-						<th>Hashgraph</th> 
-						<th>Tangle</th>
-						<th>Hyperledger</th>
-						<th>Corda</th>
-				  </tr>
-				
-				  <tr>
-					<td>Description of Platform</td> <!-- Characteristic-->
-					<td>Decentralized Tamperproof Ledger</td>  <!-- Characteristic - Blockchain -->
-					<td>Directed Acyclic Graph (DAG)</td><!-- Characteristic - Hashgraph -->
-					<td>Directed Acyclic Graph (DAG)</td><!-- Characteristic - Tangle -->
-					<td>TBD</td><!-- Characteristic - Hyperledger -->
-					<td>TBD</td><!-- Characteristic - Corda -->
-				  </tr>
-				
-				  <tr>
-					<td>Governance</td> <!-- Characteristic-->
-					<td>Satoshi Nakamoto</td>  <!-- Characteristic - Blockchain -->
-					<td>Swirlds</td><!-- Characteristic - Hashgraph -->
-					<td>IOTA</td><!-- Characteristic - Tangle -->
-					<td>Linux Foundation</td><!-- Characteristic - Hyperledger -->
-					<td>R3</td><!-- Characteristic - Corda -->
-				  </tr>
-				  <tr>
-					<td>Mode of Operation</td> <!-- Characteristic-->
-					<td>Private (Permissioned) or Public (Non-Permissioned)</td>  <!-- Characteristic - Blockchain -->
-					<td>Private (Permissioned)</td><!-- Characteristic - Hashgraph -->
-					<td>TBD</td><!-- Characteristic - Tangle -->
-					<td>Private (Permissioned)</td><!-- Characteristic - Hyperledger -->
-					<td>Private (Permissioned)</td><!-- Characteristic - Corda -->
-				  </tr>
-				  <tr>
-					<td>Consensus Mechanism</td> <!-- Characteristic-->
-					<td>Proof-of-Work, Proof-of-Stake, Proof-of-Authority<br> Ledger Level</td>  <!-- Characteristic - Blockchain -->
-					<td>Gossip About Gossip, Virtual Voting</td><!-- Characteristic - Hashgraph -->
-					<td>TBD</td><!-- Characteristic - Tangle -->
-					<td>Broad understanding of consensus that allows multiple approaches. <br> Transaction Level</td><!-- Characteristic - Hyperledger -->
-					<td>Specific understanding of consensus (i.e. notary nodes) <br> Transaction Level</td><!-- Characteristic - Corda -->
-				  </tr>
-				  <tr>
-					<td>Byzantine Type</td> <!-- Characteristic-->
-					<td>Not Byzantine</td>  <!-- Characteristic - Blockchain -->
-					<td>Asynchronous Byzantine Fault Tolerant</td><!-- Characteristic - Hashgraph -->
-					<td>TBD</td><!-- Characteristic - Tangle -->
-					<td>TBD</td><!-- Characteristic - Hyperledger -->
-					<td>TBD</td><!-- Characteristic - Corda -->
-				  </tr>
-				
-				  <tr>
-					<td>Smart Contracts</td> <!-- Characteristic-->
-					<td>Solidity</td>  <!-- Characteristic - Blockchain -->
-					<td>TBD</td><!-- Characteristic - Hashgraph -->
-					<td>TBD</td><!-- Characteristic - Tangle -->
-					<td>Go, Java</td><!-- Characteristic - Hyperledger -->
-					<td>Kotlin, Java, Legal Prose</td><!-- Characteristic - Corda -->
-				  </tr>
-				
-				  <tr>
-					<td>Currency</td> <!-- Characteristic-->
-					<td>Varies by Platform (e.g. Ether for Ethereum)</td>  <!-- Characteristic - Blockchain -->
-					<td>None</td><!-- Characteristic - Hashgraph -->
-					<td>TBD</td><!-- Characteristic - Tangle -->
-					<td>None</td><!-- Characteristic - Hyperledger -->
-					<td>None</td><!-- Characteristic - Corda -->
-				  </tr>
-				
-				  <tr>
-					<td>Attack Resistance</td> <!-- Characteristic-->
-					<td>Denial of Service (DoS)</td>  <!-- Characteristic - Blockchain -->
-					<td>Denial of Service (DoS) and Sybil</td><!-- Characteristic - Hashgraph -->
-					<td>TBD</td><!-- Characteristic - Tangle -->
-					<td>TBD</td><!-- Characteristic - Hyperledger -->
-					<td>TBD</td><!-- Characteristic - Corda -->
-				  </tr>
-				</table>
         </div>
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

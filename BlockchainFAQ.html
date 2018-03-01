@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Collapsible sidebar using Bootstrap 3</title>
+        <title>Blockchain UI</title>
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
@@ -55,6 +55,7 @@ body {
 }
 p {
     font-family: 'Pavanam', sans-serif;
+    font-size: 20px;
 }
 a, a:hover, a:focus {
     color: inherit;
@@ -260,6 +261,35 @@ a.article, a.article:hover {
 }
     </style>
     <body>
+        <!-- Modal Window -->
+        <div class="modal fade" id="QuestionForm" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content" id="AddBlockContent" >
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Ask a Question!</h4>
+                    </div>
+                    <div class="modal-body">
+                          <form action="https://formspree.io/vsoares1@umassd.edu"  method="POST">
+                              <input type="text" name="Bug Description: " style="height: 200px; width: 550px">
+                              
+                              <input type="hidden" name="_next" value="http://134.88.13.89/FAQ.html" />
+                              <div class="modal-footer">
+                                      <input type="submit" value="Send">
+                                  <button class="btn btn-default" id="exit1" data-dismiss="modal">Cancel</button>
+                  
+                                </div>
+                          </form>
+                    </div>
+                   
+                  </div>
+                  
+                </div>
+              </div>
+              
+            </div>
         <div class="wrapper">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
@@ -477,6 +507,15 @@ a.article, a.article:hover {
                  });
              });
          </script>
+         <script>
+                var ask = document.getElementById("question");
+                
+                ask.addEventListener('click', function() {
+                    $("#QuestionForm").modal("show");
+                
+                });
+                
+                  </script>
     </body>
 </html>
 
