@@ -9,8 +9,6 @@
         <title>Blockchain UI</title>
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="style4.css">
         <!-- Check browser - if its not firefox or chrome, then let the user know -->
 <script>
         
@@ -426,16 +424,22 @@ a.article, a.article:hover {
 								<form action="https://formspree.io/vsoares1@umassd.edu"  method="POST">
 									
 									<textarea id="textbox" type="text" class="textbox" name="Bug Description: " style="height: 500px; width: 1043px"></textarea><br>
-									<input type="submit" value="Send" id="Submitting">
-									<input type="hidden" name="_next" value="http://134.88.13.89/ReportBug.html" />
-								
+                                    <input type="submit" value="Send" id="Submitting">
+                                
+                                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/ReportBug.html"/>
+                                    
 								</form>
-		
+                                
                         </div>
 						
 			  
 				  </div>
         </div>
+        <script>
+            function submissionSending() {
+                alert("Your report will now be submitted. We are forwarding you to Formspree which will let the report be sent to us.");
+            }
+        </script>
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
@@ -471,11 +475,10 @@ a.article, a.article:hover {
 				 if($("#textbox").val().length == 0) {
 					 alert("No input received. Please tell us what's happening and click Send.");
 					 return;
-				 }
-				 setTimeout(function() {
-					 window.location.replace("HomePage.html"); // go back to the home page
-					 console.log("REDIRECTED");
-				 }, 30000);
+				 }else {
+                     submissionComplete();
+                 }
+				
 			 });
 		 
 		 </script>
