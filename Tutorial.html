@@ -115,6 +115,21 @@
             width: 100%;
             height: 100%;
         }
+
+        .modal{
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+        }
+
+        
+
 </style>
 <head>
 
@@ -126,7 +141,7 @@
 <div class="container">
   
 	<!-- Modal Window -->
-	<div class="modal fade" id="Welcome" role="dialog">
+	<div class="modal" id="Welcome" role="dialog">
 	  <div class="modal-dialog">
 	  
 		<!-- Modal content-->
@@ -156,7 +171,7 @@
 <div class="container">
   
         <!-- Modal Window -->
-        <div class="modal fade" id="AddBlock" role="dialog">
+        <div class="modal" id="AddBlock" role="dialog">
           <div class="modal-dialog">
           
             <!-- Modal content-->
@@ -185,7 +200,7 @@
   <div class="container">
   
         <!-- Modal Window -->
-        <div class="modal fade" id="SearchBlock" role="dialog">
+        <div class="modal" id="SearchBlock" role="dialog">
           <div class="modal-dialog">
           
             <!-- Modal content-->
@@ -213,7 +228,7 @@
 <div class="container">
   
         <!-- Modal Window -->
-        <div class="modal fade" id="ViewBlock" role="dialog">
+        <div class="modal" id="ViewBlock" role="dialog">
           <div class="modal-dialog">
           
             <!-- Modal content-->
@@ -242,7 +257,7 @@
 <div class="container">
   
         <!-- Modal Window -->
-        <div class="modal fade" id="BlockStats" role="dialog">
+        <div class="modal" id="BlockStats" role="dialog">
           <div class="modal-dialog">
           
             <!-- Modal content-->
@@ -252,10 +267,9 @@
                 <h4 class="modal-title">Viewing Blockchain Statistics</h4>
               </div>
               <div class="modal-body">
-                <p>Let's get started. With this application, you can add a block to our blockchain, view the blocks, search for a specific block, and view
-                    statistics about the blockchain. </p>
+                <p>This page shows you the statistics about your blockchain, such as the number of blocks, when the last block was added, and the average time it takes to add a block to the blockchain.</p>
     
-                <p>First, click "Continue" to be brought to the "Add Block" page to add your first block to the blockchain.</p>
+                <p>Click exit to finish the tutorial.</p>
               </div>
               <div class="modal-footer">
                <button class="btn btn-default" id="exit4" data-dismiss="modal">Exit</button>
@@ -289,11 +303,11 @@ function button(evt, tab){
 
 <script>
   //modal box divs
-  var Welcome = document.getElementById("WelcomeContent");
-  var AddBlock = document.getElementById("AddBlockContent");
-  var ViewBlock = document.getElementById("ViewBlockContent");
-  var SearchBlock = document.getElementById("SearchBlockContent");
-  var BlockStats = document.getElementById("BlockStatsContent");
+  var Welcome = document.getElementById("Welcome");
+  var AddBlock = document.getElementById("AddBlock");
+  var ViewBlock = document.getElementById("ViewBlock");
+  var SearchBlock = document.getElementById("SearchBlock");
+  var BlockStats = document.getElementById("BlockStats");
   var exit0 = document.getElementById("exit0");
   var exit1 = document.getElementById("exit1");
   var exit2 = document.getElementById("exit2");
@@ -306,8 +320,7 @@ function button(evt, tab){
 
    
      $("#displaypage").load("HomePage.html"); // show the home page
- 
-    setTimeout(function(){  
+
       exit0.addEventListener('click', function() {// if the exit tutorial button is clicked
             window.location.replace("HomePage.html"); // go back to the home page
             return false;
@@ -332,68 +345,69 @@ function button(evt, tab){
           window.location.replace("HomePage.html"); // go back to the home page
           return false;
         });
+
+
+
+
+
+
+
        nextAdd.addEventListener('click', function() { //if the next button for the welcome modal is clicked
-            $("#displaypage").load("AddBlock.html"); // show the add block page
+          Welcome.style.display = "none";
+          $("#displaypage").load("AddBlock.html"); // show the add block page
+          AddBlock.style.display = "block";
 
         });
+        nextSearch.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+          AddBlock.style.display = "none";
+          $("#displaypage").load("SearchBlock.html"); // show the add block page
+          SearchBlock.style.display = "block";
+        })
+
+        nextView.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+          SearchBlock.style.display = "none";
+          $("#displaypage").load("ViewBlockAdvanced.html"); // show the add block page
+          ViewBlock.style.display = "block";
+
+        })
 
         nextStats.addEventListener('click', function() { //if the next button for the welcome modal is clicked
+          SearchBlock.style.display = "none";
             $("#displaypage").load("BlockStats.html"); // show the add block page
+            BlockStats.style.display = "block";
 
           })
 
-        nextView.addEventListener('click', function() { //if the next button for the welcome modal is clicked
-          $("#displaypage").load("ViewBlock.html"); // show the add block page
-
-        })
-
-        nextSearch.addEventListener('click', function() { //if the next button for the welcome modal is clicked
-          $("#displaypage").load("SearchBlock.html"); // show the add block page
-
-        })
-
         
-        $("#Welcome").modal("show").click(function () { // show the welcome page modal
+        // Get the <span> element that closes the modal
+      var WelcomeClose = document.getElementsByClassName("close")[0];
+       WelcomeClose.onclick = function() {
+            Welcome.style.display = "none";
+        }
 
-              $("#Welcome").modal('hide'); // hide the welcome modal
-            $("#AddBlock").modal("show").click(function () { // show the add block modal
-             
-              $("#Welcome").modal('hide'); // hide the welcome modal
-                $("#displaypage").load("SearchBlock.html"); // show the search block page
-              
-                $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
-                
-                $("#SearchBlock").modal("show").click(function () { // show the search block modal
-                  
-                  $("#AddBlock").modal('hide'); // when clicked, hide the add block modal 
-                  $("#displaypage").load("ViewBlockBasic.html"); // show the basic view block page
-                  
-                    $("#SearchBlock").modal('hide');//hide the search block modal
-                    
-                    $("#ViewBlock").modal("show").click(function () { // show the view block modal
-                      
-                      $("#SearchBlock").modal('hide');//hide the search block modal
-                        $("#SearchBlock").modal('hide');//hide the search block modal
-                        $("#displaypage").load("BlockStats.html"); // show the blockchain statistics page
-                        
-                        $("#ViewBlock").modal('hide'); // hide the view block modal
-                        
-                        $("#BlockStats").modal("show").click(function () { // show the blockstats modal
-                          
-                          $("#ViewBlock").modal('hide'); // hide the view block modal
-                          $("#ViewBlock").modal('hide'); // hide the view block modal
-                          
-                          $("#BlockStats").modal('hide'); // hide the blockchain stats modal
-                            window.location.replace("HomePage.html"); // go back to the home page
-                        });
-                  });
-            });
-          });
+        var AddClose = document.getElementsByClassName("close")[1];
+       AddClose.onclick = function() {
+            AddBlock.style.display = "none";
+        }
 
+        var ViewClose = document.getElementsByClassName("close")[2];
+       ViewClose.onclick = function() {
+            ViewBlock.style.display = "none";
+        }
 
-        });
-    }, 1000);
+        var SearchClose = document.getElementsByClassName("close")[3];
+       SearchClose.onclick = function() {
+            SearchBlock.style.display = "none";
+        }
 
+        var StatsClose = document.getElementsByClassName("close")[4];
+       StatsClose.onclick = function() {
+            BlockStats.style.display = "none";
+        }
+        setTimeout(function() {
+          Welcome.style.display = "block";
+        }, 1000);
+        
 </script>
 </body>
 </html>
