@@ -738,11 +738,13 @@ function button(evt, tab){
 			alert('Not A Valid ID');
 			return;
 		}
-		
+		var name = document.getElementById('name').value;
+		name = name.replace(/  +/g, ' ');
+		console.log(name);
 		//take value in the input and send it via contract
 		try {
 			//try to add the data to the contract
-			addingBlock.addData(String(document.getElementById('name').value), age.value, id.value, function(worked, result){
+			addingBlock.addData(String(name), age.value, id.value, function(worked, result){
 				if(!worked){
 					hash = result; //save the result to the hash
 					console.log(hash); // print the hash
