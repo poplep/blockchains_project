@@ -920,7 +920,7 @@ a.article, a.article:hover {
 						console.log("All keys found"); //all blocks were found that match the search parameters, so proceed to print
 
 						//no blocks were found
-						if(ID.length == 0) {
+						if(blocknumbers.length == 0) {
 							alert("No blocks found matching your search criteria.");
 						}
 						//print the blocks
@@ -1117,7 +1117,7 @@ a.article, a.article:hover {
 						viewingBlockID(key + 1, Number(test));
 					}else{
 						console.log("All keys found");
-						if(ID.length == 0) {
+						if(blocknumbers.length == 0) {
 							alert("No blocks found matching your search criteria.");
 						}
 						//TODO: call method that will draw blocks for user here!!!
@@ -1222,7 +1222,7 @@ a.article, a.article:hover {
 
 			if(ageTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
-			return;
+				return;
 			}
 		//clearing old blocks before executing search
 		var x;
@@ -1301,7 +1301,9 @@ a.article, a.article:hover {
 					blockcount++;	
 				}else{
 					console.log("All keys found");
-					if(ID.length == 0) {
+					console.log(ID.length);
+					console.log(blocknumbers.length);
+					if(blocknumbers.length == 0) {
 						alert("No blocks found matching your search criteria.");
 					}
 					//TODO: call method that will draw blocks for user here!!!
