@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <title>Blockchain UI</title>
@@ -13,6 +14,32 @@
 
 
 
+<!-- Style for the tile buttons -->
+<style>
+	div.gallery {
+		margin: 5px;
+		border: 1px solid #ccc;
+		float: left;
+		width: 1000px;
+	}
+	
+	div.gallery:hover {
+		border: 1px solid #777;
+	}
+	
+	div.gallery img {
+		width: 100%;
+		height: 500px;
+	}
+	
+	div.desc {
+		padding: 15px;
+		text-align: center;
+		background-color: rgb(49, 57, 77);
+		color: white;
+
+	}
+	</style>
 
 <!-- Overall Page Styling -->
 <style>
@@ -90,9 +117,20 @@
             height: 100%;
         }
 
-      .modal-body {
-        background: white;
-      }
+        .modal{
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+        }
+
+        
+
 </style>
 <head>
 
@@ -159,38 +197,9 @@
         
       </div>
 
-
-      <!-- Search Tutorial Window -->
-<div class="container">
+  <!-- AddBlock Tutorial Window -->
+  <div class="container">
   
-<<<<<<< HEAD
-	<!-- Modal Window -->
-	<div class="modal fade" id="SearchBlock" role="dialog">
-	  <div class="modal-dialog">
-	  
-		<!-- Modal content-->
-		<div class="modal-content" id="SearchBlockContent" data-dismiss="modal">
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title">Searching for a Block</h4>
-		  </div>
-		  <div class="modal-body">
-        <p>To search for a block, type in the transaction hash of the block you want to find and click "Submit". Let's continue to Viewing the Blockchain.</p>
-
-		  </div>
-		  <div class="modal-footer">
-			<button class="btn btn-default" id="nextView" >View the Blockchain</button>
-      <button class="btn btn-default" id="exit2" data-dismiss="modal">Exit Tutorial</button>
-  
-    </div>
-		</div>
-		
-	  </div>
-	</div>
-	
-  </div>
-
-=======
         <!-- Modal Window -->
         <div class="modal" id="SearchBlock" role="dialog">
           <div class="modal-dialog">
@@ -208,8 +217,14 @@
               <div class="modal-footer">
                <button class="btn btn-default" id="nextView" data-dismiss="modal">View the Blockchain</button>
                <button class="btn btn-default" id="exit2" data-dismiss="modal">Exit Tutorial</button>
->>>>>>> 26330404f67136d43fee783d77bc0ab3c5e3f303
 
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
       <!-- Welcome Tutorial Window -->
 <div class="container">
   
@@ -334,10 +349,10 @@ function button(evt, tab){
 
 
 
-        nextView.addEventListener('click', function() { //if the next button for the welcome modal is clicked
-          $("#displaypage").load("ViewBlockAdvanced.html"); // show the add block page
 
-        });
+
+
+
        nextAdd.addEventListener('click', function() { //if the next button for the welcome modal is clicked
           Welcome.style.display = "none";
           $("#displaypage").load("AddBlock.html"); // show the add block page
@@ -348,21 +363,21 @@ function button(evt, tab){
           AddBlock.style.display = "none";
           $("#displaypage").load("SearchBlock.html"); // show the add block page
           SearchBlock.style.display = "block";
-        });
+        })
 
         nextView.addEventListener('click', function() { //if the next button for the welcome modal is clicked
           SearchBlock.style.display = "none";
           $("#displaypage").load("ViewBlockAdvanced.html"); // show the add block page
           ViewBlock.style.display = "block";
 
-        });
+        })
 
         nextStats.addEventListener('click', function() { //if the next button for the welcome modal is clicked
           SearchBlock.style.display = "none";
             $("#displaypage").load("BlockStats.html"); // show the add block page
             BlockStats.style.display = "block";
 
-          });
+          })
 
         
         // Get the <span> element that closes the modal
@@ -390,7 +405,6 @@ function button(evt, tab){
        StatsClose.onclick = function() {
             BlockStats.style.display = "none";
         }
-
         setTimeout(function() {
           Welcome.style.display = "block";
         }, 1000);
