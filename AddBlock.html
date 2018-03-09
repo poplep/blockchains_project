@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Blockchain UI</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Blockchain UI</title>
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Check browser - if its not firefox or chrome, then let the user know -->
 
     </head>
     <!-- Style for the tile buttons -->
@@ -344,69 +343,74 @@ a.article, a.article:hover {
     </style>
     <body>
         <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                
-                <div class="sidebar-header">
-                    <h3><a href="HomePage.html">Home</a></h3>
-					<strong><a href="HomePage.html">BC</a></strong>                </div>
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                            
-                            Blockchains
-                        </a>
-                        <ul class="collapse list-unstyled in" id="homeSubmenu">
-                            <li><a href="Blockchain.html">About the Blockchain</a></li>
-                            <li><a href="BlockchainFAQ.html">FAQ</a></li>
-                            <li><a href="BlockchainAbout.html">About our Application</a></li>
-                            <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
-                            <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            
-                            Blockchain Functionality
-                        </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="AddBlock.html">Add a Block</a></li>
-                            <li><a href="SearchBlock.html">Search for a Block</a></li>
-                            <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
-                            <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
-                            <li><a href="BlockStats.html">Blockchain Statistics</a></li>
-                        </ul>
-                    </li>
-                  
-                    <li>
-                            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
-                                
-                                Blockchain Alternatives
-                            </a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu2">
-                                <li><a href="HashgraphAbout.html">Hashgraph</a></li>
-                                <li><a href="TangleAbout.html">Tangle</a></li>
-                                <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
-                                <li><a href="CordaAbout.html">Corda</a></li>
-                                <li><a href="DCSFAQ.html">FAQ</a></li>
-                                <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
-                                <li><a href="Comparison.html">Comparison</a></li>
-                            </ul>
-                        </li>
-                </ul>
-                <ul class="list-unstyled CTAs">
-                    <li><a href="Help.html" class="download">Help</a></li>
-                    <li><a href="ReportBug.html" class="download">Report a Bug</a></li>
-                    <li><a href="Tutorial.html" class="download">Tutorial</a></li>
-                   
-                </ul>
-                <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                            <span>Hide</span>
-                        </button>
-                    </div>
-            </nav>
+			<!-- Sidebar Holder -->
+			<nav id="sidebar">
+				
+				<div class="sidebar-header">
+					<h3><a href="HomePage.html">Home</a></h3>
+					<strong><a href="HomePage.html">BC</a></strong>
+				</div>
+				<ul class="list-unstyled components">
+					<li class="active">
+						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+							
+							Blockchains
+						</a>
+						<ul class="collapse list-unstyled in" id="homeSubmenu">
+							<li><a href="Blockchain.html">About the Blockchain</a></li>
+							<li><a href="BlockchainFAQ.html">FAQ</a></li>
+							<li><a href="BlockchainAbout.html">About our Application</a></li>
+							<li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
+							<li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
+						</ul>
+					</li>
+					<li>
+						
+						<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+							
+							Blockchain Functionality
+						</a>
+						<ul class="collapse list-unstyled" id="pageSubmenu">
+							<li><a href="AddBlock.html">Add a Block</a></li>
+							<li><a href="SearchBlock.html">Search for a Block</a></li>
+							<li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
+							<li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
+							<li><a href="BlockStats.html">Blockchain Statistics</a></li>
+						</ul>
+					</li>
+					
+					<li>
+							<a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
+								
+								Blockchain Alternatives
+							</a>
+							<ul class="collapse list-unstyled" id="pageSubmenu2">
+								<li><a href="HashgraphAbout.html">Hashgraph</a></li>
+								<li><a href="TangleAbout.html">Tangle</a></li>
+								<li><a href="HyperledgerAbout.html">Hyperledger</a></li>
+								<li><a href="CordaAbout.html">Corda</a></li>
+								<li><a href="DCSFAQ.html">FAQ</a></li>
+								<li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
+								<li><a href="Comparison.html">Comparison</a></li>
+							</ul>
+						</li>
+				</ul>
+				<ul class="list-unstyled CTAs">
+					<li><a href="Help.html" class="download">Help</a></li>
+					<li><a href="ReportBug.html" class="download">Report a Bug</a></li>
+					<li><a href="Tutorial.html" class="download">Tutorial</a></li>
+					
+				</ul>
+			   
+					<div class="navbar-header">
+						<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn ">
+							<span>Hide</span>
+						</button>
+					</div>
+	
+	
+		
+			</nav>
             <!-- Page Content Holder -->
 			<div id="content">
                    
@@ -505,17 +509,17 @@ a.article, a.article:hover {
                
             </div>
         </div>
-        <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-		 </script>
+       <!-- jQuery CDN -->
+	   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	   <!-- Bootstrap Js CDN -->
+	   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	   <script type="text/javascript">
+		   $(document).ready(function () {
+			   $('#sidebarCollapse').on('click', function () {
+				   $('#sidebar').toggleClass('active');
+			   });
+		   });
+	   </script>
 		 
 		 <!-- Tooltip functionality-->
 <script>
