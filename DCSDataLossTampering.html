@@ -144,6 +144,8 @@ body {
 }
 p {
     font-family: 'Pavanam', sans-serif;
+    font-size: 24px;
+    margin-left: 20px;
 }
 a, a:hover, a:focus {
     color: inherit;
@@ -419,6 +421,76 @@ a.article, a.article:hover {
                     <div class="w3-container"> 
                             <h1 style="color: white">DCS: Preventing Data Loss and Tampering</h1>
                         </div>
+                    <br>
+                        <b><p style="font-size: 30px">Hashgraph</p></b> 
+                        <p> Hashgraph helps to prevent against data loss and tampering as it does not use a leader in its consensus mechanism which makes it 
+                            resilient against DDoS and DoS attacks. Hashgraph's consensus algorithm also helps to prevent against Sybil attacks by providing a mathematical
+                            guarantee that these attacks cannot succeed as long as less than 1/3 of the population is dishonest.
+                            Hashgraph is more fair since no individual can manipulate the order of transactions. All transactions are timestamped which helps to prevent tampering.
+                        </p>
+                        <b><p style="font-size: 30px"> Corda</p></b>
+                        <p>Consensus in corda is dealt in two parts, transaction validity and transaction uniqueness. 
+                            Transaction validity is when the parties involved agree to consensus, this in turn means only these parties can see the transaction. 
+                            At least two parties are needed in order to record a transaction to the ledger. Transaction uniqueness can be implemented in a few ways. 
+                            Corda allows for this service to be “pluggable” meaning that different concesnus methods may be used, such as a byzantine fault tolerance 
+                            algorithm or a simple single machine system. The uniqueness systems are not required to see the information within the transaction as well,
+                             they are only there to confirm that the state has not been consumed before.</p>
+                        <b><p style="font-size: 30px">Hyperledger</p></b>
+                        <p>
+                            Security in hyperledger is largely designed around permisioned based systems. Because of the large focus around business needs, 
+                            hyperledger plans to implement systems that require the entities to be permissioned identities. 
+                            This is often done by some membership system that approves who is allowed on the blockchain. The idea is that the members 
+                            using will the system will be conducting business together, often needing to know who they are doing business with and validating 
+                            the authenticity that it is them. These membership services create a private closed blockchain where trust is inherit because each 
+                            member was approved to be a member. Although membership is implemented, once again because of hyperledgers modularity, this can change to the
+                            users needs. We see in hyperledger Iroha that the default system of allowing membership is based on a number of nodes approving a member be added. 
+                            Users can decide how private they wish their system to be, and what method they wish to be conducted when giving membership.  
+                            Hyperledger also offers many methods of consensus security. Hyperledger fabric offers consensus that can be based on only a few nodes. 
+                            For example user A can trade user B and may only need user C, who is a bank, to approve that the transaction is legitimate. 
+                            This way of consensus can also be changed depending on the need. We see in hyperledger sawtooth consensus is done through a lottery based system. 
+                            Hyperledger continuously demonstrates its modularity and choice when it comes to security. 
+                            A developer of a system can not only choose their method of consensus to validation and membership, but also fine tune the methods chosen.
+                            We see this throughout all of hyperledger versions, as they each offer different security methods, but the made focus
+                            on security is through a private closed blockchain.  
+                                
+                        </p>
+                        <b><p style="font-size: 30px">Tangle</p></b>
+                        <p>Tangle helps to prevent against data loss and tampering as it has implemented various attack prevention algorithms to defend from a variety of threats. </p>
+                        <p>
+                            <b>Giant Weight Attack </b><br>
+                                In a large weight attack, a malicious entity will issue a false transaction and use a massive amount of computing power 
+                                to make its weight sufficiently large. If a host can issue a sufficiently large weight on a transaction by building a secret subtangle, 
+                                it can overtake the main tangle, orphaning the main tangle, and taking control. In an ideal situation, this attack will always work with success. I
+                                n order to mitigate this risk we must have a better way to decide how to select which tips to directly or indirectly prove. We can also cap the weight of each 
+                                transaction to 1 which will reduce the chance of a secret subtangle and a double spending transaction to overtake the main tangle with a large weight.
+                                <br><br>
+                            <b>Parasite Chain Attack</b><br>
+                                A parasite chain attack is similar to a large weight attack. A malicious entity builds a parasite chain, 
+                                or a subtangle, that occasionally references the main tangle in order to increase its weight and thus increase its confidence 
+                                interval in the system. Given sufficiently large computation power, that malicious entity can release a whole load of artificial transactions
+                                that are approved by its own subtangle. To defend against this attack the tangle relies on the assumption that the main tangle consists of more 
+                                hashing power than a single entity can produce, and thus retain a larger cumulative weight than the parasite chain. The tangle proposes a Markhov 
+                                Chain Monte Carlo (MCMC) algorithm to help combat this. The idea is to place random walkers on sites in the tangle, and let them ‘walk’ towards tips in a random way. 
+                                The tips selected by the walkers are then candidates for approval. In this way, there is a very low chance that a random walker will select a node on the parasite
+                                chain to approve and also a low chance that it will select a lazy or a selfish node. 
+                            <br><br>
+                            <b>Splitting Attack</b><br>
+                                The splitting attack was proposed as a potential attack against the tangle that is using the MCMC algorithm. 
+                                It suggests that in a high load regime, an attack could potentially split the main tangle while retaining a balance between 
+                                the two halves. The attacker does this by placing two conflicting transactions at the point of the split to prevent honest 
+                                nodes from joining the network. Then, the attacker hopes that the branch will be roughly split in half so half of the network 
+                                contributes to each branch similarly. If the attacker succeeds, the attacker could issue the same spending transactions on both chains. 
+                                To defend against this, the tangle employs a sharp threshold rule that makes it really difficult for a split tangle to retain balance between both of them. 
+                               <br> <br>
+                            <b>Quantum Computing Resistance</b><br>
+                                As quantum computing becomes more prevalent, they become a bigger risk within distributed consensus 
+                                systems because they are billions of times more efficient at solving hashing algorithms, making them an ideal host 
+                                to exploit vulnerabilities in systems that rely on those algorithms for security. With Tangle, by limiting the weight of 
+                                each transaction to 1, you can effectively prevent a quantum computer from overloading the network with a large weight attack. 
+                                While a quantum computer may hit the ideal rate of giving and seeking approval, it will always remain in an acceptable parameter of increased rate. 
+                                
+                        </p>
+
                 
         </div>
         <!-- jQuery CDN -->
