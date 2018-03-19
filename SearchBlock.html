@@ -806,6 +806,7 @@ a.article, a.article:hover {
 		var blockcount = 0;
 		var elements = [];
 		var blocknumbers = [];
+		var blocknumberscount = 0;
 		//click handler - searching by name
 		button1.addEventListener('click', function() {
 			//clear val arrays so they can be reused for this search
@@ -833,6 +834,7 @@ a.article, a.article:hover {
 				transactionsVals = [];
 				transactionsRootVals = [];
 				unclesVals = [];
+				blocknumberscount = 0;
 			//if no name was entered into the search field, then let the user know and exit the function
 			if(nameTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
@@ -961,7 +963,7 @@ a.article, a.article:hover {
 							console.log(result.c["0"]);
 							blockNum.push(result.c["0"]);
 							setTimeout(function(){  
-							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
 										var elementcount = 0;
@@ -997,6 +999,7 @@ a.article, a.article:hover {
 						addID(key, test);
 						viewingBlockAge(key, test)
 						blocknumbers.push(key);
+						blocknumberscount++;
 					}
 					viewingBlockID(key + 1, test);
 					})		
@@ -1113,6 +1116,7 @@ a.article, a.article:hover {
 							viewingBlockAge(key, test);
 							viewingBlockName(key, test);
 							blocknumbers.push(key);
+							blocknumberscount++;
 						}
 						viewingBlockID(key + 1, Number(test));
 					}else{
@@ -1147,7 +1151,8 @@ a.article, a.article:hover {
 							console.log(result.c["0"]);
 							blockNum.push(result.c["0"]);
 							setTimeout(function(){  
-							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+
+							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
 										var elementcount = 0;
@@ -1331,7 +1336,7 @@ a.article, a.article:hover {
 							console.log(result.c["0"]);
 							blockNum.push(result.c["0"]);
 							setTimeout(function(){  
-							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
+							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
 										var elementcount = 0;
@@ -1365,6 +1370,7 @@ a.article, a.article:hover {
 						addID(key, test);
 						console.log(result.c["0"])
 						blocknumbers.push(key);	
+						blocknumberscount++;
 					}
 				viewingBlockID(key+1, test);
 			})

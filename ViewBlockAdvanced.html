@@ -908,8 +908,12 @@ a.article, a.article:hover {
 		setTimeout(function(){  
 		document.addEventListener('click', function(e) {
 			var duplicaterid = e.target.id; // gets id of target which is seemorebutton
+			
 			//accessing block
 			var blockNumber = duplicaterid.substr(4, 5);
+			console.log("DUPLICATERID ------------->" + duplicaterid);
+				console.log("BLOCK NUMBER ------------->" + blockNumber);
+				
 			var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
 			var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
 			var idforModal = document.getElementById('id' + blockNumber).innerHTML;
