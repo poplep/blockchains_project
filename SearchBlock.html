@@ -956,13 +956,12 @@ a.article, a.article:hover {
 					age.push(result.c["0"]);
 				})
 			}
-
-			//function to get the block number from the contract
 			function viewingBlockNum(key) {
 					view.getBlockNum(key, function(worked, result){
 							console.log(result.c["0"]);
 							blockNum.push(result.c["0"]);
 							setTimeout(function(){  
+								
 							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
@@ -1026,6 +1025,7 @@ a.article, a.article:hover {
 				numberVals = [];
 				parentHashVals = [];
 				receiptsRootVals = [];
+				blocknumberscount = 0;
 				sha3UnclesVals = [];
 				sizeVals = [];
 				stateRootVals = [];
@@ -1151,7 +1151,7 @@ a.article, a.article:hover {
 							console.log(result.c["0"]);
 							blockNum.push(result.c["0"]);
 							setTimeout(function(){  
-
+								
 							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
@@ -1222,6 +1222,7 @@ a.article, a.article:hover {
 			timestampVals = [];
 			totalDifficultyVals = [];
 			transactionsVals = [];
+			blocknumberscount = 0;
 			transactionsRootVals = [];
 			unclesVals = [];
 
@@ -1336,6 +1337,7 @@ a.article, a.article:hover {
 							console.log(result.c["0"]);
 							blockNum.push(result.c["0"]);
 							setTimeout(function(){  
+								
 							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
 										console.log("FOUND BLOCK KEY: " + key);
