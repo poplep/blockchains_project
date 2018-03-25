@@ -743,7 +743,8 @@ function button(evt, tab){
 			return;
 		}
 		var name = document.getElementById('name').value;
-		name = name.replace(/  +/g, ' ');
+		//replace any extra spaces with a single space
+		name = name.replace(/\s\s+/g, ' ');
 		console.log(name);
 		//take value in the input and send it via contract
 		try {
