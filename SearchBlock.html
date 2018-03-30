@@ -844,6 +844,13 @@ a.article, a.article:hover {
 				alert("No input received. Please enter your information and try again.");
 				return;
 			}
+
+			if(nameTest.value.indexOf('.') !== -1)
+				{
+				// would be true. Period found in name
+				alert("No results found.");
+				return;
+				}
 			//clearing old blocks before executing search
 			var x;
 			for(x = 0; x <= nextsearch; x++) {
@@ -1053,6 +1060,13 @@ a.article, a.article:hover {
 				alert("No input received. Please enter your information and try again.");
 				return;
 			}
+
+			if(idTest.value.indexOf('.') !== -1)
+				{
+				// would be true. Period found in name
+				alert("No results found.");
+				return;
+				}
 			//clearing old blocks before executing search
 			var x;
 			for(x = 0; x <= nextsearch; x++) {
@@ -1251,6 +1265,13 @@ a.article, a.article:hover {
 				alert("No input received. Please enter your information and try again.");
 				return;
 			}
+
+			if(ageTest.value.indexOf('.') !== -1)
+				{
+				// would be true. Period found in name
+				alert("No results found.");
+				return;
+				}
 		//clearing old blocks before executing search
 		var x;
 		for(x = 0; x <= nextsearch; x++) {
