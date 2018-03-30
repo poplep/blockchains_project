@@ -842,6 +842,9 @@ a.article, a.article:hover {
 			//if no name was entered into the search field, then let the user know and exit the function
 			if(nameTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
+				document.getElementById("button1").disabled = false;
+				document.getElementById("button2").disabled = false;
+				document.getElementById("button3").disabled = false;
 				return;
 			}
 
@@ -850,8 +853,8 @@ a.article, a.article:hover {
 				// would be true. Period found in name
 				alert("No results found.");
 				document.getElementById("button1").disabled = false;
-								document.getElementById("button2").disabled = false;
-								document.getElementById("button3").disabled = false;
+				document.getElementById("button2").disabled = false;
+				document.getElementById("button3").disabled = false;
 				return;
 				}
 			//clearing old blocks before executing search
@@ -938,6 +941,9 @@ a.article, a.article:hover {
 						//no blocks were found
 						if(blocknumbers.length == 0) {
 							alert("No blocks found matching your search criteria.");
+							document.getElementById("button1").disabled = false;
+							document.getElementById("button2").disabled = false;
+							document.getElementById("button3").disabled = false;
 						}
 						//print the blocks
 						var i;
@@ -1061,6 +1067,9 @@ a.article, a.article:hover {
 			//user didnt provide any parameters
 			if(idTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
+				document.getElementById("button1").disabled = false;
+				document.getElementById("button2").disabled = false;
+				document.getElementById("button3").disabled = false;
 				return;
 			}
 
@@ -1069,8 +1078,8 @@ a.article, a.article:hover {
 				// would be true. Period found in name
 				alert("No results found.");
 				document.getElementById("button1").disabled = false;
-								document.getElementById("button2").disabled = false;
-								document.getElementById("button3").disabled = false;
+				document.getElementById("button2").disabled = false;
+				document.getElementById("button3").disabled = false;
 				return;
 				}
 			//clearing old blocks before executing search
@@ -1157,6 +1166,9 @@ a.article, a.article:hover {
 						console.log("All keys found");
 						if(blocknumbers.length == 0) {
 							alert("No blocks found matching your search criteria.");
+							document.getElementById("button1").disabled = false;
+							document.getElementById("button2").disabled = false;
+							document.getElementById("button3").disabled = false;
 						}
 						//TODO: call method that will draw blocks for user here!!!
 						var i;
@@ -1269,6 +1281,9 @@ a.article, a.article:hover {
 
 			if(ageTest.value.length == 0) {
 				alert("No input received. Please enter your information and try again.");
+				document.getElementById("button1").disabled = false;
+				document.getElementById("button2").disabled = false;
+				document.getElementById("button3").disabled = false;
 				return;
 			}
 
@@ -1362,6 +1377,9 @@ a.article, a.article:hover {
 					console.log(blocknumbers.length);
 					if(blocknumbers.length == 0) {
 						alert("No blocks found matching your search criteria.");
+						document.getElementById("button1").disabled = false;
+						document.getElementById("button2").disabled = false;
+						document.getElementById("button3").disabled = false;
 					}
 					//TODO: call method that will draw blocks for user here!!!
 					j = 0;
