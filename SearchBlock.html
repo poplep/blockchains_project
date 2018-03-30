@@ -929,16 +929,18 @@ a.article, a.article:hover {
 						var i;
 						elementloop = 0;
 						setTimeout(function(){  
+							console.log(ID)
+							j = 0;
 							for(i = 0; i < blocknumbers.length; i++) {
 								if(i == blocknumbers.length-1) {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									elementloop+=20;
-									console.log("ELEMENT LOOP ------->" + elementloop);
+									//console.log("ELEMENT LOOP ------->" + elementloop);
 
 								}else {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									elementloop+=20;
-									console.log("ELEMENT LOOP ------->" + elementloop);
+									//console.log("ELEMENT LOOP ------->" + elementloop);
 									duplicate();
 								}
 							
@@ -964,13 +966,13 @@ a.article, a.article:hover {
 								
 							var block = web3.eth.getBlock(blocknumbers[blocknumberscount - 1], function(error, result){
 									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
+										//console.log("FOUND BLOCK KEY: " + key);
 										var elementcount = 0;
 										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
+											//console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
 											
 											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+											//console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
 											elementcount++;
 											
 										}
@@ -980,7 +982,7 @@ a.article, a.article:hover {
 
 									iterate++;
 								
-									console.log("END!!!!!!!!!!!!!!!!!");
+									//console.log("END!!!!!!!!!!!!!!!!!");
 									
 									
 								});
@@ -1128,6 +1130,7 @@ a.article, a.article:hover {
 						var i;
 						elementloop = 0;
 						setTimeout(function(){  
+							j = 0;
 							for(i = 0; i < blocknumbers.length; i++) {
 								if(i == blocknumbers.length-1) {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
@@ -1316,6 +1319,7 @@ a.article, a.article:hover {
 					var i;
 					elementloop = 0;
 					setTimeout(function(){  
+						j = 0;
 						for(i = 0; i < blocknumbers.length; i++) {
 							if(i == blocknumbers.length-1) {
 								newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
@@ -1392,15 +1396,15 @@ a.article, a.article:hover {
 	var extraData  = document.getElementById("id");
 	var gasLimit = document.getElementById("age");
 
-	
-	var i = 0;
+	var j = 0;
 
 	//function to create a new block object to be displayed on page	
 	function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
 		//set the values in the name, id, and age of the block to their corresponding values
-		$('#name' + i).text(removeSpecialChars(name));  
-		$('#id'+ i).text(id); 
-		$('#age'+ i).text(age); 
+		console.log("help!")
+		$('#name' + j).text(removeSpecialChars(name));  
+		$('#id'+ j).text(id); 
+		$('#age'+ j).text(age); 
 		//push the values to the arrays to be displayed later
 		difficultyVals.push(difficulty);
 		extraDataVals.push(extraData);
@@ -1422,6 +1426,7 @@ a.article, a.article:hover {
 		transactionsVals.push(transactions);
 		transactionsRootVals.push(transactionsRoot);
 		unclesVals.push(uncles);		
+		j++
 	}
 	
 	function duplicate() {
