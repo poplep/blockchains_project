@@ -1323,7 +1323,7 @@ a.article, a.article:hover {
 		function viewingBlockID(key, test) {	
 			view.getID(key, function(worked, result){
 				if(result.c["0"]){
-					ID.push(result.c["0"]);
+					//ID.push(result.c["0"]);
 					viewingBlockAge(key, test);	
 					blockcount++;	
 				}else{
@@ -1334,7 +1334,7 @@ a.article, a.article:hover {
 						alert("No blocks found matching your search criteria.");
 					}
 					//TODO: call method that will draw blocks for user here!!!
-					var j;
+					j = 0;
 					elementloop = 0;
 					setTimeout(function(){  
 						j = 0;
