@@ -811,6 +811,8 @@ a.article, a.article:hover {
 		button1.addEventListener('click', function() {
 			//disable the button
 			document.getElementById("button1").disabled = true;
+			document.getElementById("button2").disabled = true;
+			document.getElementById("button3").disabled = true;
 			//clear val arrays so they can be reused for this search
 				ID = [];
 				age = [];
@@ -940,6 +942,8 @@ a.article, a.article:hover {
 
 									console.log("ELEMENT LOOP ------->" + elementloop);
 									document.getElementById("button1").disabled = false;
+								document.getElementById("button2").disabled = false;
+								document.getElementById("button3").disabled = false;
 
 
 								}else {
@@ -1015,7 +1019,9 @@ a.article, a.article:hover {
 
 		//click handler - searching by ID
 		button2.addEventListener('click', function() {
+			document.getElementById("button1").disabled = true;
 			document.getElementById("button2").disabled = true;
+			document.getElementById("button3").disabled = true;
 			//clear array vals for next search
 				ID = [];
 				age = [];
@@ -1142,6 +1148,8 @@ a.article, a.article:hover {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									elementloop+=20;
 									document.getElementById("button1").disabled = false;
+								document.getElementById("button2").disabled = false;
+								document.getElementById("button3").disabled = false;
 								}else {
 									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 									elementloop+=20;
@@ -1209,6 +1217,8 @@ a.article, a.article:hover {
 
 		//click handler - searching by age
 		button3.addEventListener('click', function() {
+			document.getElementById("button1").disabled = true;
+			document.getElementById("button2").disabled = true;
 			document.getElementById("button3").disabled = true;
 			//clear val arrays
 			ID = [];
@@ -1333,6 +1343,8 @@ a.article, a.article:hover {
 								newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 								elementloop+=20;
 								document.getElementById("button1").disabled = false;
+								document.getElementById("button2").disabled = false;
+								document.getElementById("button3").disabled = false;
 							}else {
 								newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
 								elementloop+=20;
