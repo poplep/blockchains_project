@@ -1,320 +1,294 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Blockchain UI</title>
-         <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-       
-	</head>
-	<!-- Styling for blocks -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blockchain UI</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<!-- Styling for blocks -->
 <style>
-		.block {
-			width: 350px;
-			height: 350px;
-			padding: 10px;
-			float:left;
-			border: 2px solid rgb(49, 57, 77);
-			border-radius: 10px;
-			background-color:rgb(49, 57, 77);
-			font-family: 'Quattrocento Sans', sans-serif;
-			color: black;
-			margin:10px;
-		}
-	</style>
-	<!-- Overall Page Styling -->
-	<style>
-	p,h1,h2,h3,h4,h5,body {font-family: 'Quattrocento Sans', sans-serif;}
-	p,h5 {font-size: 22px; font-family: 'Quattrocento Sans', sans-serif;};
-	pre {font-size: 18px; font-family: 'Quattrocento Sans', sans-serif; overflow-x:hidden;};
-	a {font-size: 15px; font-family: 'Quattrocento Sans', sans-serif;};
-		.under { text-decoration: underline rgb(0, 0, 0);}
-		input[type=text], select {
-			width: 50%;
-			padding: 12p3 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			box-sizing: border-box;
-		}
-			
-		input[type=data], select {
-			width: 50%;
-			height: 150px;
-			padding: 12px 20px;
-			margin: 8px 0;
-			display: inline-block;
-			border: 1px solid #ccc;
-			border-radius: 4px;	
-		}
-	
-		input[type=submit] {
-			width: 50%;
-			background-color: rgb(49, 57, 77);
-			color: white;
-			padding: 14px 20px;
-			margin: 8px 0;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-		}
-	
-		input[type=submit]:hover {
-			background-color: rgb(49, 57, 77);
-		}
-		.button {
-			background-color: rgb(49, 57, 77); 
-			border: none;
-			color: white;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			margin: 4px 2px;
-			cursor: pointer;
-		}
-		.button1 {font-size: 24px;}
-			
-		.w3-container {
-			background-color:rgb(49, 57, 77);
-		}
-		.w3-sidebar {
-			background-color:rgb(49, 57, 77);
-		}
-			pre {
-				word-wrap: break-word;
-				overflow-y: hidden;
-				width: 95%;
-			}
-			.w3-bar-item {
-				padding: 20px;
-				margin: -5px;
-	
-			}
-			.window-content {
-				width:750px;
-				background-color:rgb(49, 57, 77);
-				padding: 10px;
-			}
-	
-			.window-body {
-				overflow-y: scroll;
-				height: 750px;
-				background-color:rgb(49, 57, 77);
-			}
-	</style>
-    <!-- Style for the tile buttons -->
+    .block {
+        width: 350px;
+        height: 350px;
+        padding: 10px;
+        float: left;
+        border: 2px solid rgb(49, 57, 77);
+        border-radius: 10px;
+        background-color: rgb(49, 57, 77);
+        font-family: 'Quattrocento Sans', sans-serif;
+        color: black;
+        margin: 10px;
+    }
+</style>
+<!-- Overall Page Styling -->
 <style>
-        div.gallery {
-            margin: 5px;
-            float: left;
-            width: 1000px;
-            border-radius: 20px 20px 0px 0px;
-        }
-        
-        
-        div.gallery img {
-            width: 100%;
-            height: 500px;
-            border-radius: 20px 20px 0px 0px;
-    
-        }
-        
-        div.desc {
-            padding: 15px;
-            text-align: center;
-            background-color: rgb(49, 57, 77);
-            color: white;
-            border-radius: 0px 0px 20px 20px;
-    
-    
-        }
-        </style>
-    <style>
-        /*
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    body {
+        font-family: 'Quattrocento Sans', sans-serif;
+    }
+
+    p,
+    h5 {
+        font-size: 22px;
+        font-family: 'Quattrocento Sans', sans-serif;
+    }
+
+    ;
+    pre {
+        font-size: 18px;
+        font-family: 'Quattrocento Sans', sans-serif;
+        overflow-x: hidden;
+    }
+
+    ;
+    a {
+        font-size: 15px;
+        font-family: 'Quattrocento Sans', sans-serif;
+    }
+
+    ;
+    .under {
+        text-decoration: underline rgb(0, 0, 0);
+    }
+
+    input[type=text],
+    select {
+        width: 50%;
+        padding: 12p3 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=data],
+    select {
+        width: 50%;
+        height: 150px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type=submit] {
+        width: 50%;
+        background-color: rgb(49, 57, 77);
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: rgb(49, 57, 77);
+    }
+
+    .button {
+        background-color: rgb(49, 57, 77);
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button1 {
+        font-size: 24px;
+    }
+
+    .w3-container {
+        background-color: rgb(49, 57, 77);
+    }
+
+    .w3-sidebar {
+        background-color: rgb(49, 57, 77);
+    }
+
+    pre {
+        word-wrap: break-word;
+        overflow-y: hidden;
+        width: 95%;
+    }
+
+    .w3-bar-item {
+        padding: 20px;
+        margin: -5px;
+
+    }
+
+    .window-content {
+        width: 750px;
+        background-color: rgb(49, 57, 77);
+        padding: 10px;
+    }
+
+    .window-body {
+        overflow-y: scroll;
+        height: 750px;
+        background-color: rgb(49, 57, 77);
+    }
+</style>
+<!-- Style for the tile buttons -->
+<style>
+    div.gallery {
+        margin: 5px;
+        float: left;
+        width: 1000px;
+        border-radius: 20px 20px 0px 0px;
+    }
+
+
+    div.gallery img {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px 20px 0px 0px;
+
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+        background-color: rgb(49, 57, 77);
+        color: white;
+        border-radius: 0px 0px 20px 20px;
+
+
+    }
+</style>
+<style>
+    /*
     DEMO STYLE
 */
-@import "https://fonts.googleapis.com/css?family=Quattrocento+Sans:300,400,500,600,700";
-.w3-container {
-            background-color:rgb(49, 57, 77);
-        }
-body {
-    font-family: 'Quattrocento Sans', sans-serif;
-    background: #fafafa;
-    font-size: 18px;
-}
-p {
-    font-family: 'Quattrocento Sans', sans-serif;
-}
-a, a:hover, a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
-i, span {
-    display: inline-block;
-}
-/* ---------------------------------------------------
+
+    @import "https://fonts.googleapis.com/css?family=Quattrocento+Sans:300,400,500,600,700";
+    .w3-container {
+        background-color: rgb(49, 57, 77);
+    }
+
+    body {
+        font-family: 'Quattrocento Sans', sans-serif;
+        background: #fafafa;
+        font-size: 18px;
+    }
+
+    p {
+        font-family: 'Quattrocento Sans', sans-serif;
+    }
+
+    a,
+    a:hover,
+    a:focus {
+        color: inherit;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .navbar {
+        padding: 15px 10px;
+        background: #fff;
+        border: none;
+        border-radius: 0;
+        margin-bottom: 40px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #ddd;
+        margin: 40px 0;
+    }
+
+    i,
+    span {
+        display: inline-block;
+    }
+
+    /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
-#sidebar {
-    min-width: 300px;
-    max-width: 300px;
-    background: rgb(49, 57, 77);
-    color: #fff;
-    transition: all 0.3s;
-}
-#sidebar.active {
-    min-width: 100px;
-    max-width: 100px;
-    text-align: center;
-}
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
-    display: none;
-}
-#sidebar.active .sidebar-header strong {
-    display: block;
-}
-#sidebar ul li a {
-    text-align: left;
-}
-#sidebar.active ul li a {
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 0.85em;
-}
-.w3-container {
-            background-color:rgb(49, 57, 77);
-        }
-#sidebar.active ul li a i {
-    margin-right:  0;
-    display: block;
-    font-size: 1.8em;
-    margin-bottom: 5px;
-}
-#sidebar.active ul ul a {
-    padding: 10px !important;
-}
-#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
-    top: auto;
-    bottom: 5px;
-    right: 50%;
-    -webkit-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    transform: translateX(50%);
-}
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: rgb(49, 57, 77);
-}
-#sidebar .sidebar-header strong {
-    display: none;
-    font-size: 1.8em;
-}
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
-}
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-}
-#sidebar ul li a:hover {
-    color: rgb(49, 57, 77);
-    background: #fff;
-}
-#sidebar ul li a i {
-    margin-right: 10px;
-}
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: rgb(100, 117, 160);
-}
-a[data-toggle="collapse"] {
-    position: relative;
-}
-a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-}
-a[aria-expanded="true"]::before {
-    content: '\e260';
-}
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: rgb(49, 57, 77);
-}
-ul.CTAs {
-    padding: 20px;
-}
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-a.download {
-    background: rgb(100, 117, 160);
-    color: white;
-}
-a.article, a.article:hover {
-    background: rgb(100, 117, 160) !important;
-    color: #fff !important;
-}
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-#content {
-    min-height: 100vh;
-    transition: all 0.3s;
-	width: 100vw;
-}
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-@media (max-width: 768px) {
+
+    .wrapper {
+        display: flex;
+        align-items: stretch;
+    }
+
     #sidebar {
+        min-width: 300px;
+        max-width: 300px;
+        background: rgb(49, 57, 77);
+        color: #fff;
+        transition: all 0.3s;
+    }
+
+    #sidebar.active {
         min-width: 100px;
         max-width: 100px;
         text-align: center;
-        margin-left: -80px !important ;
     }
-    a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+
+    #sidebar.active .sidebar-header h3,
+    #sidebar.active .CTAs {
+        display: none;
+    }
+
+    #sidebar.active .sidebar-header strong {
+        display: block;
+    }
+
+    #sidebar ul li a {
+        text-align: left;
+    }
+
+    #sidebar.active ul li a {
+        padding: 20px 10px;
+        text-align: center;
+        font-size: 0.85em;
+    }
+
+    .w3-container {
+        background-color: rgb(49, 57, 77);
+    }
+
+    #sidebar.active ul li a i {
+        margin-right: 0;
+        display: block;
+        font-size: 1.8em;
+        margin-bottom: 5px;
+    }
+
+    #sidebar.active ul ul a {
+        padding: 10px !important;
+    }
+
+    #sidebar.active a[aria-expanded="false"]::before,
+    #sidebar.active a[aria-expanded="true"]::before {
         top: auto;
         bottom: 5px;
         right: 50%;
@@ -322,525 +296,623 @@ a.article, a.article:hover {
         -ms-transform: translateX(50%);
         transform: translateX(50%);
     }
-    #sidebar.active {
-        margin-left: 0 !important;
+
+    #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgb(49, 57, 77);
     }
-    #sidebar .sidebar-header h3, #sidebar .CTAs {
-        display: none;
-    }
+
     #sidebar .sidebar-header strong {
-        display: block;
-    }
-    #sidebar ul li a {
-        padding: 20px 10px;
-    }
-    #sidebar ul li a span {
-        font-size: 0.85em;
-    }
-    #sidebar ul li a i {
-        margin-right:  0;
-        display: block;
-    }
-    #sidebar ul ul a {
-        padding: 10px !important;
-    }
-    #sidebar ul li a i {
-        font-size: 1.3em;
-    }
-    #sidebar {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
         display: none;
+        font-size: 1.8em;
     }
-}
-    </style>
-    <body>
-		<!-- Block Modal Window -->
-		<div class="container">
-  
-				<!-- Modal Window -->
-				<div class="modal fade" id="blockContent" role="dialog">
-				  <div class="modal-dialog">
-				  
-					<!-- Modal content-->
-					<div class="window-content" id="blockModalContent" data-dismiss="modal">
-					  <div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" style="color: white; font-size: 20px">&times;</button>
-						<h4 class="modal-title" style="color: white">Here's your block:</h4>
-					  </div>
-					  <div class="window-body">
-		
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
-							<pre id="modalName" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
-							<pre id="modalID" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
-							<pre id="modalAge" style="overflow-x:hidden; overflow-y: hidden"></pre>
-							
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
-							<pre id="modalDifficulty" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
-							<pre id="modalextraData" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
-							<pre id="modalgasLimit" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
-							<pre id="modalgasUsed" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				 
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
-							<pre id="modalhash" style="overflow-x:hidden; overflow-y: hidden"></pre>
-		
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
-							<pre id="modallogsBloom" style="overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
-							<pre id="modalminer" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
-							<pre id="modalmixHash" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
-							<pre id="modalnonce" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
-							<pre id="modalnumber" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
-							<pre id="modalparentHash" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
-							<pre id="modalreceiptsRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
-							<pre id="modalsha3Uncles" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
-							<pre id="modalsize" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
-							<pre id="modalstateRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
-							<pre id="modaltimestamp" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
-							<pre id="modaltotalDifficulty" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
-							<pre id="modaltransactions" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
-							<pre id="modaltransactionsRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
-							<pre id="modaluncles" style="overflow-x:hidden; overflow-y: hidden"></pre>
-		
-					
-					  </div>
-					  <div class="modal-footer">
-						<button class="btn btn-default" id="exit" data-dismiss="modal">Close</button>
-		
-					  </div>
-					</div>
-					
-				  </div>
-				</div>
-				
-			  </div>
-        <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                
-                <div class="sidebar-header">
-                    <h3><a href="HomePage.html">Home</a></h3>
-					<strong><a href="HomePage.html">BC</a></strong>                </div>
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+
+    #sidebar ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+    }
+
+    #sidebar ul li a:hover {
+        color: rgb(49, 57, 77);
+        background: #fff;
+    }
+
+    #sidebar ul li a i {
+        margin-right: 10px;
+    }
+
+    #sidebar ul li.active>a,
+    a[aria-expanded="true"] {
+        color: #fff;
+        background: rgb(100, 117, 160);
+    }
+
+    a[data-toggle="collapse"] {
+        position: relative;
+    }
+
+    a[aria-expanded="false"]::before,
+    a[aria-expanded="true"]::before {
+        content: '\e259';
+        display: block;
+        position: absolute;
+        right: 20px;
+        font-family: 'Glyphicons Halflings';
+        font-size: 0.6em;
+    }
+
+    a[aria-expanded="true"]::before {
+        content: '\e260';
+    }
+
+    ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important;
+        background: rgb(49, 57, 77);
+    }
+
+    ul.CTAs {
+        padding: 20px;
+    }
+
+    ul.CTAs a {
+        text-align: center;
+        font-size: 0.9em !important;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    a.download {
+        background: rgb(100, 117, 160);
+        color: white;
+    }
+
+    a.article,
+    a.article:hover {
+        background: rgb(100, 117, 160) !important;
+        color: #fff !important;
+    }
+
+    /* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+    #content {
+        min-height: 100vh;
+        transition: all 0.3s;
+        width: 100vw;
+    }
+
+    /* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+    @media (max-width: 768px) {
+        #sidebar {
+            min-width: 100px;
+            max-width: 100px;
+            text-align: center;
+            margin-left: -80px !important;
+        }
+        a[aria-expanded="false"]::before,
+        a[aria-expanded="true"]::before {
+            top: auto;
+            bottom: 5px;
+            right: 50%;
+            -webkit-transform: translateX(50%);
+            -ms-transform: translateX(50%);
+            transform: translateX(50%);
+        }
+        #sidebar.active {
+            margin-left: 0 !important;
+        }
+        #sidebar .sidebar-header h3,
+        #sidebar .CTAs {
+            display: none;
+        }
+        #sidebar .sidebar-header strong {
+            display: block;
+        }
+        #sidebar ul li a {
+            padding: 20px 10px;
+        }
+        #sidebar ul li a span {
+            font-size: 0.85em;
+        }
+        #sidebar ul li a i {
+            margin-right: 0;
+            display: block;
+        }
+        #sidebar ul ul a {
+            padding: 10px !important;
+        }
+        #sidebar ul li a i {
+            font-size: 1.3em;
+        }
+        #sidebar {
+            margin-left: 0;
+        }
+        #sidebarCollapse span {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <!-- Block Modal Window -->
+    <div class="container">
+
+        <!-- Modal Window -->
+        <div class="modal fade" id="blockContent" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="window-content" id="blockModalContent" data-dismiss="modal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style="color: white; font-size: 20px">&times;</button>
+                        <h4 class="modal-title" style="color: white">Here's your block:</h4>
+                    </div>
+                    <div class="window-body">
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
+                        <pre id="modalName" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
+                        <pre id="modalID" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
+                        <pre id="modalAge" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="In proof-of-work mining, this is how hard it is to verify blocks on the network." style="font-size:18px" style="color: white">Difficulty:</a><br>
+                        <pre id="modalDifficulty" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Extra data that is stored in the block." style="font-size:18px" style="color: white">extraData:</a><br>
+                        <pre id="modalextraData" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The limit of gas that can be used per block transaction." style="font-size:18px" style="color: white">gasLimit:</a><br>
+                        <pre id="modalgasLimit" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The amount of gas used during this block's transaction." style="font-size:18px" style="color: white">gasUsed:</a><br>
+                        <pre id="modalgasUsed" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's hash which consists of the hash of its previous block." style="font-size:18px" style="color: white">hash:</a><br>
+                        <pre id="modalhash" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The bloom filter for the logs of the block. This is null when it is a pending block." style="font-size:18px" style="color: white">logsBloom:</a><br>
+                        <pre id="modallogsBloom" style="overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The address of the miner that mined the block." style="font-size:18px" style="color: white">miner:</a><br>
+                        <pre id="modalminer" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Calculated from the nonce as an intermediate value when validating proof-of-work." style="font-size:18px" style="color: white">mixHash:</a><br>
+                        <pre id="modalmixHash" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="Hash of the generated proof-of-work." style="font-size:18px" style="color: white">nonce:</a><br>
+                        <pre id="modalnonce" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The block's number or ID." style="font-size:18px" style="color: white">number:</a><br>
+                        <pre id="modalnumber" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The hash of the parent/previous block." style="font-size:18px" style="color: white">parentHash:</a><br>
+                        <pre id="modalparentHash" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the receipts trie of the block." style="font-size:18px" style="color: white">receiptsRoot:</a><br>
+                        <pre id="modalreceiptsRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="SHA3 of the uncles data in the block." style="font-size:18px" style="color: white">sha3Uncles:</a><br>
+                        <pre id="modalsha3Uncles" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The size of the block in bytes." style="font-size:18px" style="color: white">size:</a><br>
+                        <pre id="modalsize" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the final state trie of the block." style="font-size:18px" style="color: white">stateRoot:</a><br>
+                        <pre id="modalstateRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The time that the block was mined to the blockchain." style="font-size:18px" style="color: white">timestamp:</a><br>
+                        <pre id="modaltimestamp" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The integer value of the total difficulty of the chain until this current block." style="font-size:18px" style="color: white">totalDifficulty:</a><br>
+                        <pre id="modaltotalDifficulty" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of transaction objects." style="font-size:18px" style="color: white">transactions:</a><br>
+                        <pre id="modaltransactions" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The root of the transaction trie of the block." style="font-size:18px" style="color: white">transactionsRoot:</a><br>
+                        <pre id="modaltransactionsRoot" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+                        <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The array of uncle hashes if there are any." style="font-size:18px" style="color: white">uncles:</a><br>
+                        <pre id="modaluncles" style="overflow-x:hidden; overflow-y: hidden"></pre>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" id="exit" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+
+            <div class="sidebar-header">
+                <h3><a href="HomePage.html">Home</a></h3>
+                <strong><a href="HomePage.html">BC</a></strong> </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
                             
                             Blockchains
                         </a>
-                        <ul class="collapse list-unstyled in" id="homeSubmenu">
-                            <li><a href="Blockchain.html">About the Blockchain</a></li>
-                            <li><a href="BlockchainFAQ.html">FAQ</a></li>
-                            <li><a href="BlockchainAbout.html">About our Application</a></li>
-                            <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
-                            <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                    <ul class="collapse list-unstyled in" id="homeSubmenu">
+                        <li><a href="Blockchain.html">About the Blockchain</a></li>
+                        <li><a href="BlockchainFAQ.html">FAQ</a></li>
+                        <li><a href="BlockchainAbout.html">About our Application</a></li>
+                        <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
+                        <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
+                    </ul>
+                </li>
+                <li>
+
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
                             
                             Blockchain Functionality
                         </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="AddBlock.html">Add a Block</a></li>
-                            <li><a href="SearchBlock.html">Search for a Block</a></li>
-                            <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
-                            <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
-                            <li><a href="BlockStats.html">Blockchain Statistics</a></li>
-                        </ul>
-                    </li>
-                  
-                    <li>
-                            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="AddBlock.html">Add a Block</a></li>
+                        <li><a href="SearchBlock.html">Search for a Block</a></li>
+                        <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
+                        <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
+                        <li><a href="BlockStats.html">Blockchain Statistics</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
                                 
                                 Blockchain Alternatives
                             </a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu2">
-                                <li><a href="HashgraphAbout.html">Hashgraph</a></li>
-                                <li><a href="TangleAbout.html">Tangle</a></li>
-                                <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
-                                <li><a href="CordaAbout.html">Corda</a></li>
-                                <li><a href="DCSFAQ.html">FAQ</a></li>
-                                <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
-                                <li><a href="Comparison.html">Comparison</a></li>
-                            </ul>
-                        </li>
-                </ul>
-                <ul class="list-unstyled CTAs">
-                    <li><a href="Help.html" class="download">Help</a></li>
-                    <li><a href="ReportBug.html" class="download">Report a Bug</a></li>
-                    <li><a href="Tutorial.html" class="download">Tutorial</a></li>
-                   
-                </ul>
-                <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">
+                        <li><a href="HashgraphAbout.html">Hashgraph</a></li>
+                        <li><a href="TangleAbout.html">Tangle</a></li>
+                        <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
+                        <li><a href="CordaAbout.html">Corda</a></li>
+                        <li><a href="DCSFAQ.html">FAQ</a></li>
+                        <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
+                        <li><a href="Comparison.html">Comparison</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="list-unstyled CTAs">
+                <li><a href="Help.html" class="download">Help</a></li>
+                <li><a href="ReportBug.html" class="download">Report a Bug</a></li>
+                <li><a href="Tutorial.html" class="download">Tutorial</a></li>
+
+            </ul>
+            <div class="navbar-header">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                             <span>Hide</span>
                         </button>
-                    </div>
-            </nav>
-            <!-- Page Content Holder -->
-            <div id="content">
-                    <div class="w3-container" color= "rgb(49, 57, 77)">
-							<h1 style="color: white">View your Blockchain as Blocks</h1>
-						</div>
-						<br>
-						<div style="padding-left: 20px">
-								<p>Below are the graphical blocks of data on your blockchain.</p>
-								<p>Each block is connected by calculating the hash of the block before it into its current hash.</p>
-						</div>
-						
-						<br>
-						<div class="block"  id="duplicater0">	
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
-							<pre id="name0"></pre><br>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
-							<pre id="id0"></pre><br>
-				
-							<a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
-							<pre id="age0" type="text"></pre><br>
-				
-							<center><button class="btn btn-default" id="exit0" data-dismiss="modal">See More</button></center>
-				
-							</div>	
-               
             </div>
+        </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+            <div class="w3-container" color="rgb(49, 57, 77)">
+                <h1 style="color: white">View your Blockchain as Blocks</h1>
+            </div>
+            <br>
+            <div style="padding-left: 20px">
+                <p>Below are the graphical blocks of data on your blockchain.</p>
+                <p>Each block is connected by calculating the hash of the block before it into its current hash.</p>
+            </div>
+
+            <br>
+            <div class="block" id="duplicater0">
+
+                <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's name." style="font-size:18px" style="color: white">Name:</a><br>
+                <pre id="name0"></pre><br>
+
+                <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's ID number." style="font-size:18px" style="color: white">ID:</a><br>
+                <pre id="id0"></pre><br>
+
+                <a href="#" style="color:white" data-toggle="tooltip" data-placement="right" title="The person's age." style="font-size:18px" style="color: white">Age:</a><br>
+                <pre id="age0" type="text"></pre><br>
+
+                <center><button class="btn btn-default" id="exit0" data-dismiss="modal">See More</button></center>
+
+            </div>
+
         </div>
-        <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-		 </script>
-		 <!-- Start of Viewing Block Script -->
-<script>
+    </div>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!-- Start of Viewing Block Script -->
+    <script>
+        function removeSpecialChars(strVal) {
+            strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
+            return strVal;
+        }
+        var web3 = new Web3(web3.currentProvider); //provider for web3
+        //contract abi, pass json representation of contract to instance
+        var addBlockContract = web3.eth.contract([{
+                "constant": true,
+                "inputs": [{
+                    "name": "key",
+                    "type": "uint256"
+                }],
+                "name": "getName",
+                "outputs": [{
+                    "name": "",
+                    "type": "bytes32"
+                }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [{
+                    "name": "key",
+                    "type": "uint256"
+                }],
+                "name": "getID",
+                "outputs": [{
+                    "name": "",
+                    "type": "uint256"
+                }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [{
+                    "name": "key",
+                    "type": "uint256"
+                }],
+                "name": "getBlockNum",
+                "outputs": [{
+                    "name": "",
+                    "type": "uint256"
+                }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [{
+                    "name": "key",
+                    "type": "uint256"
+                }],
+                "name": "getAge",
+                "outputs": [{
+                    "name": "",
+                    "type": "uint256"
+                }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [{
+                    "name": "",
+                    "type": "uint256"
+                }],
+                "name": "blockchain",
+                "outputs": [{
+                        "name": "age",
+                        "type": "uint8"
+                    },
+                    {
+                        "name": "id",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "name",
+                        "type": "bytes32"
+                    },
+                    {
+                        "name": "blockNum",
+                        "type": "uint256"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [{
+                        "name": "data",
+                        "type": "bytes32"
+                    },
+                    {
+                        "name": "uage",
+                        "type": "uint8"
+                    },
+                    {
+                        "name": "uid",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "addData",
+                "outputs": [],
+                "payable": true,
+                "stateMutability": "payable",
+                "type": "function"
+            }
+        ]);
+        var view = addBlockContract.at('0x8e03a5c6b27e33abd7406c9f604a01ce684c323e'); // contract instance to work with
+        function wait(ms) {
+            var d = new Date();
+            var d2 = null;
+            do {
+                d2 = new Date();
+            }
+            while (d2 - d < ms);
+        }
+        //temporary key number to avoid early zeros
+        key = 1;
+        var ID = [];
+        var age = [];
+        var name1 = [];
+        var blockNum = [];
+        var iterate = 0;
+        var difficultyVals = [];
+        var extraDataVals = [];
+        var gasLimitVals = [];
+        var gasUsedVals = [];
+        var hashVals = [];
+        var logsBloomVals = [];
+        var minerVals = [];
+        var mixHashVals = [];
+        var nonceVals = [];
+        var numberVals = [];
+        var parentHashVals = [];
+        var receiptsRootVals = [];
+        var sha3UnclesVals = [];
+        var sizeVals = [];
+        var stateRootVals = [];
+        var timestampVals = [];
+        var totalDifficultyVals = [];
+        var transactionsVals = [];
+        var transactionsRootVals = [];
+        var unclesVals = [];
+        var blockcount = 0;
+        var elements = [];
 
-		function removeSpecialChars(strVal)
-				{
-				strVal = strVal.replace(/[^a-z\d\s]+/gi, "");
-				return strVal;
-				}
-	var web3 =  new Web3(web3.currentProvider); //provider for web3
-	//contract abi, pass json representation of contract to instance
-	var addBlockContract = web3.eth.contract([
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "key",
-				"type": "uint256"
-			}
-		],
-		"name": "getName",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bytes32"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "key",
-				"type": "uint256"
-			}
-		],
-		"name": "getID",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "key",
-				"type": "uint256"
-			}
-		],
-		"name": "getBlockNum",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "key",
-				"type": "uint256"
-			}
-		],
-		"name": "getAge",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "blockchain",
-		"outputs": [
-			{
-				"name": "age",
-				"type": "uint8"
-			},
-			{
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"name": "name",
-				"type": "bytes32"
-			},
-			{
-				"name": "blockNum",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "data",
-				"type": "bytes32"
-			},
-			{
-				"name": "uage",
-				"type": "uint8"
-			},
-			{
-				"name": "uid",
-				"type": "uint256"
-			}
-		],
-		"name": "addData",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	}
-]);
-				var view = addBlockContract.at('0x8e03a5c6b27e33abd7406c9f604a01ce684c323e'); // contract instance to work with
-				function wait(ms)
-				{
-				var d = new Date();
-				var d2 = null;
-				do { d2 = new Date(); }
-				while(d2-d < ms);
-				}
-				//temporary key number to avoid early zeros
-				key = 1;
-				var ID = [];
-				var age = [];
-				var name1 = [];
-				var blockNum = [];
-				var iterate = 0;
-				var difficultyVals = [];
-				var extraDataVals = [];
-				var gasLimitVals = [];
-				var gasUsedVals = [];
-				var hashVals = [];
-				var logsBloomVals = [];
-				var minerVals = [];
-				var mixHashVals = [];
-				var nonceVals = [];
-				var numberVals = [];
-				var parentHashVals = [];
-				var receiptsRootVals = [];
-				var sha3UnclesVals = [];
-				var sizeVals = [];
-				var stateRootVals = [];
-				var timestampVals = [];
-				var totalDifficultyVals = [];
-				var transactionsVals = [];
-				var transactionsRootVals = [];
-				var unclesVals = [];
-				var blockcount = 0;
-				var elements = [];
+        //fixes
+        //function to view the block ID	
+        function viewingBlockID(key) {
 
-				//fixes
-				//function to view the block ID	
-				function viewingBlockID(key) {
-					
-					view.getID(key, function(worked, result){
-						if(result.c["0"]){
-							console.log(result.c["0"]);
-							ID.push(result.c["0"]);
-							viewingBlockNum(key);
-							viewingBlockAge(key);
-							viewingBlockName(key);
-								
-								
-							
-							console.log("COMPLETED");
-							
-							
-							viewingBlockID(key + 1);
-						}else{
-
-							console.log("All keys found");
-							var i;
-							var elementloop = 0;
-							setTimeout(function(){  
-							for(i = 0; i < ID.length; i++) {
-								if(i == ID.length-1) {
-									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-									elementloop+=20;
-									console.log("ELEMENT LOOP ------->" + elementloop);
-								}else {
-									newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop+1], elements[elementloop+2], elements[elementloop+3], elements[elementloop+4], elements[elementloop+5], elements[elementloop+6], elements[elementloop+7], elements[elementloop+8], elements[elementloop+9], elements[elementloop+10], elements[elementloop+11], elements[elementloop+12], elements[elementloop+13], elements[elementloop+14], elements[elementloop+15], elements[elementloop+16], elements[elementloop+17], elements[elementloop+18], elements[elementloop+19]);
-									elementloop+=20;
-									console.log("ELEMENT LOOP ------->" + elementloop);
-
-									duplicate();
-								}
-							
-							}
-						}, 1000);
+            view.getID(key, function(worked, result) {
+                if (result.c["0"]) {
+                    console.log(result.c["0"]);
+                    ID.push(result.c["0"]);
+                    viewingBlockNum(key);
+                    viewingBlockAge(key);
+                    viewingBlockName(key);
 
 
-							//TODO: call method that will draw blocks for user here!!!
-							
-							//newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
 
-						}
-					})
-				}
-				function viewingBlockAge(key) {
-					view.getAge(key, function(worked, result){
-							console.log(result.c["0"]);
-							age.push(result.c["0"]);
-							})
-				}
-				function viewingBlockName(key) {
-					view.getName(key, function(worked, result){
-							console.log(result);
-							//console.log(web3.toAscii(result));
-							name1.push(web3.toAscii(result));
-							})
-				}
-				function viewingBlockNum(key) {
-					view.getBlockNum(key, function(worked, result){
-							console.log(result.c["0"]);
-							blockNum.push(result.c["0"]);
-							setTimeout(function(){  
-							var block = web3.eth.getBlock(blockNum[key - 1], function(error, result){
-									if(!error){
-										console.log("FOUND BLOCK KEY: " + key);
-										var elementcount = 0;
-										for(const [key, value] of Object.entries(result)) {
-											console.log("VALUE SAVED:" + `${key}`  + ` ${value}`);
-											
-											elements.push(`${value}`);
-											console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
-											elementcount++;
-											
-										}
-									}
-									blockcount++;
-									
+                    console.log("COMPLETED");
 
-									iterate++;
-								
-									console.log("END!!!!!!!!!!!!!!!!!");
-									
-									
-								});
-								}, 2);
-							})
-				}
-				viewingBlockID(key);
-				
 
-				var difficulty = document.getElementById("name");
-	var extraData  = document.getElementById("id");
-	var gasLimit = document.getElementById("age");
+                    viewingBlockID(key + 1);
+                } else {
 
-	//function to create a new block object to be displayed on page
-	var i = 0;
-	function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
-		$('#name' + i).text(removeSpecialChars(name));  
-		$('#id'+ i).text(id); 
-		$('#age'+ i).text(age); 
-		
-		/*
+                    console.log("All keys found");
+                    var i;
+                    var elementloop = 0;
+                    setTimeout(function() {
+                        for (i = 0; i < ID.length; i++) {
+                            if (i == ID.length - 1) {
+                                newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop + 1], elements[elementloop + 2], elements[elementloop + 3], elements[elementloop + 4], elements[elementloop + 5], elements[elementloop + 6], elements[elementloop + 7], elements[elementloop + 8], elements[elementloop + 9], elements[elementloop + 10], elements[elementloop + 11], elements[elementloop + 12], elements[elementloop + 13], elements[elementloop + 14], elements[elementloop + 15], elements[elementloop + 16], elements[elementloop + 17], elements[elementloop + 18], elements[elementloop + 19]);
+                                elementloop += 20;
+                                console.log("ELEMENT LOOP ------->" + elementloop);
+                            } else {
+                                newBlock(ID[i], age[i], name1[i], elements[elementloop], elements[elementloop + 1], elements[elementloop + 2], elements[elementloop + 3], elements[elementloop + 4], elements[elementloop + 5], elements[elementloop + 6], elements[elementloop + 7], elements[elementloop + 8], elements[elementloop + 9], elements[elementloop + 10], elements[elementloop + 11], elements[elementloop + 12], elements[elementloop + 13], elements[elementloop + 14], elements[elementloop + 15], elements[elementloop + 16], elements[elementloop + 17], elements[elementloop + 18], elements[elementloop + 19]);
+                                elementloop += 20;
+                                console.log("ELEMENT LOOP ------->" + elementloop);
+
+                                duplicate();
+                            }
+
+                        }
+                    }, 1000);
+
+
+                    //TODO: call method that will draw blocks for user here!!!
+
+                    //newBlock(ID[iterate], age[iterate], name1[iterate], elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7], elements[8], elements[9], elements[10], elements[11], elements[12], elements[13], elements[14], elements[15], elements[16], elements[17], elements[18], elements[19]);
+
+                }
+            })
+        }
+
+        function viewingBlockAge(key) {
+            view.getAge(key, function(worked, result) {
+                console.log(result.c["0"]);
+                age.push(result.c["0"]);
+            })
+        }
+
+        function viewingBlockName(key) {
+            view.getName(key, function(worked, result) {
+                console.log(result);
+                //console.log(web3.toAscii(result));
+                name1.push(web3.toAscii(result));
+            })
+        }
+
+        function viewingBlockNum(key) {
+            view.getBlockNum(key, function(worked, result) {
+                console.log(result.c["0"]);
+                blockNum.push(result.c["0"]);
+                setTimeout(function() {
+                    var block = web3.eth.getBlock(blockNum[key - 1], function(error, result) {
+                        if (!error) {
+                            console.log("FOUND BLOCK KEY: " + key);
+                            var elementcount = 0;
+                            for (const [key, value] of Object.entries(result)) {
+                                console.log("VALUE SAVED:" + `${key}` + ` ${value}`);
+
+                                elements.push(`${value}`);
+                                console.log("STORED IN ELEMENT ARRAY:" + elements[elementcount]);
+                                elementcount++;
+
+                            }
+                        }
+                        blockcount++;
+
+
+                        iterate++;
+
+                        console.log("END!!!!!!!!!!!!!!!!!");
+
+
+                    });
+                }, 2);
+            })
+        }
+        viewingBlockID(key);
+
+
+        var difficulty = document.getElementById("name");
+        var extraData = document.getElementById("id");
+        var gasLimit = document.getElementById("age");
+
+        //function to create a new block object to be displayed on page
+        var i = 0;
+
+        function newBlock(id, age, name, difficulty, extraData, gasLimit, gasUsed, hash, logsBloom, miner, mixHash, nonce, number, parentHash, receiptsRoot, sha3Uncles, size, stateRoot, timestamp, totalDifficulty, transactions, transactionsRoot, uncles) {
+            $('#name' + i).text(removeSpecialChars(name));
+            $('#id' + i).text(id);
+            $('#age' + i).text(age);
+
+            /*
 		$('#difficulty' + i).text(difficulty); 
 		$('#extraData'+ i).text(extraData); 
 		$('#gasLimit'+ i).text(gasLimit); 
@@ -862,139 +934,135 @@ a.article, a.article:hover {
 		$('#transactionsRoot'+ i).text(transactionsRoot); 
 		$('#uncles'+ i).text(uncles); 
 */
-		difficultyVals.push(difficulty);
-		extraDataVals.push(extraData);
-		gasLimitVals.push(gasLimit);
-		gasUsedVals.push(gasUsed);
-		hashVals.push(hash);
-		logsBloomVals.push(logsBloom);
-		minerVals.push(miner);
-		mixHashVals.push(mixHash);
-		nonceVals.push(nonce);
-		numberVals.push(number);
-		parentHashVals.push(parentHash);
-		receiptsRootVals.push(receiptsRoot);
-		sha3UnclesVals.push(sha3Uncles);
-		sizeVals.push(size);
-		stateRootVals.push(stateRoot);
-		timestampVals.push(timestamp);
-		totalDifficultyVals.push(totalDifficulty);
-		transactionsVals.push(transactions);
-		transactionsRootVals.push(transactionsRoot);
-		unclesVals.push(uncles);		
-	}
+            difficultyVals.push(difficulty);
+            extraDataVals.push(extraData);
+            gasLimitVals.push(gasLimit);
+            gasUsedVals.push(gasUsed);
+            hashVals.push(hash);
+            logsBloomVals.push(logsBloom);
+            minerVals.push(miner);
+            mixHashVals.push(mixHash);
+            nonceVals.push(nonce);
+            numberVals.push(number);
+            parentHashVals.push(parentHash);
+            receiptsRootVals.push(receiptsRoot);
+            sha3UnclesVals.push(sha3Uncles);
+            sizeVals.push(size);
+            stateRootVals.push(stateRoot);
+            timestampVals.push(timestamp);
+            totalDifficultyVals.push(totalDifficulty);
+            transactionsVals.push(transactions);
+            transactionsRootVals.push(transactionsRoot);
+            unclesVals.push(uncles);
+        }
 
 
 
 
-	
-	function duplicate() {
-		var original = document.getElementById('duplicater' + i);
-		var clone = original.cloneNode(true); // "deep" clone
-		clone.id = "duplicater" + ++i; // there can only be one element with an ID
-	
-		//update IDs of children pre fields
-		clone.getElementsByTagName('pre')[0].id = "name" + i;
-		clone.getElementsByTagName('pre')[1].id = "id" + i;
-		clone.getElementsByTagName('pre')[2].id = "age" + i;
-		clone.getElementsByTagName('button')[0].id = "exit" + i;
+        function duplicate() {
+            var original = document.getElementById('duplicater' + i);
+            var clone = original.cloneNode(true); // "deep" clone
+            clone.id = "duplicater" + ++i; // there can only be one element with an ID
+
+            //update IDs of children pre fields
+            clone.getElementsByTagName('pre')[0].id = "name" + i;
+            clone.getElementsByTagName('pre')[1].id = "id" + i;
+            clone.getElementsByTagName('pre')[2].id = "age" + i;
+            clone.getElementsByTagName('button')[0].id = "exit" + i;
 
 
-		original.parentNode.appendChild(clone); // appends child div to previous parent div
-		$('[data-toggle="tooltip"]').tooltip();  //duplicate all tooltips
-	}
-	try {
-		
-		setTimeout(function(){  
-		document.addEventListener('click', function(e) {
-			var duplicaterid = e.target.id; // gets id of target which is seemorebutton
-			
-			//accessing block
-			var blockNumber = duplicaterid.substr(4, 5);
-			console.log("DUPLICATERID ------------->" + duplicaterid);
-				console.log("BLOCK NUMBER ------------->" + blockNumber);
-				
-			var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
-			var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
-			var idforModal = document.getElementById('id' + blockNumber).innerHTML;
-			var difficultyforModal = document.getElementById("modalDifficulty").innerHTML;
-			var extraDataforModal = document.getElementById("modalextraData").innerHTML;
-			var gasLimitforModal = document.getElementById("modalgasLimit").innerHTML;
-			var gasUsedforModal = document.getElementById("modalgasUsed").innerHTML;
-			var hashforModal = document.getElementById("modalhash").innerHTML;
-			var logsBloomforModal = document.getElementById("modallogsBloom").innerHTML;
-			var minerforModal = document.getElementById("modalminer").innerHTML;
-			var mixhashforModal = document.getElementById("modalmixHash").innerHTML;
-			var nonceforModal = document.getElementById("modalnonce").innerHTML;
-			var numberforModal = document.getElementById("modalnumber").innerHTML;
-			var parentHashforModal = document.getElementById("modalparentHash").innerHTML;
-			var receiptsRootforModal = document.getElementById("modalreceiptsRoot").innerHTML;
-			var sha3UnclesforModal = document.getElementById("modalsha3Uncles").innerHTML;
-			var sizeforModal = document.getElementById("modalsize").innerHTML;
-			var stateRootforModal = document.getElementById("modalstateRoot").innerHTML;
-			var timestampforModal = document.getElementById("modaltimestamp").innerHTML;
-			var totalDifficultyforModal = document.getElementById("modaltotalDifficulty").innerHTML;
-			var transactionsforModal = document.getElementById("modaltransactions").innerHTML;
-			var transactionsRootforModal = document.getElementById("modaltransactionsRoot").innerHTML;
-			var unclesforModal = document.getElementById("modaluncles").innerHTML ;
-			
-			document.getElementById("modalName").innerHTML = name1[blockNumber];
-			document.getElementById("modalAge").innerHTML = age[blockNumber];
-			document.getElementById("modalID").innerHTML = ID[blockNumber];
-			document.getElementById("modalDifficulty").innerHTML = difficultyVals[blockNumber];
-			document.getElementById("modalextraData").innerHTML = extraDataVals[blockNumber];
-			document.getElementById("modalgasLimit").innerHTML = gasLimitVals[blockNumber];
-			document.getElementById("modalgasUsed").innerHTML = gasUsedVals[blockNumber];
-			document.getElementById("modalhash").innerHTML = hashVals[blockNumber];
-			document.getElementById("modallogsBloom").innerHTML = logsBloomVals[blockNumber];
-			document.getElementById("modalminer").innerHTML = minerVals[blockNumber];
-			document.getElementById("modalmixHash").innerHTML = mixHashVals[blockNumber];
-			document.getElementById("modalnonce").innerHTML = nonceVals[blockNumber];
-			document.getElementById("modalnumber").innerHTML = numberVals[blockNumber];
-			document.getElementById("modalparentHash").innerHTML = parentHashVals[blockNumber];
-			document.getElementById("modalreceiptsRoot").innerHTML = receiptsRootVals[blockNumber];
-			document.getElementById("modalsha3Uncles").innerHTML = sha3UnclesVals[blockNumber];
-			document.getElementById("modalsize").innerHTML = sizeVals[blockNumber];
-			document.getElementById("modalstateRoot").innerHTML = stateRootVals[blockNumber];
-			document.getElementById("modaltimestamp").innerHTML = timestampVals[blockNumber];
-			document.getElementById("modaltotalDifficulty").innerHTML = totalDifficultyVals[blockNumber];
-			document.getElementById("modaltransactions").innerHTML = transactionsVals[blockNumber];
-			document.getElementById("modaltransactionsRoot").innerHTML = transactionsRootVals[blockNumber];
-			document.getElementById("modaluncles").innerHTML = unclesVals[blockNumber];
-			$("#blockContent").modal("show").click(function () { // show the welcome page modal
-		 		 $("#blockContent").modal('hide'); 
-			});
-			
-		});
-	}, 1000);
-	}catch(e) {
+            original.parentNode.appendChild(clone); // appends child div to previous parent div
+            $('[data-toggle="tooltip"]').tooltip(); //duplicate all tooltips
+        }
+        try {
 
-	}
-	
+            setTimeout(function() {
+                document.addEventListener('click', function(e) {
+                    var duplicaterid = e.target.id; // gets id of target which is seemorebutton
 
+                    //accessing block
+                    var blockNumber = duplicaterid.substr(4, 5);
+                    console.log("DUPLICATERID ------------->" + duplicaterid);
+                    console.log("BLOCK NUMBER ------------->" + blockNumber);
 
-</script>
+                    var nameForModal = document.getElementById('name' + blockNumber).innerHTML;
+                    var ageForModal = document.getElementById('age' + blockNumber).innerHTML;
+                    var idforModal = document.getElementById('id' + blockNumber).innerHTML;
+                    var difficultyforModal = document.getElementById("modalDifficulty").innerHTML;
+                    var extraDataforModal = document.getElementById("modalextraData").innerHTML;
+                    var gasLimitforModal = document.getElementById("modalgasLimit").innerHTML;
+                    var gasUsedforModal = document.getElementById("modalgasUsed").innerHTML;
+                    var hashforModal = document.getElementById("modalhash").innerHTML;
+                    var logsBloomforModal = document.getElementById("modallogsBloom").innerHTML;
+                    var minerforModal = document.getElementById("modalminer").innerHTML;
+                    var mixhashforModal = document.getElementById("modalmixHash").innerHTML;
+                    var nonceforModal = document.getElementById("modalnonce").innerHTML;
+                    var numberforModal = document.getElementById("modalnumber").innerHTML;
+                    var parentHashforModal = document.getElementById("modalparentHash").innerHTML;
+                    var receiptsRootforModal = document.getElementById("modalreceiptsRoot").innerHTML;
+                    var sha3UnclesforModal = document.getElementById("modalsha3Uncles").innerHTML;
+                    var sizeforModal = document.getElementById("modalsize").innerHTML;
+                    var stateRootforModal = document.getElementById("modalstateRoot").innerHTML;
+                    var timestampforModal = document.getElementById("modaltimestamp").innerHTML;
+                    var totalDifficultyforModal = document.getElementById("modaltotalDifficulty").innerHTML;
+                    var transactionsforModal = document.getElementById("modaltransactions").innerHTML;
+                    var transactionsRootforModal = document.getElementById("modaltransactionsRoot").innerHTML;
+                    var unclesforModal = document.getElementById("modaluncles").innerHTML;
 
-<!Function to change page when button is pressed on home tab>
-<script>
-	var output2 = document.getElementById('output2');
-	var printThis = "";
-function button(evt, tab){
-	
-	var i, x, tablinks;
-	x = document.getElementsByClassName("tab");
-	for (i = 0; i < x.length; i++) {
-     		x[i].style.display = "none";
-  	}
-  	tablinks = document.getElementsByClassName("tablink");
-  	for (i = 0; i < x.length; i++) {
-      		tablinks[i].className = tablinks[i].className.replace("", ""); 
-  	}
-  	document.getElementById(tab).style.display = "block";
-  	
-}
-</script>
-    </body>
+                    document.getElementById("modalName").innerHTML = name1[blockNumber];
+                    document.getElementById("modalAge").innerHTML = age[blockNumber];
+                    document.getElementById("modalID").innerHTML = ID[blockNumber];
+                    document.getElementById("modalDifficulty").innerHTML = difficultyVals[blockNumber];
+                    document.getElementById("modalextraData").innerHTML = extraDataVals[blockNumber];
+                    document.getElementById("modalgasLimit").innerHTML = gasLimitVals[blockNumber];
+                    document.getElementById("modalgasUsed").innerHTML = gasUsedVals[blockNumber];
+                    document.getElementById("modalhash").innerHTML = hashVals[blockNumber];
+                    document.getElementById("modallogsBloom").innerHTML = logsBloomVals[blockNumber];
+                    document.getElementById("modalminer").innerHTML = minerVals[blockNumber];
+                    document.getElementById("modalmixHash").innerHTML = mixHashVals[blockNumber];
+                    document.getElementById("modalnonce").innerHTML = nonceVals[blockNumber];
+                    document.getElementById("modalnumber").innerHTML = numberVals[blockNumber];
+                    document.getElementById("modalparentHash").innerHTML = parentHashVals[blockNumber];
+                    document.getElementById("modalreceiptsRoot").innerHTML = receiptsRootVals[blockNumber];
+                    document.getElementById("modalsha3Uncles").innerHTML = sha3UnclesVals[blockNumber];
+                    document.getElementById("modalsize").innerHTML = sizeVals[blockNumber];
+                    document.getElementById("modalstateRoot").innerHTML = stateRootVals[blockNumber];
+                    document.getElementById("modaltimestamp").innerHTML = timestampVals[blockNumber];
+                    document.getElementById("modaltotalDifficulty").innerHTML = totalDifficultyVals[blockNumber];
+                    document.getElementById("modaltransactions").innerHTML = transactionsVals[blockNumber];
+                    document.getElementById("modaltransactionsRoot").innerHTML = transactionsRootVals[blockNumber];
+                    document.getElementById("modaluncles").innerHTML = unclesVals[blockNumber];
+                    $("#blockContent").modal("show").click(function() { // show the welcome page modal
+                        $("#blockContent").modal('hide');
+                    });
+
+                });
+            }, 1000);
+        } catch (e) {
+
+        }
+    </script>
+
+    <!Function to change page when button is pressed on home tab>
+    <script>
+        var output2 = document.getElementById('output2');
+        var printThis = "";
+
+        function button(evt, tab) {
+
+            var i, x, tablinks;
+            x = document.getElementsByClassName("tab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("", "");
+            }
+            document.getElementById(tab).style.display = "block";
+
+        }
+    </script>
+</body>
+
 </html>
-
-
