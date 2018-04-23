@@ -1,510 +1,480 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Blockchain UI</title>
-         <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="style4.css">
-        <!-- Check browser - if its not firefox or chrome, then let the user know -->
-<script>
-        
-        // original source: http://www.javascriptkit.com/script/script2/alertmsg.shtml
-        // modified
-        var once_per_session = 1;
-        
-        function get_cookie(Name) {
-            var search = Name + "="
-            var returnvalue = "";
-            if (document.cookie.length > 0) {
-                offset = document.cookie.indexOf(search)
-                if (offset != -1) { // if cookie exists
-                    offset += search.length
-                    // set index of beginning of value
-                    end = document.cookie.indexOf(";", offset);
-                    // set index of end of cookie value
-                    if (end == -1)
-                        end = document.cookie.length;
-                    returnvalue=unescape(document.cookie.substring(offset, end))
-                }
-            }
-            return returnvalue;
-        }
-        function alertornot(){
-            if (get_cookie('alerted')==''){
-                loadalert()
-                document.cookie="alerted=yes"
-                //check if the user is logged into metamask
-                web3.eth.getAccounts(function(err, accounts){
-                    if (err != null) alert("An error occurred: "+err);
-                    else if (accounts.length == 0) alert("It doesn't seem like you're logged into Metamask. Please log into the LocalHost and try again.");
-                    else alert("Successfully logged into Metamask.");
-                });
-            }
-        }
-        function loadalert(){
-             //Check if browser is IE
-             if (navigator.userAgent.search("MSIE") >= 0) {
-                // insert conditional IE code here
-                var isIE = true;
-            }
-            //Check if browser is Chrome
-            else if (navigator.userAgent.search("Chrome") >= 0) {
-                // insert conditional Chrome code here
-                var isChrome = true;
-            }
-            //Check if browser is Firefox 
-            else if (navigator.userAgent.search("Firefox") >= 0) {
-                // insert conditional Firefox Code here
-                var isFirefox = true;
-            }
-            //Check if browser is Safari
-            else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-                // insert conditional Safari code here
-                var isSafari = true;
-            }
-            //Check if browser is Opera
-            else if (navigator.userAgent.search("Opera") >= 0) {
-                // insert conditional Opera code here
-                var isOpera = true;
-            }
-            
-            // Chromium (checks if there are any chromium plugins present that wouldnt be in chrome)
-            var isChromium = function isChromium(){ 
-                    for (var i = 0, u="Chromium", l =u.length; i < navigator.plugins.length; i++)
-                    {
-                        if (navigator.plugins[i].name != null && navigator.plugins[i].name.substr(0, l) === u)
-                            return true;
-                    }
-                    return false;
-                }
-            // if the user isnt using firefox, chrome, chromium, or opera
-            if(isFirefox == false || isChrome == false || isOpera == false || isChromium == false) {
-                alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
-            }
-            if(isSafari == true || isIE == true) {
-                alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
-            }
-            //if metamask isnt installed
-            if(typeof web3 == "undefined") {
-                alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser. Install Metamask here: https://metamask.io");
-            }
-        }
-        if (once_per_session==0){
-            loadalert()
-        }else{
-            alertornot()
-        }
-</script>
-    </head>
-    <!-- Style for the tile buttons -->
-<style>
-        div.gallery {
-            margin: 5px;
-            float: left;
-            width: 1000px;
-            border-radius: 20px 20px 0px 0px;
-        }
-        
-        
-        div.gallery img {
-            width: 100%;
-            height: 500px;
-            border-radius: 20px 20px 0px 0px;
-    
-        }
-        
-        div.desc {
-            padding: 15px;
-            text-align: center;
-            background-color: rgb(49, 57, 77);
-            color: white;
-            border-radius: 0px 0px 20px 20px;
-    
-    
-        }
-        </style>
-    <style>
-        /*
-    DEMO STYLE
-*/
-@import "https://fonts.googleapis.com/css?family=Quattrocento+Sans:300,400,500,600,700";
-.w3-container {
-            background-color:rgb(49, 57, 77);
-        }
-body {
-    font-family: 'Quattrocento Sans', sans-serif;
-    background: #fafafa;
-    font-size: 18px;
-}
-p {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 24px;
-    margin-left: 20px;
-}
-a, a:hover, a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
-i, span {
-    display: inline-block;
-}
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
-#sidebar {
-    min-width: 300px;
-    max-width: 300px;
-    background: rgb(49, 57, 77);
-    color: #fff;
-    transition: all 0.3s;
-}
-#sidebar.active {
-    min-width: 100px;
-    max-width: 100px;
-    text-align: center;
-}
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
-    display: none;
-}
-#sidebar.active .sidebar-header strong {
-    display: block;
-}
-#sidebar ul li a {
-    text-align: left;
-}
-#sidebar.active ul li a {
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 0.85em;
-}
-.w3-container {
-            background-color:rgb(49, 57, 77);
-        }
-#sidebar.active ul li a i {
-    margin-right:  0;
-    display: block;
-    font-size: 1.8em;
-    margin-bottom: 5px;
-}
-#sidebar.active ul ul a {
-    padding: 10px !important;
-}
-#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
-    top: auto;
-    bottom: 5px;
-    right: 50%;
-    -webkit-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    transform: translateX(50%);
-}
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: rgb(49, 57, 77);
-}
-#sidebar .sidebar-header strong {
-    display: none;
-    font-size: 1.8em;
-}
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
-}
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-}
-#sidebar ul li a:hover {
-    color: rgb(49, 57, 77);
-    background: #fff;
-}
-#sidebar ul li a i {
-    margin-right: 10px;
-}
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: rgb(100, 117, 160);
-}
-a[data-toggle="collapse"] {
-    position: relative;
-}
-a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-}
-a[aria-expanded="true"]::before {
-    content: '\e260';
-}
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: rgb(49, 57, 77);
-}
-ul.CTAs {
-    padding: 20px;
-}
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-a.download {
-    background: rgb(100, 117, 160);
-    color: white;
-}
-a.article, a.article:hover {
-    background: rgb(100, 117, 160) !important;
-    color: #fff !important;
-}
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-#content {
-    min-height: 100vh;
-    transition: all 0.3s;
-	width: 100vw;
-}
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-@media (max-width: 768px) {
-    #sidebar {
-        min-width: 100px;
-        max-width: 100px;
-        text-align: center;
-        margin-left: -80px !important ;
-    }
-    a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-        top: auto;
-        bottom: 5px;
-        right: 50%;
-        -webkit-transform: translateX(50%);
-        -ms-transform: translateX(50%);
-        transform: translateX(50%);
-    }
-    #sidebar.active {
-        margin-left: 0 !important;
-    }
-    #sidebar .sidebar-header h3, #sidebar .CTAs {
-        display: none;
-    }
-    #sidebar .sidebar-header strong {
-        display: block;
-    }
-    #sidebar ul li a {
-        padding: 20px 10px;
-    }
-    #sidebar ul li a span {
-        font-size: 0.85em;
-    }
-    #sidebar ul li a i {
-        margin-right:  0;
-        display: block;
-    }
-    #sidebar ul ul a {
-        padding: 10px !important;
-    }
-    #sidebar ul li a i {
-        font-size: 1.3em;
-    }
-    #sidebar {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
-}
-    </style>
-    <body>
-        <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                
-                <div class="sidebar-header">
-                    <h3><a href="HomePage.html">Home</a></h3>
-                    <strong><a href="HomePage.html">BC</a></strong>                </div>
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                            
-                            Blockchains
-                        </a>
-                        <ul class="collapse list-unstyled in" id="homeSubmenu">
-                            <li><a href="Blockchain.html">About the Blockchain</a></li>
-                            <li><a href="BlockchainFAQ.html">FAQ</a></li>
-                            <li><a href="BlockchainAbout.html">About our Application</a></li>
-                            <li><a href="Guide.html">A Guide to Decentralized Consensus Systems</a></li>
-                            <li><a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            
-                            Blockchain Functionality
-                        </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="AddBlock.html">Add a Block</a></li>
-                            <li><a href="SearchBlock.html">Search for a Block</a></li>
-                            <li><a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a></li>
-                            <li><a href="ViewBlockLedger.html">Ledger View of the Blockchain</a></li>
-                            <li><a href="BlockStats.html">Blockchain Statistics</a></li>
-                        </ul>
-                    </li>
-                  
-                    <li>
-                            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
-                                
-                                Blockchain Alternatives
-                            </a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu2">
-                                <li><a href="HashgraphAbout.html">Hashgraph</a></li>
-                                <li><a href="TangleAbout.html">Tangle</a></li>
-                                <li><a href="HyperledgerAbout.html">Hyperledger</a></li>
-                                <li><a href="CordaAbout.html">Corda</a></li>
-                                <li><a href="DCSFAQ.html">FAQ</a></li>
-                                <li><a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a></li>
-                                <li><a href="Comparison.html">Comparison</a></li>
-                            </ul>
-                        </li>
-                </ul>
-                <ul class="list-unstyled CTAs">
-                    <li><a href="Help.html" class="download">Help</a></li>
-                    <li><a href="ReportBug.html" class="download">Report a Bug</a></li>
-                    <li><a href="Tutorial.html" class="download">Tutorial</a></li>
-                   
-                </ul>
-                <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                            <span>Hide</span>
-                        </button>
-                    </div>
-            </nav>
-            <!-- Page Content Holder -->
-            <div id="content">
-                    <div class="w3-container"> 
-                            <h1 style="color: white">DCS: Preventing Data Loss and Tampering</h1>
-                        </div>
-                    <br>
-                        <b><p style="font-size: 30px">Hashgraph</p></b> 
-                        <p> Hashgraph helps to prevent against data loss and tampering as it does not use a leader in its consensus mechanism which makes it 
-                            resilient against DDoS and DoS attacks. Hashgraph's consensus algorithm also helps to prevent against Sybil attacks by providing a mathematical
-                            guarantee that these attacks cannot succeed as long as less than 1/3 of the population is dishonest.
-                            Hashgraph is more fair since no individual can manipulate the order of transactions. All transactions are timestamped which helps to prevent tampering.
-                        </p>
-                        <b><p style="font-size: 30px"> Corda</p></b>
-                        <p>Consensus in corda is dealt in two parts, transaction validity and transaction uniqueness. 
-                            Transaction validity is when the parties involved agree to consensus, this in turn means only these parties can see the transaction. 
-                            At least two parties are needed in order to record a transaction to the ledger. Transaction uniqueness can be implemented in a few ways. 
-                            Corda allows for this service to be “pluggable” meaning that different concesnus methods may be used, such as a byzantine fault tolerance 
-                            algorithm or a simple single machine system. The uniqueness systems are not required to see the information within the transaction as well,
-                             they are only there to confirm that the state has not been consumed before.</p>
-                        <b><p style="font-size: 30px">Hyperledger</p></b>
-                        <p>
-                            Security in hyperledger is largely designed around permisioned based systems. Because of the large focus around business needs, 
-                            hyperledger plans to implement systems that require the entities to be permissioned identities. 
-                            This is often done by some membership system that approves who is allowed on the blockchain. The idea is that the members 
-                            using will the system will be conducting business together, often needing to know who they are doing business with and validating 
-                            the authenticity that it is them. These membership services create a private closed blockchain where trust is inherit because each 
-                            member was approved to be a member. Although membership is implemented, once again because of hyperledgers modularity, this can change to the
-                            users needs. We see in hyperledger Iroha that the default system of allowing membership is based on a number of nodes approving a member be added. 
-                            Users can decide how private they wish their system to be, and what method they wish to be conducted when giving membership.  
-                            Hyperledger also offers many methods of consensus security. Hyperledger fabric offers consensus that can be based on only a few nodes. 
-                            For example user A can trade user B and may only need user C, who is a bank, to approve that the transaction is legitimate. 
-                            This way of consensus can also be changed depending on the need. We see in hyperledger sawtooth consensus is done through a lottery based system. 
-                            Hyperledger continuously demonstrates its modularity and choice when it comes to security. 
-                            A developer of a system can not only choose their method of consensus to validation and membership, but also fine tune the methods chosen.
-                            We see this throughout all of hyperledger versions, as they each offer different security methods, but the made focus
-                            on security is through a private closed blockchain.  
-                                
-                        </p>
-                        <b><p style="font-size: 30px">Tangle</p></b>
-                        <p>Tangle helps to prevent against data loss and tampering as it has implemented various attack prevention algorithms to defend from a variety of threats. </p>
-                        <p>
-                            <b>Giant Weight Attack </b><br>
-                                In a large weight attack, a malicious entity will issue a false transaction and use a massive amount of computing power 
-                                to make its weight sufficiently large. If a host can issue a sufficiently large weight on a transaction by building a secret subtangle, 
-                                it can overtake the main tangle, orphaning the main tangle, and taking control. In an ideal situation, this attack will always work with success. I
-                                n order to mitigate this risk we must have a better way to decide how to select which tips to directly or indirectly prove. We can also cap the weight of each 
-                                transaction to 1 which will reduce the chance of a secret subtangle and a double spending transaction to overtake the main tangle with a large weight.
-                                <br><br>
-                            <b>Parasite Chain Attack</b><br>
-                                A parasite chain attack is similar to a large weight attack. A malicious entity builds a parasite chain, 
-                                or a subtangle, that occasionally references the main tangle in order to increase its weight and thus increase its confidence 
-                                interval in the system. Given sufficiently large computation power, that malicious entity can release a whole load of artificial transactions
-                                that are approved by its own subtangle. To defend against this attack the tangle relies on the assumption that the main tangle consists of more 
-                                hashing power than a single entity can produce, and thus retain a larger cumulative weight than the parasite chain. The tangle proposes a Markhov 
-                                Chain Monte Carlo (MCMC) algorithm to help combat this. The idea is to place random walkers on sites in the tangle, and let them ‘walk’ towards tips in a random way. 
-                                The tips selected by the walkers are then candidates for approval. In this way, there is a very low chance that a random walker will select a node on the parasite
-                                chain to approve and also a low chance that it will select a lazy or a selfish node. 
-                            <br><br>
-                            <b>Splitting Attack</b><br>
-                                The splitting attack was proposed as a potential attack against the tangle that is using the MCMC algorithm. 
-                                It suggests that in a high load regime, an attack could potentially split the main tangle while retaining a balance between 
-                                the two halves. The attacker does this by placing two conflicting transactions at the point of the split to prevent honest 
-                                nodes from joining the network. Then, the attacker hopes that the branch will be roughly split in half so half of the network 
-                                contributes to each branch similarly. If the attacker succeeds, the attacker could issue the same spending transactions on both chains. 
-                                To defend against this, the tangle employs a sharp threshold rule that makes it really difficult for a split tangle to retain balance between both of them. 
-                               <br> <br>
-                            <b>Quantum Computing Resistance</b><br>
-                                As quantum computing becomes more prevalent, they become a bigger risk within distributed consensus 
-                                systems because they are billions of times more efficient at solving hashing algorithms, making them an ideal host 
-                                to exploit vulnerabilities in systems that rely on those algorithms for security. With Tangle, by limiting the weight of 
-                                each transaction to 1, you can effectively prevent a quantum computer from overloading the network with a large weight attack. 
-                                While a quantum computer may hit the ideal rate of giving and seeking approval, it will always remain in an acceptable parameter of increased rate. 
-                                
-                        </p>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<title>Blockchain UI</title><!-- Bootstrap CSS CDN -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"><!-- Our Custom CSS -->
+	<link href="style4.css" rel="stylesheet"><!-- Check browser - if its not firefox or chrome, then let the user know -->
 
-                
-        </div>
-        <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
-    </body>
+	<script>
+	       
+	       // original source: http://www.javascriptkit.com/script/script2/alertmsg.shtml
+	       // modified
+	       var once_per_session = 1;
+	       
+	       function get_cookie(Name) {
+	           var search = Name + "="
+	           var returnvalue = "";
+	           if (document.cookie.length > 0) {
+	               offset = document.cookie.indexOf(search)
+	               if (offset != -1) { // if cookie exists
+	                   offset += search.length
+	                   // set index of beginning of value
+	                   end = document.cookie.indexOf(";", offset);
+	                   // set index of end of cookie value
+	                   if (end == -1)
+	                       end = document.cookie.length;
+	                   returnvalue=unescape(document.cookie.substring(offset, end))
+	               }
+	           }
+	           return returnvalue;
+	       }
+	       function alertornot(){
+	           if (get_cookie('alerted')==''){
+	               loadalert()
+	               document.cookie="alerted=yes"
+	               //check if the user is logged into metamask
+	               web3.eth.getAccounts(function(err, accounts){
+	                   if (err != null) alert("An error occurred: "+err);
+	                   else if (accounts.length == 0) alert("It doesn't seem like you're logged into Metamask. Please log into the LocalHost and try again.");
+	                   else alert("Successfully logged into Metamask.");
+	               });
+	           }
+	       }
+	       function loadalert(){
+	            //Check if browser is IE
+	            if (navigator.userAgent.search("MSIE") >= 0) {
+	               // insert conditional IE code here
+	               var isIE = true;
+	           }
+	           //Check if browser is Chrome
+	           else if (navigator.userAgent.search("Chrome") >= 0) {
+	               // insert conditional Chrome code here
+	               var isChrome = true;
+	           }
+	           //Check if browser is Firefox 
+	           else if (navigator.userAgent.search("Firefox") >= 0) {
+	               // insert conditional Firefox Code here
+	               var isFirefox = true;
+	           }
+	           //Check if browser is Safari
+	           else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+	               // insert conditional Safari code here
+	               var isSafari = true;
+	           }
+	           //Check if browser is Opera
+	           else if (navigator.userAgent.search("Opera") >= 0) {
+	               // insert conditional Opera code here
+	               var isOpera = true;
+	           }
+	           
+	           // Chromium (checks if there are any chromium plugins present that wouldnt be in chrome)
+	           var isChromium = function isChromium(){ 
+	                   for (var i = 0, u="Chromium", l =u.length; i < navigator.plugins.length; i++)
+	                   {
+	                       if (navigator.plugins[i].name != null && navigator.plugins[i].name.substr(0, l) === u)
+	                           return true;
+	                   }
+	                   return false;
+	               }
+	           // if the user isnt using firefox, chrome, chromium, or opera
+	           if(isFirefox == false || isChrome == false || isOpera == false || isChromium == false) {
+	               alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
+	           }
+	           if(isSafari == true || isIE == true) {
+	               alert("You are not using a compatible browser. Please switch to Mozilla Firefox, Google Chrome or Opera.");
+	           }
+	           //if metamask isnt installed
+	           if(typeof web3 == "undefined") {
+	               alert("It looks like you don't have MetaMask installed. Please install it as a browser extension and restart your browser. Install Metamask here: https://metamask.io");
+	           }
+	       }
+	       if (once_per_session==0){
+	           loadalert()
+	       }else{
+	           alertornot()
+	       }
+	</script>
+	<style>
+	       div.gallery {
+	           margin: 5px;
+	           float: left;
+	           width: 1000px;
+	           border-radius: 20px 20px 0px 0px;
+	       }
+	       
+	       
+	       div.gallery img {
+	           width: 100%;
+	           height: 500px;
+	           border-radius: 20px 20px 0px 0px;
+	   
+	       }
+	       
+	       div.desc {
+	           padding: 15px;
+	           text-align: center;
+	           background-color: rgb(49, 57, 77);
+	           color: white;
+	           border-radius: 0px 0px 20px 20px;
+	   
+	   
+	       }
+	</style>
+	<style>
+	       /*
+	   DEMO STYLE
+	*/
+	@import "https://fonts.googleapis.com/css?family=Quattrocento+Sans:300,400,500,600,700";
+	.w3-container {
+	           background-color:rgb(49, 57, 77);
+	       }
+	body {
+	   font-family: 'Quattrocento Sans', sans-serif;
+	   background: #fafafa;
+	   font-size: 18px;
+	}
+	p {
+	   font-family: 'Quattrocento Sans', sans-serif;
+	   font-size: 24px;
+	   margin-left: 20px;
+	}
+	a, a:hover, a:focus {
+	   color: inherit;
+	   text-decoration: none;
+	   transition: all 0.3s;
+	}
+	.navbar {
+	   padding: 15px 10px;
+	   background: #fff;
+	   border: none;
+	   border-radius: 0;
+	   margin-bottom: 40px;
+	   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+	}
+	.navbar-btn {
+	   box-shadow: none;
+	   outline: none !important;
+	   border: none;
+	}
+	.line {
+	   width: 100%;
+	   height: 1px;
+	   border-bottom: 1px dashed #ddd;
+	   margin: 40px 0;
+	}
+	i, span {
+	   display: inline-block;
+	}
+	/* ---------------------------------------------------
+	   SIDEBAR STYLE
+	----------------------------------------------------- */
+	.wrapper {
+	   display: flex;
+	   align-items: stretch;
+	}
+	#sidebar {
+	   min-width: 300px;
+	   max-width: 300px;
+	   background: rgb(49, 57, 77);
+	   color: #fff;
+	   transition: all 0.3s;
+	}
+	#sidebar.active {
+	   min-width: 100px;
+	   max-width: 100px;
+	   text-align: center;
+	}
+	#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+	   display: none;
+	}
+	#sidebar.active .sidebar-header strong {
+	   display: block;
+	}
+	#sidebar ul li a {
+	   text-align: left;
+	}
+	#sidebar.active ul li a {
+	   padding: 20px 10px;
+	   text-align: center;
+	   font-size: 0.85em;
+	}
+	.w3-container {
+	           background-color:rgb(49, 57, 77);
+	       }
+	#sidebar.active ul li a i {
+	   margin-right:  0;
+	   display: block;
+	   font-size: 1.8em;
+	   margin-bottom: 5px;
+	}
+	#sidebar.active ul ul a {
+	   padding: 10px !important;
+	}
+	#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
+	   top: auto;
+	   bottom: 5px;
+	   right: 50%;
+	   -webkit-transform: translateX(50%);
+	   -ms-transform: translateX(50%);
+	   transform: translateX(50%);
+	}
+	#sidebar .sidebar-header {
+	   padding: 20px;
+	   background: rgb(49, 57, 77);
+	}
+	#sidebar .sidebar-header strong {
+	   display: none;
+	   font-size: 1.8em;
+	}
+	#sidebar ul.components {
+	   padding: 20px 0;
+	   border-bottom: 1px solid #47748b;
+	}
+	#sidebar ul li a {
+	   padding: 10px;
+	   font-size: 1.1em;
+	   display: block;
+	}
+	#sidebar ul li a:hover {
+	   color: rgb(49, 57, 77);
+	   background: #fff;
+	}
+	#sidebar ul li a i {
+	   margin-right: 10px;
+	}
+	#sidebar ul li.active > a, a[aria-expanded="true"] {
+	   color: #fff;
+	   background: rgb(100, 117, 160);
+	}
+	a[data-toggle="collapse"] {
+	   position: relative;
+	}
+	a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+	   content: '\e259';
+	   display: block;
+	   position: absolute;
+	   right: 20px;
+	   font-family: 'Glyphicons Halflings';
+	   font-size: 0.6em;
+	}
+	a[aria-expanded="true"]::before {
+	   content: '\e260';
+	}
+	ul ul a {
+	   font-size: 0.9em !important;
+	   padding-left: 30px !important;
+	   background: rgb(49, 57, 77);
+	}
+	ul.CTAs {
+	   padding: 20px;
+	}
+	ul.CTAs a {
+	   text-align: center;
+	   font-size: 0.9em !important;
+	   display: block;
+	   border-radius: 5px;
+	   margin-bottom: 5px;
+	}
+	a.download {
+	   background: rgb(100, 117, 160);
+	   color: white;
+	}
+	a.article, a.article:hover {
+	   background: rgb(100, 117, 160) !important;
+	   color: #fff !important;
+	}
+	/* ---------------------------------------------------
+	   CONTENT STYLE
+	----------------------------------------------------- */
+	#content {
+	   min-height: 100vh;
+	   transition: all 0.3s;
+	   width: 100vw;
+	}
+	/* ---------------------------------------------------
+	   MEDIAQUERIES
+	----------------------------------------------------- */
+	@media (max-width: 768px) {
+	   #sidebar {
+	       min-width: 100px;
+	       max-width: 100px;
+	       text-align: center;
+	       margin-left: -80px !important ;
+	   }
+	   a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+	       top: auto;
+	       bottom: 5px;
+	       right: 50%;
+	       -webkit-transform: translateX(50%);
+	       -ms-transform: translateX(50%);
+	       transform: translateX(50%);
+	   }
+	   #sidebar.active {
+	       margin-left: 0 !important;
+	   }
+	   #sidebar .sidebar-header h3, #sidebar .CTAs {
+	       display: none;
+	   }
+	   #sidebar .sidebar-header strong {
+	       display: block;
+	   }
+	   #sidebar ul li a {
+	       padding: 20px 10px;
+	   }
+	   #sidebar ul li a span {
+	       font-size: 0.85em;
+	   }
+	   #sidebar ul li a i {
+	       margin-right:  0;
+	       display: block;
+	   }
+	   #sidebar ul ul a {
+	       padding: 10px !important;
+	   }
+	   #sidebar ul li a i {
+	       font-size: 1.3em;
+	   }
+	   #sidebar {
+	       margin-left: 0;
+	   }
+	   #sidebarCollapse span {
+	       display: none;
+	   }
+	}
+	</style>
+</head><!-- Style for the tile buttons -->
+<body>
+	<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<h3><a href="HomePage.html">Home</a></h3><strong><a href="HomePage.html">BC</a></strong>
+			</div>
+			<ul class="list-unstyled components">
+				<li class="active">
+					<a aria-expanded="false" data-toggle="collapse" href="#homeSubmenu">Blockchains</a>
+					<ul class="collapse list-unstyled in" id="homeSubmenu">
+						<li>
+							<a href="Blockchain.html">About the Blockchain</a>
+						</li>
+						<li>
+							<a href="BlockchainFAQ.html">FAQ</a>
+						</li>
+						<li>
+							<a href="BlockchainAbout.html">About our Application</a>
+						</li>
+						<li>
+							<a href="Guide.html">A Guide to Decentralized Consensus Systems</a>
+						</li>
+						<li>
+							<a href="BlockchainDataLossTampering.html">Blockchains for Data Loss and Tampering</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Blockchain Functionality</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li>
+							<a href="AddBlock.html">Add a Block</a>
+						</li>
+						<li>
+							<a href="SearchBlock.html">Search for a Block</a>
+						</li>
+						<li>
+							<a href="ViewBlockAdvanced.html">Advanced View of the Blockchain</a>
+						</li>
+						<li>
+							<a href="ViewBlockLedger.html">Ledger View of the Blockchain</a>
+						</li>
+						<li>
+							<a href="BlockStats.html">Blockchain Statistics</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu2">Blockchain Alternatives</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu2">
+						<li>
+							<a href="HashgraphAbout.html">Hashgraph</a>
+						</li>
+						<li>
+							<a href="TangleAbout.html">Tangle</a>
+						</li>
+						<li>
+							<a href="HyperledgerAbout.html">Hyperledger</a>
+						</li>
+						<li>
+							<a href="CordaAbout.html">Corda</a>
+						</li>
+						<li>
+							<a href="DCSFAQ.html">FAQ</a>
+						</li>
+						<li>
+							<a href="DCSDataLossTampering.html">Preventing Data Loss and Tampering</a>
+						</li>
+						<li>
+							<a href="Comparison.html">Comparison</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="list-unstyled CTAs">
+				<li>
+					<a class="download" href="Help.html">Help</a>
+				</li>
+				<li>
+					<a class="download" href="ReportBug.html">Report a Bug</a>
+				</li>
+				<li>
+					<a class="download" href="Tutorial.html">Tutorial</a>
+				</li>
+			</ul>
+			<div class="navbar-header">
+				<button class="btn btn-info navbar-btn" id="sidebarCollapse" type="button"><span>Hide</span></button>
+			</div>
+		</nav><!-- Page Content Holder -->
+		<div id="content">
+			<div class="w3-container">
+				<h1 style="color: white">DCS: Preventing Data Loss and Tampering</h1>
+			</div><br>
+			<b></b>
+			<p style="font-size: 30px"><b>Hashgraph</b></p>
+			<p>Hashgraph helps to prevent against data loss and tampering as it does not use a leader in its consensus mechanism which makes it resilient against DDoS and DoS attacks. Hashgraph's consensus algorithm also helps to prevent against Sybil attacks by providing a mathematical guarantee that these attacks cannot succeed as long as less than 1/3 of the population is dishonest. Hashgraph is more fair since no individual can manipulate the order of transactions. All transactions are timestamped which helps to prevent tampering.</p><b></b>
+			<p style="font-size: 30px"><b>Corda</b></p>
+			<p>Consensus in corda is dealt in two parts, transaction validity and transaction uniqueness. Transaction validity is when the parties involved agree to consensus, this in turn means only these parties can see the transaction. At least two parties are needed in order to record a transaction to the ledger. Transaction uniqueness can be implemented in a few ways. Corda allows for this service to be “pluggable” meaning that different concesnus methods may be used, such as a byzantine fault tolerance algorithm or a simple single machine system. The uniqueness systems are not required to see the information within the transaction as well, they are only there to confirm that the state has not been consumed before.</p><b></b>
+			<p style="font-size: 30px"><b>Hyperledger</b></p>
+			<p>Security in hyperledger is largely designed around permisioned based systems. Because of the large focus around business needs, hyperledger plans to implement systems that require the entities to be permissioned identities. This is often done by some membership system that approves who is allowed on the blockchain. The idea is that the members using will the system will be conducting business together, often needing to know who they are doing business with and validating the authenticity that it is them. These membership services create a private closed blockchain where trust is inherit because each member was approved to be a member. Although membership is implemented, once again because of hyperledgers modularity, this can change to the users needs. We see in hyperledger Iroha that the default system of allowing membership is based on a number of nodes approving a member be added. Users can decide how private they wish their system to be, and what method they wish to be conducted when giving membership. Hyperledger also offers many methods of consensus security. Hyperledger fabric offers consensus that can be based on only a few nodes. For example user A can trade user B and may only need user C, who is a bank, to approve that the transaction is legitimate. This way of consensus can also be changed depending on the need. We see in hyperledger sawtooth consensus is done through a lottery based system. Hyperledger continuously demonstrates its modularity and choice when it comes to security. A developer of a system can not only choose their method of consensus to validation and membership, but also fine tune the methods chosen. We see this throughout all of hyperledger versions, as they each offer different security methods, but the made focus on security is through a private closed blockchain.</p><b></b>
+			<p style="font-size: 30px"><b>Tangle</b></p>
+			<p>Tangle helps to prevent against data loss and tampering as it has implemented various attack prevention algorithms to defend from a variety of threats.</p>
+			<p><b>Giant Weight Attack</b><br>
+			In a large weight attack, a malicious entity will issue a false transaction and use a massive amount of computing power to make its weight sufficiently large. If a host can issue a sufficiently large weight on a transaction by building a secret subtangle, it can overtake the main tangle, orphaning the main tangle, and taking control. In an ideal situation, this attack will always work with success. I n order to mitigate this risk we must have a better way to decide how to select which tips to directly or indirectly prove. We can also cap the weight of each transaction to 1 which will reduce the chance of a secret subtangle and a double spending transaction to overtake the main tangle with a large weight.<br>
+			<br>
+			<b>Parasite Chain Attack</b><br>
+			A parasite chain attack is similar to a large weight attack. A malicious entity builds a parasite chain, or a subtangle, that occasionally references the main tangle in order to increase its weight and thus increase its confidence interval in the system. Given sufficiently large computation power, that malicious entity can release a whole load of artificial transactions that are approved by its own subtangle. To defend against this attack the tangle relies on the assumption that the main tangle consists of more hashing power than a single entity can produce, and thus retain a larger cumulative weight than the parasite chain. The tangle proposes a Markhov Chain Monte Carlo (MCMC) algorithm to help combat this. The idea is to place random walkers on sites in the tangle, and let them ‘walk’ towards tips in a random way. The tips selected by the walkers are then candidates for approval. In this way, there is a very low chance that a random walker will select a node on the parasite chain to approve and also a low chance that it will select a lazy or a selfish node.<br>
+			<br>
+			<b>Splitting Attack</b><br>
+			The splitting attack was proposed as a potential attack against the tangle that is using the MCMC algorithm. It suggests that in a high load regime, an attack could potentially split the main tangle while retaining a balance between the two halves. The attacker does this by placing two conflicting transactions at the point of the split to prevent honest nodes from joining the network. Then, the attacker hopes that the branch will be roughly split in half so half of the network contributes to each branch similarly. If the attacker succeeds, the attacker could issue the same spending transactions on both chains. To defend against this, the tangle employs a sharp threshold rule that makes it really difficult for a split tangle to retain balance between both of them.<br>
+			<br>
+			<b>Quantum Computing Resistance</b><br>
+			As quantum computing becomes more prevalent, they become a bigger risk within distributed consensus systems because they are billions of times more efficient at solving hashing algorithms, making them an ideal host to exploit vulnerabilities in systems that rely on those algorithms for security. With Tangle, by limiting the weight of each transaction to 1, you can effectively prevent a quantum computer from overloading the network with a large weight attack. While a quantum computer may hit the ideal rate of giving and seeking approval, it will always remain in an acceptable parameter of increased rate.</p>
+		</div><!-- jQuery CDN -->
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js">
+		</script> <!-- Bootstrap Js CDN -->
+		 
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+		</script> 
+		<script type="text/javascript">
+		           $(document).ready(function () {
+		               $('#sidebarCollapse').on('click', function () {
+		                   $('#sidebar').toggleClass('active');
+		               });
+		           });
+		</script> 
+	</div>
+</body>
 </html>
-
-
